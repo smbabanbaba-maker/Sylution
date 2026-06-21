@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - SYLUTION LTD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #1a1a1a; --accent-red: #e63946; --accent-green: #4caf50; --accent-light-green: #8bc34a; --white: #ffffff; --light: #f8f9fa; --gray: #6c757d; --dark-gray: #343a40; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--primary); overflow-x: hidden; background: var(--light); }
+        
+        /* Navigation */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.1); z-index: 1000; padding: 0.8rem 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .company-logo { height: 55px; width: auto; object-fit: contain; border-radius: 8px; }
+        .logo-text { font-size: 1.6rem; font-weight: 800; color: var(--primary); }
+        .logo-text span { background: linear-gradient(135deg, var(--accent-red), var(--accent-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 500; transition: all 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-red); }
+        .nav-cta { background: linear-gradient(135deg, var(--accent-red), var(--accent-green)); color: white !important; padding: 0.6rem 1.5rem; border-radius: 50px; }
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+        .menu-toggle span { width: 28px; height: 3px; background: var(--primary); border-radius: 3px; }
+
+        /* Page Header */
+        .page-header { margin-top: 80px; background: linear-gradient(135deg, var(--primary) 0%, var(--dark-gray) 100%); color: white; padding: 5rem 2rem; text-align: center; position: relative; overflow: hidden; }
+        .page-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&h=600&fit=crop') center/cover; opacity: 0.15; }
+        .page-header h1 { font-size: 3rem; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+        .page-header p { font-size: 1.2rem; color: var(--accent-light-green); position: relative; z-index: 1; }
+
+        /* Sections */
+        section { padding: 5rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary); }
+        .section-subtitle { text-align: center; color: var(--gray); margin-bottom: 3rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* About Main Content */
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .about-text h3 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--primary); }
+        .about-text p { margin-bottom: 1.5rem; color: var(--gray); font-size: 1.05rem; line-height: 1.8; }
+        .about-image img { width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); transition: transform 0.5s; }
+        .about-image img:hover { transform: scale(1.02); }
+
+        /* Features */
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 4rem; }
+        .feature-item { display: flex; align-items: center; gap: 1.5rem; padding: 2rem; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; border-left: 4px solid var(--accent-red); }
+        .feature-item:hover { transform: translateY(-5px); }
+        .feature-item i { font-size: 2.5rem; color: var(--accent-red); }        .feature-item h4 { font-size: 1.2rem; margin-bottom: 0.3rem; }
+        .feature-item p { color: var(--gray); font-size: 0.9rem; }
+
+        /* Vision & Mission */
+        .vision-mission { background: var(--light); }
+        .vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .vm-card { background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; }
+        .vm-card i { font-size: 3rem; margin-bottom: 1rem; }
+        .vm-card.vision i { color: var(--accent-red); }
+        .vm-card.mission i { color: var(--accent-green); }
+        .vm-card h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+        .vm-card p { color: var(--gray); line-height: 1.8; }
+
+        /* Image Gallery */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .gallery-item { border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: white; transition: transform 0.3s; }
+        .gallery-item:hover { transform: translateY(-10px); }
+        .gallery-item img { width: 100%; height: 250px; object-fit: cover; }
+        .gallery-info { padding: 1.5rem; }
+        .gallery-info h4 { margin-bottom: 0.5rem; color: var(--primary); }
+        .gallery-info p { color: var(--gray); font-size: 0.9rem; }
+
+        /* Why Choose Us */
+        .why-us { background: linear-gradient(135deg, var(--primary), var(--dark-gray)); color: white; }
+        .why-us .section-title { color: white; }
+        .why-us .section-subtitle { color: #aaa; }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .why-item { text-align: center; padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; }
+        .why-item:hover { background: rgba(255,255,255,0.1); transform: translateY(-5px); }
+        .why-item i { font-size: 2.5rem; color: var(--accent-light-green); margin-bottom: 1rem; }
+        .why-item h4 { margin-bottom: 0.5rem; }
+        .why-item p { color: #aaa; font-size: 0.9rem; }
+
+        /* Footer */
+        footer { background: #111; color: white; padding: 4rem 2rem 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto 3rem; }
+        .footer-col h3 { margin-bottom: 1.5rem; color: var(--accent-light-green); }
+        .footer-col p, .footer-col ul li { color: #aaa; margin-bottom: 0.8rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li a { color: #aaa; text-decoration: none; transition: color 0.3s; }
+        .footer-col ul li a:hover { color: var(--accent-red); }
+        .social-links { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+        .social-links a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s; }
+        .social-links a:hover { background: linear-gradient(135deg, var(--accent-red), var(--accent-green)); transform: translateY(-5px); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center; color: #888; max-width: 1200px; margin: 0 auto; }
+
+        /* Buttons */
+        .btn { padding: 0.8rem 2rem; border: none; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s; }
+        .btn-primary { background: linear-gradient(135deg, var(--accent-red), #c62828); color: white; }
+        .btn:hover { transform: translateY(-3px); }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav-links { position: fixed; top: 70px; right: -100%; width: 70%; height: 100vh; background: white; flex-direction: column; padding: 2rem; box-shadow: -5px 0 20px rgba(0,0,0,0.1); transition: right 0.3s; }
+            .nav-links.active { right: 0; }
+            .page-header h1 { font-size: 2rem; }
+            .about-content, .vm-grid { grid-template-columns: 1fr; }
+            .about-content { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION" class="company-logo">
+                <span class="logo-text">SY<span>LU</span>TION</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html" class="nav-cta">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>About SYLUTION LTD</h1>
+        <p>Innovation Meets Agriculture</p>
+    </div>
+
+    <!-- Main About Section -->
+    <section>
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Pioneering Smart Agriculture in Africa</h3>
+                    <p>SYLUTION LTD is a technology, innovation, and solutions company that leverages Artificial Intelligence (AI), Internet of Things (IoT), Renewable Energy, Smart Devices, and Climate-Smart Technologies to solve problems in agriculture, environment, security, and community development.</p>
+                    <p>Our vision is to become one of Africa's leading AgriTech and Climate Technology companies by delivering affordable, sustainable, and effective farming solutions.</p>
+                    <a href="services.html" class="btn btn-primary">Explore Our Services <i class="fas fa-arrow-right"></i></a>                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=900&h=600&fit=crop" alt="SYLUTION Tech Team">
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="features">
+                <div class="feature-item">
+                    <i class="fas fa-robot"></i>
+                    <div>
+                        <h4>Artificial Intelligence</h4>
+                        <p>AI-powered smart farming solutions</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-satellite-dish"></i>
+                    <div>
+                        <h4>Internet of Things</h4>
+                        <p>Connected smart devices & sensors</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-solar-panel"></i>
+                    <div>
+                        <h4>Renewable Energy</h4>
+                        <p>Sustainable solar power systems</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-seedling"></i>
+                    <div>
+                        <h4>Climate-Smart Agri</h4>
+                        <p>Sustainable & eco-friendly farming</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section class="vision-mission">
+        <div class="container">
+            <h2 class="section-title">Our Core Values</h2>
+            <p class="section-subtitle">Driving Our Mission Forward</p>
+            <div class="vm-grid">
+                <div class="vm-card vision">
+                    <i class="fas fa-eye"></i>
+                    <h3>Our Vision</h3>
+                    <p>To become one of Africa's leading AgriTech and Climate Technology companies by delivering affordable, sustainable, and effective farming solutions that transform agriculture across the continent.</p>                </div>
+                <div class="vm-card mission">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Our Mission</h3>
+                    <p>To leverage cutting-edge technology including AI, IoT, and renewable energy to solve critical challenges in agriculture, environment, and community development while promoting sustainable practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">What We Do</h2>
+            <p class="section-subtitle">Innovation in Action</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop" alt="Technology Innovation">
+                    <div class="gallery-info">
+                        <h4>Innovation Hub</h4>
+                        <p>Cutting-edge technology solutions for modern agriculture.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&h=400&fit=crop" alt="Smart Farming">
+                    <div class="gallery-info">
+                        <h4>Smart Agriculture</h4>
+                        <p>Transforming traditional farming with smart technology.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop" alt="Expert Team">
+                    <div class="gallery-info">
+                        <h4>Expert Team</h4>
+                        <p>Professional and dedicated staff ready to serve you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose SYLUTION LTD?</h2>
+            <p class="section-subtitle">What Sets Us Apart</p>
+            <div class="why-grid">
+                <div class="why-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Innovative Technologies</h4>                    <p>Cutting-edge agricultural solutions</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Sustainable Farming</h4>
+                    <p>Eco-friendly and green practices</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-headset"></i>
+                    <h4>Professional Support</h4>
+                    <p>24/7 technical assistance</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Climate-Smart</h4>
+                    <p>Adapted to climate challenges</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-users"></i>
+                    <h4>Training & Empowerment</h4>
+                    <p>Capacity building programs</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-check-circle"></i>
+                    <h4>Reliable Solutions</h4>
+                    <p>Scalable and proven results</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>SYLUTION LTD</h3>
+                <p>Smart Technology • Green Future<br>Leading AgriTech innovation in Africa.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61553057467392" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/sylution_ng" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/sylution/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/official_sylution" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@sylution" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Kano, Nigeria</li>
+                    <li><i class="fas fa-envelope"></i> officialsylution@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +234 906 343 6048</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SYLUTION LTD. All Rights Reserved. Building Africa's Smart Future 🌍</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
