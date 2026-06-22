@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ha">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriMarket - SYLUTION LTD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #1a1a1a; --accent-red: #e63946; --accent-green: #4caf50; --accent-light-green: #8bc34a; --white: #ffffff; --light: #f8f9fa; --gray: #6c757d; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--primary); background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%); min-height: 100vh; }
+        
+        /* Navigation */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.1); z-index: 1000; padding: 0.8rem 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .company-logo { height: 55px; width: auto; object-fit: contain; border-radius: 8px; }
+        .logo-text { font-size: 1.6rem; font-weight: 800; color: var(--primary); }
+        .logo-text span { background: linear-gradient(135deg, var(--accent-red), var(--accent-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 500; transition: all 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-red); }
+        .nav-cta { background: linear-gradient(135deg, var(--accent-red), var(--accent-green)); color: white !important; padding: 0.6rem 1.5rem; border-radius: 50px; }
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+        .menu-toggle span { width: 28px; height: 3px; background: var(--primary); border-radius: 3px; }
+
+        /* Coming Soon Container */
+        .coming-soon-container {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-soon-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(230, 57, 70, 0.1) 100%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .coming-soon-container::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.08) 0%, rgba(76, 175, 80, 0.08) 100%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .coming-soon-content {
+            text-align: center;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .coming-soon-icon {
+            font-size: 6rem;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-green));
+            color: white;            padding: 0.5rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .coming-soon-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .coming-soon-content h1 span {
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .coming-soon-content p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .features-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .feature-item i {            font-size: 2.5rem;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin: 0;
+        }
+
+        .notify-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+
+        .notify-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .notify-section p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .notify-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .notify-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;            transition: border-color 0.3s;
+        }
+
+        .notify-form input:focus {
+            border-color: var(--accent-green);
+        }
+
+        .notify-form button {
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-green));
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .notify-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+        }
+
+        .contact-info {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(76, 175, 80, 0.05);
+            border-radius: 15px;
+        }
+
+        .contact-info h3 {
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info a {
+            color: var(--accent-red);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-green));
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;                width: 70%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+                transition: right 0.3s;
+                z-index: 999;
+            }
+            .nav-links.active { right: 0; }
+            .coming-soon-content h1 { font-size: 2.2rem; }
+            .coming-soon-content p { font-size: 1rem; }
+            .coming-soon-icon { font-size: 4rem; }
+            .notify-form { flex-direction: column; }
+            .features-preview { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION" class="company-logo">
+                <span class="logo-text">SY<span>LU</span>TION</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="market.html" class="active">Market</a></li>
+                <li><a href="contact.html" class="nav-cta">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Coming Soon Container -->
+    <div class="coming-soon-container">
+        <div class="coming-soon-content">
+            <div class="coming-soon-badge">🚀 Coming Soon</div>
+            <div class="coming-soon-icon">
+                <i class="fas fa-store"></i>
+            </div>
+            <h1>SYLUTION <span>AgriMarket</span></h1>            <p>Kasuwar Noma ta Najeriya - Saye da Sayarwa Kai Tsaye<br>
+            Muna aiki tukuna don kawo muku mafi kyawun kasuwar noma ta zamani!</p>
+
+            <div class="features-preview">
+                <div class="feature-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Sayen Kai Tsaye</h3>
+                    <p>Sayen kayan noma daga manoma kai tsaye</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-tags"></i>
+                    <h3>Farashi Mai Dadi</h3>
+                    <p>Farashi mafi arha da inganci</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-truck"></i>
+                    <h3>Aika Zuwa Gida</h3>
+                    <p>Za mu aika muku kayan ku inda kuke</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Aminci</h3>
+                    <p>Cikakkiyar aminci da inganci</p>
+                </div>
+            </div>
+
+            <div class="notify-section">
+                <h2>Ka Sanar Da Mu!</h2>
+                <p>Sanya email ɗinka don mu sanar da ka idan muka buɗe kasuwar</p>
+                <form class="notify-form" onsubmit="event.preventDefault(); alert('Na gode! Za mu tuntuɓe ku da sauri.'); this.reset();">
+                    <input type="email" placeholder="Sanya email ɗinka nan..." required>
+                    <button type="submit"><i class="fas fa-bell"></i> Sanar Da Ni</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h3>Ko Tuntuɓe Mu</h3>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:officialsylution@gmail.com">officialsylution@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+2349063436048">+234 906 343 6048</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Kano, Nigeria</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>SYLUTION LTD</h3>
+            <p>Smart Technology • Green Future</p>
+            <div class="social-links">                <a href="https://www.facebook.com/profile.php?id=61553057467392" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/sylution_ng" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/company/sylution/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/official_sylution" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@sylution" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SYLUTION LTD. All Rights Reserved. Building Africa's Smart Future 🌍</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
