@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ha">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriMarket - SYLUTION LTD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #1a1a1a; --accent-red: #e63946; --accent-green: #4caf50; --white: #ffffff; --light: #f8f9fa; --gray: #6c757d; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--light); min-height: 100vh; }
+        
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.1); z-index: 1000; padding: 0.8rem 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .company-logo { height: 55px; border-radius: 8px; }
+        .logo-text { font-size: 1.6rem; font-weight: 800; }
+        .logo-text span { background: linear-gradient(135deg, var(--accent-red), var(--accent-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 500; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-red); }
+        .nav-cta { background: linear-gradient(135deg, var(--accent-red), var(--accent-green)); color: white !important; padding: 0.6rem 1.5rem; border-radius: 50px; }
+        .menu-toggle { display: none; cursor: pointer; }
+        
+        .market-header { margin-top: 75px; background: linear-gradient(135deg, #2d5a27, #4caf50); color: white; padding: 3rem 2rem; text-align: center; }
+        .market-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .market-header p { font-size: 1.2rem; opacity: 0.95; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        
+        .search-box { max-width: 600px; margin: 2rem auto; display: flex; background: white; border-radius: 50px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .search-box input { flex: 1; padding: 1rem 1.5rem; border: none; outline: none; font-size: 1rem; }
+        .search-box button { background: var(--accent-red); color: white; border: none; padding: 1rem 2rem; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+        .search-box button:hover { background: #c62828; }
+        
+        .loading { text-align: center; padding: 3rem; color: var(--gray); }
+        .loading i { font-size: 3rem; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .product-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: all 0.3s; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+        .product-image { height: 200px; background: linear-gradient(135deg, #f0f0f0, #e0e0e0); display: flex; align-items: center; justify-content: center; }
+        .product-image i { font-size: 4rem; color: var(--accent-green); }
+        .product-info { padding: 1.5rem; }
+        .product-info h3 { margin-bottom: 0.5rem; color: var(--primary); }        .location { color: var(--gray); font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .location i { color: var(--accent-red); margin-right: 5px; }
+        .price { font-size: 1.8rem; font-weight: 800; color: var(--accent-green); margin-bottom: 1rem; }
+        .btn-contact { width: 100%; padding: 0.8rem; background: linear-gradient(135deg, var(--accent-red), #c62828); color: white; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .btn-contact:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3); }
+        
+        footer { background: var(--primary); color: white; padding: 2rem; text-align: center; margin-top: 4rem; }
+        .social-links { display: flex; gap: 1rem; justify-content: center; margin: 1rem 0; }
+        .social-links a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; }
+        .social-links a:hover { background: linear-gradient(135deg, var(--accent-red), var(--accent-green)); }
+        
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links { display: none; }
+            .market-header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION" class="company-logo">
+                <span class="logo-text">SY<span>LU</span>TION</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="market.html" class="active">Market</a></li>
+                <li><a href="contact.html" class="nav-cta">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        </div>
+    </nav>
+
+    <!-- Market Header -->
+    <div class="market-header">
+        <h1>🌿 SYLUTION AgriMarket</h1>
+        <p>Kasuwar Noma ta Najeriya - Saye da Sayarwa Kai Tsaye</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Search Box -->
+        <div class="search-box">            <input type="text" id="searchInput" placeholder="Nema kaya, wuri, ko category...">
+            <button onclick="searchProducts()"><i class="fas fa-search"></i> Search</button>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            <i class="fas fa-spinner"></i>
+            <p>Ana lodin kayan...</p>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="productsGrid"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3>SYLUTION LTD</h3>
+        <p>Smart Technology • Green Future</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=61553057467392" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/sylution_ng" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/company/sylution/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/official_sylution" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@sylution" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <p>&copy; 2025 SYLUTION LTD. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Initialize Supabase
+        const supabaseUrl = 'https://aeioqnwigtbyobkgwzrl.supabase.co';
+        const supabaseKey = 'sb_publishable_-U-bIOHd_Zzhs5X2cgtjjQ_XTbH3p7j';
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        // Load products on page load
+        document.addEventListener('DOMContentLoaded', loadProducts);
+
+        // Load all products
+        async function loadProducts() {
+            const loading = document.getElementById('loading');
+            const grid = document.getElementById('productsGrid');
+            
+            try {
+                const { data, error } = await supabase
+                    .from('products')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+                loading.style.display = 'none';
+                
+                if (data.length === 0) {
+                    grid.innerHTML = '<p style="text-align: center; color: var(--gray);">Babu kayan da aka samu a yanzu.</p>';
+                    return;
+                }
+
+                grid.innerHTML = data.map(product => `
+                    <div class="product-card">
+                        <div class="product-image">
+                            ${product.image_url ? 
+                                `<img src="${product.image_url}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">` : 
+                                '<i class="fas fa-seedling"></i>'
+                            }
+                        </div>
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> ${product.location}</p>
+                            <p class="price">₦${product.price.toLocaleString()}</p>
+                            <button class="btn-contact" onclick="contactSeller('${product.seller_phone}', '${product.name}')">
+                                <i class="fas fa-phone"></i> Contact Seller
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error:', error);
+                loading.innerHTML = '<p style="color: var(--accent-red);">An samu matsala. Da fatan za a sake gwadawa.</p>';
+            }
+        }
+
+        // Search products
+        async function searchProducts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const loading = document.getElementById('loading');
+            const grid = document.getElementById('productsGrid');
+            
+            if (!searchTerm) {
+                loadProducts();
+                return;
+            }
+
+            loading.style.display = 'block';
+            grid.innerHTML = '';
+
+            try {
+                const { data, error } = await supabase
+                    .from('products')
+                    .select('*')
+                    .ilike('name', `%${searchTerm}%`)                    .or(`category.ilike.%${searchTerm}%,location.ilike.%${searchTerm}%`);
+
+                if (error) throw error;
+
+                loading.style.display = 'none';
+                
+                if (data.length === 0) {
+                    grid.innerHTML = '<p style="text-align: center; color: var(--gray); grid-column: 1/-1;">Ba a samu sakamako.</p>';
+                    return;
+                }
+
+                grid.innerHTML = data.map(product => `
+                    <div class="product-card">
+                        <div class="product-image">
+                            ${product.image_url ? 
+                                `<img src="${product.image_url}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">` : 
+                                '<i class="fas fa-seedling"></i>'
+                            }
+                        </div>
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> ${product.location}</p>
+                            <p class="price">₦${product.price.toLocaleString()}</p>
+                            <button class="btn-contact" onclick="contactSeller('${product.seller_phone}', '${product.name}')">
+                                <i class="fas fa-phone"></i> Contact Seller
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error:', error);
+                loading.innerHTML = '<p style="color: var(--accent-red);">An samu matsala.</p>';
+            }
+        }
+
+        // Contact seller
+        function contactSeller(phone, productName) {
+            if (phone) {
+                const message = `Sannu! Ina son yin tambaya game da: ${productName}`;
+                const whatsappUrl = `https://wa.me/${phone.replace('+234', '234').replace(/\s/g, '')}?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+            } else {
+                alert('Lambar waya ba ta samuwa. Da fatan za a tuntuɓi SYLUTION.');
+            }
+        }
+
+        // Toggle menu
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';        }
+
+        // Search on Enter key
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') searchProducts();
+        });
+    </script>
+</body>
+</html>
