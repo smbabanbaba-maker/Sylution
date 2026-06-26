@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SYLUTION LTD | Building Africa's Smart Future</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Geist:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#191c1d",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-tertiary-fixed-variant": "#7a0018",
+                        "tertiary-fixed": "#ffdad8",
+                        "surface-container": "#edeeef",
+                        "secondary-container": "#d1e7dd",
+                        "on-surface-variant": "#444748",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "on-secondary-fixed": "#002204",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#410007",
+                        "on-error-container": "#93000a",
+                        "outline": "#747878",
+                        "surface-tint": "#5f5e5e",
+                        "surface-container-low": "#f3f4f5",
+                        "secondary": "#1b4332",
+                        "on-secondary-fixed-variant": "#005313",
+                        "tertiary-container": "#410007",
+                        "on-secondary-container": "#1b4332",
+                        "secondary-fixed": "#52b788",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-variant": "#e1e3e4",
+                        "on-primary-container": "#858383",
+                        "outline-variant": "#c4c7c7",
+                        "tertiary-fixed-dim": "#ffb3b1",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d9dadb",
+                        "primary-container": "#1c1b1b",
+                        "on-primary": "#ffffff",
+                        "primary": "#000000",
+                        "error-container": "#ffdad6",
+                        "surface": "#f8f9fa",
+                        "on-primary-fixed-variant": "#474746",                        "surface-container-highest": "#e1e3e4",
+                        "background": "#f8f9fa",
+                        "tertiary": "#000000",
+                        "on-surface": "#191c1d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-tertiary-container": "#800010",
+                        "error": "#800010",
+                        "primary-fixed": "#e5e2e1",
+                        "on-primary-fixed": "#1c1b1b",
+                        "secondary-fixed-dim": "#40916c",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8f9fa",
+                        "inverse-primary": "#c8c6c5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "label-sm": ["Geist"],
+                        "label-md": ["Geist"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "display-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(26, 26, 26, 0.1);
+        }
+        .btn-gradient {
+            background: linear-gradient(90deg, #1b4332 0%, #800010 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-gradient:hover {
+            box-shadow: 0 4px 12px rgba(27, 67, 50, 0.3);
+            transform: translateY(-2px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(180px, auto);
+            gap: 24px;
+        }
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-2xl border-b border-on-background/10 shadow-sm h-20">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-full max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<img alt="SYLUTION LTD Logo" class="h-10 md:h-12 w-auto rounded-lg" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg"/>
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">SYLUTION LTD</span>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-secondary font-semibold border-b-2 border-secondary pb-1 font-label-md text-label-md" href="#home">Home</a>
+<a class="text-on-surface hover:text-secondary transition-colors font-label-md text-label-md" href="#about">About</a>
+<a class="text-on-surface hover:text-secondary transition-colors font-label-md text-label-md" href="#services">Services</a>
+<a class="text-on-surface hover:text-secondary transition-colors font-label-md text-label-md" href="#products">Products</a>
+<a class="text-on-surface hover:text-secondary transition-colors font-label-md text-label-md" href="#projects">Projects</a>
+</nav>
+<a href="contact.html" class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md active:scale-95 transition-transform">
+                Contact Us
+            </a>
+</div></header>
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center overflow-hidden" id="home">
+<div class="absolute inset-0 z-0">
+<img alt="Hero background" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE0-0vo62UvfcSBfbBcUqWr_Er_yer7waT7YKLj1ZHnRNrWLdRejuqxCRky4gQf04dasWF2vnW8x5S1eHtzrhhSIyhXQA94DngIW1fgMLGt3K_XqQ9CSWf15kAOHpbzW4ctfKMrRoTydyj98htQ6Vw7EhJn1UrOiflJ_m6Fig5ne8c96hsMOZm4my01EJLCFNpsOwasgkhwD38M0RroeXbfnMo9HavidOr08v1yunfgbC7aqD3Av7rwG0ZAMVIdw9_SBMlJNSVcQ"/>
+<div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
+</div>
+<div class="relative z-10 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<div class="max-w-3xl">
+<h1 class="text-white font-display-lg text-display-lg mb-6 leading-tight">
+                    Building Africa's <span class="text-secondary-fixed">Smart Future</span>
+</h1>
+<p class="text-white/90 font-body-lg text-body-lg mb-10 max-w-2xl">
+                    AI-powered agriculture, IoT systems, and renewable energy transforming farming across Africa. Precision technology meet ancestral land.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="btn-gradient text-white px-8 py-4 rounded-lg font-label-md text-label-md text-center" href="#services">
+                        Our Services
+                    </a>
+<a class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-lg font-label-md text-label-md hover:bg-white/20 transition-all text-center" href="contact.html">
+                        Contact Us
+                    </a>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="features">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Precision Engineering for Modern Fields</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Harnessing the power of four core technologies to redefine the agricultural landscape of the continent.</p>
+</div>
+<div class="bento-grid">
+<!-- AI Integration -->
+<div class="md:col-span-2 md:row-span-2 glass-card rounded-2xl p-8 flex flex-col justify-between group hover:-translate-y-1 transition-all">
+<div>
+<div class="w-12 h-12 rounded-lg bg-primary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-white" data-icon="psychology">psychology</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">AI-Driven Insights</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Proprietary algorithms that analyze soil health, crop growth, and weather patterns to provide real-time predictive data to farmers.</p>
+</div>
+<div class="mt-8 overflow-hidden rounded-xl h-48 relative">
+<img class="w-full h-full object-cover" data-alt="AI analytics dashboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtE8QjHUls4lRJL9eGAizTINwssXBtsht2ea8ry3_xPT5jhkryx4n6uaIUQgb-Pt61tvOYAJuSoofYIb5zJjpIq8lK0JnWn4b2WXy0HpVHlhQSuDa9oCo6-3bksub9pE5FiOEdWi5h86ZFwA7f5_aG39Rq8ozXCnzmxS1MZsTo-FX7KqWuGgIzoT4TWM3KJHdINdhBQoEs8t7CMBxr_NdEK5adJqAchXlWeNJpM4gh_-onRQoLgmlOUPNOBdUpOH1MFebv4zxlCQ"/>
+</div>
+</div>
+<!-- IoT -->
+<div class="md:col-span-2 glass-card rounded-2xl p-8 flex items-center gap-6 group hover:-translate-y-1 transition-all">
+<div class="w-16 h-16 shrink-0 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="sensors">sensors</span></div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Connected Ecosystems</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">IoT sensors monitoring moisture and nutrient levels across vast terrains.</p>
+</div>
+</div>
+<!-- Renewable Energy -->
+<div class="md:col-span-1 glass-card rounded-2xl p-8 flex flex-col group hover:-translate-y-1 transition-all">
+<span class="material-symbols-outlined text-error text-4xl mb-4" data-icon="solar_power">solar_power</span>
+<h3 class="font-label-md text-label-md font-bold mb-2 uppercase tracking-widest">Renewable</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Sustainable energy solutions powering remote operations.</p>
+</div>
+<!-- Smart Devices -->
+<div class="md:col-span-1 glass-card rounded-2xl p-8 flex flex-col group hover:-translate-y-1 transition-all">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4" data-icon="precision_manufacturing">precision_manufacturing</span>
+<h3 class="font-label-md text-label-md font-bold mb-2 uppercase tracking-widest">Hardware</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Robust, localized hardware designed for African climates.</p>
+</div>
+</div>
+</section>
+<!-- About Preview -->
+<section class="bg-primary text-on-primary py-24" id="about">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="relative">
+<div class="absolute -top-10 -left-10 w-40 h-40 border-t-2 border-l-2 border-secondary/40"></div>
+<img class="rounded-2xl shadow-2xl relative z-10 w-full aspect-[4/5] object-cover" data-alt="African woman engineer in greenhouse" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt3s7_lDRy6Hjf89gBB4A-QytUD4YonwThPbvV5YAWqmKhnsV1AZnQsTQ6paJwj-oxX-sJ0CpAWSwANvk5VYDd9cnX0GuA_PeiK_UvczEbFlQfbP_VmqexgM5PtcbqCrB1AMStJp2Ev4GIifsDCaqBrqWhk9P3GAY0du1W71OrN8f-A_hizLxOEZ-mSxdvINeAbg9Q1933GrgWP5YMv-5LQu02kCSC-rtPV59tbEqoEWtQXn3eA8emrnvqmRSOcQ3lFYM2vEFb1Q"/>
+<div class="absolute -bottom-10 -right-10 w-40 h-40 border-b-2 border-r-2 border-error/40"></div>
+</div>
+<div>
+<span class="text-secondary-fixed font-label-md text-label-md tracking-[0.2em] uppercase mb-4 block">Our Legacy</span>
+<h2 class="font-headline-lg text-headline-lg mb-6">Pioneering the Next Agricultural Revolution</h2>
+<p class="font-body-lg text-body-lg text-primary-fixed-dim mb-8">
+                    Based in Kano, Nigeria, SYLUTION LTD is at the forefront of the technological renaissance. We don't just build systems; we build solutions that respect the deep-rooted heritage of African farming while catapulting it into the age of automation.
+                </p>
+<p class="font-body-md text-body-md text-primary-fixed-dim/80 mb-10">
+                    Our team of engineers and agronomists work side-by-side to ensure that every sensor, every drone, and every AI model we deploy serves the ultimate goal: food security and economic prosperity for the African farmer.
+                </p>
+<a class="inline-flex items-center gap-2 font-label-md text-label-md font-bold border-b border-secondary pb-1 hover:text-secondary-fixed transition-colors" href="about.html">
+                    Learn more about our mission
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Services Preview -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="services">
+<div class="flex justify-between items-end mb-16">
+<div class="max-w-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Tailored Solutions</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Scalable technological infrastructure for every farm size, from smallholder plots to industrial plantations.</p></div>
+<div class="hidden md:block">
+<a class="font-label-md text-label-md font-bold text-primary group flex items-center gap-2" href="services.html">
+                    View All Services <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Smart Irrigation -->
+<div class="group cursor-pointer">
+<div class="mb-6 overflow-hidden rounded-2xl h-64 bg-surface-container relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Smart irrigation system" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrySlRDIFE7lmTqqNJAYB9dobQFO7Pp5NPmHQKTAp_dLaejFTn5Dodidg2dmR8H_5-y1Vpg84W_BWIBV_jF59wKFUrpWA_TxaIoqBG3d7gSOEomnw49xJ4V8MxXi7__gMblTATQEKPi2p5vzrWhmF-DdlBL6YpeSb4R-DrM6YX07U4hvvK1l5AHuaWXi3aXcjt-IES5c6ng1EJwXkJj3gOsdVj4YlolT0Hnkoer8feToQoB0GYMrVehtYa9yFguELF2IzfkX4MOA"/>
+<div class="absolute top-4 left-4 glass-card px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="water_drop">water_drop</span>
+<span class="text-xs font-bold uppercase tracking-widest text-primary">Precision</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Smart Irrigation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Automated systems that reduce water waste by 60% through soil moisture analysis and AI scheduling.</p>
+</div>
+<!-- Agricultural Drones -->
+<div class="group cursor-pointer">
+<div class="mb-6 overflow-hidden rounded-2xl h-64 bg-surface-container relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Agricultural drone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRu7QopX0TpXODeGosswoVOr0UeJ7ba1PPigWxaeG3F7VyXcpDotQJzLU3fNkKYriXqsuvH-LKenUkWaFdYaGv0LrNPsBnyYiuNZDXr8ciLLmHMhK15MSMwq0-NwEoxoo2bwS59M52PluC8Gc0ZD2D5WieNUyqTw8a9mn2evyszNcbhvWHMgYp--EZicYbEOE6SfVueP7UGrfDstPR4QtqgK3uz4L3T5TqTQfRXI7NLnLoH3lycbBgJdpnmBcv0AFqa1FmmEVO4A"/>
+<div class="absolute top-4 left-4 glass-card px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="flight">flight</span>
+<span class="text-xs font-bold uppercase tracking-widest text-primary">Sky-Tech</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Survey & Spray Drones</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Multispectral imaging for crop health analysis and autonomous precision spraying of fertilizers.</p>
+</div>
+<!-- Automated Greenhouse -->
+<div class="group cursor-pointer">
+<div class="mb-6 overflow-hidden rounded-2xl h-64 bg-surface-container relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Smart greenhouse" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC70CZDS3buJOr9WpQ26drhIErR4VUPWCTkcbZMmurlENVJWodfty5QDsbRoWlFoOiEunZQ7Yg8mekvNdpu0JMHOV9kvYagZVqkD1vfbDQ8rwAfD2kFZHhAbwzkJKEUIsm653gHnB6wIIY72uJkvglwxuQPF8L5pH0YJ33U0iWmLVjAwOO9aEJ1tpofKGAVwaXtksl_2uDb3B29UrIOgtIAVpXtzIjBspzta7uT0aLmvKOExPGqxATypcSknAawvJBIijMFPseY_Q"/>
+<div class="absolute top-4 left-4 glass-card px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="eco">eco</span>
+<span class="text-xs font-bold uppercase tracking-widest text-primary">Controlled</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Intelligent Greenhouse</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Fully climate-controlled environments for year-round high-yield production of premium crops.</p>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="py-24 bg-surface-container-low overflow-hidden relative">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-primary text-center mb-16">Voices from the Field</h2><div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-white p-10 rounded-2xl shadow-sm border border-black/5 flex flex-col justify-between">
+<p class="font-body-lg text-body-lg italic text-on-surface mb-8">"The smart irrigation system changed everything. I used to spend hours hauling water; now the land drinks exactly what it needs, when it needs it. My yield has doubled."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Musa Ibrahim" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsd-MhlscRY3uqg-WSYqVIZlQ2xUAulC2NLxxFf-4JHFGS7PPkKL4iP_4VUAIhveJOdgMS4qrY2XwxkiLyfsNYXvaQkk3CbxF12oS1dv0pMzyALe9V3AZ7zFUtYGbdaGZp6kg4aEWt15DCkDiVMvEHhaHzS4J-Rwf9ZFce__85Q8apPPpHuRx38Bz5RQmYy8xMgYOAtlUgs4Pu0lkegt_zbXq-ZTjHsnrjThU7yPweHoZL9VqAgfRr6n0ONmSrlipcaBs3qTmpRA"/>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Musa Ibrahim</p>
+<p class="text-xs text-on-surface-variant uppercase">Kano State, Nigeria</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-primary text-on-primary p-10 rounded-2xl shadow-xl flex flex-col justify-between scale-105">
+<p class="font-body-lg text-body-lg italic mb-8">"SYLUTION's drone survey identified a pest outbreak before it was visible to the eye. They saved 80% of my tomato crop. This is the future of African farming."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-secondary">
+<img class="w-full h-full object-cover" data-alt="Amara Okafor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw_5_tbr5_r1ARqxrMikTGIWLV89XmE9Sm34bwvi0S53nlAqOANpyqcn_4hoJnHFg4hs6CBVzeN3TpaqPIHaGgQasfUZpoorZrBJ780tgalqQDSvX0sgGoIqcTSxJRHZJuEL3Px9pJcYg15ufo0U-pAlfb_Xb8_-h2r3wcoPJ-_h4_jUvy2Q0ljakkG3FtayT21BnPB1HGUZXhDKip9Oj3LExqCsr507j3brhbr78uMSquQa_8ODHOmptfIDKqmfbG7g2XUFIaSA"/>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Amara Okafor</p>
+<p class="text-xs text-primary-fixed-dim uppercase">Enugu State, Nigeria</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-white p-10 rounded-2xl shadow-sm border border-black/5 flex flex-col justify-between">
+<p class="font-body-lg text-body-lg italic text-on-surface mb-8">"Reliable energy was always our bottleneck. The solar-powered storage systems provided by SYLUTION have finally allowed us to reach distant markets without loss."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Kofi Mensah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpStgElTxZI9GPpo6XAZwsbVoLl4AJe0rbz0LuHTEMqOOWJyCO5pVTveUTwW8dV273RGCxU7_OLxen27XMp2-TxJq9aMI2QVRG9uin-iglBqg5da2JL7TkSZt7Q4IH-KnQ6jTufbQiXIWRpKau7ueeLXG0iaGLArnq6-69_KS3Etxwewk0Df3GpjYleNZhTmAzVRdlgrC0xxlTa918wZQBTzIiC-3uF9L2Xv4TIsMJY1IZR0mrlKFDu-cr5k7tqG28dv_6cmTloQ"/>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Kofi Mensah</p>
+<p class="text-xs text-on-surface-variant uppercase">Kumasi, Ghana</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter Section -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="relative rounded-3xl overflow-hidden bg-on-background p-12 md:p-20 text-center">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="grid grid-cols-12 h-full w-full">
+<div class="border-r border-white/20"></div>
+<div class="border-r border-white/20"></div><div class="border-r border-white/20"></div>
+<div class="border-r border-white/20"></div>
+</div>
+</div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-white mb-6">Stay Ahead of the Harvest</h2>
+<p class="font-body-lg text-body-lg text-white/70 mb-10">Get monthly updates on agricultural tech trends and innovations specifically designed for African soil.</p>
+<form class="flex flex-col sm:flex-row gap-4" onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); this.reset();">
+<input class="flex-1 bg-white/10 border border-white/20 rounded-lg px-6 py-4 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-secondary-fixed transition-all" placeholder="Enter your email address" type="email" required/>
+<button class="bg-secondary-fixed text-on-secondary-fixed font-bold px-8 py-4 rounded-lg hover:bg-secondary transition-colors" type="submit">Subscribe Now</button>
+</form>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-highest py-16 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="md:col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<img alt="SYLUTION Logo" class="h-10 rounded-lg" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg"/>
+<span class="font-bold text-primary">SYLUTION LTD</span>
+</div>
+<p class="text-on-surface-variant font-body-md mb-6">Smart Technology • Green Future<br>Empowering Africa through sustainable, high-tech agricultural innovation.</p>
+<div class="flex gap-3">
+<a class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all shadow-sm" href="https://www.facebook.com/profile.php?id=61553057467392" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all shadow-sm" href="https://x.com/sylution_ng" target="_blank"><i class="fab fa-twitter"></i></a>
+<a class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all shadow-sm" href="https://www.linkedin.com/company/sylution/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+<a class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all shadow-sm" href="https://www.instagram.com/official_sylution" target="_blank"><i class="fab fa-instagram"></i></a>
+<a class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all shadow-sm" href="https://www.tiktok.com/@sylution" target="_blank"><i class="fab fa-tiktok"></i></a>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-6">Explore</h4>
+<ul class="space-y-4 text-on-surface-variant font-label-md">
+<li><a class="hover:text-secondary" href="index.html">Home</a></li>
+<li><a class="hover:text-secondary" href="about.html">About Us</a></li>
+<li><a class="hover:text-secondary" href="services.html">Services</a></li>
+<li><a class="hover:text-secondary" href="products.html">Products</a></li>
+<li><a class="hover:text-secondary" href="projects.html">Projects</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-6">Contact</h4>
+<ul class="space-y-4 text-on-surface-variant font-label-md">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary" data-icon="location_on">location_on</span> Kano, Nigeria</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary" data-icon="mail">mail</span> officialsylution@gmail.com</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary" data-icon="call">call</span> +234 906 343 6048</li>
+</ul>
+</div>
+<div><h4 class="font-bold text-primary mb-6">Resources</h4>
+<ul class="space-y-4 text-on-surface-variant font-label-md">
+<li><a class="hover:text-secondary" href="market.html">AgriMarket</a></li>
+<li><a class="hover:text-secondary" href="contact.html">Contact Us</a></li>
+<li><a class="hover:text-secondary" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-secondary" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto border-t border-on-background/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-on-surface-variant text-sm">© 2025 SYLUTION LTD. All rights reserved. Building Africa's Smart Future 🌍</p>
+<div class="flex gap-8 text-sm text-on-surface-variant">
+<a class="hover:text-primary" href="#">Terms of Service</a>
+<a class="hover:text-primary" href="#">Cookies Policy</a>
+</div>
+</div>
+</footer>
+</body>
+</html>
