@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgriMarket | SYLUTION LTD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Geist:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#e5e2e1",
+                    "on-primary-container": "#858383",
+                    "on-secondary-fixed-variant": "#005313",
+                    "surface-container": "#edeeef",
+                    "surface-tint": "#5f5e5e",
+                    "primary-container": "#1c1b1b",
+                    "surface-container-low": "#f3f4f5",
+                    "surface-dim": "#d9dadb",
+                    "on-secondary-container": "#00731e",
+                    "on-primary-fixed": "#1c1b1b",
+                    "surface": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "outline-variant": "#c4c7c7",
+                    "on-secondary-fixed": "#002204",
+                    "surface-variant": "#e1e3e4",
+                    "inverse-surface": "#2e3132",
+                    "surface-container-high": "#e7e8e9",
+                    "on-tertiary-container": "#f1414d",
+                    "inverse-primary": "#c8c6c5",
+                    "inverse-on-surface": "#f0f1f2",
+                    "background": "#f8f9fa",
+                    "tertiary-fixed-dim": "#ffb3b1",
+                    "outline": "#747878",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#474746",
+                    "secondary": "#006e1c",
+                    "secondary-fixed-dim": "#78dc77",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#000000",
+                    "on-surface-variant": "#444748",                    "on-surface": "#191c1d",
+                    "on-error": "#ffffff",
+                    "tertiary": "#000000",
+                    "secondary-container": "#91f78e",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#f8f9fa",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#ffdad8",
+                    "secondary-fixed": "#94f990",
+                    "tertiary-container": "#410007",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#92001c",
+                    "on-tertiary-fixed": "#410007"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "base": "8px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "display-lg": ["Montserrat"],
+                    "label-md": ["Geist"],
+                    "headline-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}]
+            }
+          },
+        },      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(26, 26, 26, 0.1);
+        }
+        .agri-gradient-btn {
+            background: linear-gradient(90deg, #006e1c 0%, #ba1a1a 100%);
+            transition: all 0.3s ease;
+        }
+        .agri-gradient-btn:hover {
+            box-shadow: 0 4px 12px rgba(0, 110, 28, 0.3);
+            transform: translateY(-2px);
+        }
+        .hero-clip {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .modal-overlay {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 110, 28, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+
+<!-- Top Navigation Bar --><nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl border-b border-on-surface/10 shadow-sm flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-3">
+<img alt="SYLUTION LTD Logo" class="h-10 md:h-12 w-auto rounded-lg cursor-pointer active:scale-95 duration-200" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg"/>
+<span class="font-headline-md text-headline-md font-bold text-primary uppercase tracking-tight">SYLUTION LTD</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="index.html">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="about.html">About</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="services.html">Services</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="products.html">Products</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="projects.html">Projects</a>
+<a class="font-label-md text-label-md text-secondary font-bold border-b-2 border-secondary pb-1" href="market.html">Market</a>
+</div>
+<a href="contact.html" class="hidden md:inline-flex bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md font-semibold active:scale-95 transition-transform">Contact Us</a>
+<button class="md:hidden text-primary active:scale-95 duration-200" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+
+<!-- Mobile Menu Drawer -->
+<div class="fixed inset-y-0 right-0 z-[60] flex flex-col h-full w-72 rounded-l-xl bg-surface-container-lowest shadow-2xl transition-transform duration-300 translate-x-full" id="mobile-menu">
+<div class="p-6 border-b border-on-surface/10 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<img alt="SYLUTION Logo" class="h-10 w-auto rounded-lg" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg"/>
+<span class="font-headline-md text-headline-md text-primary font-bold">SYLUTION</span>
+</div>
+<button class="text-primary" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<nav class="flex-1 py-4 space-y-1 px-4">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="index.html">
+<span class="material-symbols-outlined">home</span> Home
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="about.html">
+<span class="material-symbols-outlined">info</span> About Us
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="services.html">
+<span class="material-symbols-outlined">engineering</span> Services
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="products.html">
+<span class="material-symbols-outlined">inventory_2</span> Products
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="projects.html">
+<span class="material-symbols-outlined">work</span> Projects
+</a>
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-full px-4 py-3 font-label-md text-label-md" href="market.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span> Market
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="contact.html"><span class="material-symbols-outlined">mail</span> Contact
+</a>
+</nav>
+</div>
+<div class="fixed inset-0 bg-black/50 z-[55] hidden transition-opacity duration-300" id="mobile-overlay" onclick="toggleMobileMenu()"></div>
+
+<!-- Main Content -->
+<main class="pt-16">
+
+<!-- Hero Section -->
+<section class="relative h-[400px] md:h-[500px] hero-clip overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBPdaOleWC0s1Z3sqTnJ5vUlkwteTYbt2CpFlgfawNr4vhdRw-yA1p4Yf3o4t7j-o6p2tw5WW4SlHKQBWTM2Z3e9qEjH1upZ4lndnsfmn-gklrpuhwsQpTrqriwvEsPI_81D3a7D1fgKmSNaj6htImpYyGwMylAFLAEctExzvyterkLl43eCxkZJCDC_Uo-TrDybxhDaJJhuW8eNR1GunoWNPqGSMCghgBTlw6xyWX9XhgmyfODY4-_coS72Qoy_6RB1_Z7zJTxRQ')"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80"></div>
+<div class="relative z-10 h-full flex flex-col justify-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="max-w-2xl text-white">
+<div class="inline-flex items-center gap-2 bg-secondary/20 backdrop-blur-md px-3 py-1 rounded-full border border-secondary/30 mb-4">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-secondary-fixed uppercase tracking-widest">Live Marketplace</span>
+</div>
+<h1 class="font-display-lg text-white mb-4">SYLUTION <span class="text-secondary-fixed">AgriMarket</span></h1>
+<p class="font-body-lg text-white/90 max-w-xl mb-6">Connect directly with farmers across Nigeria. Buy fresh, quality agricultural products at fair prices.</p>
+<div class="flex flex-col sm:flex-row gap-3">
+<button onclick="scrollToProducts()" class="agri-gradient-btn text-white px-8 py-3 rounded-lg font-label-md font-bold flex items-center justify-center gap-2 active:scale-95">
+<span class="material-symbols-outlined">storefront</span> Browse Products
+</button>
+<button onclick="openAddProductModal()" class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-3 rounded-lg font-label-md font-bold flex items-center justify-center gap-2 hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined">add_circle</span> Sell Your Produce
+</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-8 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto -mt-16 relative z-20">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="glass-panel p-4 rounded-xl text-center">
+<span class="font-display-lg text-2xl md:text-3xl text-secondary font-bold block" id="stat-products">0</span>
+<span class="font-label-sm text-on-surface-variant uppercase">Products</span>
+</div>
+<div class="glass-panel p-4 rounded-xl text-center">
+<span class="font-display-lg text-2xl md:text-3xl text-primary font-bold block">12+</span>
+<span class="font-label-sm text-on-surface-variant uppercase">States</span>
+</div>
+<div class="glass-panel p-4 rounded-xl text-center">
+<span class="font-display-lg text-2xl md:text-3xl text-primary font-bold block">2.5K+</span>
+<span class="font-label-sm text-on-surface-variant uppercase">Farmers</span>
+</div>
+<div class="glass-panel p-4 rounded-xl text-center">
+<span class="font-display-lg text-2xl md:text-3xl text-secondary font-bold block">24/7</span><span class="font-label-sm text-on-surface-variant uppercase">Support</span>
+</div>
+</div>
+</section>
+
+<!-- Search & Filter Section -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-8" id="products-section">
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/30 mb-8">
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input type="text" id="searchInput" placeholder="Search products, categories, locations..." class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant focus:border-secondary focus:ring-0 pl-12 pr-4 py-3 font-body-md"/>
+</div>
+<select id="categoryFilter" class="bg-surface-container-low border-0 border-b-2 border-outline-variant focus:border-secondary focus:ring-0 px-4 py-3 font-body-md appearance-none cursor-pointer">
+<option value="">All Categories</option>
+<option value="Grains">🌾 Grains</option>
+<option value="Vegetables">🥬 Vegetables</option>
+<option value="Fruits">🍎 Fruits</option>
+<option value="Livestock">🐄 Livestock</option>
+<option value="Poultry">🐔 Poultry</option>
+<option value="Fish">🐟 Fish</option>
+<option value="Dairy">🥛 Dairy</option>
+<option value="Equipment">🚜 Equipment</option>
+</select>
+<select id="locationFilter" class="bg-surface-container-low border-0 border-b-2 border-outline-variant focus:border-secondary focus:ring-0 px-4 py-3 font-body-md appearance-none cursor-pointer">
+<option value="">All Locations</option>
+<option value="Kano">Kano</option>
+<option value="Kaduna">Kaduna</option>
+<option value="Sokoto">Sokoto</option>
+<option value="Katsina">Katsina</option>
+<option value="Abuja">Abuja</option>
+<option value="Lagos">Lagos</option>
+<option value="Kano">Kano</option>
+</select>
+</div>
+</div>
+
+<!-- Products Grid -->
+<div class="mb-6 flex items-center justify-between">
+<h2 class="font-headline-lg text-headline-lg text-primary">Available Products</h2>
+<span class="font-label-md text-on-surface-variant" id="productCount">Loading...</span>
+</div>
+
+<div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Loading Skeletons -->
+<div class="bg-white rounded-2xl overflow-hidden border border-outline-variant/30">
+<div class="skeleton h-48 w-full"></div>
+<div class="p-4 space-y-3">
+<div class="skeleton h-4 w-3/4 rounded"></div>
+<div class="skeleton h-3 w-1/2 rounded"></div><div class="skeleton h-6 w-1/3 rounded"></div>
+</div>
+</div>
+<div class="bg-white rounded-2xl overflow-hidden border border-outline-variant/30 hidden sm:block">
+<div class="skeleton h-48 w-full"></div>
+<div class="p-4 space-y-3">
+<div class="skeleton h-4 w-3/4 rounded"></div>
+<div class="skeleton h-3 w-1/2 rounded"></div>
+<div class="skeleton h-6 w-1/3 rounded"></div>
+</div>
+</div>
+<div class="bg-white rounded-2xl overflow-hidden border border-outline-variant/30 hidden lg:block">
+<div class="skeleton h-48 w-full"></div>
+<div class="p-4 space-y-3">
+<div class="skeleton h-4 w-3/4 rounded"></div>
+<div class="skeleton h-3 w-1/2 rounded"></div>
+<div class="skeleton h-6 w-1/3 rounded"></div>
+</div>
+</div>
+<div class="bg-white rounded-2xl overflow-hidden border border-outline-variant/30 hidden xl:block">
+<div class="skeleton h-48 w-full"></div>
+<div class="p-4 space-y-3">
+<div class="skeleton h-4 w-3/4 rounded"></div>
+<div class="skeleton h-3 w-1/2 rounded"></div>
+<div class="skeleton h-6 w-1/3 rounded"></div>
+</div>
+</div>
+</div>
+
+<!-- Empty State -->
+<div id="emptyState" class="hidden text-center py-16">
+<span class="material-symbols-outlined text-6xl text-on-surface-variant mb-4">search_off</span>
+<h3 class="font-headline-md text-primary mb-2">No products found</h3>
+<p class="font-body-md text-on-surface-variant mb-6">Try adjusting your search or filters</p>
+<button onclick="clearFilters()" class="agri-gradient-btn text-white px-6 py-2 rounded-lg font-label-md">Clear Filters</button>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-12">
+<div class="bg-primary rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary opacity-20 blur-[100px] rounded-full"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-on-tertiary-container opacity-20 blur-[100px] rounded-full"></div>
+<div class="relative z-10">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-on-primary mb-4">Are You a Farmer?</h2>
+<p class="font-body-lg text-on-primary/70 max-w-xl mx-auto mb-6">Join thousands of farmers selling their produce directly to buyers. No middlemen, fair prices, fast payments.</p>
+<button onclick="openAddProductModal()" class="inline-flex items-center gap-2 bg-secondary-container text-on-secondary-container px-8 py-3 rounded-xl font-bold font-label-md hover:bg-secondary-fixed transition-colors active:scale-95">
+<span class="material-symbols-outlined">add_shopping_cart</span> Start Selling Today
+</button>
+</div></div>
+</section>
+
+</main>
+
+<!-- Add Product Modal -->
+<div id="addProductModal" class="fixed inset-0 z-[70] hidden items-center justify-center p-4 modal-overlay">
+<div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+<div class="sticky top-0 bg-white border-b border-outline-variant/30 p-6 flex justify-between items-center">
+<h2 class="font-headline-md text-primary">Add New Product</h2>
+<button onclick="closeAddProductModal()" class="text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form id="addProductForm" class="p-6 space-y-4" onsubmit="handleAddProduct(event)">
+<div>
+<label class="font-label-md text-on-surface-variant block mb-2">Product Name *</label>
+<input type="text" id="productName" required class="w-full bg-surface-container-low border-b-2 border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 font-body-md" placeholder="e.g., Fresh Tomatoes"/>
+</div>
+<div>
+<label class="font-label-md text-on-surface-variant block mb-2">Description</label>
+<textarea id="productDescription" rows="3" class="w-full bg-surface-container-low border-b-2 border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 font-body-md resize-none" placeholder="Describe your product..."></textarea>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="font-label-md text-on-surface-variant block mb-2">Price (₦) *</label>
+<input type="number" id="productPrice" required min="0" class="w-full bg-surface-container-low border-b-2 border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 font-body-md" placeholder="0"/>
+</div>
+<div>
+<label class="font-label-md text-on-surface-variant block mb-2">Category *</label>
+<select id="productCategory" required class="w-full bg-surface-container-low border-b-2 border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 font-body-md">
+<option value="">Select...</option>
+<option value="Grains">🌾 Grains</option>
+<option value="Vegetables">🥬 Vegetables</option>
+<option value="Fruits">🍎 Fruits</option>
+<option value="Livestock">🐄 Livestock</option>
+<option value="Poultry">🐔 Poultry</option>
+<option value="Fish">🐟 Fish</option>
+<option value="Dairy">🥛 Dairy</option>
+<option value="Equipment">🚜 Equipment</option>
+</select>
+</div>
+</div>
+<div>
+<label class="font-label-md text-on-surface-variant block mb-2">Location *</label>
+<input type="text" id="productLocation" required class="w-full bg-surface-container-low border-b-2 border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 font-body-md" placeholder="e.g., Kano"/>
+</div>
+<div>
+<label class="font-label-md text-on-surface-variant block mb-2">Image URL (optional)</label>
+<input type="url" id="productImage" class="w-full bg-surface-container-low border-b-2 border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 font-body-md" placeholder="https://..."/></div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="font-label-md text-on-surface-variant block mb-2">Seller Email *</label>
+<input type="email" id="sellerEmail" required class="w-full bg-surface-container-low border-b-2 border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 font-body-md" placeholder="you@email.com"/>
+</div>
+<div>
+<label class="font-label-md text-on-surface-variant block mb-2">Phone *</label>
+<input type="tel" id="sellerPhone" required class="w-full bg-surface-container-low border-b-2 border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 font-body-md" placeholder="+234..."/>
+</div>
+</div>
+<div class="flex gap-3 pt-4">
+<button type="button" onclick="closeAddProductModal()" class="flex-1 bg-surface-container-low text-on-surface py-3 rounded-lg font-label-md hover:bg-surface-variant transition-colors">Cancel</button>
+<button type="submit" id="submitBtn" class="flex-1 agri-gradient-btn text-white py-3 rounded-lg font-label-md font-bold">Add Product</button>
+</div>
+</form>
+</div>
+</div>
+
+<!-- Product Details Modal -->
+<div id="productDetailsModal" class="fixed inset-0 z-[70] hidden items-center justify-center p-4 modal-overlay">
+<div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+<div id="productDetailsContent"></div>
+</div>
+</div>
+
+<!-- FAB Button -->
+<button onclick="openAddProductModal()" class="fixed bottom-6 right-6 w-14 h-14 agri-gradient-btn rounded-full shadow-2xl flex items-center justify-center text-white z-40 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+
+<!-- Footer -->
+<footer class="bg-primary text-on-primary w-full py-12 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div class="md:col-span-2">
+<div class="flex items-center gap-3 mb-4">
+<img alt="SYLUTION Logo" class="h-12 w-auto rounded-lg" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg"/>
+<span class="font-headline-md text-headline-md text-on-primary font-bold uppercase tracking-tighter">SYLUTION LTD</span>
+</div>
+<p class="text-on-primary/70 mb-6 max-w-md">Smart Technology • Green Future<br>Empowering Africa through sustainable, high-tech agricultural innovation.</p>
+<div class="flex gap-3">
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.facebook.com/profile.php?id=61553057467392" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://x.com/sylution_ng" target="_blank"><i class="fab fa-twitter"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.linkedin.com/company/sylution/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.instagram.com/official_sylution" target="_blank"><i class="fab fa-instagram"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.tiktok.com/@sylution" target="_blank"><i class="fab fa-tiktok"></i></a>
+</div>
+</div>
+<div><h4 class="font-bold text-on-primary mb-4">Quick Links</h4>
+<ul class="space-y-3 text-on-primary/70 font-label-md">
+<li><a class="hover:text-secondary-fixed transition-all" href="index.html">Home</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="about.html">About Us</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="services.html">Services</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="products.html">Products</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="projects.html">Projects</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-on-primary mb-4">Contact Us</h4>
+<ul class="space-y-3 text-on-primary/70 font-label-md">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">location_on</span> Kano, Nigeria</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">mail</span> officialsylution@gmail.com</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">call</span> +234 906 343 6048</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="opacity-60 text-sm">© 2025 SYLUTION LTD. All rights reserved. Building Africa's Smart Future 🌍</p>
+<div class="flex gap-6 text-sm text-on-primary/70">
+<a class="hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="#">Privacy</a>
+<a class="hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="#">Terms</a>
+<a class="hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="contact.html">Contact</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+        // ============================================
+        // SUPABASE CONFIGURATION
+        // ============================================
+        const SUPABASE_URL = 'https://aeioqnwigtbyobkgwzrl.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_-U-bIOHd_Zzhs5X2cgtjjQ_XTbH3p7j';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        let allProducts = [];
+
+        // ============================================
+        // MOBILE MENU
+        // ============================================
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-overlay');
+            menu.classList.toggle('translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        // ============================================        // LOAD PRODUCTS FROM SUPABASE
+        // ============================================
+        async function loadProducts() {
+            try {
+                const { data, error } = await supabase
+                    .from('products')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+
+                allProducts = data || [];
+                document.getElementById('stat-products').textContent = allProducts.length;
+                renderProducts(allProducts);
+            } catch (error) {
+                console.error('Error loading products:', error);
+                document.getElementById('productsGrid').innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <span class="material-symbols-outlined text-6xl text-error mb-4">error</span>
+                        <h3 class="font-headline-md text-primary mb-2">Failed to load products</h3>
+                        <p class="font-body-md text-on-surface-variant mb-4">Please check your connection and try again</p>
+                        <button onclick="loadProducts()" class="agri-gradient-btn text-white px-6 py-2 rounded-lg font-label-md">Retry</button>
+                    </div>
+                `;
+            }
+        }
+
+        // ============================================
+        // RENDER PRODUCTS
+        // ============================================
+        function renderProducts(products) {
+            const grid = document.getElementById('productsGrid');
+            const emptyState = document.getElementById('emptyState');
+            const countEl = document.getElementById('productCount');
+
+            if (products.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                countEl.textContent = '0 products';
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            countEl.textContent = `${products.length} product${products.length !== 1 ? 's' : ''}`;
+
+            const categoryEmojis = {
+                'Grains': '🌾', 'Vegetables': '🥬', 'Fruits': '🍎',
+                'Livestock': '🐄', 'Poultry': '🐔', 'Fish': '🐟',
+                'Dairy': '🥛', 'Equipment': '🚜'
+            };
+            grid.innerHTML = products.map(p => `
+                <article class="product-card bg-white rounded-2xl overflow-hidden border border-outline-variant/30 cursor-pointer" onclick="viewProduct(${p.id})">
+                    <div class="relative aspect-square overflow-hidden bg-surface-dim">
+                        ${p.image_url ? 
+                            `<img src="${p.image_url}" alt="${p.name}" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\\'w-full h-full flex items-center justify-center text-6xl\\'>${categoryEmojis[p.category] || '🌱'}</div>'"/>` :
+                            `<div class="w-full h-full flex items-center justify-center text-6xl bg-gradient-to-br from-secondary-container/30 to-tertiary-container/20">${categoryEmojis[p.category] || '🌱'}</div>`
+                        }
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-secondary">
+                            ${p.category || 'Product'}
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-headline-md text-primary mb-1 line-clamp-1">${p.name}</h3>
+                        <p class="font-label-sm text-on-surface-variant mb-3 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-xs">location_on</span>
+                            ${p.location || 'Nigeria'}
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-headline-md text-secondary">₦${Number(p.price).toLocaleString()}</span>
+                            <button onclick="event.stopPropagation(); contactSeller('${p.seller_phone}', '${p.name.replace(/'/g, "\\'")}')" class="w-10 h-10 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container hover:bg-secondary hover:text-white transition-colors">
+                                <span class="material-symbols-outlined text-lg">chat</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // ============================================
+        // VIEW PRODUCT DETAILS
+        // ============================================
+        async function viewProduct(id) {
+            const product = allProducts.find(p => p.id === id);
+            if (!product) return;
+
+            const categoryEmojis = {
+                'Grains': '🌾', 'Vegetables': '🥬', 'Fruits': '🍎',
+                'Livestock': '🐄', 'Poultry': '🐔', 'Fish': '🐟',
+                'Dairy': '🥛', 'Equipment': '🚜'
+            };
+
+            const content = `
+                <div class="relative">
+                    ${product.image_url ? 
+                        `<img src="${product.image_url}" alt="${product.name}" class="w-full h-64 object-cover" onerror="this.parentElement.innerHTML='<div class=\\'w-full h-64 flex items-center justify-center text-8xl bg-gradient-to-br from-secondary-container/30 to-tertiary-container/20\\'>${categoryEmojis[product.category] || '🌱'}</div>'"/>` :
+                        `<div class="w-full h-64 flex items-center justify-center text-8xl bg-gradient-to-br from-secondary-container/30 to-tertiary-container/20">${categoryEmojis[product.category] || '🌱'}</div>`
+                    }
+                    <button onclick="closeProductDetails()" class="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary hover:bg-white">
+                        <span class="material-symbols-outlined">close</span>                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <span class="font-label-sm text-secondary uppercase tracking-widest">${product.category}</span>
+                            <h2 class="font-headline-lg text-primary mt-1">${product.name}</h2>
+                        </div>
+                        <span class="font-headline-lg text-secondary">₦${Number(product.price).toLocaleString()}</span>
+                    </div>
+                    <div class="flex items-center gap-4 mb-6 text-on-surface-variant font-label-md">
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> ${product.location}</span>
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> ${new Date(product.created_at).toLocaleDateString()}</span>
+                    </div>
+                    ${product.description ? `
+                        <div class="mb-6">
+                            <h3 class="font-headline-md text-primary mb-2">Description</h3>
+                            <p class="font-body-md text-on-surface-variant leading-relaxed">${product.description}</p>
+                        </div>
+                    ` : ''}
+                    <div class="border-t border-outline-variant/30 pt-6">
+                        <h3 class="font-headline-md text-primary mb-4">Contact Seller</h3>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="https://wa.me/${(product.seller_phone || '').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello, I am interested in your product: ' + product.name)}" target="_blank" class="flex-1 bg-green-500 text-white px-6 py-3 rounded-lg font-label-md font-bold flex items-center justify-center gap-2 hover:bg-green-600 transition-colors">
+                                <i class="fab fa-whatsapp text-xl"></i> WhatsApp
+                            </a>
+                            <a href="tel:${product.seller_phone}" class="flex-1 bg-secondary text-white px-6 py-3 rounded-lg font-label-md font-bold flex items-center justify-center gap-2 hover:bg-secondary-container transition-colors">
+                                <span class="material-symbols-outlined">call</span> Call
+                            </a>
+                            <a href="mailto:${product.seller_email}" class="flex-1 bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md font-bold flex items-center justify-center gap-2 hover:bg-primary-container transition-colors">
+                                <span class="material-symbols-outlined">mail</span> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('productDetailsContent').innerHTML = content;
+            document.getElementById('productDetailsModal').classList.remove('hidden');
+            document.getElementById('productDetailsModal').classList.add('flex');
+        }
+
+        function closeProductDetails() {
+            document.getElementById('productDetailsModal').classList.add('hidden');
+            document.getElementById('productDetailsModal').classList.remove('flex');
+        }
+
+        // ============================================
+        // CONTACT SELLER
+        // ============================================        function contactSeller(phone, productName) {
+            if (!phone) {
+                alert('Seller phone number not available');
+                return;
+            }
+            const cleanPhone = phone.replace(/[^0-9]/g, '');
+            const message = encodeURIComponent(`Hello, I am interested in your product: ${productName}`);
+            window.open(`https://wa.me/${cleanPhone}?text=${message}`, '_blank');
+        }
+
+        // ============================================
+        // ADD PRODUCT MODAL
+        // ============================================
+        function openAddProductModal() {
+            document.getElementById('addProductModal').classList.remove('hidden');
+            document.getElementById('addProductModal').classList.add('flex');
+        }
+
+        function closeAddProductModal() {
+            document.getElementById('addProductModal').classList.add('hidden');
+            document.getElementById('addProductModal').classList.remove('flex');
+            document.getElementById('addProductForm').reset();
+        }
+
+        async function handleAddProduct(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.textContent;
+            btn.textContent = 'Adding...';
+            btn.disabled = true;
+
+            const product = {
+                name: document.getElementById('productName').value,
+                description: document.getElementById('productDescription').value,
+                price: parseFloat(document.getElementById('productPrice').value),
+                category: document.getElementById('productCategory').value,
+                location: document.getElementById('productLocation').value,
+                image_url: document.getElementById('productImage').value || null,
+                seller_email: document.getElementById('sellerEmail').value,
+                seller_phone: document.getElementById('sellerPhone').value
+            };
+
+            try {
+                const { data, error } = await supabase
+                    .from('products')
+                    .insert([product])
+                    .select();
+
+                if (error) throw error;
+                btn.textContent = '✓ Added!';
+                btn.style.background = '#006e1c';
+                
+                setTimeout(() => {
+                    closeAddProductModal();
+                    loadProducts();
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 1500);
+            } catch (error) {
+                console.error('Error adding product:', error);
+                alert('Failed to add product: ' + error.message);
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        // ============================================
+        // SEARCH & FILTER
+        // ============================================
+        function applyFilters() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const location = document.getElementById('locationFilter').value;
+
+            let filtered = allProducts;
+
+            if (search) {
+                filtered = filtered.filter(p => 
+                    (p.name || '').toLowerCase().includes(search) ||
+                    (p.description || '').toLowerCase().includes(search) ||
+                    (p.category || '').toLowerCase().includes(search) ||
+                    (p.location || '').toLowerCase().includes(search)
+                );
+            }
+
+            if (category) {
+                filtered = filtered.filter(p => p.category === category);
+            }
+
+            if (location) {
+                filtered = filtered.filter(p => p.location === location);
+            }
+
+            renderProducts(filtered);
+        }
+
+        function clearFilters() {
+            document.getElementById('searchInput').value = '';            document.getElementById('categoryFilter').value = '';
+            document.getElementById('locationFilter').value = '';
+            renderProducts(allProducts);
+        }
+
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+        document.getElementById('locationFilter').addEventListener('change', applyFilters);
+
+        // ============================================
+        // SCROLL TO PRODUCTS
+        // ============================================
+        function scrollToProducts() {
+            document.getElementById('products-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ============================================
+        // HEADER SCROLL EFFECT
+        // ============================================
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-md');
+                nav.classList.replace('bg-surface/70', 'bg-surface/95');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.replace('bg-surface/95', 'bg-surface/70');
+            }
+        });
+
+        // Close modals on outside click
+        document.getElementById('addProductModal').addEventListener('click', (e) => {
+            if (e.target.id === 'addProductModal') closeAddProductModal();
+        });
+        document.getElementById('productDetailsModal').addEventListener('click', (e) => {
+            if (e.target.id === 'productDetailsModal') closeProductDetails();
+        });
+
+        // ============================================
+        // INITIALIZE
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts();
+        });
+    </script>
+</body>
+</html>
