@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>SYLUTION - AgriTech Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500&family=Geist:wght@500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Tailwind Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#c8c6c5",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "on-primary-fixed": "#1c1b1b",
+                    "secondary-fixed-dim": "#78dc77",
+                    "surface-dim": "#d9dadb",
+                    "primary": "#000000",
+                    "on-primary-fixed-variant": "#474746",
+                    "tertiary": "#000000",
+                    "on-background": "#191c1d",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "background": "#f8f9fa",
+                    "surface-container-high": "#e7e8e9",
+                    "on-secondary-container": "#00731e",
+                    "surface-tint": "#5f5e5e",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#858383",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "outline": "#747878",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#410007",
+                    "inverse-surface": "#2e3132",
+                    "surface-bright": "#f8f9fa",
+                    "surface-container": "#edeeef",
+                    "secondary-fixed": "#94f990",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#005313",
+                    "primary-fixed": "#e5e2e1",
+                    "on-tertiary-fixed": "#410007",
+                    "on-surface-variant": "#444748",                    "primary-container": "#1c1b1b",
+                    "on-tertiary-fixed-variant": "#92001c",
+                    "on-secondary-fixed": "#002204",
+                    "outline-variant": "#c4c7c7",
+                    "surface": "#f8f9fa",
+                    "secondary-container": "#91f78e",
+                    "on-tertiary-container": "#f1414d",
+                    "tertiary-fixed": "#ffdad8",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "tertiary-fixed-dim": "#ffb3b1",
+                    "secondary": "#006e1c",
+                    "surface-container-low": "#f3f4f5",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Montserrat"],
+                    "label-sm": ["Geist"],
+                    "headline-lg": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "label-md": ["Geist"],
+                    "headline-md": ["Montserrat"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .agri-gradient-btn {
+            background: linear-gradient(90deg, #006e1c 0%, #ba1a1a 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .agri-gradient-btn:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 4px 12px rgba(186, 26, 26, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Input floating label effect */
+        .input-group input:focus ~ label,
+        .input-group input:not(:placeholder-shown) ~ label {
+            transform: translateY(-24px) scale(0.85);
+            color: #006e1c;
+        }
+        
+        .input-group label {
+            transition: all 0.2s ease-out;
+            pointer-events: none;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        .hero-image-clip {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface selection:bg-secondary-container">
+<!-- Auth Layout Wrapper -->
+<main class="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Background Atmospheric Element (Subtle Grid) -->
+<div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 32px 32px;"></div>
+<!-- Top Hero Visual (Mobile Focused) -->
+<div class="absolute top-0 left-0 w-full h-[353px] z-0 hero-image-clip overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-1000 hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBPdaOleWC0s1Z3sqTnJ5vUlkwteTYbt2CpFlgfawNr4vhdRw-yA1p4Yf3o4t7j-o6p2tw5WW4SlHKQBWTM2Z3e9qEjH1upZ4lndnsfmn-gklrpuhwsQpTrqriwvEsPI_81D3a7D1fgKmSNaj6htImpYyGwMylAFLAEctExzvyterkLl43eCxkZJCDC_Uo-TrDybxhDaJJhuW8eNR1GunoWNPqGSMCghgBTlw6xyWX9XhgmyfODY4-_coS72Qoy_6RB1_Z7zJTxRQ')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-b from-primary/40 to-transparent"></div>
+</div>
+
+<!-- Back to Home Link -->
+<a href="index.html" class="absolute top-6 left-6 z-20 flex items-center gap-2 text-white/80 hover:text-white font-label-md transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="hidden sm:inline">Back to Home</span>
+</a>
+
+<!-- Login Card Container -->
+<div class="relative z-10 w-full max-w-[400px] px-margin-mobile mt-[221px]">
+<div class="glass-panel p-8 rounded-xl shadow-sm border border-outline/10 flex flex-col space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
+<!-- Brand & Header -->
+<div class="flex flex-col items-center text-center space-y-4">
+<!-- Company Logo -->
+<img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION Logo" class="w-20 h-20 rounded-xl shadow-lg object-cover"/>
+<div>
+<h1 class="font-display-lg text-headline-md tracking-tighter text-primary">SYLUTION</h1>
+<p class="font-body-md text-on-surface-variant mt-1">Smart Agri-Management</p>
+</div>
+</div>
+<!-- Welcome Text -->
+<div class="space-y-1">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Login</h2>
+<p class="font-body-md text-on-surface-variant">Sign in to your dashboard</p>
+</div>
+<!-- Form -->
+<form class="flex flex-col space-y-6" onsubmit="event.preventDefault(); handleLogin();">
+<!-- Email/Phone Input -->
+<div class="input-group relative flex flex-col">
+<input class="peer bg-surface-container-low border-0 border-b-2 border-outline/20 focus:border-secondary focus:ring-0 px-0 py-3 font-body-md text-primary transition-colors" id="identifier" placeholder=" " required="" type="text"/>
+<label class="absolute left-0 top-3 text-on-surface-variant font-body-md origin-left" for="identifier">Email or Phone</label>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col space-y-2">
+<div class="input-group relative flex flex-col">
+<input class="peer bg-surface-container-low border-0 border-b-2 border-outline/20 focus:border-secondary focus:ring-0 px-0 py-3 font-body-md text-primary transition-colors" id="password" placeholder=" " required="" type="password"/>
+<label class="absolute left-0 top-3 text-on-surface-variant font-body-md origin-left" for="password">Password</label><button class="absolute right-0 top-3 text-on-surface-variant hover:text-primary transition-colors" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" id="pw-icon">visibility</span>
+</button>
+</div>
+<div class="flex justify-end">
+<a class="font-label-md text-secondary hover:underline transition-all" href="#">Forgot Password?</a>
+</div>
+</div>
+<!-- Login Button -->
+<button class="agri-gradient-btn w-full py-4 rounded-lg font-headline-md text-on-primary shadow-md active:scale-[0.98]" type="submit">
+                        Login
+                    </button>
+</form>
+<!-- Divider -->
+<div class="flex items-center space-x-4">
+<div class="flex-1 h-[1px] bg-outline/10"></div>
+<span class="font-label-sm text-outline">OR</span>
+<div class="flex-1 h-[1px] bg-outline/10"></div>
+</div>
+<!-- Social/Quick Auth -->
+<div class="flex justify-center space-x-6">
+<button class="w-12 h-12 flex items-center justify-center rounded-full border border-outline/20 hover:bg-surface-container transition-colors">
+<img alt="Google" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2e909pK-N-c5iatSQZo7oir-S4xTiy96ZI1M06d3Y233a2-uklZRG1DMCeo3SmBG-S4taBAYGLmUX-symMyLwjOwhjGzFPljxsgj8Xrpt4sa3kvTUL8PAQ4RrgTDlm-i_lf5BuYowdECJJhWhfubIaogJBYux7cUOP5-fp-J45Kk4b4Hnv32fMb5hLd14cbuz6mn2N-p3aHuk9C424sHxBJotPtWVOupw7PekESJ-gYVnDxr8fgX5nhln_YiKn5C9nNeZPmConw"/>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-full border border-outline/20 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary">fingerprint</span>
+</button>
+</div>
+<!-- Footer Sign Up -->
+<div class="pt-4 text-center">
+<p class="font-body-md text-on-surface-variant">
+                        New customer? 
+                        <a class="font-label-md text-primary font-bold hover:text-secondary transition-colors underline decoration-secondary/30 underline-offset-4" href="#">Sign Up</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- Footer Branding with Social Media -->
+<footer class="mt-12 mb-8 relative z-10 text-center space-y-4">
+<!-- Social Media Links -->
+<div class="flex justify-center gap-4">
+<a href="https://www.facebook.com/profile.php?id=61553057467392" target="_blank" class="w-10 h-10 rounded-full bg-white/50 flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all">
+<i class="fab fa-facebook-f"></i>
+</a>
+<a href="https://x.com/sylution_ng" target="_blank" class="w-10 h-10 rounded-full bg-white/50 flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all">
+<i class="fab fa-twitter"></i>
+</a>
+<a href="https://www.instagram.com/official_sylution" target="_blank" class="w-10 h-10 rounded-full bg-white/50 flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all">
+<i class="fab fa-instagram"></i></a>
+<a href="https://www.linkedin.com/company/sylution/" target="_blank" class="w-10 h-10 rounded-full bg-white/50 flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all">
+<i class="fab fa-linkedin-in"></i>
+</a>
+<a href="https://www.tiktok.com/@sylution" target="_blank" class="w-10 h-10 rounded-full bg-white/50 flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all">
+<i class="fab fa-tiktok"></i>
+</a>
+</div>
+<p class="font-label-sm text-outline/60 tracking-widest uppercase">SYLUTION LTD © 2025</p>
+<p class="font-label-sm text-outline/40">Smart Technology • Green Future</p>
+</footer>
+</main>
+<!-- JavaScript for interactions -->
+<script>
+        function togglePassword() {
+            const input = document.getElementById('password');
+            const icon = document.getElementById('pw-icon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                input.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        }
+
+        function handleLogin() {
+            const btn = document.querySelector('form button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = 'Logging in...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.textContent = '✓ Success!';
+                btn.style.background = '#006e1c';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                    // Redirect to profile or dashboard
+                    // window.location.href = 'profile.html';
+                }, 2000);
+            }, 1500);
+        }
+
+        // Simple parallax effect for bg
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-image-clip div');            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.1}px)`;
+            }
+        });
+    </script>
+</body></html>
