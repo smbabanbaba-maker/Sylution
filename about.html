@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | SYLUTION LTD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Geist:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed": "#e5e2e1",
+            "on-primary-container": "#858383",
+            "on-secondary-fixed-variant": "#005313",
+            "surface-container": "#edeeef",
+            "surface-tint": "#5f5e5e",
+            "primary-container": "#1c1b1b",
+            "surface-container-low": "#f3f4f5",
+            "surface-dim": "#d9dadb",
+            "on-secondary-container": "#00731e",
+            "on-primary-fixed": "#1c1b1b",
+            "surface": "#f8f9fa",
+            "on-background": "#191c1d",
+            "outline-variant": "#c4c7c7",
+            "on-secondary-fixed": "#002204",
+            "surface-variant": "#e1e3e4",
+            "inverse-surface": "#2e3132",
+            "surface-container-high": "#e7e8e9",
+            "on-tertiary-container": "#f1414d",
+            "inverse-primary": "#c8c6c5",
+            "inverse-on-surface": "#f0f1f2",
+            "background": "#f8f9fa",
+            "tertiary-fixed-dim": "#ffb3b1",
+            "outline": "#747878",
+            "on-error-container": "#93000a",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#474746",
+            "secondary": "#006e1c",
+            "secondary-fixed-dim": "#78dc77",
+            "on-secondary": "#ffffff",
+            "surface-container-highest": "#e1e3e4",
+            "surface-container-lowest": "#ffffff",
+            "primary": "#000000",
+            "on-surface-variant": "#444748",
+            "on-surface": "#191c1d",            "on-error": "#ffffff",
+            "tertiary": "#000000",
+            "secondary-container": "#91f78e",
+            "primary-fixed-dim": "#c8c6c5",
+            "on-primary": "#ffffff",
+            "surface-bright": "#f8f9fa",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed": "#ffdad8",
+            "secondary-fixed": "#94f990",
+            "tertiary-container": "#410007",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed-variant": "#92001c",
+            "on-tertiary-fixed": "#410007"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "16px",
+            "base": "8px",
+            "gutter": "24px",
+            "margin-desktop": "64px",
+            "container-max": "1280px"
+          },
+          "fontFamily": {
+            "headline-md": ["Montserrat"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "label-sm": ["Geist"],
+            "headline-lg-mobile": ["Montserrat"],
+            "display-lg": ["Montserrat"],
+            "label-md": ["Geist"],
+            "headline-lg": ["Montserrat"]
+          },
+          "fontSize": {
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+            "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}]
+          }
+        },
+      },
+    }  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(26, 26, 26, 0.1);
+    }
+    .primary-gradient-btn {
+      background: linear-gradient(90deg, #006e1c 0%, #ba1a1a 100%);
+      transition: all 0.3s ease;
+    }
+    .primary-gradient-btn:hover {
+      box-shadow: 0 4px 12px rgba(0, 110, 28, 0.3);
+      transform: translateY(-2px);
+    }
+    .timeline-line::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #e1e3e4;
+    }
+    .active-dot {
+      background: #006e1c;
+      box-shadow: 0 0 0 4px rgba(0, 110, 28, 0.2);
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c4c7c7;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl border-b border-on-surface/10 shadow-sm flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-3">
+<img alt="SYLUTION LTD Logo" class="h-10 md:h-12 w-auto rounded-lg cursor-pointer active:scale-95 duration-200" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg"/>
+<span class="font-headline-md text-headline-md font-bold text-primary uppercase tracking-tight">SYLUTION LTD</span>
+</div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex gap-8 items-center"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="index.html">Home</a>
+<a class="font-label-md text-label-md text-secondary font-bold border-b-2 border-secondary pb-1" href="about.html">About</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="services.html">Services</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="products.html">Products</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="projects.html">Projects</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="market.html">Market</a>
+</div>
+<a href="contact.html" class="hidden md:inline-flex bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md font-semibold active:scale-95 transition-transform">Contact Us</a>
+<!-- Mobile menu button -->
+<button class="md:hidden text-primary active:scale-95 duration-200" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+
+<!-- Mobile Menu Drawer -->
+<div class="fixed inset-y-0 right-0 z-[60] flex flex-col h-full w-72 rounded-l-xl bg-surface-container-lowest shadow-2xl transition-transform duration-300 translate-x-full" id="mobile-menu">
+<div class="p-6 border-b border-on-surface/10 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<img alt="SYLUTION Logo" class="h-10 w-auto rounded-lg" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg"/>
+<span class="font-headline-md text-headline-md text-primary font-bold">SYLUTION</span>
+</div>
+<button class="text-primary" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<nav class="flex-1 py-4 space-y-1 px-4">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="index.html">
+<span class="material-symbols-outlined">home</span> Home
+</a>
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-full px-4 py-3 font-label-md text-label-md" href="about.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">info</span> About Us
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="services.html">
+<span class="material-symbols-outlined">engineering</span> Services
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="products.html">
+<span class="material-symbols-outlined">inventory_2</span> Products
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="projects.html">
+<span class="material-symbols-outlined">work</span> Projects
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="market.html">
+<span class="material-symbols-outlined">storefront</span> Market
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="contact.html">
+<span class="material-symbols-outlined">mail</span> Contact
+</a>
+</nav>
+</div>
+<div class="fixed inset-0 bg-black/50 z-[55] hidden transition-opacity duration-300" id="mobile-overlay" onclick="toggleMobileMenu()"></div>
+<!-- Main Content -->
+<main class="min-h-screen pt-20 pb-20">
+
+<!-- Hero Section -->
+<section class="px-margin-mobile pt-8 pb-12 md:px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 gap-8 items-center">
+<div class="space-y-4">
+<span class="font-label-md text-label-md text-secondary tracking-widest">ABOUT US</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:text-display-lg md:font-display-lg text-primary leading-tight">
+              Pioneering the Future of <span class="text-secondary">African Agriculture</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+              We leverage cutting-edge AI and IoT technologies to empower farmers across the continent, ensuring sustainable growth and food security for the next generation.
+            </p>
+</div>
+<div class="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-lg border border-outline/10">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLtmQQZmBU58ftAOV5gemimjq-1UOJbb8iytR37hyzzfCTiO1UlLlITLfV6Hhbr6M_IDYzF9LW8vacmJmwd5LZ8zJDVzSgZzSYsX38LwDEGLVWE79QczPpX9K_IvJbyIp9zMLA75b9Pc-jgseP4mD_xI0e8voWNdXy7vuhuX-UzWunort2ljavZ0PRCskZlvXgkDVFS37Yzt7OvnwhmhRZ-NsWBThvPYeT14R9cbwqMiHPRvTRmbxmkpAQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 glass-card p-4 rounded-xl">
+<p class="font-label-sm text-label-sm text-primary mb-1">CURRENT PROJECT</p>
+<p class="font-body-md text-body-md font-semibold">Real-time Soil Nutrient Mapping in Kenya</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Mission & Vision Cards -->
+<section class="px-margin-mobile py-12 bg-surface-container-low md:px-margin-desktop">
+<div class="max-w-container-max mx-auto space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="glass-card p-8 rounded-2xl space-y-4 hover:-translate-y-1 hover:border-secondary transition-all duration-300">
+<div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Our Mission</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              To democratize precision farming by providing accessible, data-driven insights that maximize yield while minimizing environmental impact.
+            </p>
+</div>
+<div class="glass-card p-8 rounded-2xl space-y-4 hover:-translate-y-1 hover:border-on-tertiary-container transition-all duration-300">
+<div class="w-12 h-12 bg-tertiary-fixed rounded-lg flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">visibility</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Our Vision</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              To be the definitive technological backbone for African agriculture, bridging the gap between traditional wisdom and high-tech innovation.
+            </p></div>
+</div>
+</div>
+</section>
+
+<!-- History Timeline -->
+<section class="px-margin-mobile py-16 md:px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-12 text-center">Our Journey</h2>
+<div class="relative timeline-line space-y-12 pl-12">
+<!-- 2024 -->
+<div class="relative">
+<div class="absolute -left-12 top-0 w-10 h-10 rounded-full active-dot flex items-center justify-center z-10 bg-white">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-secondary font-bold">2024</span>
+<h4 class="font-headline-md text-headline-md text-primary mt-1">Scale-up across East Africa</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+                Expanding our IoT network to over 50,000 smallholder farms, integrating real-time marketplace data.
+              </p>
+</div>
+</div>
+<!-- 2022 -->
+<div class="relative">
+<div class="absolute -left-12 top-0 w-10 h-10 rounded-full border-2 border-outline-variant bg-white flex items-center justify-center z-10">
+<span class="w-3 h-3 rounded-full bg-outline-variant"></span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant font-bold">2022</span>
+<h4 class="font-headline-md text-headline-md text-primary mt-1">AI-Powered Crop Diagnostics</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+                Launched our proprietary computer vision model that identifies crop diseases via simple mobile photos.
+              </p>
+</div>
+</div>
+<!-- 2020 -->
+<div class="relative">
+<div class="absolute -left-12 top-0 w-10 h-10 rounded-full border-2 border-outline-variant bg-white flex items-center justify-center z-10">
+<span class="w-3 h-3 rounded-full bg-outline-variant"></span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant font-bold">2020</span>
+<h4 class="font-headline-md text-headline-md text-primary mt-1">Foundation in Kano</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+                SYLUTION LTD was founded with a small lab and a big dream to revolutionize the agricultural data landscape in Nigeria.
+              </p>
+</div>
+</div>
+</div></div>
+</section>
+
+<!-- Stats Section -->
+<section class="px-margin-mobile py-12 md:px-margin-desktop">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-container-max mx-auto">
+<div class="bg-primary text-on-primary p-6 rounded-2xl flex flex-col items-center justify-center text-center">
+<span class="font-display-lg text-[32px] font-bold">50K+</span>
+<span class="font-label-sm text-label-sm opacity-80">Farmers Reached</span>
+</div>
+<div class="bg-surface-container-highest p-6 rounded-2xl flex flex-col items-center justify-center text-center">
+<span class="font-display-lg text-[32px] font-bold text-secondary">30%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Yield Increase</span>
+</div>
+<div class="bg-surface-container-highest p-6 rounded-2xl flex flex-col items-center justify-center text-center">
+<span class="font-display-lg text-[32px] font-bold text-primary">12</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">States Active</span>
+</div>
+<div class="bg-primary-container p-6 rounded-2xl flex flex-col items-center justify-center text-center">
+<span class="font-display-lg text-[32px] font-bold text-secondary-fixed">85%</span>
+<span class="font-label-sm text-label-sm text-on-primary-container">Water Efficiency</span>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section class="px-margin-mobile py-16 md:px-margin-desktop">
+<div class="max-w-container-max mx-auto bg-primary rounded-3xl p-8 md:p-16 text-center space-y-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary opacity-20 blur-[100px] rounded-full"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-on-tertiary-container opacity-20 blur-[100px] rounded-full"></div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-primary relative z-10">Join the Agricultural Revolution</h2>
+<p class="font-body-md text-body-md text-on-primary/70 max-w-xl mx-auto relative z-10">
+          Be part of the growth. Whether you're a farmer, investor, or technologist, we're building the future together.
+        </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+<a href="contact.html" class="primary-gradient-btn px-8 py-4 rounded-full text-white font-label-md text-label-md font-bold text-center">Contact Our Experts</a>
+<a href="projects.html" class="bg-transparent border border-white/20 text-white px-8 py-4 rounded-full font-label-md text-label-md hover:bg-white/10 transition-colors text-center">Partner With Us</a>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-primary text-on-primary w-full py-12 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<!-- Company Info -->
+<div class="md:col-span-2">
+<div class="flex items-center gap-3 mb-4">
+<img alt="SYLUTION Logo" class="h-12 w-auto rounded-lg" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg"/>
+<span class="font-headline-md text-headline-md text-on-primary font-bold uppercase tracking-tighter">SYLUTION LTD</span></div>
+<p class="text-on-primary/70 mb-6 max-w-md">Smart Technology • Green Future<br>Empowering Africa through sustainable, high-tech agricultural innovation.</p>
+<!-- Social Media Icons -->
+<div class="flex gap-3">
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.facebook.com/profile.php?id=61553057467392" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://x.com/sylution_ng" target="_blank"><i class="fab fa-twitter"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.linkedin.com/company/sylution/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.instagram.com/official_sylution" target="_blank"><i class="fab fa-instagram"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.tiktok.com/@sylution" target="_blank"><i class="fab fa-tiktok"></i></a>
+</div>
+</div>
+<!-- Quick Links -->
+<div>
+<h4 class="font-bold text-on-primary mb-4">Quick Links</h4>
+<ul class="space-y-3 text-on-primary/70 font-label-md">
+<li><a class="hover:text-secondary-fixed transition-all" href="index.html">Home</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="about.html">About Us</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="services.html">Services</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="products.html">Products</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="projects.html">Projects</a></li>
+</ul>
+</div>
+<!-- Contact Info -->
+<div>
+<h4 class="font-bold text-on-primary mb-4">Contact Us</h4>
+<ul class="space-y-3 text-on-primary/70 font-label-md">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">location_on</span> Kano, Nigeria</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">mail</span> officialsylution@gmail.com</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">call</span> +234 906 343 6048</li>
+</ul>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="opacity-60 text-sm">© 2025 SYLUTION LTD. All rights reserved. Building Africa's Smart Future 🌍</p>
+<div class="flex gap-6 text-sm text-on-primary/70">
+<a class="hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="#">Privacy</a>
+<a class="hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="#">Terms</a>
+<a class="hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="contact.html">Contact</a>
+</div>
+</div>
+</div>
+</footer>
+
+</main>
+
+<script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const overlay = document.getElementById('mobile-overlay');      menu.classList.toggle('translate-x-full');
+      overlay.classList.toggle('hidden');
+    }
+
+    // Add scroll listener for header opacity/blur
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 20) {
+        nav.classList.add('shadow-md');
+        nav.classList.replace('bg-surface/70', 'bg-surface/95');
+      } else {
+        nav.classList.remove('shadow-md');
+        nav.classList.replace('bg-surface/95', 'bg-surface/70');
+      }
+    });
+
+    // Intersection observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-8');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.glass-card, .timeline-line > div').forEach(el => {
+      el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
