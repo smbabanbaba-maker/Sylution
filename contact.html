@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us | SYLUTION LTD</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Geist:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#e5e2e1",
+                    "on-primary-container": "#858383",
+                    "on-secondary-fixed-variant": "#005313",
+                    "surface-container": "#edeeef",
+                    "surface-tint": "#5f5e5e",
+                    "primary-container": "#1c1b1b",
+                    "surface-container-low": "#f3f4f5",
+                    "surface-dim": "#d9dadb",
+                    "on-secondary-container": "#00731e",
+                    "on-primary-fixed": "#1c1b1b",
+                    "surface": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "outline-variant": "#c4c7c7",
+                    "on-secondary-fixed": "#002204",
+                    "surface-variant": "#e1e3e4",
+                    "inverse-surface": "#2e3132",
+                    "surface-container-high": "#e7e8e9",
+                    "on-tertiary-container": "#f1414d",
+                    "inverse-primary": "#c8c6c5",
+                    "inverse-on-surface": "#f0f1f2",
+                    "background": "#f8f9fa",
+                    "tertiary-fixed-dim": "#ffb3b1",
+                    "outline": "#747878",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#474746",
+                    "secondary": "#006e1c",
+                    "secondary-fixed-dim": "#78dc77",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#000000",
+                    "on-surface-variant": "#444748",
+                    "on-surface": "#191c1d",                    "on-error": "#ffffff",
+                    "tertiary": "#000000",
+                    "secondary-container": "#91f78e",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#f8f9fa",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#ffdad8",
+                    "secondary-fixed": "#94f990",
+                    "tertiary-container": "#410007",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#92001c",
+                    "on-tertiary-fixed": "#410007"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "base": "8px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "display-lg": ["Montserrat"],
+                    "label-md": ["Geist"],
+                    "headline-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(26, 26, 26, 0.1);
+        }
+        .btn-gradient {
+            background: linear-gradient(90deg, #006e1c 0%, #ba1a1a 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-gradient:hover {
+            box-shadow: 0 4px 12px rgba(0, 110, 28, 0.3);
+            transform: translateY(-2px);
+        }
+        input:focus + label,
+        textarea:focus + label,
+        input:not(:placeholder-shown) + label,
+        textarea:not(:placeholder-shown) + label {
+            transform: translateY(-20px) scale(0.85);
+            color: #006e1c;
+        }
+        select + label {
+            transform: translateY(-20px) scale(0.85);
+            color: #006e1c;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl border-b border-on-surface/10 shadow-sm flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-3">
+<img alt="SYLUTION LTD Logo" class="h-10 md:h-12 w-auto rounded-lg cursor-pointer active:scale-95 duration-200" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg"/>
+<span class="font-headline-md text-headline-md font-bold text-primary uppercase tracking-tight">SYLUTION LTD</span>
+</div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="index.html">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="about.html">About</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="services.html">Services</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="products.html">Products</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="projects.html">Projects</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="market.html">Market</a>
+</div>
+<a href="contact.html" class="hidden md:inline-flex bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md font-semibold active:scale-95 transition-transform">Contact Us</a><!-- Mobile menu button -->
+<button class="md:hidden text-primary active:scale-95 duration-200" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+
+<!-- Mobile Menu Drawer -->
+<div class="fixed inset-y-0 right-0 z-[60] flex flex-col h-full w-72 rounded-l-xl bg-surface-container-lowest shadow-2xl transition-transform duration-300 translate-x-full" id="mobile-menu">
+<div class="p-6 border-b border-on-surface/10 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<img alt="SYLUTION Logo" class="h-10 w-auto rounded-lg" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg"/>
+<span class="font-headline-md text-headline-md text-primary font-bold">SYLUTION</span>
+</div>
+<button class="text-primary" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<nav class="flex-1 py-4 space-y-1 px-4">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="index.html">
+<span class="material-symbols-outlined">home</span> Home
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="about.html">
+<span class="material-symbols-outlined">info</span> About Us
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="services.html">
+<span class="material-symbols-outlined">engineering</span> Services
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="products.html">
+<span class="material-symbols-outlined">inventory_2</span> Products
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="projects.html">
+<span class="material-symbols-outlined">work</span> Projects
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="market.html">
+<span class="material-symbols-outlined">storefront</span> Market
+</a>
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-full px-4 py-3 font-label-md text-label-md" href="contact.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mail</span> Contact
+</a>
+</nav>
+</div>
+<div class="fixed inset-0 bg-black/50 z-[55] hidden transition-opacity duration-300" id="mobile-overlay" onclick="toggleMobileMenu()"></div>
+
+<main class="pt-24 pb-12 px-margin-mobile max-w-screen-md mx-auto">
+<!-- Hero Section -->
+<section class="mb-12">
+<div class="mb-2">
+<span class="font-label-md text-label-md uppercase tracking-widest text-secondary flex items-center gap-2">
+<span class="h-px w-8 bg-secondary"></span> Contact Us
+                </span></div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile mb-4 text-primary">Get in Touch</h1>
+<p class="text-on-surface-variant font-body-md leading-relaxed">
+                Connect with our team to explore how AgriTech precision can transform your agricultural yields across Africa. We're here to help.
+            </p>
+</section>
+
+<!-- Contact Form Card -->
+<section class="mb-12">
+<div class="bg-white rounded-xl p-6 shadow-sm border border-outline-variant/30">
+<form class="flex flex-col gap-8" onsubmit="handleFormSubmit(event)">
+<div class="relative">
+<input class="peer w-full bg-surface-container-low border-b-2 border-outline-variant border-t-0 border-x-0 focus:border-secondary focus:ring-0 px-0 py-3 transition-all" id="name" placeholder=" " type="text" required/>
+<label class="absolute left-0 top-3 text-on-surface-variant transition-all pointer-events-none origin-left" for="name">Full Name</label>
+</div>
+<div class="relative">
+<input class="peer w-full bg-surface-container-low border-b-2 border-outline-variant border-t-0 border-x-0 focus:border-secondary focus:ring-0 px-0 py-3 transition-all" id="email" placeholder=" " type="email" required/>
+<label class="absolute left-0 top-3 text-on-surface-variant transition-all pointer-events-none origin-left" for="email">Email Address</label>
+</div>
+<div class="relative">
+<input class="peer w-full bg-surface-container-low border-b-2 border-outline-variant border-t-0 border-x-0 focus:border-secondary focus:ring-0 px-0 py-3 transition-all" id="phone" placeholder=" " type="tel"/>
+<label class="absolute left-0 top-3 text-on-surface-variant transition-all pointer-events-none origin-left" for="phone">Phone Number</label>
+</div>
+<div class="relative">
+<select class="peer w-full bg-surface-container-low border-b-2 border-outline-variant border-t-0 border-x-0 focus:border-secondary focus:ring-0 px-0 py-3 transition-all appearance-none" id="subject" required>
+<option disabled="" selected="" value=""></option>
+<option value="irrigation">Smart Irrigation</option>
+<option value="drone">Agricultural Drones</option>
+<option value="greenhouse">Smart Greenhouse</option>
+<option value="solar">Solar Solutions</option>
+<option value="iot">IoT Sensors</option>
+<option value="partnership">Partnership</option>
+<option value="other">Other Inquiry</option>
+</select>
+<label class="absolute left-0 top-3 text-on-surface-variant transition-all pointer-events-none origin-left" for="subject">Subject</label>
+</div>
+<div class="relative">
+<textarea class="peer w-full bg-surface-container-low border-b-2 border-outline-variant border-t-0 border-x-0 focus:border-secondary focus:ring-0 px-0 py-3 transition-all resize-none" id="message" placeholder=" " rows="4" required></textarea>
+<label class="absolute left-0 top-3 text-on-surface-variant transition-all pointer-events-none origin-left" for="message">Your Message</label>
+</div>
+<button class="btn-gradient w-full py-4 rounded-lg font-headline-md text-white text-lg tracking-wide uppercase shadow-lg active:scale-[0.98]" type="submit">
+                        Send Message
+                    </button>
+</form>
+</div>
+</section>
+
+<!-- Touch-Friendly Info Cards -->
+<section class="grid grid-cols-1 gap-4 mb-12">
+<a href="tel:+2349063436048" class="glass-panel p-5 rounded-xl flex items-center gap-4 hover:border-secondary transition-colors"><div class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div>
+<p class="font-label-sm text-on-surface-variant uppercase tracking-widest">Call Us</p>
+<p class="font-headline-md text-primary">+234 906 343 6048</p>
+</div>
+</a>
+<a href="mailto:officialsylution@gmail.com" class="glass-panel p-5 rounded-xl flex items-center gap-4 hover:border-secondary transition-colors">
+<div class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="font-label-sm text-on-surface-variant uppercase tracking-widest">Email Us</p>
+<p class="font-headline-md text-primary">officialsylution@gmail.com</p>
+</div>
+</a>
+<div class="glass-panel p-5 rounded-xl flex items-center gap-4 hover:border-secondary transition-colors">
+<div class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div>
+<p class="font-label-sm text-on-surface-variant uppercase tracking-widest">Visit Us</p>
+<p class="font-headline-md text-primary">Kano, Nigeria</p>
+</div>
+</div>
+<div class="glass-panel p-5 rounded-xl flex items-center gap-4 hover:border-secondary transition-colors">
+<div class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div>
+<p class="font-label-sm text-on-surface-variant uppercase tracking-widest">Working Hours</p>
+<p class="font-headline-md text-primary">Mon - Sat: 8AM - 6PM</p>
+</div>
+</div>
+</section>
+
+<!-- Social Media Section -->
+<section class="mb-12">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Follow Us</h2>
+<div class="flex gap-3 flex-wrap">
+<a class="w-12 h-12 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all" href="https://www.facebook.com/profile.php?id=61553057467392" target="_blank"><i class="fab fa-facebook-f text-lg"></i></a>
+<a class="w-12 h-12 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all" href="https://x.com/sylution_ng" target="_blank"><i class="fab fa-twitter text-lg"></i></a>
+<a class="w-12 h-12 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all" href="https://www.linkedin.com/company/sylution/" target="_blank"><i class="fab fa-linkedin-in text-lg"></i></a>
+<a class="w-12 h-12 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all" href="https://www.instagram.com/official_sylution" target="_blank"><i class="fab fa-instagram text-lg"></i></a>
+<a class="w-12 h-12 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all" href="https://www.tiktok.com/@sylution" target="_blank"><i class="fab fa-tiktok text-lg"></i></a>
+<a class="w-12 h-12 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-primary hover:bg-green-500 hover:text-white transition-all" href="https://wa.me/2349063436048" target="_blank"><i class="fab fa-whatsapp text-lg"></i></a>
+</div>
+</section>
+<!-- Embedded Map -->
+<section class="mb-12">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Our Location</h2>
+<div class="h-80 w-full rounded-xl overflow-hidden border border-outline-variant shadow-sm relative group">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249188.9255444243!2d8.3915459!3d11.997325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x11ae813371171267%3A0x7858331e277e74!2sKano!5e0!3m2!1sen!2sng!4v1700000000000!5m2!1sen!2sng" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<div class="absolute bottom-4 left-4 z-20 bg-white/90 backdrop-blur-md px-4 py-2 rounded-lg border border-outline-variant text-sm font-semibold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">location_on</span>
+                    SYLUTION HQ - Kano, Nigeria
+                </div>
+</div>
+</section>
+
+<!-- Quick Contact CTA -->
+<section class="bg-primary rounded-3xl p-8 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary opacity-20 blur-[100px] rounded-full"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-on-tertiary-container opacity-20 blur-[100px] rounded-full"></div>
+<div class="relative z-10">
+<h2 class="font-headline-md text-on-primary mb-3">Prefer WhatsApp?</h2>
+<p class="font-body-md text-on-primary/70 max-w-xl mx-auto mb-6">Chat with our team directly on WhatsApp for quick responses.</p>
+<a href="https://wa.me/2349063436048?text=Hello%20SYLUTION%2C%20I%20would%20like%20to%20inquire%20about..." target="_blank" class="inline-flex items-center gap-2 bg-green-500 text-white px-8 py-3 rounded-full font-label-md font-bold hover:bg-green-600 transition-colors active:scale-95">
+<i class="fab fa-whatsapp text-xl"></i> Chat on WhatsApp
+</a>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-primary text-on-primary w-full py-12 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<!-- Company Info -->
+<div class="md:col-span-2">
+<div class="flex items-center gap-3 mb-4">
+<img alt="SYLUTION Logo" class="h-12 w-auto rounded-lg" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg"/>
+<span class="font-headline-md text-headline-md text-on-primary font-bold uppercase tracking-tighter">SYLUTION LTD</span>
+</div>
+<p class="text-on-primary/70 mb-6 max-w-md">Smart Technology • Green Future<br>Empowering Africa through sustainable, high-tech agricultural innovation.</p>
+<!-- Social Media Icons -->
+<div class="flex gap-3">
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.facebook.com/profile.php?id=61553057467392" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://x.com/sylution_ng" target="_blank"><i class="fab fa-twitter"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.linkedin.com/company/sylution/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.instagram.com/official_sylution" target="_blank"><i class="fab fa-instagram"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.tiktok.com/@sylution" target="_blank"><i class="fab fa-tiktok"></i></a>
+</div>
+</div>
+<!-- Quick Links -->
+<div>
+<h4 class="font-bold text-on-primary mb-4">Quick Links</h4>
+<ul class="space-y-3 text-on-primary/70 font-label-md"><li><a class="hover:text-secondary-fixed transition-all" href="index.html">Home</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="about.html">About Us</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="services.html">Services</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="products.html">Products</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="projects.html">Projects</a></li>
+</ul>
+</div>
+<!-- Contact Info -->
+<div>
+<h4 class="font-bold text-on-primary mb-4">Contact Us</h4>
+<ul class="space-y-3 text-on-primary/70 font-label-md">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">location_on</span> Kano, Nigeria</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">mail</span> officialsylution@gmail.com</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">call</span> +234 906 343 6048</li>
+</ul>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="opacity-60 text-sm">© 2025 SYLUTION LTD. All rights reserved. Building Africa's Smart Future 🌍</p>
+<div class="flex gap-6 text-sm text-on-primary/70">
+<a class="hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="#">Privacy</a>
+<a class="hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="#">Terms</a>
+<a class="hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="contact.html">Contact</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+        function toggleMobileMenu() {
+          const menu = document.getElementById('mobile-menu');
+          const overlay = document.getElementById('mobile-overlay');
+          menu.classList.toggle('translate-x-full');
+          overlay.classList.toggle('hidden');
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-md');
+                nav.classList.replace('bg-surface/70', 'bg-surface/95');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.replace('bg-surface/95', 'bg-surface/70');
+            }
+        });
+
+        // Form submission handler        function handleFormSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerText = '✓ Message Sent!';
+                btn.style.background = '#006e1c';
+                e.target.reset();
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 3000);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
