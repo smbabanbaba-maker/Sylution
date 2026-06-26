@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SYLUTION LTD | Products - Precision AgriTech</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=Geist:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#e5e2e1",
+                    "on-primary-container": "#858383",
+                    "on-secondary-fixed-variant": "#005313",
+                    "surface-container": "#edeeef",
+                    "surface-tint": "#5f5e5e",
+                    "primary-container": "#1c1b1b",
+                    "surface-container-low": "#f3f4f5",
+                    "surface-dim": "#d9dadb",
+                    "on-secondary-container": "#00731e",
+                    "on-primary-fixed": "#1c1b1b",
+                    "surface": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "outline-variant": "#c4c7c7",
+                    "on-secondary-fixed": "#002204",
+                    "surface-variant": "#e1e3e4",
+                    "inverse-surface": "#2e3132",
+                    "surface-container-high": "#e7e8e9",
+                    "on-tertiary-container": "#f1414d",
+                    "inverse-primary": "#c8c6c5",
+                    "inverse-on-surface": "#f0f1f2",
+                    "background": "#f8f9fa",
+                    "tertiary-fixed-dim": "#ffb3b1",
+                    "outline": "#747878",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#474746",
+                    "secondary": "#006e1c",
+                    "secondary-fixed-dim": "#78dc77",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#000000",
+                    "on-surface-variant": "#444748",
+                    "on-surface": "#191c1d",                    "on-error": "#ffffff",
+                    "tertiary": "#000000",
+                    "secondary-container": "#91f78e",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#f8f9fa",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#ffdad8",
+                    "secondary-fixed": "#94f990",
+                    "tertiary-container": "#410007",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#92001c",
+                    "on-tertiary-fixed": "#410007"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "base": "8px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "display-lg": ["Montserrat"],
+                    "label-md": ["Geist"],
+                    "headline-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(26, 26, 26, 0.1);
+        }
+        .primary-gradient {
+            background: linear-gradient(90deg, #006e1c 0%, #ba1a1a 100%);
+        }
+        .primary-gradient-hover:hover {
+            box-shadow: 0 4px 12px rgba(0, 110, 28, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-dot::after {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 4px;
+            background-color: #006e1c;
+            border-radius: 50%;
+            margin: 2px auto 0;
+        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-container">
+
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl border-b border-on-surface/10 shadow-sm flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-3">
+<img alt="SYLUTION LTD Logo" class="h-10 md:h-12 w-auto rounded-lg cursor-pointer active:scale-95 duration-200" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg"/>
+<span class="font-headline-md text-headline-md font-bold text-primary uppercase tracking-tight">SYLUTION LTD</span>
+</div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="index.html">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="about.html">About</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="services.html">Services</a>
+<a class="font-label-md text-label-md text-secondary font-bold border-b-2 border-secondary pb-1" href="products.html">Products</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="projects.html">Projects</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-tertiary-container transition-colors" href="market.html">Market</a>
+</div>
+<a href="contact.html" class="hidden md:inline-flex bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md font-semibold active:scale-95 transition-transform">Contact Us</a>
+<!-- Mobile menu button -->
+<button class="md:hidden text-primary active:scale-95 duration-200" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined">menu</span></button>
+</nav>
+
+<!-- Mobile Menu Drawer -->
+<div class="fixed inset-y-0 right-0 z-[60] flex flex-col h-full w-72 rounded-l-xl bg-surface-container-lowest shadow-2xl transition-transform duration-300 translate-x-full" id="mobile-menu">
+<div class="p-6 border-b border-on-surface/10 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<img alt="SYLUTION Logo" class="h-10 w-auto rounded-lg" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg"/>
+<span class="font-headline-md text-headline-md text-primary font-bold">SYLUTION</span>
+</div>
+<button class="text-primary" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<nav class="flex-1 py-4 space-y-1 px-4">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="index.html">
+<span class="material-symbols-outlined">home</span> Home
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="about.html">
+<span class="material-symbols-outlined">info</span> About Us
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="services.html">
+<span class="material-symbols-outlined">engineering</span> Services
+</a>
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-full px-4 py-3 font-label-md text-label-md" href="products.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span> Products
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="projects.html">
+<span class="material-symbols-outlined">work</span> Projects
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="market.html">
+<span class="material-symbols-outlined">storefront</span> Market
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full px-4 py-3 transition-all font-label-md text-label-md" href="contact.html">
+<span class="material-symbols-outlined">mail</span> Contact
+</a>
+</nav>
+</div>
+<div class="fixed inset-0 bg-black/50 z-[55] hidden transition-opacity duration-300" id="mobile-overlay" onclick="toggleMobileMenu()"></div>
+
+<main class="pt-24 pb-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="mb-2">
+<span class="font-label-md text-label-md uppercase tracking-widest text-secondary flex items-center gap-2">
+<span class="h-px w-8 bg-secondary"></span> Our Products
+                </span>
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4">Precision AgriTech Solutions</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">                Advanced IoT and AI-driven hardware designed for the modern African landscape. Enhance your yield with data-driven precision.
+            </p>
+</header>
+
+<!-- Filters & Tools Bar -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+<div class="flex gap-2 overflow-x-auto pb-2 w-full md:w-auto scrollbar-hide">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md text-label-md whitespace-nowrap">All Equipment</button>
+<button class="bg-surface-container-low text-on-surface-variant px-6 py-2 rounded-full font-label-md text-label-md border border-outline/10 hover:bg-surface-variant transition-all whitespace-nowrap">IoT Sensors</button>
+<button class="bg-surface-container-low text-on-surface-variant px-6 py-2 rounded-full font-label-md text-label-md border border-outline/10 hover:bg-surface-variant transition-all whitespace-nowrap">Automation</button>
+<button class="bg-surface-container-low text-on-surface-variant px-6 py-2 rounded-full font-label-md text-label-md border border-outline/10 hover:bg-surface-variant transition-all whitespace-nowrap">Analytics Tools</button>
+<button class="bg-surface-container-low text-on-surface-variant px-6 py-2 rounded-full font-label-md text-label-md border border-outline/10 hover:bg-surface-variant transition-all whitespace-nowrap">Renewable Energy</button>
+</div>
+<div class="relative w-full md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline/10 focus:border-secondary focus:ring-0 pl-10 pr-4 py-2 font-label-md text-label-md" placeholder="Search products..." type="text"/>
+</div>
+</div>
+
+<!-- Product Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+
+<!-- Product 1: SYSMART AGRO (Tsohon na kamfanin - Featured) -->
+<article class="bg-surface-container-lowest border border-on-surface/10 rounded-xl overflow-hidden group hover:-translate-y-1 hover:border-secondary transition-all duration-300 flex flex-col lg:col-span-2">
+<div class="grid grid-cols-1 md:grid-cols-2 h-full">
+<div class="relative h-64 md:h-full overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/c79afb20-e68f-11f0-bf78-6bcb11fcb8f9.png" alt="SYSMART AGRO"/>
+<div class="absolute top-3 left-3 bg-primary text-on-primary font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-wider">Best Seller</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<p class="font-label-sm uppercase tracking-widest text-secondary-fixed">Flagship Product</p>
+<h4 class="font-headline-md">SYSMART AGRO Controller</h4>
+</div>
+</div>
+<div class="p-6 flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary mb-1">Smart Irrigation</span>
+<h3 class="font-headline-lg text-primary mb-4">SYSMART AGRO Smart Controller</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">AI-powered irrigation controller with soil moisture monitoring, automation, and mobile connectivity. Our flagship product trusted by farmers across Kano.</p>
+<div class="space-y-3 mb-8">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="text-label-md">AI-powered scheduling</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="text-label-md">Mobile app control</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="text-label-md">60% water savings</span></div>
+</div>
+<div class="mt-auto pt-6 border-t border-on-surface/10 flex items-center justify-between">
+<span class="font-headline-md text-primary">₦150,000 - ₦250,000</span>
+<a href="contact.html" class="primary-gradient text-on-primary px-8 py-3 rounded-lg font-label-md text-label-md font-bold primary-gradient-hover active:scale-95 transition-all">Request Quote</a>
+</div>
+</div>
+</div>
+</article>
+
+<!-- Product 2: Agricultural Drone -->
+<article class="bg-surface-container-lowest border border-on-surface/10 rounded-xl overflow-hidden group hover:-translate-y-1 hover:border-secondary transition-all duration-300 flex flex-col">
+<div class="relative aspect-square overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/b0a65060-5fcd-11f1-89fb-e5c3f5f93988.png" alt="Agricultural Drone"/>
+<div class="absolute top-3 right-3 glass-card px-2 py-1 rounded border border-secondary/30">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">flight</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="font-label-sm text-label-sm text-secondary mb-1">Drone Technology</span>
+<h3 class="font-headline-md text-body-lg text-primary mb-2 line-clamp-1">Agri-Drone Pro</h3>
+<p class="font-body-md text-label-md text-on-surface-variant mb-4 line-clamp-2">Advanced drone for farm mapping, crop monitoring, spraying, and agricultural surveys.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-headline-md text-primary">₦2.5M+</span>
+<a href="contact.html" class="primary-gradient text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md primary-gradient-hover active:scale-95 transition-all">Quote</a>
+</div>
+</div>
+</article>
+
+<!-- Product 3: Smart Greenhouse -->
+<article class="bg-surface-container-lowest border border-on-surface/10 rounded-xl overflow-hidden group hover:-translate-y-1 hover:border-secondary transition-all duration-300 flex flex-col">
+<div class="relative aspect-square overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/702698d0-5fd0-11f1-8861-65eb66faf9e4.png" alt="Smart Greenhouse"/>
+<div class="absolute top-3 left-3 bg-primary text-on-primary font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-wider">Popular</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="font-label-sm text-label-sm text-secondary mb-1">Greenhouse</span>
+<h3 class="font-headline-md text-body-lg text-primary mb-2 line-clamp-1">Smart Greenhouse Kit</h3>
+<p class="font-body-md text-label-md text-on-surface-variant mb-4 line-clamp-2">Complete greenhouse package with irrigation, ventilation, and crop management solutions.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-headline-md text-primary">₦5M+</span>
+<a href="contact.html" class="primary-gradient text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md primary-gradient-hover active:scale-95 transition-all">Quote</a>
+</div>
+</div>
+</article>
+
+<!-- Product 4: Solar Water Pump -->
+<article class="bg-surface-container-lowest border border-on-surface/10 rounded-xl overflow-hidden group hover:-translate-y-1 hover:border-secondary transition-all duration-300 flex flex-col">
+<div class="relative aspect-square overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80" alt="Solar Water Pump"/><div class="absolute top-3 left-3 bg-secondary text-white font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-wider">Eco-Friendly</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="font-label-sm text-label-sm text-secondary mb-1">Renewable Energy</span>
+<h3 class="font-headline-md text-body-lg text-primary mb-2 line-clamp-1">Solar Water Pump System</h3>
+<p class="font-body-md text-label-md text-on-surface-variant mb-4 line-clamp-2">Solar-powered irrigation and water supply solution for farms and livestock.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-headline-md text-primary">₦500K+</span>
+<a href="contact.html" class="primary-gradient text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md primary-gradient-hover active:scale-95 transition-all">Quote</a>
+</div>
+</div>
+</article>
+
+<!-- Product 5: IoT Soil Sensor -->
+<article class="bg-surface-container-lowest border border-on-surface/10 rounded-xl overflow-hidden group hover:-translate-y-1 hover:border-secondary transition-all duration-300 flex flex-col">
+<div class="relative aspect-square overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&q=80" alt="IoT Sensor"/>
+<div class="absolute top-3 left-3 bg-primary text-on-primary font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-wider">New</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="font-label-sm text-label-sm text-secondary mb-1">IoT Sensors</span>
+<h3 class="font-headline-md text-body-lg text-primary mb-2 line-clamp-1">IoT Soil & Climate Sensor</h3>
+<p class="font-body-md text-label-md text-on-surface-variant mb-4 line-clamp-2">Real-time monitoring of soil moisture, temperature, humidity, and environmental conditions.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-headline-md text-primary">₦80,000+</span>
+<a href="contact.html" class="primary-gradient text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md primary-gradient-hover active:scale-95 transition-all">Quote</a>
+</div>
+</div>
+</article>
+
+<!-- Product 6: SYLUTION Farm App -->
+<article class="bg-surface-container-lowest border border-on-surface/10 rounded-xl overflow-hidden group hover:-translate-y-1 hover:border-secondary transition-all duration-300 flex flex-col">
+<div class="relative aspect-square overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/bee0a400-5fd2-11f1-a2b8-4d3b78538ef9.png" alt="Farm App"/>
+<div class="absolute top-3 left-3 bg-secondary text-white font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-wider">Free</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="font-label-sm text-label-sm text-secondary mb-1">Software</span>
+<h3 class="font-headline-md text-body-lg text-primary mb-2 line-clamp-1">SYLUTION Farm App</h3>
+<p class="font-body-md text-label-md text-on-surface-variant mb-4 line-clamp-2">Farm management application for monitoring, record keeping, and smart farming support.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-headline-md text-primary">Free/Premium</span>
+<a href="contact.html" class="primary-gradient text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md primary-gradient-hover active:scale-95 transition-all">Download</a>
+</div>
+</div>
+</article>
+
+<!-- Product 7: Drip Irrigation -->
+<article class="bg-surface-container-lowest border border-on-surface/10 rounded-xl overflow-hidden group hover:-translate-y-1 hover:border-secondary transition-all duration-300 flex flex-col">
+<div class="relative aspect-square overflow-hidden bg-surface-dim"><img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/94e5bd10-5fa6-11f1-853d-7711c05eaf9c.png" alt="Drip Irrigation"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="font-label-sm text-label-sm text-secondary mb-1">Irrigation</span>
+<h3 class="font-headline-md text-body-lg text-primary mb-2 line-clamp-1">Smart Drip Irrigation</h3>
+<p class="font-body-md text-label-md text-on-surface-variant mb-4 line-clamp-2">Advanced drip irrigation systems with automated zone controllers for maximum efficiency.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-headline-md text-primary">Custom</span>
+<a href="contact.html" class="primary-gradient text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md primary-gradient-hover active:scale-95 transition-all">Quote</a>
+</div>
+</div>
+</article>
+
+<!-- Product 8: Security System -->
+<article class="bg-surface-container-lowest border border-on-surface/10 rounded-xl overflow-hidden group hover:-translate-y-1 hover:border-secondary transition-all duration-300 flex flex-col">
+<div class="relative aspect-square overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1580982374833-23b3a506b25e?w=700&q=80" alt="Security System"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="font-label-sm text-label-sm text-secondary mb-1">Security</span>
+<h3 class="font-headline-md text-body-lg text-primary mb-2 line-clamp-1">Farm Security System</h3>
+<p class="font-body-md text-label-md text-on-surface-variant mb-4 line-clamp-2">Smart CCTV monitoring, farm security, livestock monitoring, and asset protection solutions.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-headline-md text-primary">Custom</span>
+<a href="contact.html" class="primary-gradient text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md primary-gradient-hover active:scale-95 transition-all">Quote</a>
+</div>
+</div>
+</article>
+
+</div>
+
+<!-- CTA Section -->
+<section class="mt-20 bg-primary rounded-3xl p-8 md:p-16 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary opacity-20 blur-[100px] rounded-full"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-on-tertiary-container opacity-20 blur-[100px] rounded-full"></div>
+<div class="relative z-10">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-on-primary mb-4">Need a Custom Farm Solution?</h2>
+<p class="font-body-lg text-on-primary/70 max-w-xl mx-auto mb-8">We design tailored AgriTech packages for cooperatives, commercial farms, and government projects.</p>
+<a href="contact.html" class="inline-flex items-center gap-2 bg-secondary-container text-on-secondary-container px-10 py-4 rounded-xl font-bold font-label-md hover:bg-secondary-fixed transition-colors active:scale-95">
+<span class="material-symbols-outlined">mail</span> Contact Our Sales Team
+</a>
+</div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-primary text-on-primary w-full py-12 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8"><!-- Company Info -->
+<div class="md:col-span-2">
+<div class="flex items-center gap-3 mb-4">
+<img alt="SYLUTION Logo" class="h-12 w-auto rounded-lg" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg"/>
+<span class="font-headline-md text-headline-md text-on-primary font-bold uppercase tracking-tighter">SYLUTION LTD</span>
+</div>
+<p class="text-on-primary/70 mb-6 max-w-md">Smart Technology • Green Future<br>Empowering Africa through sustainable, high-tech agricultural innovation.</p>
+<!-- Social Media Icons -->
+<div class="flex gap-3">
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.facebook.com/profile.php?id=61553057467392" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://x.com/sylution_ng" target="_blank"><i class="fab fa-twitter"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.linkedin.com/company/sylution/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.instagram.com/official_sylution" target="_blank"><i class="fab fa-instagram"></i></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-primary hover:bg-secondary hover:text-white transition-all" href="https://www.tiktok.com/@sylution" target="_blank"><i class="fab fa-tiktok"></i></a>
+</div>
+</div>
+<!-- Quick Links -->
+<div>
+<h4 class="font-bold text-on-primary mb-4">Quick Links</h4>
+<ul class="space-y-3 text-on-primary/70 font-label-md">
+<li><a class="hover:text-secondary-fixed transition-all" href="index.html">Home</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="about.html">About Us</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="services.html">Services</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="products.html">Products</a></li>
+<li><a class="hover:text-secondary-fixed transition-all" href="projects.html">Projects</a></li>
+</ul>
+</div>
+<!-- Contact Info -->
+<div>
+<h4 class="font-bold text-on-primary mb-4">Contact Us</h4>
+<ul class="space-y-3 text-on-primary/70 font-label-md">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">location_on</span> Kano, Nigeria</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">mail</span> officialsylution@gmail.com</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">call</span> +234 906 343 6048</li>
+</ul>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="opacity-60 text-sm">© 2025 SYLUTION LTD. All rights reserved. Building Africa's Smart Future 🌍</p>
+<div class="flex gap-6 text-sm text-on-primary/70">
+<a class="hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="#">Privacy</a>
+<a class="hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="#">Terms</a>
+<a class="hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="contact.html">Contact</a>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- FAB for Quick Support (Mobile only) --><a href="contact.html" class="md:hidden fixed bottom-6 right-6 w-14 h-14 primary-gradient rounded-full shadow-lg flex items-center justify-center text-white active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined">chat</span>
+</a>
+
+<script>
+        function toggleMobileMenu() {
+          const menu = document.getElementById('mobile-menu');
+          const overlay = document.getElementById('mobile-overlay');
+          menu.classList.toggle('translate-x-full');
+          overlay.classList.toggle('hidden');
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-md');
+                nav.classList.replace('bg-surface/70', 'bg-surface/95');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.replace('bg-surface/95', 'bg-surface/70');
+            }
+        });
+
+        // Filter buttons interaction
+        document.querySelectorAll('.flex.gap-2 button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.flex.gap-2 button').forEach(b => {
+                    b.classList.remove('bg-primary', 'text-on-primary');
+                    b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+                });
+                this.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+                this.classList.add('bg-primary', 'text-on-primary');
+            });
+        });
+    </script>
+</body>
+</html>
