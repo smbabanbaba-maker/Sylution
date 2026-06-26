@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SYLUTION Marketplace | AgriTech Excellence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=Geist:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#edeeef",
+                        "background": "#f8f9fa",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c4c7c7",
+                        "inverse-surface": "#2e3132",
+                        "surface": "#f8f9fa",
+                        "surface-container-low": "#f3f4f5",
+                        "on-secondary-container": "#00731e",
+                        "on-primary-fixed-variant": "#474746",
+                        "on-primary-container": "#858383",
+                        "primary": "#000000",
+                        "surface-dim": "#d9dadb",
+                        "on-primary-fixed": "#1c1b1b",
+                        "inverse-primary": "#c8c6c5",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-tertiary-fixed": "#410007",
+                        "secondary-container": "#91f78e",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#92001c",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005313",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e1e3e4",
+                        "tertiary-fixed": "#ffdad8",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "outline": "#747878",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8f9fa",
+                        "primary-fixed": "#e5e2e1",
+                        "tertiary-container": "#410007",
+                        "on-background": "#191c1d",
+                        "primary-container": "#1c1b1b",
+                        "secondary": "#006e1c",
+                        "on-error-container": "#93000a",                        "tertiary": "#000000",
+                        "on-surface-variant": "#444748",
+                        "secondary-fixed-dim": "#78dc77",
+                        "on-surface": "#191c1d",
+                        "secondary-fixed": "#94f990",
+                        "on-tertiary-container": "#f1414d",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e1e3e4",
+                        "surface-container-high": "#e7e8e9",
+                        "tertiary-fixed-dim": "#ffb3b1",
+                        "surface-tint": "#5f5e5e",
+                        "on-secondary-fixed": "#002204"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "headline-md": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Geist"],
+                        "display-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script><style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #006e1c 0%, #000000 100%);
+        }
+        .btn-buy-gradient {
+            background: linear-gradient(90deg, #006e1c 0%, #ba1a1a 100%);
+        }
+        .btn-buy-gradient:hover {
+            box-shadow: 0 4px 12px rgba(186, 26, 26, 0.3);
+            transform: translateY(-1px);
+        }
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/70 dark:bg-primary-container/70 backdrop-blur-xl border-b border-on-surface/10 shadow-sm flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-3">
+<!-- Company Logo -->
+<a href="index.html" class="flex items-center gap-2">
+<img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION Logo" class="h-10 w-10 rounded-lg object-cover"/>
+<span class="font-headline-md text-headline-md font-bold text-primary">SYLUTION LTD</span>
+</a>
+</div>
+<div class="flex items-center gap-4">
+<a href="login.html" class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-high flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">person</span>
+</a>
+</div>
+</header>
+<main class="pt-16 pb-24 min-h-screen">
+<!-- Marketplace Hero/Header Section -->
+<section class="px-margin-mobile py-8">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-4">SYLUTION Marketplace</h1>
+<div class="relative group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant">search</span><input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-b-2 border-outline-variant focus:border-secondary outline-none transition-all rounded-t-xl text-body-md" placeholder="Search AgriTech products..." type="text"/>
+</div>
+</section>
+<!-- Product Grid -->
+<section class="px-margin-mobile grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+<!-- Product 1: Agri-Drone X1 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-on-surface/5 transition-all hover:shadow-lg group flex flex-col">
+<div class="relative aspect-square w-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/b0a65060-5fcd-11f1-89fb-e5c3f5f93988.png" alt="Agri-Drone X1"/>
+<div class="absolute top-1 left-1 flex flex-col gap-1">
+<div class="bg-error/90 px-1.5 py-0.5 rounded-full">
+<span class="text-[8px] font-bold text-on-error uppercase tracking-wider">Limited</span>
+</div>
+</div>
+</div>
+<div class="p-2 flex-1 flex flex-col">
+<h3 class="text-label-sm text-primary mb-1 line-clamp-2 h-8">Agri-Drone X1</h3>
+<div class="mt-auto">
+<span class="text-body-md font-bold text-secondary block mb-2">₦1,250,000</span>
+<button class="w-full py-1.5 btn-buy-gradient text-on-primary text-[10px] font-bold rounded-full flex items-center justify-center gap-1 active:scale-95" onclick="openOrderModal('SYLUTION Agri-Drone X1', '₦1,250,000')">
+<span class="material-symbols-outlined text-[14px]">shopping_cart</span>
+                Buy
+            </button>
+</div>
+</div>
+</div>
+<!-- Product 2: Soil Sensor Kit -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-on-surface/5 transition-all hover:shadow-lg group flex flex-col">
+<div class="relative aspect-square w-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBckoTZSbDpkkulin1XY-6jOIDlRL_6F4V-5-DZN_86r8CcksgwUYFj5h6x943Q-etauiDBMOj1-V7hy5oDFM9VO0hLtXsXIIKQyvTvvQqk9EmE0e0iGv_MTba7zgkOCPq1dmgQFIOuUCbB7PPZwSLOMj9Y02tsW8y76QFH7XNO1T26KGzVO34wJYY9BPqYxLwSFXnUOQ2Qey3_-7UMsbZhHMcXHXrkBqC6LD0ebhR0fwfNWbKS7U0WusuDMYCFTYD1jG_-ijtbVg" alt="Soil Sensor Kit"/>
+</div>
+<div class="p-2 flex-1 flex flex-col">
+<h3 class="text-label-sm text-primary mb-1 line-clamp-2 h-8">Soil Sensor Kit</h3>
+<div class="mt-auto">
+<span class="text-body-md font-bold text-secondary block mb-2">₦85,000</span>
+<button class="w-full py-1.5 btn-buy-gradient text-on-primary text-[10px] font-bold rounded-full flex items-center justify-center gap-1 active:scale-95" onclick="openOrderModal('Smart Soil Sensor Kit', '₦85,000')">
+<span class="material-symbols-outlined text-[14px]">shopping_cart</span>
+                Buy
+            </button>
+</div>
+</div>
+</div>
+<!-- Product 3: Irrigation Master (Tsohon na kamfanin) -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-on-surface/5 transition-all hover:shadow-lg group flex flex-col">
+<div class="relative aspect-square w-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/94e5bd10-5fa6-11f1-853d-7711c05eaf9c.png" alt="Irrigation Master"/>
+<div class="absolute top-1 left-1 flex flex-col gap-1">
+<div class="bg-error/90 px-1.5 py-0.5 rounded-full">
+<span class="text-[8px] font-bold text-on-error uppercase tracking-wider">Limited</span>
+</div></div>
+</div>
+<div class="p-2 flex-1 flex flex-col">
+<h3 class="text-label-sm text-primary mb-1 line-clamp-2 h-8">Irrigation Master</h3>
+<div class="mt-auto">
+<span class="text-body-md font-bold text-secondary block mb-2">₦450,000</span>
+<button class="w-full py-1.5 btn-buy-gradient text-on-primary text-[10px] font-bold rounded-full flex items-center justify-center gap-1 active:scale-95" onclick="openOrderModal('Drip Irrigation Master Kit', '₦450,000')">
+<span class="material-symbols-outlined text-[14px]">shopping_cart</span>
+                Buy
+            </button>
+</div>
+</div>
+</div>
+<!-- Product 4: Agri-Solar Station -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-on-surface/5 transition-all hover:shadow-lg group flex flex-col">
+<div class="relative aspect-square w-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPiFs0b9dWTNOmQ-4grOxOU1RZt_g0O9DuYOxfAWL2LMKYtxqFPurX2oECchTkXB-gASgq32IIZrkD63zlUxW84lrgQPumPGAMjhJO_HbR1wruZcHN2rc_nu6wWi7SngA-vDAfKGsHjt7UgqytJ2Q99zwJvjtotcLFYAG82QlY0jUVCHRV6pjvF1wiiklHinQ4K4-n6miSjuxa6VeC5d_rVsfUe5fwc0HZoC1yzkBKuLESJs7jNOU1gejYoHuJWIfDJA7CUFM4WA" alt="Agri-Solar Station"/>
+</div>
+<div class="p-2 flex-1 flex flex-col">
+<h3 class="text-label-sm text-primary mb-1 line-clamp-2 h-8">Agri-Solar Station</h3>
+<div class="mt-auto">
+<span class="text-body-md font-bold text-secondary block mb-2">₦220,000</span>
+<button class="w-full py-1.5 btn-buy-gradient text-on-primary text-[10px] font-bold rounded-full flex items-center justify-center gap-1 active:scale-95" onclick="openOrderModal('Agri-Solar Station', '₦220,000')">
+<span class="material-symbols-outlined text-[14px]">shopping_cart</span>
+                Buy
+            </button>
+</div>
+</div>
+</div>
+<!-- Product 5: Solar Water Pump (Tsohon na kamfanin) -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-on-surface/5 transition-all hover:shadow-lg group flex flex-col">
+<div class="relative aspect-square w-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/702698d0-5fd0-11f1-8861-65eb66faf9e4.png" alt="Solar Water Pump"/>
+</div>
+<div class="p-2 flex-1 flex flex-col">
+<h3 class="text-label-sm text-primary mb-1 line-clamp-2 h-8">Solar Water Pump</h3>
+<div class="mt-auto">
+<span class="text-body-md font-bold text-secondary block mb-2">₦150,000</span>
+<button class="w-full py-1.5 btn-buy-gradient text-on-primary text-[10px] font-bold rounded-full flex items-center justify-center gap-1 active:scale-95" onclick="openOrderModal('Solar Water Pump', '₦150,000')">
+<span class="material-symbols-outlined text-[14px]">shopping_cart</span>
+                Buy
+            </button>
+</div>
+</div>
+</div>
+<!-- Product 6: Smart Pest Trap -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-on-surface/5 transition-all hover:shadow-lg group flex flex-col">
+<div class="relative aspect-square w-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-aMXrewUS6AmxKqY3RDJmtwXDkf0-aB-mpB9pWcxfK0QGnA1E2QMgctiYKtQSX7-WWkti2Gsm72Q887Dlr-vVajJovnLgCVSWllil10MomorZ_Plmr1gQtbo5aeA3pL7q3HDCOR9AnajY1t51wz0QYTOSxAL6cFAkOTVA_rAA1CQSA9FvZcoNu1cCHvR1BZBHIWC9Ytjge1OHf9q8oQHmsnCAlVRUu4yUPtgDpGHBVrxPJUEbHiW9k7FwdI541zwDl3wNWmuQmQ" alt="Smart Pest Trap"/>
+</div><div class="p-2 flex-1 flex flex-col">
+<h3 class="text-label-sm text-primary mb-1 line-clamp-2 h-8">Smart Pest Trap</h3>
+<div class="mt-auto">
+<span class="text-body-md font-bold text-secondary block mb-2">₦45,000</span>
+<button class="w-full py-1.5 btn-buy-gradient text-on-primary text-[10px] font-bold rounded-full flex items-center justify-center gap-1 active:scale-95" onclick="openOrderModal('Smart Pest Trap', '₦45,000')">
+<span class="material-symbols-outlined text-[14px]">shopping_cart</span>
+                Buy
+            </button>
+</div>
+</div>
+</div>
+<!-- Product 7: Agri-Weather Station -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-on-surface/5 transition-all hover:shadow-lg group flex flex-col">
+<div class="relative aspect-square w-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD37hjyobnlV7-yw9XZWbJlSr_WXbqYihJpUnZwZ5uRzdu6G8YBF1RV74SWC1uylejIs5PM_4o7Zx_Ztxkx8GRyrdYNbJOYxrwPcoUDjgUUgla22Lov0uSVUv6LKwJdU0XavCDXXQbvBGZh0u0KWDMzjgMoUFjCycVDUNI4setF0vz6aFZ9eefGn1OThCGgyYmIA2Aoiv81NsEo1OstVlh8veVxsYqQWmZE5lBz9Gw-amHsCo_qL932TiPwQw1o80Wxo55cOTw_qA" alt="Agri-Weather Station"/>
+</div>
+<div class="p-2 flex-1 flex flex-col">
+<h3 class="text-label-sm text-primary mb-1 line-clamp-2 h-8">Agri-Weather Station</h3>
+<div class="mt-auto">
+<span class="text-body-md font-bold text-secondary block mb-2">₦120,000</span>
+<button class="w-full py-1.5 btn-buy-gradient text-on-primary text-[10px] font-bold rounded-full flex items-center justify-center gap-1 active:scale-95" onclick="openOrderModal('Agri-Weather Station', '₦120,000')">
+<span class="material-symbols-outlined text-[14px]">shopping_cart</span>
+                Buy
+            </button>
+</div>
+</div>
+</div>
+<!-- Product 8: Automated Seed Sower -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-on-surface/5 transition-all hover:shadow-lg group flex flex-col">
+<div class="relative aspect-square w-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY9_sJACjRHuW-4LQtkRXyrNqG4wku5LyzYHeb7NkamKKvonIa7Bd1V9iasbmc8BwNmy8AUvWRVdNwpm7wiJn1HSDmFOOTu1CHQDu9LF2xZPV6N7P99TjmoLKEAXMtmybms-fofG_V4RtS194ce8AFVA6GN3lqM4nxs5HFSSqUBQOQJYphR0iWiyLSFJPwWN6Q1apC2gz8Ju5QnBaGr2SlILMK0T74rCA1z6G1iyevwuk6p8da9gtcAXXYnLvqd7-Rbl92GgqkoA" alt="Automated Seed Sower"/>
+</div>
+<div class="p-2 flex-1 flex flex-col">
+<h3 class="text-label-sm text-primary mb-1 line-clamp-2 h-8">Automated Seed Sower</h3>
+<div class="mt-auto">
+<span class="text-body-md font-bold text-secondary block mb-2">₦350,000</span>
+<button class="w-full py-1.5 btn-buy-gradient text-on-primary text-[10px] font-bold rounded-full flex items-center justify-center gap-1 active:scale-95" onclick="openOrderModal('Automated Seed Sower', '₦350,000')">
+<span class="material-symbols-outlined text-[14px]">shopping_cart</span>
+                Buy
+            </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/80 dark:bg-surface-container-lowest/80 backdrop-blur-xl border-t border-outline/10 shadow-[0_-8px_32px_rgba(26,26,26,0.05)] flex justify-around items-center h-20 pb-safe px-4">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed font-bold hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-200" href="market.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span></a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-200" href="profile.html">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-200" href="profile.html">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary py-8 px-margin-mobile">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+<div class="flex items-center gap-2">
+<img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION Logo" class="h-10 w-10 rounded-lg object-cover"/>
+<span class="font-headline-md text-headline-md font-bold">SYLUTION LTD</span>
+</div>
+<div class="flex gap-3">
+<a href="https://www.facebook.com/profile.php?id=61553057467392" target="_blank" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-all"><i class="fab fa-facebook-f text-sm"></i></a>
+<a href="https://x.com/sylution_ng" target="_blank" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-all"><i class="fab fa-twitter text-sm"></i></a>
+<a href="https://www.instagram.com/official_sylution" target="_blank" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-all"><i class="fab fa-instagram text-sm"></i></a>
+<a href="https://www.linkedin.com/company/sylution/" target="_blank" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-all"><i class="fab fa-linkedin-in text-sm"></i></a>
+<a href="https://www.tiktok.com/@sylution" target="_blank" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-all"><i class="fab fa-tiktok text-sm"></i></a>
+</div>
+</div>
+<div class="border-t border-white/10 pt-4 text-center">
+<p class="text-xs opacity-60">© 2025 SYLUTION LTD. All rights reserved. Smart Technology • Green Future 🌍</p>
+</div>
+</div>
+</footer>
+<!-- Order Modal (Temu Style) -->
+<div class="fixed inset-0 z-[70] hidden" id="order-modal">
+<div class="absolute inset-0 bg-primary/40 backdrop-blur-sm" onclick="closeOrderModal()"></div>
+<div class="absolute bottom-0 left-0 w-full bg-surface-container-lowest rounded-t-3xl p-6 transition-transform transform translate-y-full" id="modal-content">
+<div class="w-12 h-1.5 bg-outline-variant/30 rounded-full mx-auto mb-6"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary" id="modal-product-name">Product Name</h2>
+<p class="text-secondary font-bold text-headline-md mt-1" id="modal-product-price">₦0.00</p>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center" onclick="closeOrderModal()">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-xl">
+<div class="w-16 h-16 rounded-lg bg-surface-container-highest overflow-hidden flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl">shopping_cart</span>
+</div><div>
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase">Summary</span>
+<p class="text-body-md font-medium">Ready for dispatch from Kano Hub</p>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-on-surface-variant mb-2">WhatsApp Phone Number</label>
+<div class="flex gap-2">
+<span class="flex items-center justify-center px-4 bg-surface-container-low rounded-lg font-bold">+234</span>
+<input class="flex-1 px-4 py-3 bg-surface-container-low border-b-2 border-outline-variant focus:border-secondary outline-none rounded-t-lg text-body-md" placeholder="803 000 0000" type="tel"/>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2 px-1">We'll use this number to start your order conversation on WhatsApp.</p>
+</div>
+<div class="pt-4 border-t border-on-surface/5">
+<div class="flex justify-between mb-4">
+<span class="text-on-surface-variant">Admin Processing Fee</span>
+<span class="font-bold">₦0.00 (Free)</span>
+</div>
+<button class="w-full py-4 btn-buy-gradient text-on-primary font-headline-md rounded-xl shadow-lg flex items-center justify-center gap-2" onclick="confirmOrder()">
+                        Confirm & Message Admin
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Success Toast -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 bg-secondary text-on-secondary px-6 py-3 rounded-full shadow-2xl opacity-0 translate-y-[-20px] transition-all duration-300 pointer-events-none z-[100] flex items-center gap-2" id="toast">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-label-md">Redirecting to WhatsApp...</span>
+</div>
+<script>
+        function openOrderModal(name, price) {
+            document.getElementById('modal-product-name').textContent = name;
+            document.getElementById('modal-product-price').textContent = price;
+            
+            const modal = document.getElementById('order-modal');
+            const content = document.getElementById('modal-content');
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('translate-y-full');
+            }, 10);
+        }
+
+        function closeOrderModal() {
+            const content = document.getElementById('modal-content');
+            content.classList.add('translate-y-full');
+            setTimeout(() => {
+                document.getElementById('order-modal').classList.add('hidden');            }, 300);
+        }
+
+        function confirmOrder() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('opacity-0', 'translate-y-[-20px]');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-[-20px]');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                closeOrderModal();
+                // Open WhatsApp
+                window.open('https://wa.me/2349063436048?text=Hello%20SYLUTION%2C%20I%20want%20to%20order%20a%20product', '_blank');
+            }, 2000);
+        }
+    </script>
+</body></html>
