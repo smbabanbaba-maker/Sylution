@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYLUTION Admin Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:system-ui,-apple-system,sans-serif;background:linear-gradient(135deg,#006e1c,#008f23);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem}
+        .card{background:#fff;border-radius:1rem;padding:2rem;width:100%;max-width:400px;box-shadow:0 10px 40px rgba(0,0,0,0.2)}
+        .logo{text-align:center;margin-bottom:1.5rem}
+        .logo h1{color:#006e1c;font-size:1.5rem}
+        .form-group{margin-bottom:1rem}
+        label{display:block;margin-bottom:0.5rem;font-weight:600;color:#333}
+        input{width:100%;padding:0.875rem;border:2px solid #e5e5e5;border-radius:0.5rem;font-size:1rem}
+        input:focus{outline:none;border-color:#006e1c}
+        .btn{width:100%;padding:0.875rem;background:#006e1c;color:#fff;border:none;border-radius:0.5rem;font-weight:600;font-size:1rem;cursor:pointer;margin-top:0.5rem}
+        .btn:hover{background:#008f23}
+        .error{background:#fee;color:#c00;padding:0.75rem;border-radius:0.5rem;margin-bottom:1rem;text-align:center}
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="logo">
+            <h1>SYLUTION Admin</h1>
+            <p style="color:#666">Login to manage your marketplace</p>
+        </div>
+        <div id="error-msg"></div>
+        <form onsubmit="login(event)">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" required placeholder="admin@sylution.com.ng">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" required placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+    </div>
+
+    <script>
+        // An saka URL da Key din Supabase din ka a nan
+        const supabase = window.supabase.createClient('https://svmtbhlaiowbcfzgczsp.supabase.co', 'sb_publishable_1T9UuK1Pxz6ANKaUELwWrA_8Ky_wxWS');
+
+        window.onload = async function() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) window.location.href = 'admin.html';
+        };
+
+        async function login(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const { error } = await supabase.auth.signInWithPassword({ email, password });
+            if (error) {
+                document.getElementById('error-msg').innerHTML = `<div class="error">Invalid email or password</div>`;
+            } else {
+                window.location.href = 'admin.html';
+            }
+        }
+    </script>
+</body>
+</html>
