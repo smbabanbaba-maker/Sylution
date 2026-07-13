@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SYLUTION Market</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,sans-serif;background:#f5f5f5}
+.header{background:#fff;padding:1rem;box-shadow:0 2px 4px rgba(0,0,0,0.1);position:sticky;top:0;z-index:10}
+.container{max-width:1200px;margin:0 auto;padding:1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax150px,1fr));gap:1rem;margin-top:1rem}
+.card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.card img{width:100%;height:150px;object-fit:cover;background:#eee}
+.card-body{padding:0.75rem}
+.card-title{font-size:0.875rem;font-weight:600;margin-bottom:0.5rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.price{color:#006e1c;font-weight:700;font-size:1rem;margin-bottom:0.5rem}
+.btn{background:linear-gradient(90deg,#006e1c,#ba1a1a);color:#fff;border:none;padding:0.5rem 1rem;border-radius:9999px;font-weight:600;cursor:pointer;width:100%;font-size:0.75rem}
+.btn:active{transform:scale(0.98)}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:50;align-items:flex-end;justify-content:center}
+.modal.active{display:flex}
+.modal-content{background:#fff;width:100%;max-width:500px;border-radius:1rem 1rem 0 0;padding:1.5rem;animation:slideUp 0.3s}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.input{width:100%;padding:0.75rem;border:2px solid #e5e5e5;border-radius:0.5rem;margin-bottom:0.5rem;font-size:1rem}
+.input:focus{outline:none;border-color:#006e1c}
+.search{margin-bottom:1rem}
+.loading{text-align:center;padding:2rem;color:#666}
+.error{background:#fee;color:#c00;padding:1rem;border-radius:0.5rem;text-align:center}
+</style>
+</head>
+<body>
+<header class="header">
+<div class="container" style="display:flex;justify-content:space-between;align-items:center">
+<span style="font-weight:700;font-size:1.125rem">SYLUTION</span>
+<a href="login.html" style="width:32px;height:32px;background:#f5f5f5;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none">👤</a>
+</div>
+</header>
+
+<main class="container">
+<h1 style="font-size:1.5rem;margin-bottom:1rem">Marketplace</h1>
+<input class="input search" id="search" placeholder="Search products..." type="text"/>
+<div class="grid" id="products"><div class="loading">Loading...</div></div>
+</main>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+<div class="modal-content" onclick="event.stopPropagation()">
+<h2 style="margin-bottom:0.5rem" id="mName">Product</h2>
+<p style="color:#006e1c;font-weight:700;font-size:1.25rem;margin-bottom:1rem" id="mPrice">₦0</p>
+<input class="input" id="phone" placeholder="Your phone: 803 000 0000" type="tel"/>
+<button class="btn" onclick="order()" style="margin-top:0.5rem;padding:0.875rem">Order via WhatsApp</button>
+<button onclick="closeModal()" style="background:#f5f5f5;color:#333;border:none;padding:0.75rem;width:100%;margin-top:0.5rem;border-radius:0.5rem;cursor:pointer">Cancel</button>
+</div>
+</div>
+
+<script>
+// Supabase Connection
+const supabase = window.supabase.createClient('https://svmtbhlaiowbcfzgczsp.supabase.co', 'sb_publishable_1T9UuK1Pxz6ANKaUELwWrA_8Ky_wxWS');
+let products = [], current = {};
+
+async function load() {
+    const div = document.getElementById('products');
+    try {
+        console.log("Fetching products..."); // Don taimaka mu gane idan yana aiki
+        const { data, error } = await supabase.from('products').select('*').eq('is_available', true).order('is_featured', { ascending: false });
+        
+        if (error) throw error;
+        
+        products = data || [];
+        console.log("Products loaded:", products);
+        render(products);
+    } catch (e) {
+        console.error("Supabase Error:", e);
+        div.innerHTML = '<div class="error">Error: ' + e.message + '<br><button onclick="load()" style="margin-top:0.5rem;padding:0.5rem 1rem;background:#006e1c;color:#fff;border:none;border-radius:0.25rem;cursor:pointer">Retry</button></div>';
+    }
+}
+
+function render(items) {
+    const div = document.getElementById('products');
+    if (!items.length) {
+        div.innerHTML = '<div class="loading">Babu kayan da ake da su a halin yanzu (No products)</div>';
+        return;
+    }
+    div.innerHTML = items.map(p => `
+        <div class="card">
+            ${p.image_url ? `<img src="${p.image_url}" onerror="this.style.display='none'"/>` : ''}
+            <div class="card-body">
+                <div class="card-title">${p.name}</div>
+                <div class="price">₦${Number(p.price).toLocaleString()}</div>
+                <button class="btn" onclick="openModal('${p.name.replace(/'/g, "\\'")}', ${p.price})">Buy Now</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function openModal(name, price) {
+    current = { name, price };
+    document.getElementById('mName').textContent = name;
+    document.getElementById('mPrice').textContent = '₦' + price.toLocaleString();
+    document.getElementById('modal').classList.add('active');
+}
+
+function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+}
+
+async function order() {
+    const phone = document.getElementById('phone').value.trim();
+    if (phone.length < 10) {
+        alert('Please enter a valid phone number');
+        return;
+    }
+    
+    const btn = event.target;
+    btn.textContent = 'Processing...';
+    btn.disabled = true;
+
+    try {
+        // ANA GYARA KUSKURE A NAN: phone.replace(/^0+/, '')
+        const cleanPhone = phone.replace(/^0+/, ''); 
+        
+        await supabase.from('orders').insert([{
+            buyer_phone: '+234' + cleanPhone,
+            total_price: current.price,
+            notes: current.name
+        }]);
+        
+        const msg = `Sannu! Ina son: ${current.name} (₦${current.price.toLocaleString()}). Waya: +234${cleanPhone}`;
+        window.open(`https://wa.me/2349063436048?text=${encodeURIComponent(msg)}`, '_blank');
+        
+        closeModal();
+        document.getElementById('phone').value = '';
+        alert('Order placed successfully!');
+    } catch (e) {
+        console.error("Order Error:", e);
+        alert('Error placing order: ' + e.message);
+    }
+    
+    btn.textContent = 'Order via WhatsApp';
+    btn.disabled = false;
+}
+
+document.getElementById('search').addEventListener('input', e => {
+    const q = e.target.value.toLowerCase();
+    render(products.filter(p => p.name.toLowerCase().includes(q)));
+});
+
+// Fara loading din kayan
+load();
+</script>
+</body>
+</html>
