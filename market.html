@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SYLUTION Market</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f5}
+.header{background:#fff;padding:1rem;box-shadow:0 2px 4px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100}
+.container{max-width:1200px;margin:0 auto;padding:1rem}
+.logo{font-size:1.5rem;font-weight:700;color:#006e1c;text-decoration:none;display:flex;align-items:center;gap:0.5rem}
+.logo img{width:40px;height:40px;border-radius:8px}
+.search-filters{display:flex;gap:1rem;margin:1.5rem 0;flex-wrap:wrap}
+.search-filters input{flex:1;min-width:200px;padding:0.75rem;border:2px solid #e0e0e0;border-radius:8px}
+.search-filters select{padding:0.75rem;border:2px solid #e0e0e0;border-radius:8px;background:#fff}
+.btn{padding:0.75rem 1.5rem;border:none;border-radius:8px;font-weight:600;cursor:pointer}
+.btn-primary{background:linear-gradient(90deg,#006e1c,#ba1a1a);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr)}}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.card img{width:100%;height:200px;object-fit:cover;background:#eee}
+.card-body{padding:1rem}
+.card-title{font-weight:600;margin-bottom:0.5rem;font-size:1rem}
+.price{color:#006e1c;font-weight:700;font-size:1.125rem;margin:0.5rem 0}
+.location{color:#666;font-size:0.875rem;margin-bottom:0.75rem}
+.actions{display:flex;gap:0.5rem}
+.actions button{flex:1;padding:0.5rem;border:none;border-radius:6px;font-weight:600;cursor:pointer}
+.btn-view{background:#f0f0f0;color:#333}
+.btn-buy{background:linear-gradient(90deg,#006e1c,#ba1a1a);color:#fff}
+.badge{display:inline-block;padding:0.25rem 0.5rem;background:#ffd700;color:#000;border-radius:4px;font-size:0.75rem;font-weight:600;margin-bottom:0.5rem}
+.loading{text-align:center;padding:3rem;color:#666}
+.error{background:#fee;color:#c00;padding:1rem;border-radius:8px;margin:1rem 0}
+.footer{background:#000;color:#fff;padding:2rem 1rem;text-align:center;margin-top:3rem}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="container" style="display:flex;justify-content:space-between;align-items:center">
+<a class="logo" href="index.html">
+<img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION"/>
+SYLUTION Market
+</a>
+<nav style="display:flex;gap:1.5rem">
+<a href="index.html" style="color:#333;text-decoration:none">Home</a>
+<a href="market.html" style="color:#006e1c;text-decoration:none;font-weight:700">Market</a>
+</nav>
+</div>
+</header>
+
+<main class="container">
+<div class="search-filters">
+<input id="searchInput" placeholder="Search products..." type="text"/>
+<select id="categoryFilter">
+<option value="">All Categories</option>
+<option value="Agriculture">Agriculture</option>
+<option value="Drones">Drones</option>
+<option value="Irrigation">Irrigation</option>
+<option value="Sensors">Sensors</option>
+<option value="Greenhouse">Greenhouse</option>
+<option value="Solar Energy">Solar Energy</option>
+</select>
+<select id="locationFilter">
+<option value="">All Locations</option>
+<option value="Kano">Kano</option>
+<option value="Lagos">Lagos</option>
+<option value="Abuja">Abuja</option>
+</select>
+<button class="btn btn-primary" onclick="alert('Login required')">+ Add Product</button>
+</div>
+
+<div id="status" style="margin:1rem 0"></div>
+
+<div class="grid" id="productGrid">
+<div class="loading">Loading products...</div>
+</div>
+</main>
+
+<footer class="footer">
+<p>© 2025 SYLUTION LTD. Smart Technology • Green Future 🌍</p>
+</footer>
+
+<script>
+// Configuration
+const SUPABASE_URL = 'https://svmtbhlaiowbcfzgczsp.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_1T9UuK1Pxz6ANKaUELwWrA_8Ky_wxWS';
+
+let allProducts = [];
+
+// Initialize
+async function init(){
+    console.log('Starting market initialization...');
+    try{
+        await loadProducts();
+        console.log('Initialization complete');
+    }catch(error){
+        console.error('Initialization error:', error);
+        document.getElementById('status').innerHTML = '<div class="error">Error: ' + error.message + '</div>';
+    }
+}
+
+// Load Products
+async function loadProducts(){
+    const grid = document.getElementById('productGrid');
+    const status = document.getElementById('status');
+    
+    console.log('Loading products from Supabase...');
+    status.innerHTML = '<div class="loading">Connecting to database...</div>';
+    
+    try{
+        // Create Supabase client
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        console.log('Supabase client created');
+        
+        // Query products
+        const { data, error } = await supabase
+            .from('products')
+            .select('*')
+            .eq('is_available', true)
+            .order('is_featured', { ascending: false })
+            .order('created_at', { ascending: false })
+            .limit(20);
+        
+        if(error){
+            console.error('Supabase query error:', error);
+            throw error;
+        }
+        
+        console.log('Products loaded:', data);
+        
+        if(!data || data.length === 0){
+            status.innerHTML = '<div class="error">⚠️ No products found in database</div>';
+            grid.innerHTML = '';
+            return;
+        }
+        
+        allProducts = data;
+        status.innerHTML = '<div style="background:#d4edda;color:#155724;padding:1rem;border-radius:8px;margin:1rem 0">✅ Loaded ' + data.length + ' products successfully!</div>';
+        
+        renderProducts(allProducts);
+        
+    }catch(error){
+        console.error('Load products error:', error);
+        status.innerHTML = '<div class="error">❌ Error loading products: ' + error.message + '<br><br>Check browser console (F12) for details</div>';
+        grid.innerHTML = '';
+    }
+}
+
+// Render Products
+function renderProducts(products){
+    const grid = document.getElementById('productGrid');
+    
+    if(!products || products.length === 0){
+        grid.innerHTML = '<div class="loading">No products found</div>';
+        return;
+    }
+    
+    console.log('Rendering ' + products.length + ' products...');
+    
+    grid.innerHTML = products.map(product => {
+        const discount = product.original_price ? Math.round((1 - product.price/product.original_price)*100) : 0;
+        
+        return `
+            <div class="card">
+                <img src="${product.image_url || ''}" alt="${product.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'height:200px;background:#eee;display:flex;align-items:center;justify-content:center;color:#999\\'>No Image</div>'"/>
+                <div class="card-body">
+                    ${product.is_featured ? '<span class="badge">Featured</span>' : ''}
+                    ${discount > 0 ? `<span class="badge" style="background:#ff4444;color:#fff">-${discount}%</span>` : ''}
+                    <h3 class="card-title">${product.name}</h3>
+                    <div class="price">₦${Number(product.price).toLocaleString()}</div>
+                    ${product.original_price ? `<div style="color:#999;text-decoration:line-through;font-size:0.875rem">₦${Number(product.original_price).toLocaleString()}</div>` : ''}
+                    <div class="location">📍 ${product.city || product.location || 'N/A'}</div>
+                    <div class="actions">
+                        <button class="btn-view" onclick="viewProduct('${product.id}')">View</button>
+                        <button class="btn-buy" onclick="orderProduct('${product.id}')">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+    
+    console.log('Products rendered successfully');
+}
+
+// View Product
+function viewProduct(id){
+    const product = allProducts.find(p => p.id === id);
+    if(product){
+        alert(`${product.name}\n\nPrice: ₦${Number(product.price).toLocaleString()}\nCategory: ${product.category}\nLocation: ${product.city || product.location}\n\n${product.description || 'No description available'}`);
+    }
+}
+
+// Order Product
+function orderProduct(id){
+    const product = allProducts.find(p => p.id === id);
+    if(product){
+        const phone = prompt('Enter your phone number:', '+234 ');
+        if(phone && phone.length >= 10){
+            const msg = `Sannu! Ina son saya:\n\n📦 ${product.name}\n💰 Price: ₦${Number(product.price).toLocaleString()}\n📱 Phone: ${phone}\n\nDa fatan za a taimaka min.`;
+            window.open(`https://wa.me/2349063436048?text=${encodeURIComponent(msg)}`, '_blank');
+        }else{
+            alert('Please enter a valid phone number');
+        }
+    }
+}
+
+// Search and Filter
+document.getElementById('searchInput').addEventListener('input', function(e){
+    const query = e.target.value.toLowerCase();
+    const filtered = allProducts.filter(p => 
+        p.name.toLowerCase().includes(query) || 
+        (p.description && p.description.toLowerCase().includes(query))
+    );
+    renderProducts(filtered);
+});
+
+document.getElementById('categoryFilter').addEventListener('change', function(e){
+    const category = e.target.value;
+    const filtered = category ? allProducts.filter(p => p.category === category) : allProducts;
+    renderProducts(filtered);
+});
+
+document.getElementById('locationFilter').addEventListener('change', function(e){
+    const location = e.target.value;
+    const filtered = location ? allProducts.filter(p => p.city === location || p.location === location) : allProducts;
+    renderProducts(filtered);
+});
+
+// Start the app
+console.log('Market app loaded, initializing...');
+init();
+</script>
+</body></html>
