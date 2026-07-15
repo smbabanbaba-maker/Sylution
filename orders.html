@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>My Orders - SYLUTION</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Inter',sans-serif;background:#f8f9fa;color:#333;padding-bottom:80px}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400}
+.header{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100}
+.nav{max-width:1400px;margin:0 auto;padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:0.5rem;font-weight:700;font-size:1.25rem;color:#006e1c;text-decoration:none}
+.logo img{width:40px;height:40px;border-radius:8px}
+.nav-links{display:flex;gap:1rem;align-items:center}
+.nav-links a{color:#333;text-decoration:none;font-weight:500}
+.container{max-width:1400px;margin:0 auto;padding:1rem}
+.page-title{font-size:1.5rem;font-weight:700;margin-bottom:1rem}
+.order-card{background:#fff;border-radius:12px;padding:1.25rem;margin-bottom:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.order-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:0.5rem}
+.order-number{font-weight:700;color:#006e1c;font-size:1.125rem}
+.order-status{padding:0.375rem 0.875rem;border-radius:9999px;font-size:0.75rem;font-weight:600;text-transform:uppercase}
+.status-pending{background:#fff3cd;color:#856404}
+.status-confirmed{background:#d1ecf1;color:#0c5460}
+.status-processing{background:#d4edda;color:#155724}
+.status-shipped{background:#c3e6cb;color:#155724}
+.status-delivered{background:#d4edda;color:#155724}
+.status-cancelled{background:#f8d7da;color:#721c24}
+.order-details{font-size:0.9rem;color:#666;margin-bottom:0.75rem}
+.order-details strong{color:#333}
+.order-total{font-weight:700;color:#006e1c;font-size:1.125rem;margin:0.75rem 0}
+.order-actions{display:flex;gap:0.5rem;margin-top:0.75rem;flex-wrap:wrap}
+.btn{padding:0.625rem 1.25rem;border-radius:6px;font-weight:600;cursor:pointer;border:none;font-size:0.875rem;transition:all 0.3s}
+.btn-primary{background:linear-gradient(90deg,#006e1c,#ba1a1a);color:#fff}
+.btn-outline{border:2px solid #006e1c;color:#006e1c;background:transparent}
+.btn-success{background:#28a745;color:#fff}
+.btn-danger{background:#dc3545;color:#fff}
+.loading{text-align:center;padding:3rem;color:#666}
+.error{background:#fee;color:#c00;padding:1rem;border-radius:8px;margin:1rem 0}
+.success{background:#d4edda;color:#155724;padding:1rem;border-radius:8px;margin:1rem 0}
+.footer{background:#000;color:#fff;padding:1.5rem 1rem;text-align:center;margin-top:2rem}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e5e5e5;display:flex;justify-content:space-around;padding:0.5rem;z-index:100}
+.bottom-nav a{display:flex;flex-direction:column;align-items:center;gap:0.25rem;color:#666;text-decoration:none;font-size:0.75rem}
+.bottom-nav a.active{color:#006e1c}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:1.5rem}
+.stat{background:#fff;padding:1rem;border-radius:8px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.stat-value{font-size:1.5rem;font-weight:700;color:#006e1c}
+.stat-label{font-size:0.8rem;color:#666}
+@media(max-width:768px){.nav-links{display:none}}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="nav">
+<a class="logo" href="index.html">
+<img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION"/>
+SYLUTION
+</a>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="market.html">Market</a>
+<a href="orders.html" style="color:#006e1c;font-weight:700">Orders</a>
+<a href="admin.html">Admin</a>
+</div>
+</div>
+</header>
+
+<main class="container">
+<h1 class="page-title">My Orders</h1>
+
+<div class="stats">
+<div class="stat">
+<div class="stat-value" id="totalOrders">0</div>
+<div class="stat-label">Total Orders</div>
+</div>
+<div class="stat">
+<div class="stat-value" id="pendingOrders">0</div>
+<div class="stat-label">Pending</div>
+</div>
+<div class="stat">
+<div class="stat-value" id="deliveredOrders">0</div>
+<div class="stat-label">Delivered</div>
+</div>
+</div>
+
+<div id="ordersList">
+<div class="loading">Loading your orders...</div>
+</div>
+</main>
+
+<footer class="footer">
+<p>© 2025 SYLUTION LTD. Smart Technology • Green Future 🌍</p>
+</footer>
+
+<nav class="bottom-nav">
+<a href="market.html"><span class="material-symbols-outlined">storefront</span>Market</a>
+<a href="orders.html" class="active"><span class="material-symbols-outlined">receipt_long</span>Orders</a>
+<a href="admin.html"><span class="material-symbols-outlined">admin_panel_settings</span>Admin</a>
+</nav>
+
+<script>
+const SUPABASE_URL = 'https://svmtbhlaiowbcfzgczsp.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_1T9UuK1Pxz6ANKaUELwWrA_8Ky_wxWS';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+async function loadOrders(){
+    const ordersDiv = document.getElementById('ordersList');
+    
+    try{
+        const {data, error} = await supabase
+            .from('orders')
+            .select('*')
+            .order('created_at', {ascending: false})
+            .limit(50);
+        
+        if(error) throw error;
+        
+        updateStats(data);
+        
+        if(!data || data.length === 0){
+            ordersDiv.innerHTML = `
+                <div class="success" style="text-align:center">
+                    <span class="material-symbols-outlined" style="font-size:3rem;margin-bottom:1rem">shopping_bag</span>
+                    <p>No orders yet</p>
+                    <a href="market.html" class="btn btn-primary" style="display:inline-block;margin-top:1rem">Start Shopping</a>
+                </div>
+            `;
+            return;
+        }
+        
+        ordersDiv.innerHTML = data.map(o => `
+            <div class="order-card">
+                <div class="order-header">
+                    <span class="order-number">Order #${o.order_number}</span>
+                    <span class="order-status status-${o.status}">${o.status}</span>
+                </div>
+                <div class="order-details">
+                    <strong>Product:</strong> ${o.product_name}<br>
+                    <strong>Quantity:</strong> ${o.quantity}<br>
+                    <strong>Payment:</strong> ${o.payment_method}<br>
+                    <strong>Date:</strong> ${new Date(o.created_at).toLocaleDateString()}<br>
+                    ${o.delivery_address?`<strong>Delivery:</strong> ${o.delivery_address}<br>`:''}
+                    ${o.buyer_name?`<strong>Customer:</strong> ${o.buyer_name} | ${o.buyer_phone}`:''}
+                </div>
+                <div class="order-total">Total: ₦${Number(o.total_price).toLocaleString()}</div>
+                <div class="order-actions">
+                    ${o.status === 'pending' ? `
+                        <button class="btn btn-success" onclick="markPaid('${o.id}')">✓ Mark Paid</button>
+                        <button class="btn btn-danger" onclick="cancelOrder('${o.id}')">✕ Cancel</button>
+                    ` : ''}
+                    <button class="btn btn-outline" onclick="contactAdmin('${o.order_number}')">📞 Contact Admin</button>
+                    <button class="btn btn-primary" onclick="trackOrder('${o.order_number}')">📦 Track Order</button>
+                </div>
+            </div>
+        `).join('');
+        
+    }catch(e){
+        console.error('Error:', e);
+        document.getElementById('ordersList').innerHTML = '<div class="error">Error loading orders</div>';
+    }
+}
+
+function updateStats(orders){
+    document.getElementById('totalOrders').textContent = orders.length;
+    document.getElementById('pendingOrders').textContent = orders.filter(o => o.status === 'pending').length;
+    document.getElementById('deliveredOrders').textContent = orders.filter(o => o.status === 'delivered').length;
+}
+
+async function markPaid(orderId){
+    if(!confirm('Confirm payment received?')) return;
+    
+    try{
+        await supabase.from('orders').update({
+            payment_status: 'paid',
+            status: 'confirmed'
+        }).eq('id', orderId);
+        
+        alert('Payment confirmed! Order status updated.');
+        loadOrders();
+    }catch(e){
+        alert('Error: ' + e.message);
+    }
+}
+
+async function cancelOrder(orderId){
+    if(!confirm('Are you sure you want to cancel this order?')) return;
+    
+    try{
+        await supabase.from('orders').update({status: 'cancelled'}).eq('id', orderId);
+        alert('Order cancelled');
+        loadOrders();
+    }catch(e){
+        alert('Error: ' + e.message);
+    }
+}
+
+function contactAdmin(orderNum){
+    const msg = `Hello, I have a question about Order #${orderNum}`;
+    window.open(`https://wa.me/2349063436048?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+function trackOrder(orderNum){
+    alert(`Order #${orderNum}\n\nTracking information will be sent via WhatsApp once your order is shipped.`);
+}
+
+loadOrders();
+</script>
+</body>
+</html>
