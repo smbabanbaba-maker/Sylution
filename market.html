@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>SYLUTION Marketplace</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Inter',sans-serif;background:#f8f9fa;color:#333;padding-bottom:80px}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400}
+.header{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100}
+.nav{max-width:1400px;margin:0 auto;padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:0.5rem;font-weight:700;font-size:1.25rem;color:#006e1c;text-decoration:none}
+.logo img{width:40px;height:40px;border-radius:8px}
+.nav-links{display:flex;gap:1rem;align-items:center}
+.nav-links a{color:#333;text-decoration:none;font-weight:500}
+.container{max-width:1400px;margin:0 auto;padding:1rem}
+.search-bar{display:flex;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap}
+.search-bar input,.filter-select{flex:1;min-width:150px;padding:0.75rem 1rem;border:2px solid #e5e5e5;border-radius:8px;font-size:0.95rem}
+.filter-select{flex:initial;min-width:120px;background:#fff}
+.tabs{display:flex;gap:0.5rem;margin-bottom:1rem;border-bottom:2px solid #e5e5e5;overflow-x:auto}
+.tab{padding:0.75rem 1rem;cursor:pointer;border:none;background:none;font-weight:500;border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap}
+.tab.active{color:#006e1c;border-bottom-color:#006e1c}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr);gap:0.75rem}.nav-links{display:none}}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:all 0.3s}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.12)}
+.card-img{width:100%;height:200px;object-fit:cover;background:#eee}
+.card-body{padding:1rem}
+.card-title{font-weight:600;margin-bottom:0.5rem;font-size:1rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-price{color:#006e1c;font-weight:700;font-size:1.25rem;margin-bottom:0.25rem}
+.card-original{color:#999;text-decoration:line-through;font-size:0.875rem;margin-bottom:0.5rem}
+.card-location{color:#666;font-size:0.875rem;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.25rem}
+.card-actions{display:flex;gap:0.5rem}
+.card-actions button{flex:1;padding:0.625rem;border-radius:6px;font-weight:600;cursor:pointer;border:none;font-size:0.875rem}
+.btn-view{background:#f5f5f5;color:#333}
+.btn-buy{background:linear-gradient(90deg,#006e1c,#ba1a1a);color:#fff}
+.badge{display:inline-block;padding:0.25rem 0.625rem;border-radius:9999px;font-size:0.75rem;font-weight:600;margin-right:0.25rem}
+.badge-featured{background:#ffd700;color:#000}
+.badge-sale{background:#ff4444;color:#fff}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;align-items:center;justify-content:center;padding:1rem}
+.modal.active{display:flex}
+.modal-content{background:#fff;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;border-radius:1rem;padding:1.5rem;position:relative}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#666}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;margin-bottom:0.5rem;font-weight:500;font-size:0.9rem}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:0.75rem;border:2px solid #e5e5e5;border-radius:8px;font-size:0.95rem}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:#006e1c}
+.loading{text-align:center;padding:3rem;color:#666}
+.error{background:#fee;color:#c00;padding:1rem;border-radius:8px;margin:1rem 0}
+.success{background:#d4edda;color:#155724;padding:1rem;border-radius:8px;margin:1rem 0}
+.footer{background:#000;color:#fff;padding:1.5rem 1rem;text-align:center;margin-top:2rem}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e5e5e5;display:flex;justify-content:space-around;padding:0.5rem;z-index:100}
+.bottom-nav a{display:flex;flex-direction:column;align-items:center;gap:0.25rem;color:#666;text-decoration:none;font-size:0.75rem}
+.bottom-nav a.active{color:#006e1c}
+.order-total{font-weight:700;font-size:1.125rem;margin:1rem 0;text-align:right}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="nav">
+<a class="logo" href="index.html">
+<img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION"/>
+SYLUTION Market
+</a>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="market.html" style="color:#006e1c;font-weight:700">Market</a>
+<a href="orders.html">My Orders</a>
+</div>
+</div>
+</header>
+
+<main class="container">
+<h1 style="margin-bottom:1rem">Marketplace</h1>
+
+<div class="search-bar">
+<input id="searchInput" placeholder="Search products..." type="text"/>
+<select class="filter-select" id="categoryFilter">
+<option value="">All Categories</option>
+<option value="Agriculture">🌾 Agriculture</option>
+<option value="Drones">🚁 Drones</option>
+<option value="Irrigation">💧 Irrigation</option>
+<option value="Sensors">📡 Sensors</option>
+<option value="Greenhouse">🏡 Greenhouse</option>
+<option value="Solar Energy">☀️ Solar Energy</option>
+<option value="Tools">️ Tools</option>
+</select>
+<select class="filter-select" id="locationFilter">
+<option value="">All Locations</option>
+<option value="Kano">Kano</option>
+<option value="Lagos">Lagos</option>
+<option value="Abuja">Abuja</option>
+<option value="Kaduna">Kaduna</option>
+<option value="Sokoto">Sokoto</option>
+</select>
+</div>
+
+<div class="tabs">
+<button class="tab active" onclick="switchTab('all',this)">All Products</button>
+<button class="tab" onclick="switchTab('featured',this)">Featured</button>
+<button class="tab" onclick="switchTab('sales',this)">On Sale</button>
+</div>
+
+<div id="status"></div>
+
+<div class="grid" id="productGrid">
+<div class="loading">Loading products...</div>
+</div>
+</main>
+
+<footer class="footer">
+<p>© 2025 SYLUTION LTD. Smart Technology • Green Future 🌍</p>
+</footer>
+
+<nav class="bottom-nav">
+<a href="market.html" class="active"><span class="material-symbols-outlined">storefront</span>Market</a>
+<a href="orders.html"><span class="material-symbols-outlined">receipt_long</span>Orders</a>
+<a href="login.html"><span class="material-symbols-outlined">person</span>Login</a>
+</nav>
+
+<!-- Order Modal -->
+<div class="modal" id="orderModal">
+<div class="modal-content">
+<button class="modal-close" onclick="closeModal()">×</button>
+<h2 style="margin-bottom:0.5rem" id="orderProductName">Product</h2>
+<p id="orderProductPrice" style="color:#006e1c;font-weight:700;font-size:1.25rem;margin-bottom:1rem">₦0</p>
+
+<form id="orderForm" onsubmit="placeOrder(event)">
+<div class="form-group">
+<label>Full Name *</label>
+<input id="customerName" required="" type="text" placeholder="Your full name"/>
+</div>
+
+<div class="form-group">
+<label>Phone Number *</label>
+<input id="customerPhone" required="" type="tel" placeholder="+234 800 000 0000"/>
+</div>
+
+<div class="form-group">
+<label>Email Address</label>
+<input id="customerEmail" type="email" placeholder="your@email.com"/>
+</div>
+
+<div class="form-group">
+<label>Complete Delivery Address *</label>
+<textarea id="deliveryAddress" required="" rows="3" placeholder="House number, street, area, city, state"></textarea>
+</div>
+
+<div class="form-group">
+<label>Quantity *</label>
+<input id="orderQty" min="1" required="" type="number" value="1" onchange="updateTotal()"/>
+</div>
+
+<div class="form-group">
+<label>Payment Method *</label>
+<select id="paymentMethod" required="" onchange="toggleBankDetails()">
+<option value="">Select payment method...</option>
+<option value="bank">Bank Transfer</option>
+<option value="pos">Pay on Delivery (POS)</option>
+<option value="cash">Cash on Delivery</option>
+</select>
+</div>
+
+<div id="bankDetails" style="display:none;background:#f5f5f5;padding:1rem;border-radius:8px;margin-bottom:1rem">
+<strong style="color:#006e1c">Bank Details:</strong><br>
+Bank: Access Bank<br>
+Account: 1234567890<br>
+Account Name: SYLUTION LTD<br>
+<small style="color:#666">Send proof of payment after ordering</small>
+</div>
+
+<div class="order-total">Total: ₦<span id="orderTotal">0</span></div>
+
+<button class="btn btn-buy" style="width:100%;padding:0.875rem;font-size:1rem" type="submit">
+    Place Order - Pay ₦<span id="payAmount">0</span>
+</button>
+
+<p style="text-align:center;margin-top:1rem;font-size:0.85rem;color:#666">
+    After placing order, admin will contact you for confirmation
+</p>
+</form>
+</div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://svmtbhlaiowbcfzgczsp.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_1T9UuK1Pxz6ANKaUELwWrA_8Ky_wxWS';
+const ADMIN_PHONE = '2349063436048';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let allProducts = [];
+let currentProduct = null;
+let currentTab = 'all';
+
+async function loadProducts(){
+    const grid = document.getElementById('productGrid');
+    const status = document.getElementById('status');
+    
+    try{
+        let query = supabase.from('products').select('*').eq('is_available', true);
+        
+        if(currentTab === 'featured') query = query.eq('is_featured', true);
+        else if(currentTab === 'sales') query = query.not('original_price', 'is', null);
+        
+        const {data, error} = await query.order('is_featured', {ascending: false}).order('created_at', {ascending: false}).limit(20);
+        
+        if(error) throw error;
+        
+        if(!data || data.length === 0){
+            status.innerHTML = '<div class="error">⚠️ No products found</div>';
+            grid.innerHTML = '';
+            return;
+        }
+        
+        allProducts = data;
+        status.innerHTML = '<div class="success">✅ Loaded ' + data.length + ' products!</div>';
+        renderProducts(allProducts);
+        
+    }catch(e){
+        console.error('Error:', e);
+        status.innerHTML = '<div class="error">Error loading products</div>';
+        grid.innerHTML = '';
+    }
+}
+
+function renderProducts(products){
+    const grid = document.getElementById('productGrid');
+    
+    if(products.length === 0){
+        grid.innerHTML = '<div class="loading">No products found</div>';
+        return;
+    }
+    
+    grid.innerHTML = products.map(p => {
+        const discount = p.original_price ? Math.round((1 - p.price/p.original_price)*100) : 0;
+        return `
+            <div class="card">
+                <img class="card-img" src="${p.image_url||''}" onerror="this.style.display='none'"/>
+                <div class="card-body">
+                    <div style="margin-bottom:0.5rem">
+                        ${p.is_featured?'<span class="badge badge-featured">Featured</span>':''}
+                        ${discount>0?`<span class="badge badge-sale">-${discount}%</span>`:''}
+                    </div>
+                    <h3 class="card-title">${p.name}</h3>
+                    <div class="card-price">₦${Number(p.price).toLocaleString()}</div>
+                    ${p.original_price?`<div class="card-original">₦${Number(p.original_price).toLocaleString()}</div>`:''}
+                    <div class="card-location"> ${p.city||p.location||'N/A'}</div>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="viewProduct('${p.id}')">View</button>
+                        <button class="btn-buy" onclick="openOrder('${p.id}')">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function switchTab(tab, btn){
+    currentTab = tab;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    loadProducts();
+}
+
+function viewProduct(id){
+    const p = allProducts.find(x => x.id === id);
+    if(p) alert(`${p.name}\n\nPrice: ₦${Number(p.price).toLocaleString()}\n\n${p.description||'No description'}`);
+}
+
+function openOrder(productId){
+    currentProduct = allProducts.find(p => p.id === productId);
+    if(!currentProduct) return;
+    
+    document.getElementById('orderProductName').textContent = currentProduct.name;
+    document.getElementById('orderProductPrice').textContent = '₦' + Number(currentProduct.price).toLocaleString();
+    document.getElementById('orderQty').value = 1;
+    document.getElementById('orderForm').reset();
+    updateTotal();
+    document.getElementById('orderModal').classList.add('active');
+}
+
+function updateTotal(){
+    const qty = parseInt(document.getElementById('orderQty').value) || 1;
+    const total = currentProduct.price * qty;
+    document.getElementById('orderTotal').textContent = total.toLocaleString();
+    document.getElementById('payAmount').textContent = total.toLocaleString();
+}
+
+function toggleBankDetails(){
+    const method = document.getElementById('paymentMethod').value;
+    document.getElementById('bankDetails').style.display = method === 'bank' ? 'block' : 'none';
+}
+
+async function placeOrder(e){
+    e.preventDefault();
+    
+    const name = document.getElementById('customerName').value.trim();
+    const phone = document.getElementById('customerPhone').value.trim();
+    const email = document.getElementById('customerEmail').value.trim();
+    const address = document.getElementById('deliveryAddress').value.trim();
+    const qty = parseInt(document.getElementById('orderQty').value) || 1;
+    const payment = document.getElementById('paymentMethod').value;
+    
+    if(!name || !phone || !address || !payment){
+        alert('Please fill all required fields');
+        return;
+    }
+    
+    const total = currentProduct.price * qty;
+    const orderNumber = 'SY-' + Date.now().toString().slice(-8);
+    
+    try{
+        const {data, error} = await supabase.from('orders').insert([{
+            order_number: orderNumber,
+            buyer_name: name,
+            buyer_phone: phone,
+            buyer_email: email || null,
+            product_id: currentProduct.id,
+            product_name: currentProduct.name,
+            quantity: qty,
+            total_price: total,
+            payment_method: payment,
+            payment_status: 'pending',
+            delivery_address: address,
+            status: 'pending',
+            notes: currentProduct.name + ' x' + qty
+        }]).select();
+        
+        if(error) throw error;
+        
+        const adminMsg = ` NEW ORDER!\n\nOrder #: ${orderNumber}\nProduct: ${currentProduct.name}\nQuantity: ${qty}\nTotal: ₦${total.toLocaleString()}\n\nCustomer: ${name}\nPhone: ${phone}\n${email?'Email: '+email+'\n':''}Address: ${address}\nPayment: ${payment}\n\nStatus: PENDING PAYMENT`;
+        
+        const customerMsg = `Thank you for your order!\n\nOrder #: ${orderNumber}\nProduct: ${currentProduct.name}\nQuantity: ${qty}\nTotal: ₦${total.toLocaleString()}\n\nPayment Method: ${payment}\n${payment==='bank'?'Please send payment proof to this number.\n':''}\nWe will contact you shortly.`;
+        
+        window.open(`https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent(adminMsg)}`,'_blank');
+        
+        alert('✅ Order placed successfully!\n\nOrder #: ' + orderNumber + '\n\nPlease complete payment. Admin will contact you shortly.');
+        
+        setTimeout(() => {
+            window.open(`https://wa.me/${phone.replace(/\D/g,'')}?text=${encodeURIComponent(customerMsg)}`,'_blank');
+        }, 1000);
+        
+        closeModal();
+        
+    }catch(err){
+        console.error('Order error:', err);
+        alert('Error placing order: ' + err.message);
+    }
+}
+
+function closeModal(){
+    document.getElementById('orderModal').classList.remove('active');
+}
+
+// Search and filters
+document.getElementById('searchInput').addEventListener('input', function(e){
+    const q = e.target.value.toLowerCase();
+    const filtered = allProducts.filter(p => p.name.toLowerCase().includes(q) || (p.description && p.description.toLowerCase().includes(q)));
+    renderProducts(filtered);
+});
+
+document.getElementById('categoryFilter').addEventListener('change', function(e){
+    const cat = e.target.value;
+    const filtered = cat ? allProducts.filter(p => p.category === cat) : allProducts;
+    renderProducts(filtered);
+});
+
+document.getElementById('locationFilter').addEventListener('change', function(e){
+    const loc = e.target.value;
+    const filtered = loc ? allProducts.filter(p => p.city === loc || p.location === loc) : allProducts;
+    renderProducts(filtered);
+});
+
+// Close modal on outside click
+window.onclick = function(event){
+    if(event.target.classList.contains('modal')){
+        event.target.classList.remove('active');
+    }
+}
+
+// Initialize
+loadProducts();
+</script>
+</body>
+</html>
