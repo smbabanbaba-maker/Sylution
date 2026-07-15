@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SYLUTION Market</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8f9fa}
+.header{background:#fff;padding:1rem;box-shadow:0 2px 4px rgba(0,0,0,0.1);position:sticky;top:0}
+.container{max-width:1200px;margin:0 auto;padding:1rem}
+.logo{font-size:1.5rem;font-weight:700;color:#006e1c;text-decoration:none;display:flex;align-items:center;gap:0.5rem}
+.logo img{width:40px;height:40px;border-radius:8px}
+.search{display:flex;gap:1rem;margin:1.5rem 0;flex-wrap:wrap}
+.search input{flex:1;min-width:200px;padding:0.75rem;border:2px solid #e0e0e0;border-radius:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr)}}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.card img{width:100%;height:200px;object-fit:cover;background:#eee}
+.card-body{padding:1rem}
+.card-title{font-weight:600;margin-bottom:0.5rem}
+.price{color:#006e1c;font-weight:700;font-size:1.125rem;margin:0.5rem 0}
+.location{color:#666;font-size:0.875rem;margin-bottom:0.75rem}
+.actions{display:flex;gap:0.5rem}
+.actions button{flex:1;padding:0.5rem;border:none;border-radius:6px;font-weight:600;cursor:pointer}
+.btn-view{background:#f0f0f0;color:#333}
+.btn-buy{background:linear-gradient(90deg,#006e1c,#ba1a1a);color:#fff}
+.badge{display:inline-block;padding:0.25rem 0.5rem;background:#ffd700;color:#000;border-radius:4px;font-size:0.75rem;font-weight:600;margin-bottom:0.5rem}
+.loading{text-align:center;padding:3rem;color:#666}
+.error{background:#fee;color:#c00;padding:1rem;border-radius:8px;margin:1rem 0}
+.success{background:#d4edda;color:#155724;padding:1rem;border-radius:8px;margin:1rem 0}
+.footer{background:#000;color:#fff;padding:1.5rem;text-align:center;margin-top:2rem}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="container" style="display:flex;justify-content:space-between;align-items:center">
+<a class="logo" href="index.html">
+<img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION"/>
+SYLUTION Market
+</a>
+<nav style="display:flex;gap:1.5rem">
+<a href="index.html" style="color:#333;text-decoration:none">Home</a>
+<a href="market.html" style="color:#006e1c;text-decoration:none;font-weight:700">Market</a>
+<a href="login.html" style="color:#333;text-decoration:none">Login</a>
+</nav>
+</div>
+</header>
+
+<main class="container">
+<h1 style="margin-bottom:1rem">Marketplace</h1>
+<div class="search">
+<input id="searchInput" placeholder="Search products..." type="text"/>
+<select id="categoryFilter" style="padding:0.75rem;border:2px solid #e0e0e0;border-radius:8px">
+<option value="">All Categories</option>
+<option value="Agriculture">Agriculture</option>
+<option value="Drones">Drones</option>
+<option value="Irrigation">Irrigation</option>
+<option value="Sensors">Sensors</option>
+<option value="Greenhouse">Greenhouse</option>
+<option value="Solar Energy">Solar Energy</option>
+</select>
+</div>
+
+<div id="status"></div>
+
+<div class="grid" id="productGrid">
+<div class="loading">Loading products...</div>
+</div>
+</main>
+
+<footer class="footer">
+<p>© 2025 SYLUTION LTD. Smart Technology • Green Future 🌍</p>
+</footer>
+
+<script>
+const SUPABASE_URL = 'https://svmtbhlaiowbcfzgczsp.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_1T9UuK1Pxz6ANKaUELwWrA_8Ky_wxWS';
+
+async function loadProducts(){
+    const grid = document.getElementById('productGrid');
+    const status = document.getElementById('status');
+    
+    try{
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        
+        const {data, error} = await supabase
+            .from('products')
+            .select('*')
+            .eq('is_available', true)
+            .order('is_featured', {ascending: false})
+            .limit(20);
+        
+        if(error) throw error;
+        
+        if(!data || data.length === 0){
+            status.innerHTML = '<div class="error">No products found</div>';
+            grid.innerHTML = '';
+            return;
+        }
+        
+        status.innerHTML = '<div class="success">✅ Loaded ' + data.length + ' products!</div>';
+        
+        grid.innerHTML = data.map(p => `
+            <div class="card">
+                <img src="${p.image_url||''}" alt="${p.name}" onerror="this.style.display='none'"/>
+                <div class="card-body">
+                    ${p.is_featured ? '<span class="badge">Featured</span>' : ''}
+                    <h3 class="card-title">${p.name}</h3>
+                    <div class="price">₦${Number(p.price).toLocaleString()}</div>
+                    <div class="location">📍 ${p.city || p.location || 'N/A'}</div>
+                    <div class="actions">
+                        <button class="btn-view" onclick="alert('${p.name}\\n\\nPrice: ₦${Number(p.price).toLocaleString()}\\n\\n${p.description||'No description'}')">View</button>
+                        <button class="btn-buy" onclick="order('${p.name}',${p.price})">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        
+    }catch(e){
+        console.error('Error:', e);
+        status.innerHTML = '<div class="error">Error: ' + e.message + '</div>';
+        grid.innerHTML = '';
+    }
+}
+
+function order(name, price){
+    const phone = prompt('Enter your phone number:');
+    if(phone && phone.length >= 10){
+        const msg = `Sannu! Ina son saya: ${name}\nPrice: ₦${price.toLocaleString()}\nPhone: ${phone}`;
+        window.open(`https://wa.me/2349063436048?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+}
+
+document.getElementById('searchInput').addEventListener('input', function(e){
+    const q = e.target.value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        const title = card.querySelector('.card-title').textContent.toLowerCase();
+        card.style.display = title.includes(q) ? 'block' : 'none';
+    });
+});
+
+loadProducts();
+</script>
+</body></html>
