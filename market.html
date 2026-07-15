@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SYLUTION Marketplace</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f5f5f5}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400}
+.header{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100}
+.nav{max-width:1400px;margin:0 auto;padding:1rem;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:0.75rem;font-weight:700;font-size:1.25rem;color:#006e1c;text-decoration:none}
+.logo img{width:40px;height:40px;border-radius:8px}
+.nav-links{display:flex;gap:1.5rem;align-items:center}
+.nav-links a{color:#333;text-decoration:none;font-weight:500}
+.nav-links a:hover{color:#006e1c}
+.btn{padding:0.5rem 1rem;border-radius:9999px;font-weight:600;cursor:pointer;border:none;transition:all 0.3s}
+.btn-primary{background:linear-gradient(90deg,#006e1c,#ba1a1a);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,110,28,0.3)}
+.container{max-width:1400px;margin:0 auto;padding:1.5rem}
+.search-bar{display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.search-bar input{flex:1;min-width:200px;padding:0.875rem;border:2px solid #e5e5e5;border-radius:0.5rem}
+.search-bar input:focus{outline:none;border-color:#006e1c}
+.filter-select{padding:0.875rem;border:2px solid #e5e5e5;border-radius:0.5rem;background:#fff}
+.tabs{display:flex;gap:0.5rem;margin-bottom:1.5rem;border-bottom:2px solid #e5e5e5}
+.tab{padding:0.75rem 1.5rem;cursor:pointer;border:none;background:none;font-weight:500;border-bottom:2px solid transparent;margin-bottom:-2px}
+.tab.active{color:#006e1c;border-bottom-color:#006e1c}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr)}}
+.card{background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:all 0.3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.12)}
+.card-img{width:100%;height:200px;object-fit:cover;background:#eee}
+.card-body{padding:1rem}
+.card-title{font-weight:600;margin-bottom:0.5rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-price{color:#006e1c;font-weight:700;font-size:1.125rem}
+.card-location{color:#666;font-size:0.75rem;margin:0.5rem 0}
+.card-actions{display:flex;gap:0.5rem;margin-top:0.75rem}
+.card-actions button{flex:1;padding:0.5rem;border-radius:0.5rem;font-weight:600;cursor:pointer;border:none}
+.btn-view{background:#f5f5f5;color:#333}
+.btn-buy{background:linear-gradient(90deg,#006e1c,#ba1a1a);color:#fff}
+.badge{display:inline-block;padding:0.25rem 0.75rem;border-radius:9999px;font-size:0.75rem;font-weight:600;margin-right:0.5rem}
+.badge-featured{background:#ffd700;color:#000}
+.badge-sale{background:#ff4444;color:#fff}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;align-items:center;justify-content:center;padding:1rem}
+.modal.active{display:flex}
+.modal-content{background:#fff;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;border-radius:1rem;padding:1.5rem;position:relative}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;margin-bottom:0.5rem;font-weight:500}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:0.75rem;border:2px solid #e5e5e5;border-radius:0.5rem}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:#006e1c}
+.loading{text-align:center;padding:3rem;color:#666}
+.error{background:#fee;color:#c00;padding:1rem;border-radius:0.5rem;margin:1rem 0}
+.footer{background:#000;color:#fff;padding:2rem 1rem;text-align:center;margin-top:3rem}
+.cart-icon{position:relative;cursor:pointer}
+.cart-count{position:absolute;top:-8px;right:-8px;background:#ba1a1a;color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="nav">
+<a class="logo" href="index.html">
+<img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION"/>
+SYLUTION Market
+</a>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="market.html" style="color:#006e1c;font-weight:700">Market</a>
+<a href="#" onclick="showMyProducts();return false">My Products</a>
+<a href="#" onclick="showOrders();return false">My Orders</a>
+<div class="cart-icon" onclick="showCart()">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="cart-count" id="cartCount">0</span>
+</div>
+<button class="btn btn-outline" id="authBtn" onclick="showAuth()" style="border:2px solid #006e1c;color:#006e1c;background:transparent">Login</button>
+</div>
+</div>
+</header>
+
+<main class="container">
+<div class="search-bar">
+<input id="searchInput" placeholder="Search products..." type="text"/>
+<select class="filter-select" id="categoryFilter">
+<option value="">All Categories</option>
+<option value="Agriculture">Agriculture</option>
+<option value="Drones">Drones</option>
+<option value="Irrigation">Irrigation</option>
+<option value="Sensors">Sensors</option>
+<option value="Greenhouse">Greenhouse</option>
+<option value="Solar Energy">Solar Energy</option>
+<option value="Tools">Tools</option>
+</select>
+<select class="filter-select" id="locationFilter">
+<option value="">All Locations</option>
+<option value="Kano">Kano</option>
+<option value="Lagos">Lagos</option>
+<option value="Abuja">Abuja</option>
+</select>
+<button class="btn btn-primary" onclick="showAddProduct()">+ Add Product</button>
+</div>
+
+<div class="tabs">
+<button class="tab active" onclick="switchTab('all',this)">All Products</button>
+<button class="tab" onclick="switchTab('featured',this)">Featured</button>
+<button class="tab" onclick="switchTab('sales',this)">On Sale</button>
+</div>
+
+<div class="grid" id="productGrid">
+<div class="loading">Loading products...</div>
+</div>
+</main>
+
+<footer class="footer">
+<p>© 2025 SYLUTION LTD. Smart Technology • Green Future 🌍</p>
+</footer>
+
+<!-- Modals for Auth, Add Product, Order -->
+<div class="modal" id="authModal">
+<div class="modal-content">
+<button class="modal-close" onclick="closeModal('authModal')">×</button>
+<h2 style="margin-bottom:1.5rem">Login / Register</h2>
+<div id="authError" class="error" style="display:none"></div>
+<form id="loginForm" onsubmit="handleLogin(event)">
+<div class="form-group">
+<label>Email</label>
+<input id="loginEmail" required="" type="email"/>
+</div>
+<div class="form-group">
+<label>Password</label>
+<input id="loginPassword" required="" type="password"/>
+</div>
+<button class="btn btn-primary" style="width:100%;padding:0.875rem" type="submit">Login</button>
+<p style="text-align:center;margin-top:1rem">New? <a href="#" onclick="toggleAuthMode()" style="color:#006e1c">Register</a></p>
+</form>
+<form id="registerForm" style="display:none" onsubmit="handleRegister(event)">
+<div class="form-group"><label>Full Name</label><input id="regName" required="" type="text"/></div>
+<div class="form-group"><label>Email</label><input id="regEmail" required="" type="email"/></div>
+<div class="form-group"><label>Phone</label><input id="regPhone" type="tel"/></div>
+<div class="form-group"><label>Password (min 6)</label><input id="regPassword" minlength="6" required="" type="password"/></div>
+<button class="btn btn-primary" style="width:100%;padding:0.875rem" type="submit">Create Account</button>
+<p style="text-align:center;margin-top:1rem">Have account? <a href="#" onclick="toggleAuthMode()" style="color:#006e1c">Login</a></p>
+</form>
+</div>
+</div>
+
+<div class="modal" id="productModal">
+<div class="modal-content">
+<button class="modal-close" onclick="closeModal('productModal')">×</button>
+<h2 style="margin-bottom:1.5rem">Add Product</h2>
+<form id="productForm" onsubmit="handleAddProduct(event)">
+<div class="form-group"><label>Name *</label><input id="prodName" required="" type="text"/></div>
+<div class="form-group"><label>Description</label><textarea id="prodDesc" rows="3"></textarea></div>
+<div class="form-group"><label>Price () *</label><input id="prodPrice" required="" type="number" min="0"/></div>
+<div class="form-group"><label>Category *</label><select id="prodCategory" required=""><option value="">Select</option><option value="Agriculture">Agriculture</option><option value="Drones">Drones</option><option value="Irrigation">Irrigation</option><option value="Sensors">Sensors</option><option value="Greenhouse">Greenhouse</option></select></div>
+<div class="form-group"><label>City *</label><input id="prodCity" required="" type="text"/></div>
+<div class="form-group"><label>State *</label><input id="prodState" required="" type="text"/></div>
+<div class="form-group"><label>Image URL</label><input id="prodImage" type="url"/></div>
+<button class="btn btn-primary" style="width:100%;padding:0.875rem" type="submit">Add Product</button>
+</form>
+</div>
+</div>
+
+<div class="modal" id="orderModal">
+<div class="modal-content">
+<button class="modal-close" onclick="closeModal('orderModal')">×</button>
+<h2 id="orderProductName" style="margin-bottom:0.5rem">Product</h2>
+<p id="orderProductPrice" style="color:#006e1c;font-weight:700;font-size:1.25rem;margin-bottom:1rem">₦0</p>
+<div class="form-group"><label>Quantity</label><input id="orderQuantity" min="1" type="number" value="1"/></div>
+<div class="form-group"><label>Phone *</label><input id="orderPhone" placeholder="+234 800 000 0000" type="tel"/></div>
+<div class="form-group"><label>Address</label><textarea id="orderAddress" rows="2"></textarea></div>
+<button class="btn btn-primary" onclick="confirmOrder()" style="width:100%;padding:0.875rem">Place Order</button>
+</div>
+</div>
+
+<script>
+const SUPABASE_URL='https://svmtbhlaiowbcfzgczsp.supabase.co';
+const SUPABASE_KEY='sb_publishable_1T9UuK1Pxz6ANKaUELwWrA_8Ky_wxWS';
+const supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
+let currentUser=null,allProducts=[],cart=[],currentProduct=null,currentTab='all';
+
+async function init(){await checkAuth();await loadProducts();updateCartCount();}
+
+async function checkAuth(){const{data:{session}}=await supabase.auth.getSession();if(session){currentUser=session.user;document.getElementById('authBtn').textContent='Logout';document.getElementById('authBtn').onclick=handleLogout;}}
+
+function showAuth(){if(currentUser){handleLogout();}else{document.getElementById('authModal').classList.add('active');}}
+
+function toggleAuthMode(){const lf=document.getElementById('loginForm'),rf=document.getElementById('registerForm');lf.style.display=lf.style.display==='none'?'block':'none';rf.style.display=rf.style.display==='none'?'block':'none';}
+
+async function handleLogin(e){e.preventDefault();const{data,error}=await supabase.auth.signInWithPassword({email:document.getElementById('loginEmail').value,password:document.getElementById('loginPassword').value});if(error){document.getElementById('authError').textContent='Invalid credentials';document.getElementById('authError').style.display='block';return;}currentUser=data.user;closeModal('authModal');document.getElementById('authBtn').textContent='Logout';document.getElementById('authBtn').onclick=handleLogout;location.reload();}
+
+async function handleRegister(e){e.preventDefault();const{name,phone,password}=document.getElementById('regName').value,document.getElementById('regPhone').value,document.getElementById('regPassword').value;const{data,error}=await supabase.auth.signUp({email:document.getElementById('regEmail').value,password,options:{data:{full_name:name,phone}}});if(error){alert(error.message);return;}await supabase.from('users').insert([{id:data.user.id,email:document.getElementById('regEmail').value,full_name:name,phone,role:'buyer'}]);await supabase.from('wallets').insert([{user_id:data.user.id,balance:0}]);alert('Account created! Check email.');toggleAuthMode();}
+
+async function handleLogout(){await supabase.auth.signOut();location.reload();}
+
+async function loadProducts(){const grid=document.getElementById('productGrid');let query=supabase.from('products').select('*').eq('is_available',true);if(currentTab==='featured')query=query.eq('is_featured',true);else if(currentTab==='sales')query=query.not('original_price','is',null);const{data,error}=await query.order('is_featured',{ascending:false}).order('created_at',{ascending:false});if(error){grid.innerHTML='<div class="error">Error: '+error.message+'</div>';return;}allProducts=data||[];renderProducts(allProducts);}
+
+function renderProducts(products){const grid=document.getElementById('productGrid');if(!products.length){grid.innerHTML='<div class="loading">No products</div>';return;}grid.innerHTML=products.map(p=>`<div class="card"><img class="card-img" src="${p.image_url||''}" onerror="this.style.display='none'"/><div class="card-body"><div>${p.is_featured?'<span class="badge badge-featured">Featured</span>':''}${p.original_price?'<span class="badge badge-sale">Sale</span>':''}</div><h3 class="card-title">${p.name}</h3><div class="card-price">₦${Number(p.price).toLocaleString()}</div><div class="card-location">${p.city||p.location}</div><div class="card-actions"><button class="btn-view" onclick="viewProduct('${p.id}')">View</button><button class="btn-buy" onclick="orderProduct('${p.id}')">Buy</button></div></div></div>`).join('');}
+
+function switchTab(tab,btn){currentTab=tab;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');loadProducts();}
+
+function showAddProduct(){if(!currentUser){showAuth();return;}document.getElementById('productModal').classList.add('active');}
+
+async function handleAddProduct(e){e.preventDefault();const product={seller_id:currentUser.id,name:document.getElementById('prodName').value,description:document.getElementById('prodDesc').value,price:parseFloat(document.getElementById('prodPrice').value),category:document.getElementById('prodCategory').value,city:document.getElementById('prodCity').value,state:document.getElementById('prodState').value,location:document.getElementById('prodCity').value+', '+document.getElementById('prodState').value,image_url:document.getElementById('prodImage').value||null,is_available:true};const{error}=await supabase.from('products').insert([product]);if(error){alert(error.message);return;}alert('Product added!');closeModal('productModal');loadProducts();}
+
+function orderProduct(id){currentProduct=allProducts.find(p=>p.id===id);if(!currentProduct)return;document.getElementById('orderProductName').textContent=currentProduct.name;document.getElementById('orderProductPrice').textContent='₦'+Number(currentProduct.price).toLocaleString();document.getElementById('orderModal').classList.add('active');}
+
+async function confirmOrder(){const phone=document.getElementById('orderPhone').value.trim();if(!phone||phone.length<10){alert('Enter valid phone');return;}if(!currentUser){alert('Please login');closeModal('orderModal');showAuth();return;}const total=currentProduct.price*parseInt(document.getElementById('orderQuantity').value)||1;const msg=`Order: ${currentProduct.name}\nPrice: ₦${total.toLocaleString()}\nPhone: ${phone}`;window.open(`https://wa.me/2349063436048?text=${encodeURIComponent(msg)}`,'_blank');closeModal('orderModal');alert('Order placed!');}
+
+function showMyProducts(){if(!currentUser){showAuth();return;}alert('My Products feature coming soon!');}
+function showOrders(){if(!currentUser){showAuth();return;}alert('Orders feature coming soon!');}
+function showCart(){alert('Cart feature coming soon!');}
+function updateCartCount(){document.getElementById('cartCount').textContent=cart.length;}
+function closeModal(id){document.getElementById(id).classList.remove('active');}
+function viewProduct(id){const p=allProducts.find(x=>x.id===id);if(p)alert(`${p.name}\n${p.price.toLocaleString()}\n\n${p.description||'No description'}`);}
+
+document.getElementById('searchInput').addEventListener('input',e=>{const q=e.target.value.toLowerCase();renderProducts(allProducts.filter(p=>p.name.toLowerCase().includes(q)));});
+document.getElementById('categoryFilter').addEventListener('change',e=>{const c=e.target.value;renderProducts(c?allProducts.filter(p=>p.category===c):allProducts);});
+document.getElementById('locationFilter').addEventListener('change',e=>{const l=e.target.value;renderProducts(l?allProducts.filter(p=>p.city===l):allProducts);});
+window.onclick=e=>{if(e.target.classList.contains('modal'))e.target.classList.remove('active');}
+
+init();
+</script>
+</body></html>
