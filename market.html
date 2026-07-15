@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SYLUTION Market</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+body{background:#f5f5f5;padding:1rem}
+.header{background:#fff;padding:1rem;margin-bottom:1rem;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
+.logo{font-size:1.5rem;font-weight:700;color:#006e1c}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
+.card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.card img{width:100%;height:150px;object-fit:cover;background:#eee}
+.card-body{padding:1rem}
+.title{font-weight:600;margin-bottom:0.5rem}
+.price{color:#006e1c;font-weight:700;font-size:1.125rem;margin:0.5rem 0}
+.btn{width:100%;padding:0.75rem;border:none;border-radius:6px;font-weight:600;cursor:pointer;margin-top:0.5rem}
+.btn-buy{background:linear-gradient(90deg,#006e1c,#ba1a1a);color:#fff}
+.loading{text-align:center;padding:3rem;color:#666}
+.error{background:#fee;color:#c00;padding:1rem;border-radius:8px;margin:1rem 0}
+.success{background:#d4edda;color:#155724;padding:1rem;border-radius:8px;margin:1rem 0}
+</style>
+</head>
+<body>
+
+<div class="header">
+<div class="logo">SYLUTION Market</div>
+</div>
+
+<div id="status"><div class="loading">Loading products...</div></div>
+<div class="grid" id="grid"></div>
+
+<script>
+const SUPABASE_URL = 'https://svmtbhlaiowbcfzgczsp.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_1T9UuK1Pxz6ANKaUELwWrA_8Ky_wxWS';
+
+async function load(){
+    const status = document.getElementById('status');
+    const grid = document.getElementById('grid');
+    
+    try{
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        console.log('✓ Supabase client created');
+        
+        const {data, error} = await supabase
+            .from('products')
+            .select('*')
+            .eq('is_available', true)
+            .limit(10);
+        
+        if(error){
+            console.error('✗ Database error:', error);
+            throw error;
+        }
+        
+        console.log('✓ Products loaded:', data);
+        
+        if(!data || data.length === 0){
+            status.innerHTML = '<div class="error">⚠️ No products found in database</div>';
+            return;
+        }
+        
+        status.innerHTML = '<div class="success">✅ Loaded ' + data.length + ' products!</div>';
+        
+        grid.innerHTML = data.map(p => `
+            <div class="card">
+                <img src="${p.image_url||''}" onerror="this.style.display='none'"/>
+                <div class="card-body">
+                    <div class="title">${p.name}</div>
+                    <div class="price">₦${Number(p.price).toLocaleString()}</div>
+                    <div style="color:#666;font-size:0.875rem">${p.city||p.location||'N/A'}</div>
+                    <button class="btn btn-buy" onclick="order('${p.name.replace(/'/g,"\\'")}',${p.price})">Buy Now</button>
+                </div>
+            </div>
+        `).join('');
+        
+    }catch(e){
+        console.error(' Error:', e);
+        status.innerHTML = '<div class="error">❌ Error: ' + e.message + '<br><br>Check console (F12) for details</div>';
+        grid.innerHTML = '';
+    }
+}
+
+function order(name, price){
+    const phone = prompt('Enter your phone number:');
+    if(phone && phone.length >= 10){
+        const msg = `Sannu! Ina son saya: ${name}\nPrice: ₦${price.toLocaleString()}\nPhone: ${phone}`;
+        window.open(`https://wa.me/2349063436048?text=${encodeURIComponent(msg)}`,'_blank');
+    }
+}
+
+// Load when page is ready
+if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', load);
+}else{
+    load();
+}
+</script>
+</body></html>
