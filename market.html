@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>SYLUTION Marketplace</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Inter',sans-serif;background:#f5f5f5;color:#333;padding-bottom:80px}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400}
+.header{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100}
+.nav{max-width:1400px;margin:0 auto;padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.logo{display:flex;align-items:center;gap:0.5rem;font-weight:700;font-size:1.25rem;color:#006e1c;text-decoration:none}
+.logo img{width:36px;height:36px;border-radius:8px}
+.nav-links{display:flex;gap:1rem;align-items:center}
+.nav-links a{color:#333;text-decoration:none;font-weight:500;font-size:0.9rem}
+.btn{padding:0.5rem 1rem;border-radius:9999px;font-weight:600;cursor:pointer;border:none;transition:all 0.3s;font-size:0.875rem}
+.btn-primary{background:linear-gradient(90deg,#006e1c,#ba1a1a);color:#fff}
+.container{max-width:1400px;margin:0 auto;padding:1rem}
+.search-bar{display:flex;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap;align-items:center}
+.search-bar input{flex:1;min-width:150px;padding:0.75rem 1rem;border:2px solid #e5e5e5;border-radius:0.5rem;font-size:0.95rem}
+.filter-select{padding:0.75rem;border:2px solid #e5e5e5;border-radius:0.5rem;background:#fff;font-size:0.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
+@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr);gap:0.75rem}.nav-links{display:none}}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:all 0.3s}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.12)}
+.card-img{width:100%;height:180px;object-fit:cover;background:#eee}
+.card-body{padding:0.75rem}
+.card-title{font-weight:600;margin-bottom:0.5rem;font-size:0.9rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-price{color:#006e1c;font-weight:700;font-size:1.1rem;margin-bottom:0.25rem}
+.card-location{color:#666;font-size:0.75rem;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.25rem}
+.card-actions{display:flex;gap:0.5rem}
+.card-actions button{flex:1;padding:0.5rem;border-radius:0.5rem;font-weight:600;cursor:pointer;border:none;font-size:0.8rem}
+.btn-view{background:#f5f5f5;color:#333}
+.btn-buy{background:linear-gradient(90deg,#006e1c,#ba1a1a);color:#fff}
+.badge{display:inline-block;padding:0.2rem 0.5rem;border-radius:9999px;font-size:0.7rem;font-weight:600;margin-right:0.25rem}
+.badge-featured{background:#ffd700;color:#000}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;align-items:center;justify-content:center;padding:1rem}
+.modal.active{display:flex}
+.modal-content{background:#fff;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;border-radius:1rem;padding:1.5rem;position:relative}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#666}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;margin-bottom:0.5rem;font-weight:500;font-size:0.9rem}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:0.75rem;border:2px solid #e5e5e5;border-radius:0.5rem;font-size:0.95rem}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:#006e1c}
+.loading{text-align:center;padding:3rem;color:#666}
+.footer{background:#000;color:#fff;padding:1.5rem 1rem;text-align:center;margin-top:2rem}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e5e5e5;display:flex;justify-content:space-around;padding:0.5rem;z-index:100}
+.bottom-nav a{display:flex;flex-direction:column;align-items:center;gap:0.25rem;color:#666;text-decoration:none;font-size:0.75rem}
+.bottom-nav a.active{color:#006e1c}
+.success{background:#d4edda;color:#155724;padding:1rem;border-radius:8px;margin:1rem 0}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="nav">
+<a class="logo" href="index.html">
+<img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION"/>
+SYLUTION Market
+</a>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="market.html" style="color:#006e1c;font-weight:700">Market</a>
+<a href="login.html">Login</a>
+</div>
+</div>
+</header>
+
+<main class="container">
+<h1 style="margin-bottom:1rem">Marketplace</h1>
+
+<div class="search-bar">
+<input id="searchInput" placeholder="Search products..." type="text"/>
+<select class="filter-select" id="categoryFilter">
+<option value="">All Categories</option>
+<option value="Agriculture">Agriculture</option>
+<option value="Drones">Drones</option>
+<option value="Irrigation">Irrigation</option>
+<option value="Sensors">Sensors</option>
+<option value="Greenhouse">Greenhouse</option>
+<option value="Solar Energy">Solar Energy</option>
+</select>
+<select class="filter-select" id="locationFilter">
+<option value="">All Locations</option>
+<option value="Kano">Kano</option>
+<option value="Lagos">Lagos</option>
+<option value="Abuja">Abuja</option>
+</select>
+</div>
+
+<div id="status"></div>
+
+<div class="grid" id="productGrid">
+<div class="loading">Loading products...</div>
+</div>
+</main>
+
+<footer class="footer">
+<p>© 2025 SYLUTION LTD. Smart Technology • Green Future 🌍</p>
+</footer>
+
+<nav class="bottom-nav">
+<a href="market.html" class="active"><span class="material-symbols-outlined">storefront</span>Market</a>
+<a href="orders.html"><span class="material-symbols-outlined">receipt_long</span>My Orders</a>
+<a href="login.html"><span class="material-symbols-outlined">person</span>Login</a>
+</nav>
+
+<!-- Order Modal -->
+<div class="modal" id="orderModal">
+<div class="modal-content">
+<button class="modal-close" onclick="closeModal()">×</button>
+<h2 style="margin-bottom:0.5rem" id="orderProductName">Product</h2>
+<p id="orderProductPrice" style="color:#006e1c;font-weight:700;font-size:1.25rem;margin-bottom:1rem">₦0</p>
+
+<form id="orderForm" onsubmit="placeOrder(event)">
+<div class="form-group">
+<label>Full Name *</label>
+<input id="customerName" required="" type="text" placeholder="Your full name"/>
+</div>
+
+<div class="form-group">
+<label>Phone Number *</label>
+<input id="customerPhone" required="" type="tel" placeholder="+234 800 000 0000"/>
+</div>
+
+<div class="form-group">
+<label>Email Address</label>
+<input id="customerEmail" type="email" placeholder="your@email.com"/>
+</div>
+
+<div class="form-group">
+<label>Complete Delivery Address *</label>
+<textarea id="deliveryAddress" required="" rows="3" placeholder="House number, street name, area, city, state"></textarea>
+</div>
+
+<div class="form-group">
+<label>Quantity</label>
+<input id="orderQty" min="1" type="number" value="1" onchange="updateTotal()"/>
+</div>
+
+<div class="form-group">
+<label>Payment Method *</label>
+<select id="paymentMethod" required="">
+<option value="">Select payment method...</option>
+<option value="bank">Bank Transfer</option>
+<option value="pos">Pay on Delivery (POS)</option>
+<option value="cash">Cash on Delivery</option>
+</select>
+</div>
+
+<div id="bankDetails" style="display:none;background:#f5f5f5;padding:1rem;border-radius:8px;margin-bottom:1rem">
+<strong>Bank Details:</strong><br>
+Bank: Access Bank<br>
+Account: 1234567890<br>
+Account Name: SYLUTION LTD<br>
+<small>Send proof of payment to WhatsApp after ordering</small>
+</div>
+
+<div id="orderTotal" style="font-weight:700;font-size:1.1rem;margin:1rem 0">Total: ₦0</div>
+
+<button class="btn btn-primary" style="width:100%;padding:0.875rem" type="submit">
+    Place Order - Pay ₦<span id="payAmount">0</span>
+</button>
+
+<p style="text-align:center;margin-top:1rem;font-size:0.85rem;color:#666">
+    After placing order, admin will contact you for payment confirmation
+</p>
+</form>
+</div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://svmtbhlaiowbcfzgczsp.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_1T9UuK1Pxz6ANKaUELwWrA_8Ky_wxWS';
+const ADMIN_PHONE = '2349063436048';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let allProducts = [];
+let currentProduct = null;
+
+async function loadProducts(){
+    const grid = document.getElementById('productGrid');
+    const status = document.getElementById('status');
+    
+    try{
+        const {data, error} = await supabase
+            .from('products')
+            .select('*')
+            .eq('is_available', true)
+            .order('is_featured', {ascending: false})
+            .limit(20);
+        
+        if(error) throw error;
+        
+        if(!data || data.length === 0){
+            status.innerHTML = '<div style="background:#fff3cd;color:#856404;padding:1rem;border-radius:8px;margin:1rem 0">⚠️ No products found</div>';
+            grid.innerHTML = '';
+            return;
+        }
+        
+        allProducts = data;
+        status.innerHTML = '<div class="success">✅ Loaded ' + data.length + ' products!</div>';
+        
+        grid.innerHTML = data.map(p => {
+            const discount = p.original_price ? Math.round((1 - p.price/p.original_price)*100) : 0;
+            return `
+            <div class="card">
+                <img class="card-img" src="${p.image_url||''}" onerror="this.style.display='none'"/>
+                <div class="card-body">
+                    ${p.is_featured?'<span class="badge badge-featured">Featured</span>':''}
+                    ${discount>0?`<span class="badge" style="background:#ff4444;color:#fff">-${discount}%</span>`:''}
+                    <h3 class="card-title">${p.name}</h3>
+                    <div class="card-price">₦${Number(p.price).toLocaleString()}</div>
+                    ${p.original_price?`<div style="color:#999;text-decoration:line-through;font-size:0.8rem">₦${Number(p.original_price).toLocaleString()}</div>`:''}
+                    <div class="card-location"> ${p.city||p.location||'N/A'}</div>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="viewProduct('${p.id}')">View</button>
+                        <button class="btn-buy" onclick="openOrder('${p.id}')">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        `}).join('');
+        
+    }catch(e){
+        console.error('Error:', e);
+        status.innerHTML = '<div style="background:#fee;color:#c00;padding:1rem;border-radius:8px;margin:1rem 0">Error loading products</div>';
+        grid.innerHTML = '';
+    }
+}
+
+function viewProduct(id){
+    const p = allProducts.find(x => x.id === id);
+    if(p) alert(`${p.name}\n\nPrice: ₦${Number(p.price).toLocaleString()}\n\n${p.description||'No description'}`);
+}
+
+function openOrder(productId){
+    currentProduct = allProducts.find(p => p.id === productId);
+    if(!currentProduct) return;
+    
+    document.getElementById('orderProductName').textContent = currentProduct.name;
+    document.getElementById('orderProductPrice').textContent = '₦' + Number(currentProduct.price).toLocaleString();
+    document.getElementById('orderQty').value = 1;
+    updateTotal();
+    document.getElementById('orderModal').classList.add('active');
+}
+
+function updateTotal(){
+    const qty = parseInt(document.getElementById('orderQty').value) || 1;
+    const total = currentProduct.price * qty;
+    document.getElementById('orderTotal').textContent = 'Total: ₦' + total.toLocaleString();
+    document.getElementById('payAmount').textContent = total.toLocaleString();
+}
+
+document.getElementById('paymentMethod').addEventListener('change', function(){
+    document.getElementById('bankDetails').style.display = this.value === 'bank' ? 'block' : 'none';
+});
+
+async function placeOrder(e){
+    e.preventDefault();
+    
+    const name = document.getElementById('customerName').value.trim();
+    const phone = document.getElementById('customerPhone').value.trim();
+    const email = document.getElementById('customerEmail').value.trim();
+    const address = document.getElementById('deliveryAddress').value.trim();
+    const qty = parseInt(document.getElementById('orderQty').value) || 1;
+    const payment = document.getElementById('paymentMethod').value;
+    
+    if(!name || !phone || !address || !payment){
+        alert('Please fill all required fields');
+        return;
+    }
+    
+    const total = currentProduct.price * qty;
+    const orderNumber = 'SY-' + Date.now().toString().slice(-8);
+    
+    try{
+        // Save order to database
+        const {data, error} = await supabase.from('orders').insert([{
+            order_number: orderNumber,
+            buyer_name: name,
+            buyer_phone: phone,
+            buyer_email: email || null,
+            product_id: currentProduct.id,
+            product_name: currentProduct.name,
+            quantity: qty,
+            total_price: total,
+            payment_method: payment,
+            payment_status: 'pending',
+            delivery_address: address,
+            status: 'pending',
+            notes: currentProduct.name + ' x' + qty
+        }]).select();
+        
+        if(error) throw error;
+        
+        // Send WhatsApp to admin
+        const adminMsg = ` NEW ORDER!\n\nOrder #: ${orderNumber}\nProduct: ${currentProduct.name}\nQuantity: ${qty}\nTotal: ₦${total.toLocaleString()}\n\nCustomer: ${name}\nPhone: ${phone}\n${email?'Email: '+email+'\n':''}Address: ${address}\nPayment: ${payment}\n\nStatus: PENDING PAYMENT`;
+        
+        // Send WhatsApp to customer
+        const customerMsg = `Thank you for your order!\n\nOrder #: ${orderNumber}\nProduct: ${currentProduct.name}\nQuantity: ${qty}\nTotal: ₦${total.toLocaleString()}\n\nPayment Method: ${payment}\n${payment==='bank'?'Please send payment proof to this number.\n':''}\nWe will contact you shortly to confirm delivery.`;
+        
+        // Open WhatsApp for admin notification
+        window.open(`https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent(adminMsg)}`,'_blank');
+        
+        // Show success
+        alert('✅ Order placed successfully!\n\nOrder #: ' + orderNumber + '\n\nPlease complete payment. Admin will contact you shortly.');
+        
+        // Open WhatsApp for customer confirmation
+        setTimeout(() => {
+            window.open(`https://wa.me/${phone.replace(/\D/g,'')}?text=${encodeURIComponent(customerMsg)}`,'_blank');
+        }, 1000);
+        
+        closeModal();
+        document.getElementById('orderForm').reset();
+        
+    }catch(err){
+        console.error('Order error:', err);
+        alert('Error placing order: ' + err.message);
+    }
+}
+
+function closeModal(){
+    document.getElementById('orderModal').classList.remove('active');
+}
+
+// Search and filter
+document.getElementById('searchInput').addEventListener('input', function(e){
+    const q = e.target.value.toLowerCase();
+    const filtered = allProducts.filter(p => p.name.toLowerCase().includes(q) || (p.description && p.description.toLowerCase().includes(q)));
+    const grid = document.getElementById('productGrid');
+    grid.innerHTML = filtered.map(p => `
+        <div class="card">
+            <img class="card-img" src="${p.image_url||''}" onerror="this.style.display='none'"/>
+            <div class="card-body">
+                <h3 class="card-title">${p.name}</h3>
+                <div class="card-price">₦${Number(p.price).toLocaleString()}</div>
+                <div class="card-location">📍 ${p.city||p.location||'N/A'}</div>
+                <div class="card-actions">
+                    <button class="btn-view" onclick="viewProduct('${p.id}')">View</button>
+                    <button class="btn-buy" onclick="openOrder('${p.id}')">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+});
+
+loadProducts();
+</script>
+</body></html>
