@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Admin Dashboard - SYLUTION</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f5f5f5;color:#333}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400}
+.header{background:#000;color:#fff;padding:1rem}
+.container{max-width:1400px;margin:0 auto;padding:1rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
+.stat{background:#fff;padding:1.5rem;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.stat-value{font-size:2rem;font-weight:700;color:#006e1c}
+.stat-label{color:#666;font-size:0.9rem}
+.order-card{background:#fff;border-radius:12px;padding:1.25rem;margin-bottom:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.order-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:0.5rem}
+.order-number{font-weight:700;color:#006e1c;font-size:1.125rem}
+.status-select{padding:0.5rem;border-radius:9999px;border:2px solid #e5e5e5;font-size:0.875rem;cursor:pointer}
+.order-details{font-size:0.9rem;color:#666;margin-bottom:0.75rem}
+.order-actions{display:flex;gap:0.5rem;margin-top:0.75rem;flex-wrap:wrap}
+.btn{padding:0.625rem 1.25rem;border-radius:6px;font-weight:600;cursor:pointer;border:none;font-size:0.875rem}
+.btn-success{background:#28a745;color:#fff}
+.btn-danger{background:#dc3545;color:#fff}
+.btn-info{background:#17a2b8;color:#fff}
+.loading{text-align:center;padding:3rem}
+.footer{background:#000;color:#fff;padding:1.5rem 1rem;text-align:center;margin-top:2rem}
+</style>
+</head>
+<body>
+
+<header class="header">
+<h1>🛍️ SYLUTION Admin Dashboard</h1>
+</header>
+
+<main class="container">
+<div class="stats">
+<div class="stat">
+<div class="stat-value" id="totalOrders">0</div>
+<div class="stat-label">Total Orders</div>
+</div>
+<div class="stat">
+<div class="stat-value" id="pendingOrders">0</div>
+<div class="stat-label">Pending Payment</div>
+</div>
+<div class="stat">
+<div class="stat-value" id="totalRevenue">₦0</div>
+<div class="stat-label">Total Revenue</div>
+</div>
+</div>
+
+<h2 style="margin-bottom:1rem">All Orders</h2>
+<div id="ordersList">
+<div class="loading">Loading orders...</div>
+</div>
+</main>
+
+<footer class="footer">
+<p>© 2025 SYLUTION LTD. Smart Technology • Green Future 🌍</p>
+</footer>
+
+<script>
+const SUPABASE_URL = 'https://svmtbhlaiowbcfzgczsp.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_1T9UuK1Pxz6ANKaUELwWrA_8Ky_wxWS';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+async function loadOrders(){
+    try{
+        const {data, error} = await supabase
+            .from('orders')
+            .select('*')
+            .order('created_at', {ascending: false});
+        
+        if(error) throw error;
+        
+        updateStats(data);
+        renderOrders(data);
+        
+    }catch(e){
+        console.error('Error:', e);
+        document.getElementById('ordersList').innerHTML = '<div style="background:#fee;color:#c00;padding:1rem;border-radius:8px">Error loading orders</div>';
+    }
+}
+
+function updateStats(orders){
+    document.getElementById('totalOrders').textContent = orders.length;
+    document.getElementById('pendingOrders').textContent = orders.filter(o => o.status === 'pending').length;
+    const total = orders.reduce((sum, o) => sum + (o.payment_status === 'paid' ? o.total_price : 0), 0);
+    document.getElementById('totalRevenue').textContent = '₦' + total.toLocaleString();
+}
+
+function renderOrders(orders){
+    const ordersDiv = document.getElementById('ordersList');
+    
+    if(orders.length === 0){
+        ordersDiv.innerHTML = '<div style="text-align:center;padding:3rem;color:#666">No orders yet</div>';
+        return;
+    }
+    
+    ordersDiv.innerHTML = orders.map(o => `
+        <div class="order-card">
+            <div class="order-header">
+                <span class="order-number">Order #${o.order_number}</span>
+                <select class="status-select" onchange="updateStatus('${o.id}', this.value)" data-current="${o.status}">
+                    <option value="pending" ${o.status==='pending'?'selected':''}>Pending Payment</option>
+                    <option value="confirmed" ${o.status==='confirmed'?'selected':''}>Payment Confirmed</option>
+                    <option value="processing" ${o.status==='processing'?'selected':''}>Processing</option>
+                    <option value="shipped" ${o.status==='shipped'?'selected':''}>Shipped</option>
+                    <option value="delivered" ${o.status==='delivered'?'selected':''}>Delivered</option>
+                    <option value="cancelled" ${o.status==='cancelled'?'selected':''}>Cancelled</option>
+                </select>
+            </div>
+            <div class="order-details">
+                <strong>Customer:</strong> ${o.buyer_name} | ${o.buyer_phone}<br>
+                ${o.buyer_email?`<strong>Email:</strong> ${o.buyer_email}<br>`:''}
+                <strong>Product:</strong> ${o.product_name} (x${o.quantity})<br>
+                <strong>Payment:</strong> ${o.payment_method} | <strong>Status:</strong> ${o.payment_status}<br>
+                <strong>Delivery Address:</strong> ${o.delivery_address}<br>
+                <strong>Date:</strong> ${new Date(o.created_at).toLocaleString()}
+            </div>
+            <div style="font-weight:700;color:#006e1c;margin:0.5rem 0">Total: ₦${Number(o.total_price).toLocaleString()}</div>
+            <div class="order-actions">
+                <button class="btn btn-info" onclick="contactCustomer('${o.buyer_phone}','${o.order_number}')"> Contact Customer</button>
+                <button class="btn btn-success" onclick="markPaid('${o.id}')">✓ Mark Paid</button>
+                ${o.status !== 'cancelled' ? `<button class="btn btn-danger" onclick="cancelOrder('${o.id}')">✕ Cancel</button>` : ''}
+            </div>
+        </div>
+    `).join('');
+}
+
+async function updateStatus(orderId, newStatus){
+    try{
+        await supabase.from('orders').update({status: newStatus}).eq('id', orderId);
+        
+        const {data} = await supabase.from('orders').select('buyer_phone,order_number').eq('id', orderId).single();
+        if(data && data.buyer_phone){
+            const msg = `Your order #${data.order_number} status has been updated to: ${newStatus.toUpperCase()}`;
+            window.open(`https://wa.me/${data.buyer_phone.replace(/\D/g,'')}?text=${encodeURIComponent(msg)}`,'_blank');
+        }
+        
+        alert('Order status updated to: ' + newStatus);
+        loadOrders();
+    }catch(e){
+        alert('Error updating status: ' + e.message);
+    }
+}
+
+async function markPaid(orderId){
+    try{
+        await supabase.from('orders').update({payment_status: 'paid', status: 'confirmed'}).eq('id', orderId);
+        alert('Payment confirmed!');
+        loadOrders();
+    }catch(e){
+        alert('Error: ' + e.message);
+    }
+}
+
+async function cancelOrder(orderId){
+    if(!confirm('Are you sure you want to cancel this order?')) return;
+    
+    try{
+        await supabase.from('orders').update({status: 'cancelled'}).eq('id', orderId);
+        alert('Order cancelled');
+        loadOrders();
+    }catch(e){
+        alert('Error: ' + e.message);
+    }
+}
+
+function contactCustomer(phone, orderNum){
+    const msg = `Hello! This is SYLUTION regarding your order #${orderNum}`;
+    window.open(`https://wa.me/${phone.replace(/\D/g,'')}?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+loadOrders();
+
+// Auto-refresh every 30 seconds
+setInterval(loadOrders, 30000);
+</script>
+</body>
+</html>
