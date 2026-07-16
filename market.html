@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ha">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>SYLUTION Market - Saye da Sauƙi</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Inter',sans-serif;background:#f4f6f8;color:#222;padding-bottom:70px}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400}
+
+/* Header */
+.header{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.05);position:sticky;top:0;z-index:100}
+.nav{max-width:1200px;margin:0 auto;padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:0.5rem;font-weight:700;font-size:1.25rem;color:#006e1c;text-decoration:none}
+.logo img{width:40px;height:40px;border-radius:8px;object-fit:cover}
+
+/* Container */
+.container{max-width:1200px;margin:0 auto;padding:1rem}
+.page-title{font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:#111}
+
+/* Search & Filter */
+.search-bar{display:flex;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap}
+.search-bar input,.filter-select{flex:1;min-width:140px;padding:0.75rem 1rem;border:2px solid #e5e7eb;border-radius:10px;font-size:0.95rem;background:#fff}
+.search-bar input:focus,.filter-select:focus{outline:none;border-color:#006e1c}
+
+/* Tabs */
+.tabs{display:flex;gap:0.5rem;margin-bottom:1.5rem;border-bottom:2px solid #e5e7eb;overflow-x:auto}
+.tab{padding:0.75rem 1rem;cursor:pointer;border:none;background:none;font-weight:600;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;color:#666}
+.tab.active{color:#006e1c;border-bottom-color:#006e1c}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr);gap:0.75rem}}
+
+/* Card */
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);transition:all 0.3s}
+.card:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,0.1)}
+.card-img{width:100%;height:180px;object-fit:cover;background:#f0f0f0}
+.card-body{padding:0.875rem}
+.card-title{font-weight:600;margin-bottom:0.375rem;font-size:0.95rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-price{color:#006e1c;font-weight:700;font-size:1.125rem;margin-bottom:0.25rem}
+.card-original{color:#999;text-decoration:line-through;font-size:0.8rem;margin-bottom:0.5rem}
+.card-location{color:#666;font-size:0.8rem;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.25rem}
+.btn-buy{width:100%;padding:0.625rem;border-radius:8px;font-weight:600;cursor:pointer;border:none;font-size:0.9rem;background:linear-gradient(90deg,#006e1c,#ba1a1a);color:#fff;transition:all 0.3s}
+.btn-buy:active{transform:scale(0.97)}
+.badge{display:inline-block;padding:0.2rem 0.5rem;border-radius:9999px;font-size:0.7rem;font-weight:600;margin-right:0.25rem}
+.badge-featured{background:#ffd700;color:#000}
+.badge-sale{background:#ff4444;color:#fff}
+
+/* Modal */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;align-items:flex-end;justify-content:center;padding:0}
+.modal.active{display:flex}
+.modal-content{background:#fff;width:100%;max-width:500px;max-height:95vh;overflow-y:auto;border-radius:20px 20px 0 0;padding:1.5rem;position:relative;animation:slideUp 0.3s ease-out}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-close{position:absolute;top:1rem;right:1rem;background:#f0f0f0;border:none;width:32px;height:32px;border-radius:50%;font-size:1.25rem;cursor:pointer;color:#666;display:flex;align-items:center;justify-content:center}
+.modal-header{margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid #eee}
+.modal-product-name{font-weight:700;font-size:1.25rem;margin-bottom:0.25rem}
+.modal-product-price{color:#006e1c;font-weight:700;font-size:1.5rem}
+
+/* Form */
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;margin-bottom:0.375rem;font-weight:500;font-size:0.875rem;color:#444}
+.form-group input,.form-group textarea{width:100%;padding:0.75rem;border:2px solid #e5e7eb;border-radius:8px;font-size:0.95rem;font-family:inherit}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:#006e1c}
+.form-group textarea{resize:vertical;min-height:80px}
+
+/* Total & Button */
+.order-total{background:#f8f9fa;padding:1rem;border-radius:10px;margin:1.25rem 0;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:1.125rem}
+.order-total span:last-child{color:#006e1c;font-size:1.25rem}
+.btn-whatsapp{width:100%;padding:1rem;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;border:none;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:all 0.3s}
+.btn-whatsapp:active{transform:scale(0.98)}
+
+/* Status */
+.loading{text-align:center;padding:3rem;color:#666;grid-column:1/-1}
+.error{background:#fee;color:#c00;padding:1rem;border-radius:8px;margin:1rem 0;grid-column:1/-1}
+.success{background:#d4edda;color:#155724;padding:1rem;border-radius:8px;margin:1rem 0;grid-column:1/-1}
+
+/* Footer */
+.footer{background:#111;color:#fff;padding:1.5rem 1rem;text-align:center;margin-top:2rem;font-size:0.875rem}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="nav">
+<a class="logo" href="index.html">
+<img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION"/>
+SYLUTION Market
+</a>
+</div>
+</header>
+
+<main class="container">
+<h1 class="page-title">Neman Kaya</h1>
+
+<div class="search-bar">
+<input id="searchInput" placeholder="🔍 Nemi kaya..." type="text"/>
+<select class="filter-select" id="categoryFilter">
+<option value="">Dukkan Categories</option>
+<option value="Agriculture"> Agriculture</option>
+<option value="Drones">🚁 Drones</option>
+<option value="Irrigation">💧 Irrigation</option>
+<option value="Sensors">📡 Sensors</option>
+<option value="Greenhouse">🏡 Greenhouse</option>
+<option value="Solar Energy">☀️ Solar Energy</option>
+<option value="Tools">🛠️ Tools</option>
+</select>
+<select class="filter-select" id="locationFilter">
+<option value="">Dukkan Wurare</option>
+<option value="Kano">Kano</option>
+<option value="Lagos">Lagos</option>
+<option value="Abuja">Abuja</option>
+<option value="Kaduna">Kaduna</option>
+</select>
+</div>
+
+<div class="tabs">
+<button class="tab active" onclick="switchTab('all',this)">Duka</button>
+<button class="tab" onclick="switchTab('featured',this)">Featured</button>
+<button class="tab" onclick="switchTab('sales',this)">Ragewa</button>
+</div>
+
+<div id="status"></div>
+<div class="grid" id="productGrid">
+<div class="loading">Ana loda kaya...</div>
+</div>
+</main>
+
+<footer class="footer">
+<p>© 2025 SYLUTION LTD. Smart Technology • Green Future 🌍</p>
+</footer>
+
+<!-- Order Modal -->
+<div class="modal" id="orderModal">
+<div class="modal-content">
+<button class="modal-close" onclick="closeModal()">✕</button>
+
+<div class="modal-header">
+<div class="modal-product-name" id="modalProductName">Product Name</div>
+<div class="modal-product-price" id="modalProductPrice">0</div>
+</div>
+
+<form id="orderForm" onsubmit="placeOrder(event)">
+<div class="form-group">
+<label>Sunan Ka/Ki *</label>
+<input id="customerName" required="" type="text" placeholder="Misali: Musa Ibrahim"/>
+</div>
+
+<div class="form-group">
+<label>Lambar Waya *</label>
+<input id="customerPhone" required="" type="tel" placeholder="Misali: 08031234567"/>
+</div>
+
+<div class="form-group">
+<label>Adireshin Aikawa (City/State/Street) *</label>
+<textarea id="deliveryAddress" required="" placeholder="Misali: No 5 Kano Road, Sabon Gari, Kano State"></textarea>
+</div>
+
+<div class="form-group">
+<label>Yawan Abin Da Kake So (Quantity) *</label>
+<input id="orderQty" min="1" required="" type="number" value="1" onchange="updateTotal()"/>
+</div>
+
+<div class="order-total">
+<span>Jimlar Kudi:</span>
+<span id="orderTotal">₦0</span>
+</div>
+
+<button class="btn-whatsapp" type="submit">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+Aika Order ta WhatsApp
+</button>
+</form>
+</div>
+</div>
+
+<script>
+// ============================================
+// SUPABASE CONFIG (Don loda kaya kawai)
+// ============================================
+const SUPABASE_URL = 'https://svmtbhlaiowbcfzgczsp.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_1T9UuK1Pxz6ANKaUELwWrA_8Ky_wxWS';
+const ADMIN_PHONE = '2349063436048'; // Lambar WhatsApp na Admin
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let allProducts = [];
+let currentProduct = null;
+let currentTab = 'all';
+
+// ============================================
+// LODA KAYA DAGA DATABASE
+// ============================================
+async function loadProducts(){
+    const grid = document.getElementById('productGrid');
+    const status = document.getElementById('status');
+    
+    try{
+        let query = supabase.from('products').select('*').eq('is_available', true);
+        
+        if(currentTab === 'featured') query = query.eq('is_featured', true);
+        else if(currentTab === 'sales') query = query.not('original_price', 'is', null);
+        
+        const {data, error} = await query.order('is_featured', {ascending: false}).order('created_at', {ascending: false}).limit(50);
+        
+        if(error) throw error;
+        
+        if(!data || data.length === 0){
+            status.innerHTML = '<div class="error">️ Babu kaya a yanzu</div>';
+            grid.innerHTML = '';
+            return;
+        }
+        
+        allProducts = data;
+        status.innerHTML = '<div class="success">✅ An loda kaya ' + data.length + '!</div>';
+        renderProducts(allProducts);
+        
+    }catch(e){
+        console.error('Error:', e);
+        status.innerHTML = '<div class="error">Akwai matsala wajen loda kaya</div>';
+        grid.innerHTML = '';
+    }
+}
+
+function renderProducts(products){
+    const grid = document.getElementById('productGrid');
+    
+    if(products.length === 0){
+        grid.innerHTML = '<div class="loading">Babu kaya da suka dace</div>';
+        return;
+    }
+    
+    grid.innerHTML = products.map(p => {
+        const discount = p.original_price ? Math.round((1 - p.price/p.original_price)*100) : 0;
+        return `
+            <div class="card">
+                <img class="card-img" src="${p.image_url||''}" onerror="this.style.background='#f0f0f0'"/>
+                <div class="card-body">
+                    <div style="margin-bottom:0.375rem">
+                        ${p.is_featured?'<span class="badge badge-featured">Featured</span>':''}
+                        ${discount>0?`<span class="badge badge-sale">-${discount}%</span>`:''}
+                    </div>
+                    <h3 class="card-title">${p.name}</h3>
+                    <div class="card-price">₦${Number(p.price).toLocaleString()}</div>
+                    ${p.original_price?`<div class="card-original">₦${Number(p.original_price).toLocaleString()}</div>`:''}
+                    <div class="card-location">📍 ${p.city||p.location||'N/A'}</div>
+                    <button class="btn-buy" onclick="openOrder('${p.id}')">🛒 Saya Yanzu</button>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function switchTab(tab, btn){
+    currentTab = tab;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    loadProducts();
+}
+
+// ============================================
+// ORDER MODAL LOGIC
+// ============================================
+function openOrder(productId){
+    currentProduct = allProducts.find(p => p.id === productId);
+    if(!currentProduct) return;
+    
+    document.getElementById('modalProductName').textContent = currentProduct.name;
+    document.getElementById('modalProductPrice').textContent = '₦' + Number(currentProduct.price).toLocaleString();
+    document.getElementById('orderQty').value = 1;
+    document.getElementById('orderForm').reset();
+    updateTotal();
+    document.getElementById('orderModal').classList.add('active');
+}
+
+function updateTotal(){
+    const qty = parseInt(document.getElementById('orderQty').value) || 1;
+    const total = currentProduct.price * qty;
+    document.getElementById('orderTotal').textContent = '₦' + total.toLocaleString();
+}
+
+function closeModal(){
+    document.getElementById('orderModal').classList.remove('active');
+}
+
+// ============================================
+// AIKA ORDER ZUWA WHATSAPP
+// ============================================
+async function placeOrder(e){
+    e.preventDefault();
+    
+    const name = document.getElementById('customerName').value.trim();
+    const phone = document.getElementById('customerPhone').value.trim();
+    const address = document.getElementById('deliveryAddress').value.trim();
+    const qty = parseInt(document.getElementById('orderQty').value) || 1;
+    
+    if(!name || !phone || !address){
+        alert('Da fatan a cika dukkan bayanan!');
+        return;
+    }
+    
+    const total = currentProduct.price * qty;
+    const orderNumber = 'SY-' + Date.now().toString().slice(-6);
+    
+    // Tsara sako mai kyau ga Admin
+    const adminMessage = `🛒 *SABON ORDER DAGA MARKET!*
+
+📋 *Order Number:* ${orderNumber}
+
+📦 *Kaya:* ${currentProduct.name}
+💰 *Farashi:* ₦${Number(currentProduct.price).toLocaleString()}
+🔢 *Yawa (Qty):* ${qty}
+ *Jimlar Kudi:* ₦${total.toLocaleString()}
+
+👤 *SUNAN KASTOMA:*
+${name}
+
+ *WAYAR KASTOMA:*
+${phone}
+
+📍 *ADIRESHIN AIKAWA:*
+${address}
+
+ *Lokaci:* ${new Date().toLocaleString()}`;
+
+    // Bude WhatsApp
+    const whatsappUrl = `https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent(adminMessage)}`;
+    window.open(whatsappUrl, '_blank');
+    
+    alert(`✅ Order inka ya yi nasara!\n\nOrder #: ${orderNumber}\n\nZa a turo maka sako ta WhatsApp.`);
+    closeModal();
+}
+
+// ============================================
+// SEARCH & FILTER
+// ============================================
+document.getElementById('searchInput').addEventListener('input', function(e){
+    const q = e.target.value.toLowerCase();
+    const filtered = allProducts.filter(p => p.name.toLowerCase().includes(q) || (p.description && p.description.toLowerCase().includes(q)));
+    renderProducts(filtered);
+});
+
+document.getElementById('categoryFilter').addEventListener('change', function(e){
+    const cat = e.target.value;
+    const filtered = cat ? allProducts.filter(p => p.category === cat) : allProducts;
+    renderProducts(filtered);
+});
+
+document.getElementById('locationFilter').addEventListener('change', function(e){
+    const loc = e.target.value;
+    const filtered = loc ? allProducts.filter(p => p.city === loc || p.location === loc) : allProducts;
+    renderProducts(filtered);
+});
+
+// Rufe modal idan an danna waje
+window.onclick = function(event){
+    if(event.target.classList.contains('modal')){
+        event.target.classList.remove('active');
+    }
+}
+
+// Fara loda kaya
+loadProducts();
+</script>
+</body>
+</html>
