@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>My Profile - SYLUTION</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f8f9fa;color:#333;padding-bottom:80px}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400}
+.header{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100}
+.nav{max-width:1400px;margin:0 auto;padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:0.5rem;font-weight:700;font-size:1.25rem;color:#006e1c;text-decoration:none}
+.logo img{width:40px;height:40px;border-radius:8px}
+.container{max-width:1400px;margin:0 auto;padding:1rem}
+.card{background:#fff;border-radius:12px;padding:1.5rem;margin-bottom:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.card h2{margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:1.5rem}
+.stat{background:#fff;padding:1rem;border-radius:8px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.stat-value{font-size:1.5rem;font-weight:700;color:#006e1c}
+.stat-label{font-size:0.8rem;color:#666}
+.btn{padding:0.625rem 1.25rem;border-radius:6px;font-weight:600;cursor:pointer;border:none;font-size:0.875rem;margin:0.25rem}
+.btn-primary{background:linear-gradient(90deg,#006e1c,#ba1a1a);color:#fff}
+.btn-danger{background:#dc3545;color:#fff}
+.loading{text-align:center;padding:3rem;color:#666}
+.footer{background:#000;color:#fff;padding:1.5rem 1rem;text-align:center;margin-top:2rem}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e5e5e5;display:flex;justify-content:space-around;padding:0.5rem;z-index:100}
+.bottom-nav a{display:flex;flex-direction:column;align-items:center;gap:0.25rem;color:#666;text-decoration:none;font-size:0.75rem}
+.bottom-nav a.active{color:#006e1c}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="nav">
+<a class="logo" href="index.html">
+<img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION"/>
+SYLUTION
+</a>
+<a href="market.html" style="color:#006e1c">Back to Market</a>
+</div>
+</header>
+
+<main class="container">
+<h1 style="margin-bottom:1rem">My Profile</h1>
+
+<div class="card">
+<h2><span class="material-symbols-outlined">person</span> Account Information</h2>
+<div id="userInfo">Loading...</div>
+</div>
+
+<div class="stats">
+<div class="stat">
+<div class="stat-value" id="walletBalance">₦0</div>
+<div class="stat-label">Wallet Balance</div>
+</div>
+<div class="stat">
+<div class="stat-value" id="totalOrders">0</div>
+<div class="stat-label">Total Orders</div>
+</div>
+</div>
+
+<div class="card">
+<h2><span class="material-symbols-outlined">account_balance_wallet</span> Wallet</h2>
+<p>Current Balance: <strong id="walletDisplay">₦0</strong></p>
+<button class="btn btn-primary" onclick="addFunds()">Add Funds</button>
+<button class="btn btn-primary" onclick="withdrawFunds()">Withdraw</button>
+</div>
+
+<div class="card">
+<h2><span class="material-symbols-outlined">logout</span> Account</h2>
+<button class="btn btn-danger" onclick="handleLogout()">Logout</button>
+</div>
+</main>
+
+<footer class="footer">
+<p>© 2025 SYLUTION LTD. Smart Technology • Green Future 🌍</p>
+</footer>
+
+<nav class="bottom-nav">
+<a href="market.html"><span class="material-symbols-outlined">storefront</span>Market</a>
+<a href="orders.html"><span class="material-symbols-outlined">receipt_long</span>Orders</a>
+<a href="profile.html" class="active"><span class="material-symbols-outlined">person</span>Profile</a>
+</nav>
+
+<script>
+const SUPABASE_URL = 'https://svmtbhlaiowbcfzgczsp.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_1T9UuK1Pxz6ANKaUELwWrA_8Ky_wxWS';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let currentUser = null;
+
+async function init(){
+    const {data:{session}} = await supabase.auth.getSession();
+    if(!session){
+        window.location.href = 'login.html';
+        return;
+    }
+    
+    currentUser = session.user;
+    
+    // Load user info
+    const {data:userData} = await supabase.from('users').select('*').eq('id', currentUser.id).single();
+    
+    document.getElementById('userInfo').innerHTML = `
+        <p><strong>Email:</strong> ${currentUser.email}</p>
+        <p><strong>Name:</strong> ${userData?.full_name || 'N/A'}</p>
+        <p><strong>Phone:</strong> ${userData?.phone || 'N/A'}</p>
+        <p><strong>Role:</strong> ${userData?.role || 'buyer'}</p>
+    `;
+    
+    // Load wallet
+    const {data:walletData} = await supabase.from('wallets').select('balance').eq('user_id', currentUser.id).single();
+    const balance = walletData?.balance || 0;
+    document.getElementById('walletBalance').textContent = '₦' + balance.toLocaleString();
+    document.getElementById('walletDisplay').textContent = '₦' + balance.toLocaleString();
+    
+    // Load order count
+    const {data:ordersData} = await supabase.from('orders').select('id').eq('buyer_id', currentUser.id);
+    document.getElementById('totalOrders').textContent = ordersData?.length || 0;
+}
+
+function addFunds(){
+    const amount = prompt('Enter amount to add (₦):');
+    if(!amount || isNaN(amount) || amount <= 0){
+        alert('Invalid amount');
+        return;
+    }
+    
+    const msg = `Hello SYLUTION! I want to add ₦${Number(amount).toLocaleString()} to my wallet.\n\nName: ${currentUser.user_metadata?.full_name}\nEmail: ${currentUser.email}`;
+    window.open(`https://wa.me/2349063436048?text=${encodeURIComponent(msg)}`,'_blank');
+    alert('Please complete payment via WhatsApp. Admin will credit your wallet.');
+}
+
+function withdrawFunds(){
+    const amount = prompt('Enter amount to withdraw (₦):');
+    if(!amount || isNaN(amount) || amount <= 0){
+        alert('Invalid amount');
+        return;
+    }
+    
+    const msg = `Hello SYLUTION! I want to withdraw ₦${Number(amount).toLocaleString()} from my wallet.\n\nName: ${currentUser.user_metadata?.full_name}\nEmail: ${currentUser.email}`;
+    window.open(`https://wa.me/2349063436048?text=${encodeURIComponent(msg)}`,'_blank');
+    alert('Withdrawal request sent. Admin will process it shortly.');
+}
+
+async function handleLogout(){
+    await supabase.auth.signOut();
+    window.location.href = 'market.html';
+}
+
+init();
+</script>
+</body>
+</html>
