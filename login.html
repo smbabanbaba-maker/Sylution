@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Login - SYLUTION</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem}
+.card{background:#fff;border-radius:16px;padding:2rem;width:100%;max-width:420px;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
+.logo{text-align:center;margin-bottom:1.5rem}
+.logo img{width:80px;height:80px;border-radius:12px;margin-bottom:0.5rem;object-fit:cover}
+.logo h1{color:#006e1c;font-size:1.75rem;font-weight:700}
+.logo p{color:#666;font-size:0.9rem}
+.tabs{display:flex;margin-bottom:1.5rem;border-bottom:2px solid #e5e5e5}
+.tab{flex:1;padding:0.75rem;border:none;background:none;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.3s}
+.tab.active{color:#006e1c;border-bottom-color:#006e1c}
+.form-group{margin-bottom:1.25rem}
+.form-group label{display:block;margin-bottom:0.5rem;font-weight:500;font-size:0.9rem;color:#333}
+.form-group input,.form-group select{width:100%;padding:0.875rem;border:2px solid #e5e5e5;border-radius:8px;font-size:1rem;transition:border-color 0.3s}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:#006e1c}
+.btn{width:100%;padding:0.875rem;border:none;border-radius:8px;font-weight:600;font-size:1rem;cursor:pointer;transition:all 0.3s;margin-bottom:0.75rem}
+.btn-primary{background:linear-gradient(90deg,#006e1c,#ba1a1a);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,110,28,0.3)}
+.btn-google{background:#fff;color:#333;border:2px solid #ddd;display:flex;align-items:center;justify-content:center;gap:0.75rem}
+.btn-google:hover{background:#f5f5f5;border-color:#ccc}
+.divider{display:flex;align-items:center;margin:1.5rem 0;color:#999;font-size:0.875rem}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:#e5e5e5}
+.divider span{padding:0 1rem}
+.error{background:#fee;color:#c00;padding:1rem;border-radius:8px;margin-bottom:1rem;font-size:0.9rem;border-left:4px solid #c00}
+.success{background:#d4edda;color:#155724;padding:1rem;border-radius:8px;margin-bottom:1rem;font-size:0.9rem;border-left:4px solid #155724}
+.link{text-align:center;margin-top:1rem;color:#666;font-size:0.9rem}
+.link a{color:#006e1c;text-decoration:none;font-weight:600}
+.hidden{display:none!important}
+.loading{display:inline-block;width:20px;height:20px;border:3px solid rgba(255,255,255,0.3);border-radius:50%;border-top-color:#fff;animation:spin 1s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div class="card">
+<div class="logo">
+<img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION"/>
+<h1>SYLUTION</h1>
+<p>Smart Agriculture Marketplace</p>
+</div>
+
+<div class="tabs">
+<button class="tab active" onclick="showLogin()">Login</button>
+<button class="tab" onclick="showRegister()">Register</button>
+</div>
+
+<div id="message"></div>
+
+<!-- Login Form -->
+<form id="loginForm" onsubmit="handleLogin(event)">
+<div class="form-group">
+<label>Email Address</label>
+<input id="loginEmail" required="" type="email" placeholder="your@email.com" autocomplete="email"/>
+</div>
+<div class="form-group">
+<label>Password</label>
+<input id="loginPassword" required="" type="password" placeholder="Enter password" autocomplete="current-password"/>
+</div>
+<button class="btn btn-primary" id="loginBtn" type="submit">Login</button>
+
+<div class="divider"><span>OR</span></div>
+
+<button class="btn btn-google" onclick="handleGoogleLogin()" type="button">
+<svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.64 9.2c0-.637-.057-1.252-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"></path>
+<path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.715H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"></path>
+<path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"></path>
+<path d="M9 3.58c1.321 0 2.508.454 3.44 1.355l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.159 6.656 3.58 9 3.58z" fill="#EA4335"></path>
+</svg>
+Continue with Google
+</button>
+</form>
+
+<!-- Register Form -->
+<form id="registerForm" class="hidden" onsubmit="handleRegister(event)">
+<div class="form-group">
+<label>Full Name *</label>
+<input id="regName" required="" type="text" placeholder="Your full name" autocomplete="name"/>
+</div>
+<div class="form-group">
+<label>Email Address *</label>
+<input id="regEmail" required="" type="email" placeholder="your@email.com" autocomplete="email"/>
+</div>
+<div class="form-group">
+<label>Phone Number *</label>
+<input id="regPhone" required="" type="tel" placeholder="+234 800 000 0000" autocomplete="tel"/>
+</div>
+<div class="form-group">
+<label>Password * (min 6 characters)</label>
+<input id="regPassword" required="" minlength="6" type="password" placeholder="Create password" autocomplete="new-password"/>
+</div>
+<div class="form-group">
+<label>Confirm Password *</label>
+<input id="regConfirmPassword" required="" type="password" placeholder="Confirm password" autocomplete="new-password"/>
+</div>
+<div class="form-group">
+<label>City/State</label>
+<input id="regLocation" type="text" placeholder="e.g., Kano, Lagos"/>
+</div>
+<div class="form-group">
+<label>I want to:</label>
+<select id="regRole">
+<option value="buyer">Buy Products</option>
+<option value="seller">Sell Products</option>
+</select>
+</div>
+<button class="btn btn-primary" id="registerBtn" type="submit">Create Account</button>
+</form>
+
+<div class="link">
+<p id="loginLink">Already have account? <a href="#" onclick="showLogin();return false">Login</a></p>
+<p id="registerLink" style="display:none">New here? <a href="#" onclick="showRegister();return false">Create account</a></p>
+<p><a href="market.html">← Back to Market</a></p>
+</div>
+</div>
+
+<script>
+// ============================================
+// SUPABASE CONFIGURATION
+// ============================================
+const SUPABASE_URL = 'https://svmtbhlaiowbcfzgczsp.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_1T9UuK1Pxz6ANKaUELwWrA_8Ky_wxWS';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// ============================================
+// TAB SWITCHING
+// ============================================
+function showLogin(){
+    document.getElementById('loginForm').classList.remove('hidden');
+    document.getElementById('registerForm').classList.add('hidden');
+    document.querySelectorAll('.tab')[0].classList.add('active');
+    document.querySelectorAll('.tab')[1].classList.remove('active');
+    document.getElementById('loginLink').style.display = 'block';
+    document.getElementById('registerLink').style.display = 'none';
+    document.getElementById('message').innerHTML = '';
+}
+
+function showRegister(){
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('registerForm').classList.remove('hidden');
+    document.querySelectorAll('.tab')[0].classList.remove('active');
+    document.querySelectorAll('.tab')[1].classList.add('active');
+    document.getElementById('loginLink').style.display = 'none';
+    document.getElementById('registerLink').style.display = 'block';
+    document.getElementById('message').innerHTML = '';
+}
+
+function showMessage(text, isError){
+    const msgDiv = document.getElementById('message');
+    msgDiv.innerHTML = `<div class="${isError?'error':'success'}">${text}</div>`;
+    msgDiv.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+// ============================================
+// GOOGLE OAUTH LOGIN
+// ============================================
+async function handleGoogleLogin(){
+    try{
+        const { user, session, error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                redirectTo: window.location.origin + '/market.html'
+            }
+        });
+        
+        if(error) throw error;
+        // User will be redirected to Google
+    }catch(err){
+        showMessage('Google login error: ' + err.message, true);
+    }
+}
+
+// ============================================
+// EMAIL/PASSWORD LOGIN
+// ============================================
+async function handleLogin(e){
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+    const password = document.getElementById('loginPassword').value;
+    const loginBtn = document.getElementById('loginBtn');
+    
+    loginBtn.innerHTML = '<span class="loading"></span> Logging in...';
+    loginBtn.disabled = true;
+    
+    try{
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+        
+        if(error) throw error;
+        
+        // Save user info to localStorage
+        localStorage.setItem('user_email', data.user.email);
+        localStorage.setItem('user_id', data.user.id);
+        
+        // Get user role from database
+        const {data:userData} = await supabase
+            .from('users')
+            .select('role')
+            .eq('id', data.user.id)
+            .single();
+        
+        if(userData){
+            localStorage.setItem('user_role', userData.role);
+        }
+        
+        showMessage('✅ Login successful! Redirecting...', false);
+        
+        setTimeout(() => {
+            window.location.href = 'profile.html';
+        }, 1500);
+        
+    }catch(err){
+        console.error('Login error:', err);
+        let errorMsg = 'Login failed. ';
+        
+        if(err.message.includes('Invalid login credentials')){
+            errorMsg = 'Invalid email or password. Please try again.';
+        }else if(err.message.includes('Email not confirmed')){
+            errorMsg = 'Please check your email to confirm your account.';
+        }else{
+            errorMsg += err.message;
+        }
+        
+        showMessage('❌ ' + errorMsg, true);
+        loginBtn.innerHTML = 'Login';
+        loginBtn.disabled = false;
+    }
+}
+
+// ============================================
+// EMAIL/PASSWORD REGISTER
+// ============================================
+async function handleRegister(e){
+    e.preventDefault();
+    const name = document.getElementById('regName').value.trim();
+    const email = document.getElementById('regEmail').value.trim().toLowerCase();
+    const phone = document.getElementById('regPhone').value.trim();
+    const password = document.getElementById('regPassword').value;
+    const confirmPassword = document.getElementById('regConfirmPassword').value;
+    const location = document.getElementById('regLocation').value.trim();
+    const role = document.getElementById('regRole').value;
+    const registerBtn = document.getElementById('registerBtn');
+    
+    // Validate passwords match
+    if(password !== confirmPassword){
+        showMessage('❌ Passwords do not match!', true);
+        return;
+    }
+    
+    // Validate password length
+    if(password.length < 6){
+        showMessage('❌ Password must be at least 6 characters', true);
+        return;
+    }
+    
+    registerBtn.innerHTML = '<span class="loading"></span> Creating account...';
+    registerBtn.disabled = true;
+    
+    try{
+        // 1. Create user in Supabase Auth
+        const { data: authData, error: authError } = await supabase.auth.signUp({
+            email: email,
+            password: password,
+            options: {
+                data: {
+                    full_name: name,
+                    phone: phone,
+                    role: role,
+                    location: location
+                }
+            }
+        });
+        
+        if(authError) throw authError;
+        
+        if(authData.user){
+            // 2. Create user profile in users table
+            const { error: profileError } = await supabase
+                .from('users')
+                .insert([{
+                    id: authData.user.id,
+                    email: email,
+                    full_name: name,
+                    phone: phone,
+                    location: location || null,
+                    role: role,
+                    is_seller: role === 'seller',
+                    tier: 'Bronze',
+                    points: 0
+                }]);
+            
+            if(profileError){
+                console.error('Profile error:', profileError);
+            }
+            
+            // 3. Create wallet for new user
+            await supabase
+                .from('wallets')
+                .insert([{
+                    user_id: authData.user.id,
+                    balance: role === 'seller' ? 0 : 1000, // New buyers get ₦1000 bonus
+                    currency: 'NGN'
+                }]);
+        }
+        
+        // 4. Auto-login the user
+        const { error: loginError } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+        
+        if(loginError) throw loginError;
+        
+        // 5. Save to localStorage
+        localStorage.setItem('user_email', email);
+        localStorage.setItem('user_id', authData.user.id);
+        localStorage.setItem('user_role', role);
+        
+        const welcomeMsg = role === 'seller' 
+            ? '✅ Account created! Welcome, seller!' 
+            : '✅ Account created! Welcome! You received ₦1,000 bonus.';
+        
+        showMessage(welcomeMsg + ' Redirecting...', false);
+        
+        setTimeout(() => {
+            window.location.href = 'profile.html';
+        }, 2000);
+        
+    }catch(err){
+        console.error('Register error:', err);
+        let errorMsg = 'Registration failed. ';
+        
+        if(err.message.includes('already registered')){
+            errorMsg = 'This email is already registered. Please login instead.';
+        }else if(err.message.includes('Weak password')){
+            errorMsg = 'Password is too weak. Use at least 6 characters.';
+        }else{
+            errorMsg += err.message;
+        }
+        
+        showMessage('❌ ' + errorMsg, true);
+        registerBtn.innerHTML = 'Create Account';
+        registerBtn.disabled = false;
+    }
+}
+
+// ============================================
+// CHECK FOR OAUTH CALLBACK
+// ============================================
+async function checkOAuthCallback(){
+    const hash = window.location.hash;
+    if(hash && hash.includes('access_token')){
+        const { data:{ session }, error } = await supabase.auth.getSession();
+        
+        if(error){
+            console.error('OAuth error:', error);
+            showMessage('Login error: ' + error.message, true);
+            return;
+        }
+        
+        if(session){
+            localStorage.setItem('user_email', session.user.email);
+            localStorage.setItem('user_id', session.user.id);
+            
+            // Get user role
+            const {data:userData} = await supabase
+                .from('users')
+                .select('role')
+                .eq('id', session.user.id)
+                .single();
+            
+            if(userData){
+                localStorage.setItem('user_role', userData.role);
+            }
+            
+            showMessage('✅ Login successful! Redirecting...', false);
+            setTimeout(() => {
+                window.location.href = 'profile.html';
+            }, 1500);
+        }
+    }
+}
+
+// Run on page load
+checkOAuthCallback();
+</script>
+</body>
+</html>
