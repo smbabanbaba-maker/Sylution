@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ha">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SYLUTION Market</title>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB_vLfOpbBjZdFaF-lFIPBbF6GQ6HaQ6-8",
+  authDomain: "sylution-ccfe3.firebaseapp.com",
+  projectId: "sylution-ccfe3",
+  storageBucket: "sylution-ccfe3.firebasestorage.app",
+  messagingSenderId: "11034821830",
+  appId: "1:11034821830:web:1887f4b53e1d9aaf0703c7"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const ADMIN_PHONE = '2349063436048';
+let allProducts = [];
+let currentProduct = null;
+
+async function loadProducts() {
+    try {
+        const querySnapshot = await getDocs(collection(db, "products"));
+        allProducts = [];
+        querySnapshot.forEach((doc) => {
+            allProducts.push({ id: doc.id, ...doc.data() });
+        });
+        renderProducts(allProducts);
+    } catch (error) {
+        console.error("Error:", error);
+        document.getElementById('productGrid').innerHTML = '<div style="text-align:center;padding:3rem;color:#c00">Akwai matsala. Duba console.</div>';
+    }
+}
+
+function renderProducts(products) {
+    const grid = document.getElementById('productGrid');
+    if (products.length === 0) {
+        grid.innerHTML = '<div style="text-align:center;padding:3rem;color:#666">Babu kaya a yanzu</div>';
+        return;
+    }
+    grid.innerHTML = products.map(p => {
+        const price = Number(p.price) || 0;
+        return `
+            <div class="card" onclick="openOrder('${p.id}')">
+                <img class="card-img" src="${p.image_url || ''}" onerror="this.style.background='#f0f0f0'"/>
+                <div class="card-body">
+                    <h3 class="card-title">${p.name}</h3>
+                    <div class="card-price">₦${price.toLocaleString()}</div>
+                    <div class="card-location">📍 ${p.city || p.location || 'N/A'}</div>
+                    <button class="btn-buy"> Saya</button>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+window.openOrder = function(productId) {
+    currentProduct = allProducts.find(p => p.id === productId);
+    if (!currentProduct) return;
+    const price = Number(currentProduct.price) || 0;
+    const name = prompt('Sunanka:');
+    if (!name) return;
+    const phone = prompt('Lambar wayarka (misali: 08031234567):');
+    if (!phone) return;
+    const address = prompt('Adireshin aikawa:');
+    if (!address) return;
+    const qty = parseInt(prompt('Yawa:', '1')) || 1;
+    const total = price * qty;
+    const orderNum = 'SY-' + Date.now().toString().slice(-6);
+    
+    const msg = `🛒 *SABON ORDER!*\n\nOrder #: ${orderNum}\n ${currentProduct.name}\n💰 ${price.toLocaleString()} x ${qty}\n💵 Jimla: ₦${total.toLocaleString()}\n\n👤 ${name}\n📱 ${phone}\n ${address}`;
+    
+    window.open(`https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+    alert('✅ Order ta yi nasara!');
+};
+
+document.addEventListener('DOMContentLoaded', loadProducts);
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f5}
+.header{background:#fff;padding:1rem;box-shadow:0 2px 4px rgba(0,0,0,0.1);position:sticky;top:0}
+.logo{display:flex;align-items:center;gap:0.5rem;font-weight:700;font-size:1.25rem;color:#006e1c;text-decoration:none}
+.logo img{width:40px;height:40px;border-radius:8px}
+.container{max-width:1200px;margin:0 auto;padding:1rem}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem}
+@media(min-width:768px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1024px){.grid{grid-template-columns:repeat(4,1fr)}}
+.card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);cursor:pointer}
+.card-img{width:100%;height:160px;object-fit:cover;background:#f0f0f0}
+.card-body{padding:0.75rem}
+.card-title{font-weight:600;margin-bottom:0.375rem;font-size:0.9rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-price{color:#006e1c;font-weight:700;font-size:1.125rem;margin-bottom:0.375rem}
+.card-location{color:#666;font-size:0.75rem;margin-bottom:0.5rem}
+.btn-buy{width:100%;padding:0.5rem;border-radius:9999px;font-weight:600;border:none;background:linear-gradient(90deg,#006e1c,#ba1a1a);color:#fff}
+.footer{background:#000;color:#fff;padding:1.5rem;text-align:center;margin-top:2rem}
+</style>
+</head>
+<body>
+<header class="header">
+<div class="logo">
+<img src="https://raw.githubusercontent.com/smbabanbaba-maker/Sylution/main/IMG-20251129-WA0028.jpg" alt="SYLUTION"/>
+SYLUTION Market
+</div>
+</header>
+<main class="container">
+<h1 style="margin-bottom:1rem">Neman Kaya</h1>
+<div id="productGrid"><div style="text-align:center;padding:3rem">Ana loda...</div></div>
+</main>
+<footer class="footer">
+<p>© 2025 SYLUTION LTD. Smart Technology • Green Future 🌍</p>
+</footer>
+</body>
+</html>
