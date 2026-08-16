@@ -22,6 +22,7 @@ export const Route = createFileRoute("/platforms")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://agri-tech-pioneer.lovable.app/platforms" }],
   }),
   component: PlatformsPage,
 });
@@ -177,6 +178,23 @@ function PlatformsPage() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="container-x section-y">
+        <SectionHeading
+          eyebrow="Future platforms"
+          title="Built to grow"
+          description="The SYLUTION ecosystem is structured so new products, platforms and programmes can join it as they are developed."
+          align="center"
+        />
+        <div className="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-3">
+          {["Future AI Products", "New IoT Products", "Marketplace"].map((f) => (
+            <div key={f} className="rounded-2xl border border-dashed border-border p-6 text-center">
+              <p className="font-display text-sm font-bold">{f}</p>
+              <p className="mt-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">Coming soon</p>
+            </div>
+          ))}
         </div>
       </section>
 

@@ -733,7 +733,12 @@ export const PROJECTS: {
   },
 ];
 
-
+export const COMING_SOON = [
+  { name: "Marketplace", detail: "Order SYLUTION devices, kits and agricultural technology online." },
+  { name: "Agricultural financing", detail: "A financing pathway to help farmers adopt smart technology." },
+  { name: "Future AI products", detail: "New agricultural intelligence tools under research and development." },
+  { name: "Future IoT products", detail: "New sensors, controllers and monitoring devices under development." },
+];
 
 export const SYSMART_FLOW = [
   { step: "Sensors", detail: "Soil moisture, temperature, humidity and water level sensing in the field." },

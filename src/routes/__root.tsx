@@ -14,11 +14,13 @@ import { MessageCircle } from "lucide-react";
 import { Toaster } from "@/components/ui/sonner";
 
 import appCss from "../styles.css?url";
+import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LanguageProvider } from "@/lib/i18n";
 import { Nav } from "@/components/site/Nav";
 import { LeadForm } from "@/components/site/LeadForm";
 import { Footer } from "@/components/site/Footer";
 import { CONTACT } from "@/lib/site-data";
+
 
 function NotFoundComponent() {
   return (
@@ -45,6 +47,9 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
+  useEffect(() => {
+    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -97,8 +102,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "SYLUTION | IoT, AI and Electronics Technology Company" },
       { property: "og:description", content: "SYLUTION is an Internet of Things, Artificial Intelligence, Electronics and Technology Innovation company based at TIC Kano, Nigeria, serving 15 industries." },
       { name: "twitter:description", content: "SYLUTION is an Internet of Things, Artificial Intelligence, Electronics and Technology Innovation company based at TIC Kano, Nigeria, serving 15 industries." },
-      { property: "og:image", content: "/brand/sylution-logo.webp" },
-      { name: "twitter:image", content: "/brand/sylution-logo.webp" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/a7da5b53-2ea9-430f-b543-9257355e7c4e" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/a7da5b53-2ea9-430f-b543-9257355e7c4e" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -219,3 +224,4 @@ function FloatingWhatsApp() {
     </a>
   );
 }
+

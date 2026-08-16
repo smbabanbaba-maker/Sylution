@@ -1,7 +1,7 @@
-import { StartClient } from '@tanstack/react-start'
-import { hydrateRoot } from 'react-dom/client'
-import { getRouter } from './router'
+import { StartClient } from "@tanstack/start/client";
+import { hydrateRoot } from "react-dom/client";
+import { getRouter } from "./router";
 
-const router = getRouter()
+const router = getRouter();
 
-hydrateRoot(document.getElementById('root')!, <StartClient router={router} />)
+hydrateRoot(document.getElementById("root")!, <StartClient router={router} />);

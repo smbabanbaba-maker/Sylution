@@ -4,7 +4,7 @@ import { Mail, MapPin, Phone, MessageCircle, Send } from "lucide-react";
 import { toast } from "sonner";
 import { PageHero, SectionHeading } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
-import { CONTACT, BRAND_IMAGES } from "@/lib/site-data";
+import { CONTACT, U, BRAND_IMAGES } from "@/lib/site-data";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -88,43 +88,15 @@ function Contact() {
             className="card-luxe space-y-5 p-6 sm:p-8 lg:p-10"
             onSubmit={(e) => {
               e.preventDefault();
-              const form = e.currentTarget;
-              const fd = new FormData(form);
-              const name = String(fd.get("name") ?? "").trim();
-              const org = String(fd.get("org") ?? "").trim();
-              const email = String(fd.get("email") ?? "").trim();
-              const phone = String(fd.get("phone") ?? "").trim();
-              const subject = String(fd.get("subject") ?? "").trim();
-              const message = String(fd.get("message") ?? "").trim();
-
-              if (!name || !email || !message) {
-                toast.error("Please fill in all required fields.");
-                return;
-              }
-
               setSending(true);
-              const body = [
-                `Name: ${name}`,
-                `Organisation: ${org || "Not provided"}`,
-                `Email: ${email}`,
-                `Phone: ${phone || "Not provided"}`,
-                `Subject: ${subject}`,
-                "",
-                message,
-              ].join("\n");
-
-              const href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(
-                `Contact Form: ${subject} from ${name}`,
-              )}&body=${encodeURIComponent(body)}`;
-
+              const form = e.currentTarget;
               setTimeout(() => {
                 setSending(false);
                 form.reset();
-                window.location.href = href;
-                toast.success("Enquiry ready to send", {
-                  description: "Your email app is opening with the details filled in for our team.",
+                toast.success("Message sent", {
+                  description: "Thank you. Our team will respond within two working days.",
                 });
-              }, 500);
+              }, 700);
             }}
           >
             <h2 className="font-display text-xl font-bold tracking-tight">Send us a message</h2>
@@ -168,7 +140,7 @@ function Contact() {
               disabled={sending}
               className="btn-base btn-primary mt-2 w-full"
             >
-              {sending ? "Preparing…" : "Send message"} <Send className="h-4 w-4" />
+              {sending ? "Sending…" : "Send message"} <Send className="h-4 w-4" />
             </button>
           </form>
         </Reveal>

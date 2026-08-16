@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, Phone, Facebook, Instagram, Linkedin, Youtube, MessageCircle, Music2, Twitter } from "lucide-react";
+import { Mail, MapPin, Phone, Facebook, Instagram, Linkedin, Youtube, MessageCircle, Music2, Send, Twitter } from "lucide-react";
 import { LOGO_SRC, CONTACT, SOLUTIONS } from "@/lib/site-data";
+import { toast } from "sonner";
 import { useLang } from "@/lib/i18n";
 
 const SOCIAL_ICONS: Record<string, typeof Facebook> = {
@@ -29,7 +30,7 @@ export function Footer() {
               <span className="font-display text-xl font-extrabold tracking-tight">SYLUTION</span>
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              {t("footer.about")}
+{t("footer.about")}
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {CONTACT.socials.map((s) => {
@@ -99,6 +100,35 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+
+            <form
+              className="mt-6"
+              onSubmit={(e) => {
+                e.preventDefault();
+                e.currentTarget.reset();
+                toast.success("Subscribed", { description: "You are on the SYLUTION newsletter list." });
+              }}
+            >
+              <label htmlFor="newsletter" className="eyebrow">
+                Newsletter
+              </label>
+              <div className="mt-2 flex overflow-hidden rounded-full border border-border bg-background">
+                <input
+                  id="newsletter"
+                  type="email"
+                  required
+                  placeholder="Your email address"
+                  className="min-w-0 flex-1 bg-transparent px-4 py-2.5 text-sm outline-none placeholder:text-muted-foreground"
+                />
+                <button
+                  type="submit"
+                  aria-label="Subscribe"
+                  className="grid w-12 place-items-center bg-primary text-primary-foreground transition-opacity hover:opacity-90"
+                >
+                  <Send className="h-4 w-4" />
+                </button>
+              </div>
+            </form>
           </div>
         </div>
 
