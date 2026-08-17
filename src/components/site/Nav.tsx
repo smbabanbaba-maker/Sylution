@@ -37,6 +37,7 @@ export function Nav() {
   const [moreOpen, setMoreOpen] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });

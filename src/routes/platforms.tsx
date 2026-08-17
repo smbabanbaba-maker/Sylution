@@ -22,7 +22,7 @@ export const Route = createFileRoute("/platforms")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://agri-tech-pioneer.lovable.app/platforms" }],
+    links: [{ rel: "canonical", href: "https://www.sylution.com.ng/platforms" }],
   }),
   component: PlatformsPage,
 });

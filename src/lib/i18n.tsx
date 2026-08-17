@@ -488,11 +488,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<LangCode>("en");
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     const stored = window.localStorage.getItem("sylution-lang") as LangCode | null;
     if (stored && stored in DICTS) setLang(stored);
   }, []);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     window.localStorage.setItem("sylution-lang", lang);
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
