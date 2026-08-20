@@ -12,12 +12,12 @@ export const Route = createFileRoute("/ai")({
       {
         name: "description",
         content:
-          "Computer vision, machine learning, predictive analytics and AI automation engineered by SYLUTION to make connected systems intelligent across every industry.",
+          "Computer vision, machine learning, and predictive analytics under research by SYLUTION to enhance the intelligence of agricultural and connected systems.",
       },
       { property: "og:title", content: "Artificial Intelligence at SYLUTION" },
       {
         property: "og:description",
-        content: "Models trained on locally collected data, deployed at the edge and in the cloud.",
+        content: "Models trained on locally collected data, with research into edge and cloud deployment.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -53,8 +53,8 @@ function AIPage() {
       <section className="container-x section-y">
         <SectionHeading
           eyebrow="Capability"
-          title="Applied AI, not demonstrations"
-          description="Every model we ship is measured on a business outcome, accuracy in the field, time saved, downtime avoided or cost removed."
+          title="Focusing on Applied AI"
+          description="Our AI research is measured against real-world targets: accuracy in the field, operational efficiency, and cost reduction."
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {AI_CAPABILITIES.map((c, i) => (
@@ -95,9 +95,9 @@ function AIPage() {
             />
             <div className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-border">
               {[
-                { v: "94%", l: "Field accuracy" },
-                { v: "< 3s", l: "Inference" },
-                { v: "40k+", l: "Labelled images" },
+                { v: "Target", l: "94% Field Accuracy" },
+                { v: "Target", l: "<3s Inference" },
+                { v: "Target", l: "40k+ Labelled Images" },
               ].map((s) => (
                 <div key={s.l} className="glass px-4 py-5">
                   <p className="font-display text-xl font-extrabold text-gradient-brand">{s.v}</p>

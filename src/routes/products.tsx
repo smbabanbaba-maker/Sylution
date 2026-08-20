@@ -17,7 +17,7 @@ export const Route = createFileRoute("/products")({
       { property: "og:title", content: "SYLUTION Products" },
       {
         property: "og:description",
-        content: "Connected devices designed, manufactured and supported in Nigeria.",
+        content: "Connected devices designed and developed in Nigeria.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -32,7 +32,7 @@ function ProductsPage() {
       <PageHero
         eyebrow="Products"
         title="Connected devices, engineered and manufactured locally"
-        subtitle="Every product in this catalogue was designed in our own labs, tested in our own centre and deployed by our own field teams."
+        subtitle="Every product in this catalogue is designed in our own labs and tested in our own centre for real-world reliability."
         image={BRAND_IMAGES.device}
         compact
       >

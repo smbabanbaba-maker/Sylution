@@ -13,7 +13,7 @@ export const Route = createFileRoute("/iot")({
       {
         name: "description",
         content:
-          "SYLUTION designs, manufactures and deploys IoT devices, gateways, edge controllers, cloud platforms and dashboards for agriculture, industry, energy, cities and security.",
+          "SYLUTION designs and develops IoT prototypes, including gateways, edge controllers, and cloud monitoring platforms for agriculture and demanding environments.",
       },
       { property: "og:title", content: "Internet of Things at SYLUTION" },
       {
@@ -122,7 +122,7 @@ function IoTPage() {
       <section className="container-x section-y">
         <SectionHeading
           eyebrow="Applications"
-          title="Where our connected systems are deployed"
+          title="Target applications for our connected systems"
           description="One platform, many industries. Each application uses the same tested device, network and cloud foundation."
         />
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -163,14 +163,14 @@ function IoTPage() {
             <SectionHeading
               eyebrow="Hardware"
               title="Devices designed for dust, heat and unstable power"
-              description="Sealed enclosures, wide temperature tolerance, surge protection and multi year battery life, validated in our own testing centre before a single unit ships."
+              description="Sealed enclosures, wide temperature tolerance, and surge protection, validated through rigorous testing in our Kano laboratory."
             />
             <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border sm:grid-cols-4">
               {[
-                { v: "99.2%", l: "Uptime" },
-                { v: "18 mo", l: "Battery" },
-                { v: "12 km", l: "Range" },
-                { v: "IP67", l: "Protection" },
+                { v: "Target", l: "99.2% Uptime" },
+                { v: "Target", l: "18mo Battery" },
+                { v: "Target", l: "12km Range" },
+                { v: "Target", l: "IP67 Protection" },
               ].map((s) => (
                 <div key={s.l} className="glass px-4 py-5">
                   <p className="font-display text-xl font-extrabold text-gradient-brand">{s.v}</p>

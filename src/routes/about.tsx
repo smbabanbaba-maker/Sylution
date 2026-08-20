@@ -74,9 +74,7 @@ function About() {
               conventional plot season after season. The data was unambiguous: less water, less diesel, more yield.
             </p>
             <p>
-              That result funded the next system, then the next. Today SYLUTION designs its own electronics,
-              writes its own software, flies its own drones, trains thousands of farmers and delivers full projects
-              for banks, governments, NGOs, universities and private estates.
+              That result funded the next system, then the next. Today SYLUTION designs its own electronics, writes its own software, and conducts research into drone technology and smart agriculture to support farmers and institutions.
             </p>
             <p>
               We remain a Nigerian company with a continental ambition, proving that world-class agricultural

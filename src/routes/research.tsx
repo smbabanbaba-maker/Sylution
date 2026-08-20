@@ -61,7 +61,7 @@ function Research() {
         <SectionHeading
           eyebrow="Capabilities"
           title="Eight disciplines under one roof"
-          description="Research at SYLUTION is not theoretical. Every programme is expected to produce something a farmer can switch on."
+          description="Research at SYLUTION is not theoretical. Every programme is aimed at producing practical solutions for field application."
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {LABS.map((l, i) => (
@@ -80,7 +80,7 @@ function Research() {
 
       <section className="border-y border-border bg-surface section-y">
         <div className="container-x">
-          <SectionHeading eyebrow="Pipeline" title="From question to deployed product in five gates" align="center" />
+          <SectionHeading eyebrow="Pipeline" title="From research question to prototype validation in six stages" align="center" />
           <div className="mt-12 grid gap-4 md:grid-cols-5">
             {PIPELINE.map((p, i) => (
               <Reveal key={p.step} delay={i * 0.07}>

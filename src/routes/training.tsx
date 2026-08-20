@@ -17,7 +17,7 @@ export const Route = createFileRoute("/training")({
       { property: "og:title", content: "SYLUTION Academy, Agricultural Technology Training" },
       {
         property: "og:description",
-        content: "Practical certification programmes taught in English, Hausa and French at our Kano centre.",
+        content: "Practical training programmes delivered in English, Hausa and French at our Kano centre.",
       },
     ],
   }),
@@ -30,7 +30,7 @@ function Training() {
       <PageHero
         eyebrow="SYLUTION Academy"
         title="Technology only creates value when people can run it"
-        subtitle="Practical, certified training for farmers, technicians, students, cooperatives and institutions, delivered in English, Hausa and French, on real equipment, in real fields."
+        subtitle="Practical, hands-on training for farmers, technicians, students, and institutions, delivered on real equipment in real-world field conditions."
         image={BRAND_IMAGES.training}
         compact
       >
@@ -46,7 +46,7 @@ function Training() {
         <SectionHeading
           eyebrow="Programmes"
           title="Eleven programmes, one practical standard"
-          description="Every programme mixes classroom fundamentals with supervised hands-on operation, and closes with assessment and certification."
+          description="Every programme mixes classroom fundamentals with supervised hands-on operation, focusing on practical skill acquisition."
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {TRAINING_PROGRAMMES.map((p, i) => (

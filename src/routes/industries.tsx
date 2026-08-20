@@ -11,12 +11,12 @@ export const Route = createFileRoute("/industries")({
       {
         name: "description",
         content:
-          "SYLUTION deploys IoT, AI and electronics across agriculture, healthcare, education, manufacturing, government, energy, transportation, security and smart cities.",
+          "SYLUTION is developing IoT, AI and electronics solutions for agriculture, energy, and connected environments.",
       },
       { property: "og:title", content: "Industries served by SYLUTION" },
       {
         property: "og:description",
-        content: "Technology is our business. Fifteen industries rely on our connected systems.",
+        content: "Technology is our business. We are engineering connected systems for diverse applications.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

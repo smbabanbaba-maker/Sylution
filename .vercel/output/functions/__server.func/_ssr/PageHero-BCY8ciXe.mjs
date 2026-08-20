@@ -1,6 +1,6 @@
 import { s as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
 import { t as motion } from "../_libs/motion.mjs";
-import { E as useLang } from "./router-Wf-YWA0T.mjs";
+import { E as useLang } from "./router-CcDw5ofK.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/PageHero-BCY8ciXe.js
 var import_jsx_runtime = require_jsx_runtime();
 function PageHero({ eyebrow, title, subtitle, image, children, compact }) {
