@@ -95,9 +95,9 @@ function AIPage() {
             />
             <div className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-border">
               {[
-                { v: "Target", l: "94% Field Accuracy" },
-                { v: "Target", l: "<3s Inference" },
-                { v: "Target", l: "40k+ Labelled Images" },
+                { v: "Target Spec", l: "94% Field Accuracy" },
+                { v: "Target Spec", l: "<3s Inference" },
+                { v: "Target Spec", l: "40k+ Labelled Images" },
               ].map((s) => (
                 <div key={s.l} className="glass px-4 py-5">
                   <p className="font-display text-xl font-extrabold text-gradient-brand">{s.v}</p>

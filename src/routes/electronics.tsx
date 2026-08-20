@@ -101,10 +101,10 @@ function ElectronicsPage() {
         <SectionHeading eyebrow="Standards" title="Built to survive the environment it ships into" align="center" />
         <div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border sm:grid-cols-4">
           {[
-            { v: "6 weeks", l: "Design to prototype" },
-            { v: "-10 to 60 C", l: "Operating range" },
-            { v: "100%", l: "Functional test coverage" },
-            { v: "98.4%", l: "Production yield" },
+            { v: "Target Spec", l: "6-Week Cycle" },
+            { v: "Target Spec", l: "-10 to 60 C Range" },
+            { v: "Target Spec", l: "100% Test Coverage" },
+            { v: "Target Spec", l: "98.4% Yield" },
           ].map((s) => (
             <div key={s.l} className="glass px-4 py-6 text-center">
               <p className="font-display text-lg font-extrabold text-gradient-brand">{s.v}</p>

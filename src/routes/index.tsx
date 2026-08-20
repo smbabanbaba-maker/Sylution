@@ -405,7 +405,7 @@ function Home() {
           <SectionHeading
             eyebrow="In the field"
             title="Our technology work in pictures"
-            description="Images from our prototypes, technology development, training sessions and agricultural activities."
+            description="Images from our systems, technology development, training sessions and agricultural activities."
             align="center"
           />
 

@@ -13,12 +13,12 @@ export const Route = createFileRoute("/research")({
       {
         name: "description",
         content:
-          "Inside the SYLUTION Innovation Centre in Kano: AI, robotics, IoT, engineering, electronics, testing, prototype development and future agricultural projects.",
+          "Inside the SYLUTION Innovation Centre in Kano: AI, robotics, IoT, engineering, electronics, testing, system development and future agricultural projects.",
       },
       { property: "og:title", content: "Research & Development, SYLUTION Innovation Centre" },
       {
         property: "og:description",
-        content: "AI, robotics, IoT, electronics and prototype development for African agriculture.",
+        content: "AI, robotics, IoT, electronics and system development for African agriculture.",
       },
     ],
   }),
@@ -39,9 +39,9 @@ const LABS = [
 const PIPELINE = [
   { step: "01", title: "Problem identification", text: "Farmer conversations and field observation define the real problem." },
   { step: "02", title: "Research", text: "Literature, components, costs and local conditions are studied." },
-  { step: "03", title: "Prototype", text: "A working unit is designed, built and assembled in our workspace." },
+  { step: "03", title: "Engineering", text: "A functional system is designed, built and assembled in our workspace." },
   { step: "04", title: "Testing", text: "Bench testing for accuracy, power, durability and reliability." },
-  { step: "05", title: "Field validation", text: "The prototype runs in real farm conditions and is measured." },
+  { step: "05", title: "Field validation", text: "The system runs in real farm conditions and is measured." },
   { step: "06", title: "Product development", text: "Findings are turned into a documented, repeatable product." },
 ];
 
@@ -80,7 +80,7 @@ function Research() {
 
       <section className="border-y border-border bg-surface section-y">
         <div className="container-x">
-          <SectionHeading eyebrow="Pipeline" title="From research question to prototype validation in six stages" align="center" />
+          <SectionHeading eyebrow="Pipeline" title="From research question to system validation in six stages" align="center" />
           <div className="mt-12 grid gap-4 md:grid-cols-5">
             {PIPELINE.map((p, i) => (
               <Reveal key={p.step} delay={i * 0.07}>

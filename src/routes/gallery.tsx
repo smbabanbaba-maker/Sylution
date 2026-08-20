@@ -13,10 +13,10 @@ export const Route = createFileRoute("/gallery")({
       {
         name: "description",
         content:
-          "Photographs from SYLUTION prototypes, technology development, exhibitions, training sessions and agricultural activities in Nigeria.",
+          "Photographs from SYLUTION systems, technology development, exhibitions, training sessions and agricultural activities in Nigeria.",
       },
       { property: "og:title", content: "Gallery, SYLUTION" },
-      { property: "og:description", content: "Real photographs from our prototypes, workspace, exhibitions and training sessions." },
+      { property: "og:description", content: "Real photographs from our systems, workspace, exhibitions and training sessions." },
     ],
   }),
   component: Gallery,

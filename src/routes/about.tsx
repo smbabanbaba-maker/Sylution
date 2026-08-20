@@ -27,7 +27,7 @@ export const Route = createFileRoute("/about")({
 const TIMELINE = [
   { year: "2024", title: "The idea begins", text: "The SYLUTION idea takes shape in Kano, around AI, IoT and agriculture." },
   { year: "2024", title: "Early development", text: "First learning, research and electronics experiments begin in earnest." },
-  { year: "2025", title: "Prototype work", text: "Sensor nodes, controllers and dashboard prototypes are built and tested." },
+  { year: "2025", title: "Engineering", text: "Sensor nodes, controllers and dashboards are engineered and tested." },
   { year: "2025", title: "Sysmart Agro", text: "Our flagship smart farming system enters active development and field deployment." },
   { year: "2026", title: "Company registration and growth", text: "SYLUTION LTD operates from the Technology Incubation Centre, Kano." },
 ];

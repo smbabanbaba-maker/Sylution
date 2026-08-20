@@ -167,10 +167,10 @@ function IoTPage() {
             />
             <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border sm:grid-cols-4">
               {[
-                { v: "Target", l: "99.2% Uptime" },
-                { v: "Target", l: "18mo Battery" },
-                { v: "Target", l: "12km Range" },
-                { v: "Target", l: "IP67 Protection" },
+                { v: "Target Spec", l: "99.2% Uptime" },
+                { v: "Target Spec", l: "18mo Battery" },
+                { v: "Target Spec", l: "12km Range" },
+                { v: "Target Spec", l: "IP67 Protection" },
               ].map((s) => (
                 <div key={s.l} className="glass px-4 py-5">
                   <p className="font-display text-xl font-extrabold text-gradient-brand">{s.v}</p>

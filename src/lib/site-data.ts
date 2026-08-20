@@ -102,13 +102,13 @@ export const SOLUTIONS: Solution[] = [
     tagline: "Controllers, sensors, firmware",
     image: BRAND_IMAGES.pcb,
     summary:
-      "Controllers, sensors, microcontrollers, hardware prototypes and smart electronic systems designed and assembled in our Kano workspace.",
+      "Controllers, sensors, microcontrollers, hardware systems and smart electronic systems designed and assembled in our Kano workspace.",
     capabilities: [
       "Circuit and PCB design",
       "ESP32, STM32 and Arduino platforms",
       "Firmware and low power design",
       "Sensor selection and calibration",
-      "Prototype assembly and testing",
+      "System assembly and testing",
     ],
     outcomes: STATUS("In Development"),
   },
@@ -326,11 +326,11 @@ export const SOLUTIONS: Solution[] = [
     tagline: "Evidence before deployment",
     image: BRAND_IMAGES.lab,
     summary:
-      "Applied research in AI, IoT, electronics, robotics and smart agriculture, moving from problem to prototype to field validation.",
+      "Applied research in AI, IoT, electronics, robotics and smart agriculture, moving from problem to system validation in the field.",
     capabilities: [
       "Applied engineering research",
       "Dataset creation and labelling",
-      "Prototype development",
+      "System development",
       "Bench and field testing",
       "Documentation and reporting",
     ],
@@ -436,8 +436,8 @@ export const LABS = [
   { name: "AI and data work", detail: "Dataset preparation, model experiments and evaluation.", image: BRAND_IMAGES.ai },
   { name: "Electronics bench", detail: "Schematic, soldering, measurement and board level debugging.", image: BRAND_IMAGES.pcb },
   { name: "Robotics and automation", detail: "Mechatronics, actuation and control experiments.", image: BRAND_IMAGES.robotics },
-  { name: "Prototype build", detail: "Enclosures, mechanical fabrication and assembly of test units.", image: BRAND_IMAGES.electronics },
-  { name: "Field testing", detail: "Validation of prototypes under real farm conditions.", image: BRAND_IMAGES.irrigation },
+  { name: "System assembly", detail: "Enclosures, mechanical fabrication and assembly of test units.", image: BRAND_IMAGES.electronics },
+  { name: "Field testing", detail: "Validation of systems under real farm conditions.", image: BRAND_IMAGES.irrigation },
 ];
 
 export const PRODUCTS = [
@@ -463,7 +463,7 @@ export const INDUSTRIES = [
 ];
 
 export const EXHIBITION_IMAGES: { src: string; caption: string }[] = [
-  { src: BRAND_IMAGES.exhibition1, caption: "Presenting the Sysmart Agro prototype to visitors at an agricultural technology exhibition" },
+  { src: BRAND_IMAGES.exhibition1, caption: "Presenting the Sysmart Agro system to visitors at an agricultural technology exhibition" },
   { src: BRAND_IMAGES.exhibition2, caption: "Demonstrating live sensor readings from the Sysmart Agro controller" },
   { src: BRAND_IMAGES.exhibition3, caption: "Officials and guests visiting the SYLUTION exhibition stand" },
   { src: BRAND_IMAGES.exhibition4, caption: "Discussing smart agriculture technology with stakeholders on site" },
@@ -618,7 +618,7 @@ export const TRAINING_AREAS: { group: string; items: string[] }[] = [
 export const TRAINING_PROGRAMMES = [
   { title: "Artificial Intelligence", detail: "AI foundations, AI tools and agricultural data intelligence.", image: BRAND_IMAGES.ai },
   { title: "Internet of Things", detail: "Sensors, connected devices, monitoring systems and smart agriculture.", image: BRAND_IMAGES.iotLab },
-  { title: "ESP32 and Arduino", detail: "Hands on microcontroller and sensor projects from zero to prototype.", image: BRAND_IMAGES.electronics },
+  { title: "ESP32 and Arduino", detail: "Hands on microcontroller and sensor projects from zero to working system.", image: BRAND_IMAGES.electronics },
   { title: "Modern Agriculture", detail: "Smart farming, precision agriculture and digital agriculture practices.", image: BRAND_IMAGES.greenhouse },
   { title: "Livestock Technology", detail: "Modern livestock management, monitoring and digital records.", image: BRAND_IMAGES.harvest },
   { title: "Robotics and Automation", detail: "Robotics, sensors, automation and practical projects.", image: BRAND_IMAGES.robotics },
@@ -640,7 +640,7 @@ export const FAQS = [
   },
   {
     q: "Do you build hardware or only software?",
-    a: "Both. We design circuits and sensor systems, write firmware, build prototypes and develop the dashboards and software that sit on top of them.",
+    a: "Both. We design circuits and sensor systems, write firmware, build systems and develop the dashboards and software that sit on top of them.",
   },
   {
     q: "What is Sysmart Agro?",
@@ -787,7 +787,7 @@ export const TECH_PILLARS = [
   {
     slug: "electronics",
     title: "Electronics and Embedded Systems",
-    detail: "Controllers, sensors, microcontrollers, hardware prototypes and smart electronic systems.",
+    detail: "Controllers, sensors, microcontrollers, hardware systems and smart electronic systems.",
   },
   {
     slug: "robotics",

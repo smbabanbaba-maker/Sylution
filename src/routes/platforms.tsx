@@ -34,7 +34,7 @@ const PLATFORMS = [
     icon: Sprout,
     image: BRAND_IMAGES.sysmart,
     category: "AgriTech Platform",
-    status: "Prototype / Development",
+    status: "Active Project",
     description:
       "A technology platform applying IoT sensors, connected controllers, agricultural data and AI to modern agriculture and livestock production.",
     to: "/sysmart-agro",

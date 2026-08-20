@@ -47,7 +47,7 @@ const TECHNOLOGIES = [
 const TIMELINE = [
   { phase: "Concept", detail: "Problem definition with farmers around Kano and requirement gathering.", state: "Completed" },
   { phase: "Circuit design", detail: "Schematic, component selection and bench validation.", state: "Completed" },
-  { phase: "Prototype build", detail: "Enclosure, controller board, display and sensor integration.", state: "Completed" },
+  { phase: "Engineering build", detail: "Enclosure, controller board, display and sensor integration.", state: "Completed" },
   { phase: "Field testing", detail: "Installation on test plots, endurance and reliability observation.", state: "In progress" },
   { phase: "Pilot deployment", detail: "Small group of farms running the full monitoring and control loop.", state: "Planned" },
   { phase: "Commercial release", detail: "Production units, support and documentation.", state: "Planned" },
