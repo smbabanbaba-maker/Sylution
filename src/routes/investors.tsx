@@ -50,16 +50,17 @@ function InvestorsPage() {
         eyebrow="Investors"
         title="Backing African engineering"
         subtitle="SYLUTION is an early stage IoT, AI and electronics engineering company open to strategic investment and partnerships. This page describes where we genuinely are and what capital would be used for."
-        image={BRAND_IMAGES.pcb}
+        image={BRAND_IMAGES.team}
         compact
       >
         <div className="flex flex-wrap gap-3">
-          <Link
-            to="/company-profile"
+          <a
+            href="/sylution-company-profile.pdf"
+            download="SYLUTION-Investor-Government-Company-Profile.pdf"
             className="btn-base btn-primary"
           >
             Download the company profile <Download className="h-4 w-4" />
-          </Link>
+          </a>
           <Link
             to="/contact"
             className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:scale-[1.04]"
@@ -112,7 +113,7 @@ function InvestorsPage() {
             <ul className="mt-8 space-y-3 text-sm text-muted-foreground">
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                Company profile PDF, available for immediate download
+                Verified Investor & Government Company Profile PDF, available for immediate download
               </li>
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
