@@ -28,7 +28,7 @@ const TIMELINE = [
   { year: "2024", title: "The idea begins", text: "The SYLUTION idea takes shape in Kano, around AI, IoT and agriculture." },
   { year: "2024", title: "Early development", text: "First learning, research and electronics experiments begin in earnest." },
   { year: "2025", title: "Prototype work", text: "Sensor nodes, controllers and dashboard prototypes are built and tested." },
-  { year: "2025", title: "Sysmart Agro", text: "Our flagship smart farming system enters prototype and testing." },
+  { year: "2025", title: "Sysmart Agro", text: "Our flagship smart farming system enters active development and field deployment." },
   { year: "2026", title: "Company registration and growth", text: "SYLUTION LTD operates from the Technology Incubation Centre, Kano." },
 ];
 
@@ -70,8 +70,7 @@ function About() {
           />
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground">
             <p>
-              We began by installing sensor-driven irrigation on a small block of land near Kano, running it against a
-              conventional plot season after season. The data was unambiguous: less water, less diesel, more yield.
+              The development journey began with a focus on sensor-driven irrigation on test plots near Kano, observing the potential for water and energy efficiency.
             </p>
             <p>
               That result funded the next system, then the next. Today SYLUTION designs its own electronics, writes its own software, and conducts research into drone technology and smart agriculture to support farmers and institutions.

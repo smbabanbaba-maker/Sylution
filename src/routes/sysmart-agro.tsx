@@ -11,15 +11,15 @@ export const Route = createFileRoute("/sysmart-agro")({
       { title: "Sysmart Agro | Flagship IoT Project by SYLUTION" },
       {
         name: "description",
-        content:
-          "Sysmart Agro is the flagship IoT smart agriculture project of SYLUTION: a field controller with soil and climate sensing, remote irrigation control and a monitoring dashboard. Status: prototype.",
-      },
-      { property: "og:title", content: "Sysmart Agro, IoT smart agriculture project by SYLUTION" },
-      {
-        property: "og:description",
-        content:
-          "Field controller, soil and climate sensing, remote irrigation control and dashboards, engineered in Kano, Nigeria. Currently at prototype stage.",
-      },
+          content:
+            "Sysmart Agro is the flagship IoT smart agriculture project of SYLUTION: a field controller with soil and climate sensing, remote irrigation control and a monitoring dashboard. Status: active project.",
+        },
+        { property: "og:title", content: "Sysmart Agro, IoT smart agriculture project by SYLUTION" },
+        {
+          property: "og:description",
+          content:
+            "Field controller, soil and climate sensing, remote irrigation control and dashboards, engineered in Kano, Nigeria. Currently in active development and field deployment.",
+        },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -73,7 +73,7 @@ function SysmartAgroPage() {
       >
         <div className="flex flex-wrap items-center gap-3">
           <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-primary">
-            <span className="h-2 w-2 rounded-full bg-primary" /> Status: Prototype
+            <span className="h-2 w-2 rounded-full bg-primary" /> Status: Active Project
           </span>
           <Link
             to="/contact"
@@ -102,14 +102,14 @@ function SysmartAgroPage() {
             />
           </div>
           <p className="mt-3 text-xs text-muted-foreground">
-            Sysmart Agro prototype controller displaying live soil moisture and pump state in the field.
+            Sysmart Agro controller displaying live soil moisture and pump state during field deployment.
           </p>
         </Reveal>
         <Reveal delay={0.12}>
           <SectionHeading
             eyebrow="Project overview"
             title="One box between the farmer and the field"
-            description="Sysmart Agro reads what is happening in the soil and the air, decides whether water is needed, switches the pump and reports everything back to a dashboard. The prototype runs the full loop today on our test plots."
+            description="Sysmart Agro reads what is happening in the soil and the air, decides whether water is needed, switches the pump and reports everything back to a dashboard. The system runs the full monitoring and control loop today on our field sites."
           />
           <ul className="mt-8 space-y-3">
             {OBJECTIVES.map((o) => (
@@ -126,7 +126,7 @@ function SysmartAgroPage() {
         <div className="container-x">
           <SectionHeading
             eyebrow="Technologies used"
-            title="What the prototype is built from"
+            title="System architecture"
             description="Every layer of Sysmart Agro is engineered in house, from the board to the dashboard."
             align="center"
           />
@@ -149,8 +149,8 @@ function SysmartAgroPage() {
       <section className="container-x section-y">
         <SectionHeading
           eyebrow="How it works"
-          title="Sensors to smart decisions"
-          description="The Sysmart Agro flow, from a reading in the soil to an irrigation decision on the farm."
+          title="From sensors to smart decisions"
+          description="The Sysmart Agro operational flow, from a reading in the soil to an irrigation decision on the farm."
           align="center"
         />
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

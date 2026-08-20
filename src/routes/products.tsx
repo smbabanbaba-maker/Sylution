@@ -12,7 +12,7 @@ export const Route = createFileRoute("/products")({
       {
         name: "description",
         content:
-          "The SYLUTION product catalogue: IoT controllers, smart sensors, irrigation units, industrial controllers, energy monitors, trackers and research prototypes.",
+          "The SYLUTION product catalogue: IoT controllers, smart sensors, irrigation units, industrial controllers, energy monitors, trackers and research projects.",
       },
       { property: "og:title", content: "SYLUTION Products" },
       {

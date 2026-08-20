@@ -13,7 +13,7 @@ export const Route = createFileRoute("/iot")({
       {
         name: "description",
         content:
-          "SYLUTION designs and develops IoT prototypes, including gateways, edge controllers, and cloud monitoring platforms for agriculture and demanding environments.",
+          "SYLUTION designs and develops IoT systems, including gateways, edge controllers, and cloud monitoring platforms for agriculture and demanding environments.",
       },
       { property: "og:title", content: "Internet of Things at SYLUTION" },
       {

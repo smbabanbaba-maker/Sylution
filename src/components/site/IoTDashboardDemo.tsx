@@ -250,8 +250,7 @@ export function IoTDashboardDemo() {
             </div>
 
             <p className="mt-6 text-xs text-muted-foreground">
-              Demonstration data, generated in your browser to illustrate the interface. Production deployments stream
-              from real SYLUTION gateways.
+              Simulated Data — Demonstration Interface. This dashboard illustrates the SYLUTION monitoring interface using data generated in your browser.
             </p>
           </div>
         </Reveal>

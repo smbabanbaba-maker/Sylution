@@ -30,7 +30,7 @@ export const Route = createFileRoute("/investors")({
 const WHY = [
   { icon: Cpu, title: "In house engineering", detail: "Hardware, firmware, connectivity, cloud and interfaces are built by one team, not outsourced." },
   { icon: Globe2, title: "Underserved market", detail: "Industrial and agricultural operations across West Africa still run without instrumentation." },
-  { icon: LineChart, title: "Product pathway", detail: "A prototype platform, Sysmart Agro, moving toward pilot deployment and production." },
+  { icon: LineChart, title: "Product pathway", detail: "A flagship platform, Sysmart Agro, in active development and field deployment." },
   { icon: Users, title: "Talent pipeline", detail: "Our academy trains the engineers we and our partners will need." },
   { icon: ShieldCheck, title: "Honest reporting", detail: "We publish real project stages. No inflated deployment or revenue figures." },
   { icon: Download, title: "Documentation", detail: "A company profile is available now, with further material shared on request." },
@@ -38,7 +38,7 @@ const WHY = [
 
 const STAGE = [
   { label: "Company stage", value: "Early stage, engineering led" },
-  { label: "Flagship product", value: "Sysmart Agro, prototype" },
+  { label: "Flagship product", value: "Sysmart Agro, active project" },
   { label: "Base", value: "Technology Incubation Centre, Kano" },
   { label: "Capital use", value: "Prototyping, field pilots, production tooling" },
 ];
@@ -49,7 +49,7 @@ function InvestorsPage() {
       <PageHero
         eyebrow="Investors"
         title="Backing African engineering"
-        subtitle="SYLUTION is an early stage IoT, AI and electronics engineering company. This page describes where we genuinely are and what capital would be used for. We do not publish figures we cannot evidence."
+        subtitle="SYLUTION is an early stage IoT, AI and electronics engineering company open to strategic investment and partnerships. This page describes where we genuinely are and what capital would be used for."
         image={BRAND_IMAGES.pcb}
         compact
       >

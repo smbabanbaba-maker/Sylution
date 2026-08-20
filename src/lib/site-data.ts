@@ -78,7 +78,7 @@ export const SOLUTIONS: Solution[] = [
       "Anomaly detection on live sensor data",
       "Edge inference on low cost hardware",
     ],
-    outcomes: STATUS("Research and prototype"),
+    outcomes: STATUS("Active Development"),
   },
   {
     slug: "iot",
@@ -94,7 +94,7 @@ export const SOLUTIONS: Solution[] = [
       "Offline capable field operation",
       "Realtime dashboards and alerts",
     ],
-    outcomes: STATUS("Prototype and field testing"),
+    outcomes: STATUS("Field Deployment & Testing"),
   },
   {
     slug: "electronics",
@@ -110,7 +110,7 @@ export const SOLUTIONS: Solution[] = [
       "Sensor selection and calibration",
       "Prototype assembly and testing",
     ],
-    outcomes: STATUS("Prototype and testing"),
+    outcomes: STATUS("In Development"),
   },
   {
     slug: "embedded-systems",
@@ -126,7 +126,7 @@ export const SOLUTIONS: Solution[] = [
       "Over the air update support",
       "Hardware in the loop testing",
     ],
-    outcomes: STATUS("Prototype and testing"),
+    outcomes: STATUS("In Development"),
   },
   {
     slug: "robotics",
@@ -190,7 +190,7 @@ export const SOLUTIONS: Solution[] = [
       "AI crop advisory research",
       "Farm records and monitoring",
     ],
-    outcomes: STATUS("Prototype and field testing"),
+    outcomes: STATUS("Active Development & Field Deployment"),
   },
   {
     slug: "precision-agriculture",
@@ -206,7 +206,7 @@ export const SOLUTIONS: Solution[] = [
       "Yield and performance tracking",
       "Input cost analytics",
     ],
-    outcomes: STATUS("Research and prototype"),
+    outcomes: STATUS("Active Research"),
   },
   {
     slug: "digital-agriculture",
@@ -238,7 +238,7 @@ export const SOLUTIONS: Solution[] = [
       "Mobile scheduling on weak networks",
       "Dry run and leak protection",
     ],
-    outcomes: STATUS("Prototype and field testing"),
+    outcomes: STATUS("Active Development & Field Deployment"),
   },
   {
     slug: "drip-irrigation",
@@ -441,9 +441,9 @@ export const LABS = [
 ];
 
 export const PRODUCTS = [
-  { name: "Sysmart Agro controller", detail: "Smart agriculture controller for sensing, irrigation control and monitoring.", image: BRAND_IMAGES.sysmart, status: "Prototype" },
-  { name: "Smart sensors", detail: "Soil moisture, temperature, humidity and water level sensor nodes.", image: BRAND_IMAGES.iotLab, status: "Prototype" },
-  { name: "Smart irrigation unit", detail: "Solar capable scheduling and control for irrigation blocks.", image: BRAND_IMAGES.irrigation, status: "Prototype" },
+  { name: "Sysmart Agro controller", detail: "Smart agriculture controller for sensing, irrigation control and monitoring.", image: BRAND_IMAGES.sysmart, status: "Active Project" },
+  { name: "Smart sensors", detail: "Soil moisture, temperature, humidity and water level sensor nodes.", image: BRAND_IMAGES.iotLab, status: "Testing" },
+  { name: "Smart irrigation unit", detail: "Solar capable scheduling and control for irrigation blocks.", image: BRAND_IMAGES.irrigation, status: "Testing" },
   { name: "Drip irrigation technology", detail: "Efficient water delivery systems for farms and greenhouses.", image: BRAND_IMAGES.irrigation, status: "Testing" },
   { name: "Greenhouse technology", detail: "Modern greenhouse agriculture with technology integration.", image: BRAND_IMAGES.greenhouse, status: "Development" },
   { name: "Agricultural drone technology", detail: "Farm observation, mapping and monitoring applications.", image: BRAND_IMAGES.drone, status: "Development" },
@@ -471,13 +471,13 @@ export const EXHIBITION_IMAGES: { src: string; caption: string }[] = [
 ];
 
 export const GALLERY: { src: string; category: string; caption: string }[] = [
-  { src: BRAND_IMAGES.sysmart, category: "Sysmart Agro", caption: "Sysmart Agro controller and sensors under field testing" },
+  { src: BRAND_IMAGES.sysmart, category: "Sysmart Agro", caption: "Sysmart Agro field deployment and monitoring" },
   ...EXHIBITION_IMAGES.map((e) => ({ src: e.src, category: "Exhibitions", caption: e.caption })),
-  { src: BRAND_IMAGES.iotLab, category: "IoT", caption: "Sensor node and connectivity testing on the bench" },
-  { src: BRAND_IMAGES.pcb, category: "Electronics", caption: "Circuit board inspection during prototype work" },
+  { src: BRAND_IMAGES.iotLab, category: "IoT", caption: "Sensor node and connectivity testing" },
+  { src: BRAND_IMAGES.pcb, category: "Electronics", caption: "Circuit board inspection and assembly" },
   { src: BRAND_IMAGES.ai, category: "AI", caption: "Agricultural data and model review" },
-  { src: BRAND_IMAGES.robotics, category: "Robotics", caption: "Robotics and automation prototyping" },
-  { src: BRAND_IMAGES.device, category: "Products", caption: "IoT controller and sensor prototypes" },
+  { src: BRAND_IMAGES.robotics, category: "Robotics", caption: "Robotics and automation development" },
+  { src: BRAND_IMAGES.device, category: "Products", caption: "IoT controller and sensor systems" },
   { src: BRAND_IMAGES.drone, category: "Drone", caption: "Agricultural drone technology for farm observation" },
   { src: BRAND_IMAGES.techTraining, category: "Training", caption: "Practical IoT and electronics training session" },
   { src: BRAND_IMAGES.training, category: "Training", caption: "Youth and women technology training" },
@@ -508,13 +508,13 @@ export const GALLERY_CATEGORIES = [
 
 export const NEWS = [
   {
-    slug: "sysmart-agro-prototype",
-    title: "Sysmart Agro prototype enters field testing",
+    slug: "sysmart-agro-active-development",
+    title: "Sysmart Agro advances through active field development",
     date: "2026-06-18",
     category: "Projects",
     image: BRAND_IMAGES.sysmart,
     excerpt:
-      "Our smart agriculture controller is being tested with soil and climate sensors, remote irrigation control and live monitoring.",
+      "Our smart agriculture system is being actively developed and deployed with soil and climate sensing, smart irrigation control and live monitoring capabilities.",
   },
   {
     slug: "iot-sensor-development",
@@ -644,11 +644,11 @@ export const FAQS = [
   },
   {
     q: "What is Sysmart Agro?",
-    a: "Sysmart Agro is our flagship AI and IoT powered smart agriculture project, combining field sensors, a smart controller, data collection, AI analysis and a monitoring dashboard. It is currently at prototype and testing stage.",
+    a: "Sysmart Agro is our flagship AI and IoT powered smart agriculture project, combining field sensors, a smart controller, data collection, AI analysis and a monitoring dashboard. It is currently in active development and field deployment.",
   },
   {
     q: "Are your products commercially available?",
-    a: "Our products are at prototype, development or testing stage. We label the status of every project honestly and we do not claim commercial deployment that has not happened.",
+    a: "Our projects are in active development, testing, or field deployment stages. We label the status of every project honestly and provide updates as they advance through our engineering pipeline.",
   },
   {
     q: "Who can join your training programmes?",
@@ -672,7 +672,7 @@ export const CAREERS = [
 ];
 
 
-export type ProjectStatus = "Prototype" | "Under development" | "Research phase" | "Pilot testing" | "Coming soon";
+export type ProjectStatus = "Active Project" | "Under development" | "Research phase" | "Pilot testing" | "Coming soon" | "Testing";
 
 export const PROJECTS: {
   slug: string;
@@ -686,7 +686,7 @@ export const PROJECTS: {
     slug: "sysmart-agro",
     name: "Sysmart Agro",
     category: "Flagship project",
-    status: "Prototype",
+    status: "Active Project",
     image: BRAND_IMAGES.sysmart,
     summary:
       "An IoT powered smart agriculture platform combining a field controller, soil and climate sensing and remote irrigation control.",
@@ -695,7 +695,7 @@ export const PROJECTS: {
     slug: "smart-irrigation-controller",
     name: "Smart irrigation controller",
     category: "Hardware",
-    status: "Prototype",
+    status: "Testing",
     image: BRAND_IMAGES.irrigation,
     summary: "Solar powered controller that automates pumps and valves from soil moisture thresholds.",
   },
@@ -754,7 +754,7 @@ export const SYSMART_FLOW = [
 export const RND_PROCESS = [
   { step: "Problem", detail: "We start from a real farm or field problem, described by the people facing it." },
   { step: "Research", detail: "Desk research, sensor selection and technical study of the possible approach." },
-  { step: "Prototype", detail: "Circuits, firmware, enclosures and software built into a working unit." },
+  { step: "Engineering", detail: "Circuits, firmware, enclosures and software built into a working unit." },
   { step: "Testing", detail: "Bench and laboratory testing for accuracy, power use and reliability." },
   { step: "Field validation", detail: "Supervised testing under real dust, heat, water and power conditions." },
   { step: "Product development", detail: "Refinement, documentation and preparation for wider use." },

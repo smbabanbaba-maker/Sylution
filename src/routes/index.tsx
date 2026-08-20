@@ -218,7 +218,7 @@ function Home() {
                 irrigation control and a live monitoring dashboard, engineered end to end in Kano.
               </p>
               <span className="mt-6 inline-flex rounded-full bg-primary/15 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-primary">
-                Status: Prototype
+                Status: Active Project
               </span>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
@@ -245,7 +245,7 @@ function Home() {
           <SectionHeading
             eyebrow="Exhibitions and engagement"
             title="Showing the work in the real world"
-            description="Photographs from exhibitions, stakeholder demonstrations and innovation events where the Sysmart Agro prototype was presented."
+            description="Photographs from exhibitions, stakeholder demonstrations and innovation events where the Sysmart Agro system was presented."
             align="center"
           />
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -289,7 +289,7 @@ function Home() {
             {[
               { icon: Sparkles, text: "AI, IoT and engineering form our technology foundation." },
               { icon: ShieldCheck, text: "AgriTech is our main application area, from irrigation to livestock." },
-              { icon: Sparkles, text: "Prototypes are built and tested in house, and labelled honestly." },
+              { icon: Sparkles, text: "Systems are engineered and tested in house, and status is labelled honestly." },
             ].map((item) => (
               <div key={item.text} className="flex gap-4">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary">
@@ -320,7 +320,7 @@ function Home() {
             <div className="glass absolute -bottom-8 -left-4 w-56 rounded-2xl p-5 shadow-luxe sm:-left-8">
               <p className="font-display text-3xl font-extrabold text-gradient-brand">2024</p>
               <p className="mt-1 text-xs text-muted-foreground">
-                The idea and early development journey behind SYLUTION began.
+                The official development journey and engineering foundation of SYLUTION began.
               </p>
             </div>
           </div>

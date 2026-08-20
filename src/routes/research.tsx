@@ -32,7 +32,7 @@ const LABS = [
   { icon: Wrench, title: "Engineering", text: "Mechanical, electrical and civil design for agricultural installations." },
   { icon: CircuitBoard, title: "Electronics", text: "Schematic, PCB, firmware and small-batch assembly in our own workshop." },
   { icon: FlaskConical, title: "Testing", text: "Environmental, durability and accuracy testing before any field release." },
-  { icon: Boxes, title: "Prototype Development", text: "3D printing, CNC and rapid iteration from concept to working unit." },
+  { icon: Boxes, title: "System Development", text: "3D printing, CNC and rapid iteration from concept to working unit." },
   { icon: Rocket, title: "Future Projects", text: "Autonomous irrigation swarms, farm-level carbon accounting, offline AI advisory." },
 ];
 
@@ -100,7 +100,7 @@ function Research() {
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {[
             { src: BRAND_IMAGES.lab, label: "Laboratory analysis" },
-            { src: BRAND_IMAGES.electronics, label: "Prototype instrumentation" },
+            { src: BRAND_IMAGES.electronics, label: "System instrumentation" },
             { src: BRAND_IMAGES.team, label: "Engineering review" },
           ].map((f, i) => (
             <Reveal key={f.label} delay={i * 0.08}>

@@ -11,15 +11,15 @@ export const Route = createFileRoute("/projects")({
       { title: "Projects | SYLUTION IoT, AI and Electronics Engineering" },
       {
         name: "description",
-        content:
-          "Current, prototype and research projects at SYLUTION, including the Sysmart Agro smart agriculture platform, environmental monitoring nodes and educational robotics.",
-      },
-      { property: "og:title", content: "SYLUTION projects, from research to prototype" },
-      {
-        property: "og:description",
-        content:
-          "An honest view of what SYLUTION is building: prototypes, research work and projects under development in Kano, Nigeria.",
-      },
+          content:
+            "Current development and research projects at SYLUTION, including the Sysmart Agro smart agriculture platform, environmental monitoring nodes and educational robotics.",
+        },
+        { property: "og:title", content: "SYLUTION projects, from research to active development" },
+        {
+          property: "og:description",
+          content:
+            "An honest view of what SYLUTION is building: active projects, research work and systems under development in Kano, Nigeria.",
+        },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
 });
 
-const GROUPS = ["Prototype", "Under development", "Research phase"] as const;
+const GROUPS = ["Active Project", "Testing", "Under development", "Research phase"] as const;
 
 function ProjectsPage() {
   return (
@@ -59,7 +59,7 @@ function ProjectsPage() {
                 sensing, remote irrigation control and a monitoring dashboard.
               </p>
               <span className="mt-6 inline-flex rounded-full bg-primary/15 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-primary">
-                Status: Prototype
+                Status: Active Project
               </span>
               <span className="mt-6 flex items-center gap-2 text-sm font-semibold text-primary">
                 Open the project page <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
