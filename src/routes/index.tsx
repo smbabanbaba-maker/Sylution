@@ -184,11 +184,13 @@ function Home() {
           <img
             src={BRAND_IMAGES.sysmart}
             alt="Sysmart Agro smart agriculture system in an irrigated field"
-            className="absolute inset-0 h-full w-full object-cover object-center"
+            className="hero-image-live absolute inset-0 h-full w-full object-cover object-center"
             loading="eager"
           />
         </motion.div>
         <div aria-hidden className="veil-side absolute inset-0 -z-10" />
+        <div aria-hidden className="circuit-overlay pointer-events-none absolute inset-0 -z-10" />
+        <div aria-hidden className="signal-sweep pointer-events-none -z-10" />
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_32%,color-mix(in_oklab,var(--brand)_18%,transparent),transparent_28%)]"

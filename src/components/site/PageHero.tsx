@@ -21,9 +21,11 @@ export function PageHero({
   return (
     <section className="relative isolate overflow-hidden">
       <div className="absolute inset-0 -z-20">
-        <img src={image} alt="" aria-hidden loading="eager" className="h-full w-full object-cover object-center" />
+        <img src={image} alt="" aria-hidden loading="eager" className="hero-image-live h-full w-full object-cover object-center" />
       </div>
       <div aria-hidden className="veil-side absolute inset-0 -z-10" />
+      <div aria-hidden className="circuit-overlay pointer-events-none absolute inset-0 -z-10" />
+      <div aria-hidden className="signal-sweep pointer-events-none -z-10" />
       <div
         aria-hidden
         className="pointer-events-none absolute -right-24 top-10 -z-10 h-72 w-72 rounded-full bg-primary/25 blur-[110px] animate-float-slow"

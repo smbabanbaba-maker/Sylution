@@ -59,9 +59,11 @@ export function Nav() {
       )}
     >
       <div className="container-x flex h-16 items-center justify-between gap-3 lg:h-[4.5rem]">
-        <Link to="/" className="flex shrink-0 items-center gap-2.5 rounded-full transition-opacity hover:opacity-90" onClick={() => setOpen(false)}>
-          <img src={LOGO_SRC} alt="SYLUTION logo" className="h-9 w-9 rounded-md object-contain lg:h-11 lg:w-11" />
-          <span className="font-display text-base font-extrabold tracking-tight lg:text-lg">SYLUTION</span>
+        <Link to="/" className="group flex shrink-0 items-center gap-3 rounded-full transition-opacity hover:opacity-90" onClick={() => setOpen(false)}>
+          <span className="brand-mark-shell h-10 w-10 lg:h-12 lg:w-12">
+            <img src={LOGO_SRC} alt="SYLUTION logo" className="h-full w-full rounded-lg object-contain" />
+          </span>
+          <span className="font-display text-base font-extrabold tracking-[0.12em] lg:text-lg">SYLUTION</span>
         </Link>
 
         <nav className="hidden items-center gap-0.5 xl:flex">
