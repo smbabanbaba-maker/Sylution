@@ -226,9 +226,8 @@ function NavLink({ to, label }: { to: string; label: string }) {
     <Link
       to={to}
       activeOptions={{ exact: to === "/" }}
-      activeProps={{ className: "text-foreground" }}
-      inactiveProps={{ className: "text-muted-foreground" }}
-      className="rounded-full px-3 py-2 text-sm font-medium transition-colors hover:bg-accent/60 hover:text-foreground"
+      activeProps={{ "data-active": "true" }}
+      className="nav-link"
     >
       {label}
     </Link>

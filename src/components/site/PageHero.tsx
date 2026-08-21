@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { useLang } from "@/lib/i18n";
 
 export function PageHero({
@@ -85,11 +85,21 @@ export function SectionHeading({
   align?: "left" | "center";
 }) {
   const { tr } = useLang();
+  const reduceMotion = useReducedMotion();
   return (
-    <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      <p className={`eyebrow ${align === "center" ? "justify-center" : ""}`}>{tr(eyebrow)}</p>
+    <motion.div
+      className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}
+      initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.35 }}
+      transition={reduceMotion ? { duration: 0 } : { duration: 0.65, ease: [0.22, 0.7, 0.25, 1] }}
+    >
+      <p className={`eyebrow ${align === "center" ? "justify-center" : ""}`}>
+        <span aria-hidden className="mr-2 inline-block h-px w-6 bg-primary align-middle" />
+        {tr(eyebrow)}
+      </p>
       <h2 className="mt-4 text-[1.75rem] font-bold leading-[1.15] sm:text-4xl">{tr(title)}</h2>
       {description && <p className="mt-5 text-base leading-relaxed text-muted-foreground">{tr(description)}</p>}
-    </div>
+    </motion.div>
   );
 }
