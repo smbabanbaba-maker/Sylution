@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { LOGO_SRC, SOLUTIONS } from "@/lib/site-data";
@@ -31,6 +31,7 @@ const HIDDEN_FROM_MORE: string[] = ["/", "/about"];
 
 export function Nav() {
   const { t, lang, setLang } = useLang();
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [solOpen, setSolOpen] = useState(false);
@@ -68,7 +69,7 @@ export function Nav() {
 
         <nav className="hidden items-center gap-0.5 xl:flex">
           {MAIN.slice(0, 2).map((item) => (
-            <NavLink key={item.to} to={item.to} label={t(item.key)} />
+            <NavLink key={item.to} to={item.to} label={t(item.key)} active={isPathActive(pathname, item.to)} />
           ))}
 
           <div
@@ -103,7 +104,7 @@ export function Nav() {
           </div>
 
           {MAIN.filter((i) => PRIMARY.includes(i.to)).map((item) => (
-            <NavLink key={item.to} to={item.to} label={t(item.key)} />
+            <NavLink key={item.to} to={item.to} label={t(item.key)} active={isPathActive(pathname, item.to)} />
           ))}
 
           <div className="relative" onMouseEnter={() => setMoreOpen(true)} onMouseLeave={() => setMoreOpen(false)}>
@@ -221,13 +222,17 @@ export function Nav() {
   );
 }
 
-function NavLink({ to, label }: { to: string; label: string }) {
+function isPathActive(pathname: string, to: string) {
+  return to === "/" ? pathname === "/" : pathname === to || pathname.startsWith(`${to}/`);
+}
+
+function NavLink({ to, label, active }: { to: string; label: string; active: boolean }) {
   return (
     <Link
       to={to}
-      activeOptions={{ exact: to === "/" }}
-      activeProps={{ "data-active": "true" }}
+      aria-current={active ? "page" : undefined}
       className="nav-link"
+      data-active={active ? "true" : undefined}
     >
       {label}
     </Link>
