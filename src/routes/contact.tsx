@@ -117,7 +117,7 @@ function Contact() {
                 name="subject"
                 className="field-input"
               >
-                {["Project enquiry", "Partnership", "Training", "Financing", "Careers", "Other"].map((o) => (
+                {["Technical Assessment", "Project enquiry", "Partnership", "Training", "Financing", "Careers", "Other"].map((o) => (
                   <option key={o}>{o}</option>
                 ))}
               </select>
@@ -131,7 +131,7 @@ function Contact() {
                 name="message"
                 required
                 rows={5}
-                placeholder="Tell us about your site, crop and objective."
+                placeholder="Tell us about your site, system, crop, process or project objective."
                 className="field-input"
               />
             </div>

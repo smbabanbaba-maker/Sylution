@@ -733,6 +733,45 @@ export const PROJECTS: {
   },
 ];
 
+export const CASE_STUDIES = [
+  {
+    slug: "sysmart-agro-case-study",
+    category: "Smart Agriculture · Flagship project",
+    title: "Sysmart Agro: from field readings to irrigation decisions",
+    stage: "Active Project",
+    image: BRAND_IMAGES.sysmart,
+    summary:
+      "An IoT powered smart agriculture platform combining a field controller, soil and climate sensing, remote irrigation control and monitoring.",
+    evidence:
+      "Sensors, a solar capable controller, wireless connectivity, queued readings and a dashboard form one connected development loop.",
+    nextStep: "Continue supervised field testing and refine the monitoring and control workflow.",
+  },
+  {
+    slug: "smart-irrigation-controller-case-study",
+    category: "Hardware · Testing",
+    title: "Smart irrigation controller: control built around thresholds",
+    stage: "Testing",
+    image: BRAND_IMAGES.irrigation,
+    summary:
+      "A solar capable controller concept for automating pumps and valves from soil moisture thresholds.",
+    evidence:
+      "The engineering focus is the link between sensor readings, local control logic and reliable pump or valve switching.",
+    nextStep: "Continue testing sensor thresholds, pump control and operation under variable power conditions.",
+  },
+  {
+    slug: "computer-vision-crop-inspection-case-study",
+    category: "AI Research · Edge computing",
+    title: "Computer vision crop inspection: research for low-cost field intelligence",
+    stage: "Research phase",
+    image: BRAND_IMAGES.ai,
+    summary:
+      "An image-based research effort exploring crop-stress detection on edge hardware without depending on continuous internet access.",
+    evidence:
+      "The work connects crop imagery, locally collected data and model experiments with a practical low-cost deployment target.",
+    nextStep: "Continue research, dataset preparation and evaluation before any wider deployment claim is made.",
+  },
+];
+
 export const COMING_SOON = [
   { name: "Marketplace", detail: "Order SYLUTION devices, kits and agricultural technology online." },
   { name: "Agricultural financing", detail: "A financing pathway to help farmers adopt smart technology." },

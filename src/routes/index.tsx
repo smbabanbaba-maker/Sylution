@@ -21,6 +21,8 @@ import {
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/PageHero";
 import { CTASection } from "@/components/site/CTASection";
+import { CaseStudies } from "@/components/site/CaseStudies";
+import { TechnicalAssessmentCTA } from "@/components/site/TechnicalAssessmentCTA";
 import {
   SOLUTIONS,
   STATS,
@@ -600,6 +602,8 @@ function Home() {
         </div>
       </section>
 
+      <CaseStudies />
+
       {/* NEWS */}
       <section className="container-x section-y">
         <div className="flex flex-wrap items-end justify-between gap-6">
@@ -680,6 +684,7 @@ function Home() {
         </div>
       </section>
 
+      <TechnicalAssessmentCTA />
       <CTASection />
     </>
   );

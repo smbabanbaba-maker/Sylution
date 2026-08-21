@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
+import { CaseStudies } from "@/components/site/CaseStudies";
 import { BRAND_IMAGES, PROJECTS } from "@/lib/site-data";
 
 export const Route = createFileRoute("/projects")({
@@ -95,6 +96,8 @@ function ProjectsPage() {
           </section>
         );
       })}
+
+      <CaseStudies compact />
 
       <section className="container-x pb-20">
         <div className="card-luxe p-8 text-center sm:p-12">
