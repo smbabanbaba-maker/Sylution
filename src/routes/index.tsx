@@ -179,7 +179,7 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section ref={heroRef} className="relative isolate min-h-[100svh] overflow-hidden bg-[var(--navy)] text-white">
+      <section ref={heroRef} className="relative isolate min-h-[100svh] overflow-hidden bg-[var(--soft-white)] text-foreground">
         <motion.div style={{ y }} className="absolute inset-0 -z-20">
           <img
             src={BRAND_IMAGES.sysmart}
@@ -228,7 +228,7 @@ function Home() {
           </motion.h1>
 
           <motion.p
-            className="mt-6 max-w-2xl text-[0.975rem] leading-relaxed text-white/75 sm:mt-7 sm:text-lg"
+            className="mt-6 max-w-2xl text-[0.975rem] leading-relaxed text-muted-foreground sm:mt-7 sm:text-lg"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2 }}
@@ -268,7 +268,7 @@ function Home() {
           </motion.div>
 
           <motion.div
-            className="mt-12 hidden items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/60 sm:flex"
+            className="mt-12 hidden items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:flex"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.9 }}

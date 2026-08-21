@@ -79,7 +79,7 @@
   --secondary-foreground: var(--primary-text);
   --muted: #ededeb;
   --muted-foreground: var(--secondary-text);
-  --accent: #f9e9e8;
+  --accent: #f0f0ee;
   --accent-foreground: var(--primary-text);
   --destructive: var(--red-deep);
   --destructive-foreground: var(--white);
@@ -96,7 +96,7 @@
     var(--background) 100%
   );
   --shadow-luxe: 0 34px 80px -44px color-mix(in srgb, var(--navy) 58%, transparent);
-  --shadow-glow: 0 0 0 1px color-mix(in srgb, var(--sylution-red) 16%, transparent), 0 26px 60px -32px color-mix(in srgb, var(--sylution-red) 42%, transparent);
+  --shadow-glow: 0 0 0 1px color-mix(in srgb, var(--sylution-red) 10%, transparent), 0 26px 60px -32px color-mix(in srgb, var(--sylution-red) 23%, transparent);
 }
 
 
@@ -136,7 +136,7 @@
 
   /* A restrained circuit-board texture: visible on white surfaces, never competing with copy. */
   body::before {
-    opacity: 0.22;
+    opacity: 0.14;
     background-image:
       linear-gradient(90deg, transparent 0 12%, color-mix(in oklab, var(--brand) 26%, transparent) 12% 12.12%, transparent 12.12% 38%, color-mix(in oklab, var(--ink) 15%, transparent) 38% 38.1%, transparent 38.1% 100%),
       linear-gradient(28deg, transparent 0 49%, color-mix(in oklab, var(--brand) 24%, transparent) 49% 49.15%, transparent 49.15% 100%),
@@ -148,7 +148,7 @@
   }
 
   body::after {
-    opacity: 0.26;
+    opacity: 0.16;
     background-image: radial-gradient(circle, color-mix(in oklab, var(--brand) 42%, transparent) 0 1px, transparent 1.5px);
     background-size: 26px 26px;
     mask-image: linear-gradient(180deg, black 0%, transparent 40%, black 100%);
@@ -409,18 +409,20 @@
 }
 
 @utility nav-transparent {
-  background: transparent;
-  color: var(--white);
+  background: color-mix(in srgb, var(--soft-white) 82%, transparent);
+  color: var(--foreground);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+  backdrop-filter: blur(14px) saturate(120%);
   & .nav-link,
   & > div > div > a,
   & > div > div > button {
-    color: color-mix(in srgb, var(--white) 78%, transparent);
+    color: color-mix(in srgb, var(--foreground) 78%, transparent);
   }
   & .nav-link:hover,
   & > div > div > a:hover,
   & > div > div > button:hover {
-    color: var(--white);
-    background: color-mix(in srgb, var(--white) 12%, transparent);
+    color: var(--foreground);
+    background: color-mix(in srgb, var(--sylution-red) 8%, transparent);
   }
 }
 
@@ -459,13 +461,13 @@
 @utility brand-mark-shell {
   display: grid;
   place-items: center;
-  border: 1px solid color-mix(in srgb, var(--sylution-red) 34%, var(--border));
+  border: 1px solid color-mix(in srgb, var(--sylution-red) 22%, var(--border));
   border-radius: 0.95rem;
   background: color-mix(in oklab, var(--card) 88%, transparent);
   padding: 0.3rem;
   box-shadow:
-    0 0 0 4px color-mix(in oklab, var(--brand) 9%, transparent),
-    0 16px 30px -20px color-mix(in oklab, var(--brand) 70%, transparent);
+      0 0 0 4px color-mix(in oklab, var(--brand) 5%, transparent),
+      0 16px 30px -20px color-mix(in oklab, var(--brand) 42%, transparent);
   transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 220ms ease;
   &:hover {
     transform: translateY(-2px) rotate(-2deg);
@@ -482,15 +484,15 @@
     radial-gradient(circle at 18% 18%, color-mix(in oklab, var(--brand) 56%, transparent) 0 2px, transparent 2.5px),
     radial-gradient(circle at 74% 56%, color-mix(in oklab, var(--brand) 36%, transparent) 0 2px, transparent 2.5px);
   background-size: 340px 300px, 480px 420px, 340px 300px, 480px 420px;
-  opacity: 0.3;
-  mix-blend-mode: screen;
+  opacity: 0.14;
+  mix-blend-mode: multiply;
 }
 
 @utility signal-sweep {
   position: absolute;
   inset: 0 auto 0 -30%;
   width: 22%;
-  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--brand) 28%, transparent), transparent);
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--brand) 16%, transparent), transparent);
   filter: blur(20px);
   opacity: 0;
   transform: skewX(-18deg);
@@ -519,11 +521,11 @@
   background:
     linear-gradient(
       90deg,
-      color-mix(in srgb, var(--navy) 95%, transparent) 0%,
-      color-mix(in srgb, var(--navy) 82%, transparent) 48%,
-      color-mix(in srgb, var(--navy) 28%, transparent) 100%
+      color-mix(in srgb, var(--soft-white) 86%, transparent) 0%,
+      color-mix(in srgb, var(--soft-white) 54%, transparent) 48%,
+      color-mix(in srgb, var(--soft-white) 6%, transparent) 100%
     ),
-    linear-gradient(180deg, color-mix(in srgb, var(--navy) 42%, transparent) 0%, color-mix(in srgb, var(--navy) 12%, transparent) 55%, color-mix(in srgb, var(--navy) 52%, transparent) 100%);
+    linear-gradient(180deg, color-mix(in srgb, var(--soft-white) 32%, transparent) 0%, color-mix(in srgb, var(--soft-white) 6%, transparent) 55%, color-mix(in srgb, var(--soft-white) 46%, transparent) 100%);
 }
 
 @utility eyebrow {

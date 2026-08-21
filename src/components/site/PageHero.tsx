@@ -19,7 +19,7 @@ export function PageHero({
 }) {
   const { tr } = useLang();
   return (
-    <section className="relative isolate overflow-hidden bg-[var(--navy)] text-white">
+    <section className="relative isolate overflow-hidden bg-[var(--soft-white)] text-foreground">
       <div className="absolute inset-0 -z-20">
         <img src={image} alt="" aria-hidden loading="eager" className="hero-image-live h-full w-full object-cover object-center" />
       </div>
@@ -50,7 +50,7 @@ export function PageHero({
         </motion.h1>
         {subtitle && (
           <motion.p
-            className="mt-6 max-w-2xl text-[0.975rem] leading-relaxed text-white/75 sm:text-lg"
+            className="mt-6 max-w-2xl text-[0.975rem] leading-relaxed text-muted-foreground sm:text-lg"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.16 }}
