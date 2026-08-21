@@ -50,47 +50,45 @@
 :root {
   --radius: 0.75rem;
 
-  /* Official SYLUTION palette: navy foundation, blue technology, cyan IoT, green AgriTech, restrained red signature. */
-  --navy: #07111f;
-  --electric-blue: #1677ff;
-  --electric-cyan: #22d3ee;
-  --agri-green: #22c55e;
+  /* Refined original SYLUTION identity: clean white, deep black and signature red. */
+  --navy: #0b0d10;
   --sylution-red: #e53935;
-  --soft-white: #f7f9fc;
+  --red-deep: #b91c1c;
+  --soft-white: #f7f7f5;
   --white: #ffffff;
-  --primary-text: #111827;
-  --secondary-text: #64748b;
+  --primary-text: #111214;
+  --secondary-text: #5f6368;
 
   --ink: var(--primary-text);
   --background: var(--soft-white);
   --foreground: var(--primary-text);
-  --surface: #edf2f8;
-  --surface-2: #e5ebf3;
+  --surface: #efefed;
+  --surface-2: #e5e5e2;
 
   --card: var(--white);
   --card-foreground: var(--primary-text);
   --popover: var(--white);
   --popover-foreground: var(--primary-text);
 
-  --brand: var(--electric-blue);
-  --brand-soft: #0f5dcc;
-  --primary: var(--electric-blue);
+  --brand: var(--sylution-red);
+  --brand-soft: var(--red-deep);
+  --primary: var(--sylution-red);
   --primary-foreground: var(--white);
 
-  --secondary: #e8eef7;
+  --secondary: #ededeb;
   --secondary-foreground: var(--primary-text);
-  --muted: #e8eef7;
+  --muted: #ededeb;
   --muted-foreground: var(--secondary-text);
-  --accent: #e6efff;
+  --accent: #f9e9e8;
   --accent-foreground: var(--primary-text);
-  --destructive: var(--sylution-red);
+  --destructive: var(--red-deep);
   --destructive-foreground: var(--white);
 
-  --border: #d6e0ed;
-  --input: #c4d2e4;
-  --ring: color-mix(in srgb, var(--electric-blue) 42%, transparent);
+  --border: #d9d9d5;
+  --input: #c9c9c4;
+  --ring: color-mix(in srgb, var(--sylution-red) 42%, transparent);
 
-  --gradient-brand: linear-gradient(135deg, var(--electric-blue), var(--electric-cyan));
+  --gradient-brand: linear-gradient(135deg, var(--sylution-red), var(--red-deep));
   --gradient-veil: linear-gradient(
     180deg,
     color-mix(in srgb, var(--soft-white) 70%, transparent) 0%,
@@ -98,7 +96,7 @@
     var(--background) 100%
   );
   --shadow-luxe: 0 34px 80px -44px color-mix(in srgb, var(--navy) 58%, transparent);
-  --shadow-glow: 0 0 0 1px color-mix(in srgb, var(--electric-blue) 16%, transparent), 0 26px 60px -32px color-mix(in srgb, var(--electric-blue) 42%, transparent);
+  --shadow-glow: 0 0 0 1px color-mix(in srgb, var(--sylution-red) 16%, transparent), 0 26px 60px -32px color-mix(in srgb, var(--sylution-red) 42%, transparent);
 }
 
 
@@ -395,7 +393,7 @@
 @utility nav-shell {
   background: color-mix(in srgb, var(--navy) 94%, transparent);
   color: var(--white);
-  border-bottom: 1px solid color-mix(in srgb, var(--electric-blue) 24%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--sylution-red) 24%, transparent);
   box-shadow: 0 14px 34px -26px color-mix(in srgb, var(--navy) 78%, transparent);
   backdrop-filter: blur(18px) saturate(135%);
   & .nav-link,
@@ -539,16 +537,6 @@
   color: var(--brand-soft);
 }
 
-@utility accent-iot {
-  color: var(--electric-cyan);
-  background: color-mix(in srgb, var(--electric-cyan) 14%, transparent);
-}
-
-@utility accent-agri {
-  color: color-mix(in srgb, var(--agri-green) 72%, var(--navy));
-  background: color-mix(in srgb, var(--agri-green) 14%, transparent);
-}
-
 @utility accent-brand {
   color: var(--sylution-red);
   background: color-mix(in srgb, var(--sylution-red) 12%, transparent);
@@ -565,7 +553,7 @@
     color: color-mix(in srgb, var(--white) 76%, transparent);
   }
   & a:hover {
-    color: var(--electric-blue);
+    color: var(--sylution-red);
   }
 }
 

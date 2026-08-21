@@ -45,8 +45,8 @@ const TECHNOLOGIES = [
 ];
 
 function technologyAccent(title: string) {
-  if (title === "Soil and climate sensing" || title === "Connectivity") return "accent-iot";
-  if (title === "Power") return "accent-agri";
+  if (title === "Soil and climate sensing" || title === "Connectivity") return "bg-primary/15 text-primary";
+  if (title === "Power") return "bg-primary/15 text-primary";
   return "bg-primary/15 text-primary";
 }
 
@@ -213,7 +213,7 @@ function SysmartAgroPage() {
             <ul className="mt-8 space-y-3">
               {ROADMAP.map((r) => (
                 <li key={r} className="flex gap-3 text-sm text-muted-foreground">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--agri-green)]" />
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                   {r}
                 </li>
               ))}
