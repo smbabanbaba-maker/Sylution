@@ -50,45 +50,55 @@
 :root {
   --radius: 0.75rem;
 
-  /* Softer, editorial light palette: warm bone paper instead of glaring white */
-  --ink: oklch(0.19 0.008 265);
-  --background: oklch(0.955 0.004 85);
-  --foreground: oklch(0.21 0.012 265);
-  --surface: oklch(0.928 0.005 85);
-  --surface-2: oklch(0.9 0.006 85);
+  /* Official SYLUTION palette: navy foundation, blue technology, cyan IoT, green AgriTech, restrained red signature. */
+  --navy: #07111f;
+  --electric-blue: #1677ff;
+  --electric-cyan: #22d3ee;
+  --agri-green: #22c55e;
+  --sylution-red: #e53935;
+  --soft-white: #f7f9fc;
+  --white: #ffffff;
+  --primary-text: #111827;
+  --secondary-text: #64748b;
 
-  --card: oklch(0.978 0.003 85);
-  --card-foreground: oklch(0.21 0.012 265);
-  --popover: oklch(0.978 0.003 85);
-  --popover-foreground: oklch(0.21 0.012 265);
+  --ink: var(--primary-text);
+  --background: var(--soft-white);
+  --foreground: var(--primary-text);
+  --surface: #edf2f8;
+  --surface-2: #e5ebf3;
 
-  --brand: oklch(0.545 0.215 27.6);
-  --brand-soft: oklch(0.48 0.19 27.6);
-  --primary: oklch(0.545 0.215 27.6);
-  --primary-foreground: oklch(0.985 0.002 85);
+  --card: var(--white);
+  --card-foreground: var(--primary-text);
+  --popover: var(--white);
+  --popover-foreground: var(--primary-text);
 
-  --secondary: oklch(0.925 0.005 85);
-  --secondary-foreground: oklch(0.22 0.012 265);
-  --muted: oklch(0.925 0.005 85);
-  --muted-foreground: oklch(0.44 0.014 265);
-  --accent: oklch(0.915 0.012 30);
-  --accent-foreground: oklch(0.22 0.012 265);
-  --destructive: oklch(0.56 0.21 25);
-  --destructive-foreground: oklch(0.985 0.002 85);
+  --brand: var(--electric-blue);
+  --brand-soft: #0f5dcc;
+  --primary: var(--electric-blue);
+  --primary-foreground: var(--white);
 
-  --border: oklch(0.19 0.008 265 / 14%);
-  --input: oklch(0.19 0.008 265 / 20%);
-  --ring: oklch(0.545 0.215 27.6 / 40%);
+  --secondary: #e8eef7;
+  --secondary-foreground: var(--primary-text);
+  --muted: #e8eef7;
+  --muted-foreground: var(--secondary-text);
+  --accent: #e6efff;
+  --accent-foreground: var(--primary-text);
+  --destructive: var(--sylution-red);
+  --destructive-foreground: var(--white);
 
-  --gradient-brand: linear-gradient(135deg, oklch(0.545 0.215 27.6), oklch(0.62 0.17 38));
+  --border: #d6e0ed;
+  --input: #c4d2e4;
+  --ring: color-mix(in srgb, var(--electric-blue) 42%, transparent);
+
+  --gradient-brand: linear-gradient(135deg, var(--electric-blue), var(--electric-cyan));
   --gradient-veil: linear-gradient(
     180deg,
-    oklch(0.955 0.004 85 / 0.6) 0%,
-    oklch(0.955 0.004 85 / 0.86) 55%,
+    color-mix(in srgb, var(--soft-white) 70%, transparent) 0%,
+    color-mix(in srgb, var(--soft-white) 94%, transparent) 55%,
     var(--background) 100%
   );
-  --shadow-luxe: 0 34px 80px -44px oklch(0.2 0.02 265 / 0.5);
-  --shadow-glow: 0 0 0 1px oklch(0.19 0.008 265 / 0.08), 0 26px 60px -32px oklch(0.545 0.215 27.6 / 0.32);
+  --shadow-luxe: 0 34px 80px -44px color-mix(in srgb, var(--navy) 58%, transparent);
+  --shadow-glow: 0 0 0 1px color-mix(in srgb, var(--electric-blue) 16%, transparent), 0 26px 60px -32px color-mix(in srgb, var(--electric-blue) 42%, transparent);
 }
 
 
@@ -382,6 +392,40 @@
   color: transparent;
 }
 
+@utility nav-shell {
+  background: color-mix(in srgb, var(--navy) 94%, transparent);
+  color: var(--white);
+  border-bottom: 1px solid color-mix(in srgb, var(--electric-blue) 24%, transparent);
+  box-shadow: 0 14px 34px -26px color-mix(in srgb, var(--navy) 78%, transparent);
+  backdrop-filter: blur(18px) saturate(135%);
+  & .nav-link,
+  & > div > div > a,
+  & > div > div > button {
+    color: color-mix(in srgb, var(--white) 78%, transparent);
+  }
+  & .nav-link:hover,
+  & > div > div > a:hover,
+  & > div > div > button:hover {
+    color: var(--white);
+  }
+}
+
+@utility nav-transparent {
+  background: transparent;
+  color: var(--white);
+  & .nav-link,
+  & > div > div > a,
+  & > div > div > button {
+    color: color-mix(in srgb, var(--white) 78%, transparent);
+  }
+  & .nav-link:hover,
+  & > div > div > a:hover,
+  & > div > div > button:hover {
+    color: var(--white);
+    background: color-mix(in srgb, var(--white) 12%, transparent);
+  }
+}
+
 @utility nav-link {
   position: relative;
   overflow: hidden;
@@ -417,7 +461,7 @@
 @utility brand-mark-shell {
   display: grid;
   place-items: center;
-  border: 1px solid color-mix(in oklab, var(--brand) 34%, var(--border));
+  border: 1px solid color-mix(in srgb, var(--sylution-red) 34%, var(--border));
   border-radius: 0.95rem;
   background: color-mix(in oklab, var(--card) 88%, transparent);
   padding: 0.3rem;
@@ -441,7 +485,7 @@
     radial-gradient(circle at 74% 56%, color-mix(in oklab, var(--brand) 36%, transparent) 0 2px, transparent 2.5px);
   background-size: 340px 300px, 480px 420px, 340px 300px, 480px 420px;
   opacity: 0.3;
-  mix-blend-mode: multiply;
+  mix-blend-mode: screen;
 }
 
 @utility signal-sweep {
@@ -477,11 +521,11 @@
   background:
     linear-gradient(
       90deg,
-      oklch(0.955 0.004 85 / 0.96) 0%,
-      oklch(0.955 0.004 85 / 0.78) 48%,
-      oklch(0.94 0.005 85 / 0.42) 100%
+      color-mix(in srgb, var(--navy) 95%, transparent) 0%,
+      color-mix(in srgb, var(--navy) 82%, transparent) 48%,
+      color-mix(in srgb, var(--navy) 28%, transparent) 100%
     ),
-    linear-gradient(180deg, oklch(0.955 0.004 85 / 0.35) 0%, oklch(0.955 0.004 85 / 0.15) 40%, var(--background) 100%);
+    linear-gradient(180deg, color-mix(in srgb, var(--navy) 42%, transparent) 0%, color-mix(in srgb, var(--navy) 12%, transparent) 55%, color-mix(in srgb, var(--navy) 52%, transparent) 100%);
 }
 
 @utility eyebrow {
@@ -493,6 +537,36 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--brand-soft);
+}
+
+@utility accent-iot {
+  color: var(--electric-cyan);
+  background: color-mix(in srgb, var(--electric-cyan) 14%, transparent);
+}
+
+@utility accent-agri {
+  color: color-mix(in srgb, var(--agri-green) 72%, var(--navy));
+  background: color-mix(in srgb, var(--agri-green) 14%, transparent);
+}
+
+@utility accent-brand {
+  color: var(--sylution-red);
+  background: color-mix(in srgb, var(--sylution-red) 12%, transparent);
+}
+
+@utility footer-shell {
+  background: var(--navy);
+  color: var(--white);
+  border-color: color-mix(in srgb, var(--white) 14%, transparent);
+  & .text-muted-foreground {
+    color: color-mix(in srgb, var(--white) 68%, transparent);
+  }
+  & a {
+    color: color-mix(in srgb, var(--white) 76%, transparent);
+  }
+  & a:hover {
+    color: var(--electric-blue);
+  }
 }
 
 @utility card-luxe {

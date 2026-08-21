@@ -56,7 +56,7 @@ export function Nav() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        scrolled ? "glass shadow-[0_10px_30px_-24px_oklch(0.2_0.02_265/0.5)]" : "bg-transparent",
+        scrolled ? "nav-shell" : "nav-transparent",
       )}
     >
       <div className="container-x flex h-16 items-center justify-between gap-3 lg:h-[4.5rem]">
@@ -173,14 +173,14 @@ export function Nav() {
       </div>
 
       {open && (
-        <div className="glass max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border animate-in fade-in-0 slide-in-from-top-2 duration-300 xl:hidden">
+        <div className="nav-shell max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-white/15 animate-in fade-in-0 slide-in-from-top-2 duration-300 xl:hidden">
           <div className="container-x space-y-1 py-5">
             {[...MAIN, { to: "/contact", key: "nav.contact" } as const].map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="flex min-h-11 items-center rounded-xl px-3 text-[0.975rem] font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground active:bg-accent"
+                className="flex min-h-11 items-center rounded-xl px-3 text-[0.975rem] font-medium text-white/75 transition-colors hover:bg-white/10 hover:text-white active:bg-white/10"
               >
                 {t(item.key)}
               </Link>
@@ -194,7 +194,7 @@ export function Nav() {
                     to="/solutions/$slug"
                     params={{ slug: s.slug }}
                     onClick={() => setOpen(false)}
-                    className="flex min-h-11 items-center rounded-xl px-3 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                    className="flex min-h-11 items-center rounded-xl px-3 text-sm text-white/70 transition-colors hover:bg-white/10 hover:text-white"
                   >
                     {s.title}
                   </Link>
@@ -207,7 +207,7 @@ export function Nav() {
                   key={l.code}
                   onClick={() => setLang(l.code)}
                   className={cn(
-                    "min-h-11 flex-1 rounded-full border border-border text-xs font-bold transition-colors",
+                    "min-h-11 flex-1 rounded-full border border-white/20 text-xs font-bold transition-colors",
                     lang === l.code ? "bg-primary text-primary-foreground" : "text-muted-foreground",
                   )}
                 >

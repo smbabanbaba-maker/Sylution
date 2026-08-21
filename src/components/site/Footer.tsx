@@ -17,7 +17,7 @@ const SOCIAL_ICONS: Record<string, typeof Facebook> = {
 export function Footer() {
   const { t } = useLang();
   return (
-    <footer className="relative mt-24 overflow-hidden border-t border-border bg-surface">
+    <footer className="footer-shell relative mt-24 overflow-hidden border-t border-border">
       <div
         aria-hidden
         className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[46rem] -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]"
@@ -42,7 +42,7 @@ export function Footer() {
                     target="_blank"
                     rel="noreferrer noopener"
                     aria-label={s.name}
-                    className="grid h-10 w-10 place-items-center rounded-full border border-border text-muted-foreground transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:text-foreground"
+                    className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/70 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:text-white"
                   >
                     <Icon className="h-4 w-4" />
                   </a>
@@ -112,13 +112,13 @@ export function Footer() {
               <label htmlFor="newsletter" className="eyebrow">
                 Newsletter
               </label>
-              <div className="mt-2 flex overflow-hidden rounded-full border border-border bg-background">
+              <div className="mt-6 flex overflow-hidden rounded-full border border-white/15 bg-white/10">
                 <input
                   id="newsletter"
                   type="email"
                   required
                   placeholder="Your email address"
-                  className="min-w-0 flex-1 bg-transparent px-4 py-2.5 text-sm outline-none placeholder:text-muted-foreground"
+                  className="min-w-0 flex-1 bg-transparent px-4 py-2.5 text-sm text-white outline-none placeholder:text-white/50"
                 />
                 <button
                   type="submit"

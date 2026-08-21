@@ -80,7 +80,7 @@ function IoTPage() {
           {HIGHLIGHTS.map((h, i) => (
             <Reveal key={h.title} delay={(i % 3) * 0.07}>
               <div className="card-luxe h-full p-7">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-primary/15 text-primary">
+                <span className="accent-iot grid h-12 w-12 place-items-center rounded-2xl">
                   <h.icon className="h-6 w-6" />
                 </span>
                 <h3 className="mt-6 font-display text-lg font-bold">{h.title}</h3>
@@ -109,7 +109,7 @@ function IoTPage() {
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.detail}</p>
                   <span
                     aria-hidden
-                    className="absolute right-4 top-6 hidden h-px w-6 bg-primary/40 md:block"
+                    className="absolute right-4 top-6 hidden h-px w-6 bg-[var(--electric-cyan)]/55 md:block"
                   />
                 </div>
               </Reveal>
@@ -133,7 +133,7 @@ function IoTPage() {
                 <ul className="mt-4 space-y-2.5">
                   {g.items.map((item) => (
                     <li key={item} className="flex gap-3 text-sm text-muted-foreground">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--electric-cyan)]" />
                       {item}
                     </li>
                   ))}

@@ -44,6 +44,12 @@ const TECHNOLOGIES = [
   { icon: ClipboardCheck, title: "Control", detail: "Relay driven pump and valve switching, manual override on the device." },
 ];
 
+function technologyAccent(title: string) {
+  if (title === "Soil and climate sensing" || title === "Connectivity") return "accent-iot";
+  if (title === "Power") return "accent-agri";
+  return "bg-primary/15 text-primary";
+}
+
 const TIMELINE = [
   { phase: "Concept", detail: "Problem definition with farmers around Kano and requirement gathering.", state: "Completed" },
   { phase: "Circuit design", detail: "Schematic, component selection and bench validation.", state: "Completed" },
@@ -134,7 +140,7 @@ function SysmartAgroPage() {
             {TECHNOLOGIES.map((t, i) => (
               <Reveal key={t.title} delay={(i % 3) * 0.07}>
                 <div className="card-luxe h-full p-7">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-primary/15 text-primary">
+                  <span className={`grid h-12 w-12 place-items-center rounded-2xl ${technologyAccent(t.title)}`}>
                     <t.icon className="h-6 w-6" />
                   </span>
                   <h3 className="mt-6 font-display text-lg font-bold">{t.title}</h3>
@@ -207,7 +213,7 @@ function SysmartAgroPage() {
             <ul className="mt-8 space-y-3">
               {ROADMAP.map((r) => (
                 <li key={r} className="flex gap-3 text-sm text-muted-foreground">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--agri-green)]" />
                   {r}
                 </li>
               ))}
