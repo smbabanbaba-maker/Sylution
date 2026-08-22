@@ -34,6 +34,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SysmartAgroRouteImport } from './routes/sysmart-agro'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TrainingRouteImport } from './routes/training'
+import { Route as ApiAssistantRouteImport } from './routes/api/assistant'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions/index'
 import { Route as SolutionsSlugRouteImport } from './routes/solutions/$slug'
 
@@ -162,6 +163,11 @@ const TrainingRoute = TrainingRouteImport.update({
   path: '/training',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAssistantRoute = ApiAssistantRouteImport.update({
+  id: '/api/assistant',
+  path: '/api/assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsIndexRoute = SolutionsIndexRouteImport.update({
   id: '/solutions/',
   path: '/solutions/',
@@ -199,6 +205,7 @@ export interface FileRoutesByFullPath {
   '/sysmart-agro': typeof SysmartAgroRoute
   '/terms': typeof TermsRoute
   '/training': typeof TrainingRoute
+  '/api/assistant': typeof ApiAssistantRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/solutions/': typeof SolutionsIndexRoute
 }
@@ -228,6 +235,7 @@ export interface FileRoutesByTo {
   '/sysmart-agro': typeof SysmartAgroRoute
   '/terms': typeof TermsRoute
   '/training': typeof TrainingRoute
+  '/api/assistant': typeof ApiAssistantRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/solutions': typeof SolutionsIndexRoute
 }
@@ -258,6 +266,7 @@ export interface FileRoutesById {
   '/sysmart-agro': typeof SysmartAgroRoute
   '/terms': typeof TermsRoute
   '/training': typeof TrainingRoute
+  '/api/assistant': typeof ApiAssistantRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
   '/solutions/': typeof SolutionsIndexRoute
 }
@@ -289,6 +298,7 @@ export interface FileRouteTypes {
     | '/sysmart-agro'
     | '/terms'
     | '/training'
+    | '/api/assistant'
     | '/solutions/$slug'
     | '/solutions/'
   fileRoutesByTo: FileRoutesByTo
@@ -318,6 +328,7 @@ export interface FileRouteTypes {
     | '/sysmart-agro'
     | '/terms'
     | '/training'
+    | '/api/assistant'
     | '/solutions/$slug'
     | '/solutions'
   id:
@@ -347,6 +358,7 @@ export interface FileRouteTypes {
     | '/sysmart-agro'
     | '/terms'
     | '/training'
+    | '/api/assistant'
     | '/solutions/$slug'
     | '/solutions/'
   fileRoutesById: FileRoutesById
@@ -377,6 +389,7 @@ export interface RootRouteChildren {
   SysmartAgroRoute: typeof SysmartAgroRoute
   TermsRoute: typeof TermsRoute
   TrainingRoute: typeof TrainingRoute
+  ApiAssistantRoute: typeof ApiAssistantRoute
   SolutionsSlugRoute: typeof SolutionsSlugRoute
   SolutionsIndexRoute: typeof SolutionsIndexRoute
 }
@@ -558,6 +571,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/assistant': {
+      id: '/api/assistant'
+      path: '/api/assistant'
+      fullPath: '/api/assistant'
+      preLoaderRoute: typeof ApiAssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions/': {
       id: '/solutions/'
       path: '/solutions'
@@ -601,6 +621,7 @@ const rootRouteChildren: RootRouteChildren = {
   SysmartAgroRoute: SysmartAgroRoute,
   TermsRoute: TermsRoute,
   TrainingRoute: TrainingRoute,
+  ApiAssistantRoute: ApiAssistantRoute,
   SolutionsSlugRoute: SolutionsSlugRoute,
   SolutionsIndexRoute: SolutionsIndexRoute,
 }

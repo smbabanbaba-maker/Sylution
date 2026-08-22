@@ -10,7 +10,6 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { MessageCircle } from "lucide-react";
 import { Toaster } from "@/components/ui/sonner";
 
 import appCss from "../styles.css?url";
@@ -19,8 +18,8 @@ import { LanguageProvider } from "@/lib/i18n";
 import { Nav } from "@/components/site/Nav";
 import { LeadForm } from "@/components/site/LeadForm";
 import { Footer } from "@/components/site/Footer";
+import { SylutionAssistant } from "@/components/site/SylutionAssistant";
 import { CONTACT } from "@/lib/site-data";
-
 
 function NotFoundComponent() {
   return (
@@ -32,10 +31,7 @@ function NotFoundComponent() {
           The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="mt-6">
-          <Link
-            to="/"
-            className="btn-base btn-primary"
-          >
+          <Link to="/" className="btn-base btn-primary">
             Go home
           </Link>
         </div>
@@ -47,7 +43,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -68,10 +63,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           >
             Try again
           </button>
-          <a
-            href="/"
-            className="btn-base btn-ghost"
-          >
+          <a href="/" className="btn-base btn-ghost">
             Go home
           </a>
         </div>
@@ -98,8 +90,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:title", content: "SYLUTION | IoT, AI and Electronics Technology Company" },
       { name: "twitter:title", content: "SYLUTION | IoT, AI and Electronics Technology Company" },
-      { property: "og:description", content: "SYLUTION is an Internet of Things, Artificial Intelligence, Electronics and Technology Innovation company based at TIC Kano, Nigeria, serving 15 industries." },
-      { name: "twitter:description", content: "SYLUTION is an Internet of Things, Artificial Intelligence, Electronics and Technology Innovation company based at TIC Kano, Nigeria, serving 15 industries." },
+      {
+        property: "og:description",
+        content:
+          "SYLUTION is an Internet of Things, Artificial Intelligence, Electronics and Technology Innovation company based at TIC Kano, Nigeria, serving 15 industries.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "SYLUTION is an Internet of Things, Artificial Intelligence, Electronics and Technology Innovation company based at TIC Kano, Nigeria, serving 15 industries.",
+      },
       { property: "og:image", content: "/brand/sylution-logo.webp" },
       { name: "twitter:image", content: "/brand/sylution-logo.webp" },
     ],
@@ -163,6 +163,7 @@ function RootComponent() {
         <LeadForm />
         <Footer />
         <FloatingWhatsApp />
+        <SylutionAssistant />
         <Toaster position="top-right" richColors />
       </LanguageProvider>
     </QueryClientProvider>
@@ -216,10 +217,14 @@ function FloatingWhatsApp() {
       target="_blank"
       rel="noreferrer noopener"
       aria-label="Chat with SYLUTION on WhatsApp"
-      className="fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-glow transition-transform duration-300 hover:scale-110 active:scale-95"
+      className="fixed bottom-5 right-[5.5rem] z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] shadow-[0_16px_40px_-18px_rgba(37,211,102,0.7)] transition-transform duration-300 hover:scale-110 active:scale-95 sm:right-[6.5rem]"
     >
-      <MessageCircle className="h-6 w-6" />
+      <img
+        src="/brand/social/whatsapp.svg"
+        alt=""
+        aria-hidden="true"
+        className="h-7 w-7 object-contain"
+      />
     </a>
   );
 }
-

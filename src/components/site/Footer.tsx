@@ -1,17 +1,16 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, Phone, Facebook, Instagram, Linkedin, Youtube, MessageCircle, Music2, Send, Twitter } from "lucide-react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { LOGO_SRC, CONTACT, SOLUTIONS } from "@/lib/site-data";
 import { toast } from "sonner";
 import { useLang } from "@/lib/i18n";
 
-const SOCIAL_ICONS: Record<string, typeof Facebook> = {
-  Facebook,
-  Instagram,
-  LinkedIn: Linkedin,
-  TikTok: Music2,
-  YouTube: Youtube,
-  X: Twitter,
-  WhatsApp: MessageCircle,
+const SOCIAL_MARKS: Record<string, string> = {
+  Facebook: "/brand/social/facebook.svg",
+  Instagram: "/brand/social/instagram.svg",
+  LinkedIn: "/brand/social/linkedin.svg",
+  TikTok: "/brand/social/tiktok.svg",
+  X: "/brand/social/x.svg",
+  WhatsApp: "/brand/social/whatsapp.svg",
 };
 
 export function Footer() {
@@ -26,29 +25,47 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
             <Link to="/" className="flex items-center gap-3">
-              <img src={LOGO_SRC} alt="SYLUTION logo" className="h-12 w-12 rounded-md object-contain" />
+              <img
+                src={LOGO_SRC}
+                alt="SYLUTION logo"
+                className="h-12 w-12 rounded-md object-contain"
+              />
               <span className="font-display text-xl font-extrabold tracking-tight">SYLUTION</span>
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
-{t("footer.about")}
+              {t("footer.about")}
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {CONTACT.socials.map((s) => {
-                const Icon = SOCIAL_ICONS[s.name];
+                const mark = SOCIAL_MARKS[s.name];
                 return (
                   <a
                     key={s.name}
                     href={s.href}
                     target="_blank"
                     rel="noreferrer noopener"
-                    aria-label={s.name}
-                    className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/70 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:text-white"
+                    aria-label={`SYLUTION on ${s.name}`}
+                    className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/[0.03] transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-white/10"
                   >
-                    <Icon className="h-4 w-4" />
+                    <img src={mark} alt="" aria-hidden="true" className="h-4 w-4 object-contain" />
                   </a>
                 );
               })}
             </div>
+            <a
+              href={`https://wa.me/${CONTACT.whatsapp}`}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/60 bg-primary/10 px-3.5 py-2 text-xs font-bold text-white transition-colors hover:bg-primary/20"
+            >
+              <img
+                src="/brand/social/whatsapp.svg"
+                alt=""
+                aria-hidden="true"
+                className="h-4 w-4 object-contain"
+              />
+              Chat with SYLUTION on WhatsApp
+            </a>
           </div>
 
           <FooterCol
@@ -79,7 +96,9 @@ export function Footer() {
           />
 
           <div>
-            <h3 className="font-display text-sm font-bold uppercase tracking-[0.2em]">{t("footer.contact")}</h3>
+            <h3 className="font-display text-sm font-bold uppercase tracking-[0.2em]">
+              {t("footer.contact")}
+            </h3>
             <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
               <li className="flex gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
@@ -106,7 +125,9 @@ export function Footer() {
               onSubmit={(e) => {
                 e.preventDefault();
                 e.currentTarget.reset();
-                toast.success("Subscribed", { description: "You are on the SYLUTION newsletter list." });
+                toast.success("Subscribed", {
+                  description: "You are on the SYLUTION newsletter list.",
+                });
               }}
             >
               <label htmlFor="newsletter" className="eyebrow">
