@@ -173,18 +173,25 @@ export function Nav() {
       </div>
 
       {open && (
-        <div className="nav-shell max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-white/15 animate-in fade-in-0 slide-in-from-top-2 duration-300 xl:hidden">
+        <div className="bg-white text-foreground shadow-luxe max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border animate-in fade-in-0 slide-in-from-top-2 duration-300 xl:hidden">
           <div className="container-x space-y-1 py-5">
-            {[...MAIN, { to: "/contact", key: "nav.contact" } as const].map((item) => (
+            {[...MAIN, { to: "/contact", key: "nav.contact" } as const].map((item) => {
+              const active = isPathActive(pathname, item.to);
+              return (
               <Link
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="flex min-h-11 items-center rounded-xl px-3 text-[0.975rem] font-medium text-white/75 transition-colors hover:bg-white/10 hover:text-white active:bg-white/10"
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "flex min-h-11 items-center rounded-xl px-3 text-[0.975rem] font-medium transition-colors",
+                  active ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted hover:text-primary active:bg-muted",
+                )}
               >
                 {t(item.key)}
               </Link>
-            ))}
+              );
+            })}
             <div className="pt-3">
               <p className="eyebrow px-3 pb-2">{t("nav.solutions")}</p>
               <div className="grid grid-cols-2 gap-1">
@@ -194,7 +201,7 @@ export function Nav() {
                     to="/solutions/$slug"
                     params={{ slug: s.slug }}
                     onClick={() => setOpen(false)}
-                    className="flex min-h-11 items-center rounded-xl px-3 text-sm text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                    className="flex min-h-11 items-center rounded-xl px-3 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
                   >
                     {s.title}
                   </Link>
@@ -207,8 +214,8 @@ export function Nav() {
                   key={l.code}
                   onClick={() => setLang(l.code)}
                   className={cn(
-                    "min-h-11 flex-1 rounded-full border border-white/20 text-xs font-bold transition-colors",
-                    lang === l.code ? "bg-primary text-primary-foreground" : "text-muted-foreground",
+                    "min-h-11 flex-1 rounded-full border border-border text-xs font-bold transition-colors",
+                    lang === l.code ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-muted hover:text-foreground",
                   )}
                 >
                   {l.short}
