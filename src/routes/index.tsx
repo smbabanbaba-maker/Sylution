@@ -31,6 +31,7 @@ import {
   BRAND_IMAGES,
   AGRITECH_AREAS,
   EXHIBITION_IMAGES,
+  PRODUCT_CATEGORIES,
 } from "@/lib/site-data";
 import { useLang } from "@/lib/i18n";
 
@@ -181,7 +182,10 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section ref={heroRef} className="relative isolate min-h-[100svh] overflow-hidden bg-[var(--soft-white)] text-foreground">
+      <section
+        ref={heroRef}
+        className="relative isolate min-h-[100svh] overflow-hidden bg-[var(--soft-white)] text-foreground"
+      >
         <motion.div style={{ y }} className="absolute inset-0 -z-20">
           <img
             src={BRAND_IMAGES.sysmart}
@@ -409,6 +413,62 @@ function Home() {
               </div>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* OUR PRODUCTS */}
+      <section className="border-y border-border bg-surface section-y-sm">
+        <div className="container-x">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeading
+              eyebrow="Our products"
+              title="Intelligent products. Connected systems. Real-world solutions."
+              description="A focused ecosystem spanning smart devices, IoT, AgriTech, robotics, drone and solar engineering."
+            />
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
+            >
+              Explore Products <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-5">
+            {PRODUCT_CATEGORIES.map((category, index) => (
+              <Reveal key={category.slug} delay={index * 0.05}>
+                <Link
+                  to="/products"
+                  className="group block h-full overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
+                >
+                  <div className="relative h-32 overflow-hidden">
+                    <img
+                      src={category.image}
+                      alt={category.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <span className="absolute left-3 top-3 rounded-full border border-white/40 bg-white/90 px-2 py-1 text-[0.55rem] font-bold uppercase tracking-[0.1em] text-primary">
+                      {category.status}
+                    </span>
+                  </div>
+                  <div className="p-4">
+                    <p className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-primary">
+                      0{index + 1}
+                    </p>
+                    <h3 className="mt-2 font-display text-sm font-bold leading-tight">
+                      {category.shortName}
+                    </h3>
+                    <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-muted-foreground">
+                      {category.detail}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-primary">
+                      Explore Products{" "}
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

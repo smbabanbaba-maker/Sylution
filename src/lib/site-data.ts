@@ -1,4 +1,3 @@
-
 export const BRAND_IMAGES = {
   greenhouse: "/brand/tech-greenhouse-sensing.jpg",
   drone: "/brand/tech-drone-field.jpg",
@@ -385,12 +384,14 @@ export const IOT_STACK: { layer: string; title: string; detail: string }[] = [
   {
     layer: "01",
     title: "Sense",
-    detail: "Rugged sensor nodes measure soil, climate, energy, water, motion, location and machine state.",
+    detail:
+      "Rugged sensor nodes measure soil, climate, energy, water, motion, location and machine state.",
   },
   {
     layer: "02",
     title: "Connect",
-    detail: "LoRaWAN, NB-IoT, GSM and Wi-Fi gateways move data reliably from remote sites with weak coverage.",
+    detail:
+      "LoRaWAN, NB-IoT, GSM and Wi-Fi gateways move data reliably from remote sites with weak coverage.",
   },
   {
     layer: "03",
@@ -400,29 +401,52 @@ export const IOT_STACK: { layer: string; title: string; detail: string }[] = [
   {
     layer: "04",
     title: "Analyse",
-    detail: "Cloud pipelines, machine learning and computer vision turn raw streams into predictions.",
+    detail:
+      "Cloud pipelines, machine learning and computer vision turn raw streams into predictions.",
   },
   {
     layer: "05",
     title: "Act",
-    detail: "Dashboards, alerts and automated control close the loop on pumps, valves, motors and alarms.",
+    detail:
+      "Dashboards, alerts and automated control close the loop on pumps, valves, motors and alarms.",
   },
 ];
 
 export const AI_CAPABILITIES = [
-  { title: "Agricultural AI", detail: "Crop stress detection, irrigation advisory and yield insight research." },
+  {
+    title: "Agricultural AI",
+    detail: "Crop stress detection, irrigation advisory and yield insight research.",
+  },
   { title: "Computer Vision", detail: "Detection and counting from camera and drone imagery." },
-  { title: "Machine Learning", detail: "Models trained on locally collected, domain specific data." },
-  { title: "Predictive Analytics", detail: "Forecasting water need, failure risk and crop performance." },
-  { title: "AI Automation", detail: "Closed loop control driven by model output rather than manual checks." },
+  {
+    title: "Machine Learning",
+    detail: "Models trained on locally collected, domain specific data.",
+  },
+  {
+    title: "Predictive Analytics",
+    detail: "Forecasting water need, failure risk and crop performance.",
+  },
+  {
+    title: "AI Automation",
+    detail: "Closed loop control driven by model output rather than manual checks.",
+  },
   { title: "AI Assistants", detail: "Voice and chat advisory in English, Hausa and French." },
   { title: "Decision Support", detail: "Ranked recommendations with the evidence behind them." },
-  { title: "Agricultural Data", detail: "Clean, structured farm records that models and people can both use." },
+  {
+    title: "Agricultural Data",
+    detail: "Clean, structured farm records that models and people can both use.",
+  },
 ];
 
 export const ELECTRONICS_CAPABILITIES = [
-  { title: "PCB Design", detail: "Multilayer layout, signal integrity and design for manufacture." },
-  { title: "Circuit Design", detail: "Analogue, digital and power electronics from concept to schematic." },
+  {
+    title: "PCB Design",
+    detail: "Multilayer layout, signal integrity and design for manufacture.",
+  },
+  {
+    title: "Circuit Design",
+    detail: "Analogue, digital and power electronics from concept to schematic.",
+  },
   { title: "Embedded Hardware", detail: "ESP32, STM32, Arduino and Raspberry Pi based platforms." },
   { title: "Sensors", detail: "Selection, calibration and conditioning for harsh environments." },
   { title: "Product Design", detail: "Enclosures, thermal design and ingress protection." },
@@ -432,58 +456,342 @@ export const ELECTRONICS_CAPABILITIES = [
 ];
 
 export const LABS = [
-  { name: "IoT workbench", detail: "Device bring up, sensor testing and connectivity checks.", image: BRAND_IMAGES.iotLab },
-  { name: "AI and data work", detail: "Dataset preparation, model experiments and evaluation.", image: BRAND_IMAGES.ai },
-  { name: "Electronics bench", detail: "Schematic, soldering, measurement and board level debugging.", image: BRAND_IMAGES.pcb },
-  { name: "Robotics and automation", detail: "Mechatronics, actuation and control experiments.", image: BRAND_IMAGES.robotics },
-  { name: "System assembly", detail: "Enclosures, mechanical fabrication and assembly of test units.", image: BRAND_IMAGES.electronics },
-  { name: "Field testing", detail: "Validation of systems under real farm conditions.", image: BRAND_IMAGES.irrigation },
+  {
+    name: "IoT workbench",
+    detail: "Device bring up, sensor testing and connectivity checks.",
+    image: BRAND_IMAGES.iotLab,
+  },
+  {
+    name: "AI and data work",
+    detail: "Dataset preparation, model experiments and evaluation.",
+    image: BRAND_IMAGES.ai,
+  },
+  {
+    name: "Electronics bench",
+    detail: "Schematic, soldering, measurement and board level debugging.",
+    image: BRAND_IMAGES.pcb,
+  },
+  {
+    name: "Robotics and automation",
+    detail: "Mechatronics, actuation and control experiments.",
+    image: BRAND_IMAGES.robotics,
+  },
+  {
+    name: "System assembly",
+    detail: "Enclosures, mechanical fabrication and assembly of test units.",
+    image: BRAND_IMAGES.electronics,
+  },
+  {
+    name: "Field testing",
+    detail: "Validation of systems under real farm conditions.",
+    image: BRAND_IMAGES.irrigation,
+  },
 ];
 
-export const PRODUCTS = [
-  { name: "Sysmart Agro controller", detail: "Smart agriculture controller for sensing, irrigation control and monitoring.", image: BRAND_IMAGES.sysmart, status: "Active Project" },
-  { name: "Smart sensors", detail: "Soil moisture, temperature, humidity and water level sensor nodes.", image: BRAND_IMAGES.iotLab, status: "Testing" },
-  { name: "Smart irrigation unit", detail: "Solar capable scheduling and control for irrigation blocks.", image: BRAND_IMAGES.irrigation, status: "Testing" },
-  { name: "Drip irrigation technology", detail: "Efficient water delivery systems for farms and greenhouses.", image: BRAND_IMAGES.irrigation, status: "Testing" },
-  { name: "Greenhouse technology", detail: "Modern greenhouse agriculture with technology integration.", image: BRAND_IMAGES.greenhouse, status: "Development" },
-  { name: "Agricultural drone technology", detail: "Farm observation, mapping and monitoring applications.", image: BRAND_IMAGES.drone, status: "Development" },
-  { name: "Educational robotics kit", detail: "Teaching kit covering microcontrollers, sensors and actuation.", image: BRAND_IMAGES.robotics, status: "Development" },
-  { name: "Solar powered technology", detail: "Solar support for IoT devices and agricultural systems.", image: BRAND_IMAGES.solar, status: "Development" },
+export type ProductCategory = {
+  slug: string;
+  name: string;
+  shortName: string;
+  detail: string;
+  image: string;
+  status: "Active Project" | "In Development" | "Coming Soon";
+  items: string[];
+};
+
+export const PRODUCT_CATEGORIES: ProductCategory[] = [
+  {
+    slug: "smart-devices",
+    name: "Smart Devices & Consumer Electronics",
+    shortName: "Smart Devices",
+    detail:
+      "A future-facing category for portable electronics, smart home devices and connected consumer products. Items not yet verified as SYLUTION releases are clearly marked Concept / Coming Soon.",
+    image: BRAND_IMAGES.electronics,
+    status: "Coming Soon",
+    items: [
+      "Bluetooth speakers",
+      "Wireless audio devices",
+      "Power banks",
+      "Smart chargers",
+      "Wearables",
+      "Smart home devices",
+    ],
+  },
+  {
+    slug: "iot-electronics",
+    name: "IoT & Electronics",
+    shortName: "IoT & Electronics",
+    detail:
+      "Sensors, controllers, embedded systems, PCB-based devices and monitoring systems built around connected engineering.",
+    image: BRAND_IMAGES.device,
+    status: "In Development",
+    items: [
+      "Smart sensors",
+      "IoT devices",
+      "Embedded systems",
+      "Controllers",
+      "PCB-based devices",
+      "Monitoring devices",
+    ],
+  },
+  {
+    slug: "agritech",
+    name: "AgriTech Products",
+    shortName: "AgriTech",
+    detail:
+      "Intelligent agriculture systems combining sensing, irrigation, greenhouse technology, farm monitoring and agricultural data.",
+    image: BRAND_IMAGES.sysmart,
+    status: "Active Project",
+    items: [
+      "Sysmart Agro",
+      "Smart irrigation",
+      "Drip irrigation",
+      "Greenhouse technology",
+      "Agricultural IoT",
+      "Smart farm monitoring",
+    ],
+  },
+  {
+    slug: "robotics-drone",
+    name: "Robotics & Drone",
+    shortName: "Robotics & Drone",
+    detail:
+      "Robotics systems, educational automation and drone technology for agricultural observation, mapping and practical engineering.",
+    image: BRAND_IMAGES.robotics,
+    status: "In Development",
+    items: [
+      "Robotics systems",
+      "Agricultural robotics",
+      "Drone technology",
+      "Drone-based agricultural systems",
+    ],
+  },
+  {
+    slug: "solar-energy",
+    name: "Solar & Energy",
+    shortName: "Solar & Energy",
+    detail:
+      "Solar-powered devices, energy monitoring and off-grid power support for connected agricultural and IoT systems.",
+    image: BRAND_IMAGES.solar,
+    status: "In Development",
+    items: [
+      "Solar-powered devices",
+      "Smart energy systems",
+      "Portable power solutions",
+      "Solar IoT systems",
+    ],
+  },
+];
+
+export type ProductRecord = {
+  name: string;
+  detail: string;
+  image: string;
+  status: string;
+  category: string;
+  technology: string;
+  application: string;
+};
+
+export const PRODUCTS: ProductRecord[] = [
+  {
+    name: "Sysmart Agro controller",
+    detail: "Smart agriculture controller for sensing, irrigation control and monitoring.",
+    image: BRAND_IMAGES.sysmart,
+    status: "Active Project",
+    category: "AgriTech",
+    technology: "IoT controller, soil and climate sensing",
+    application: "Smart agriculture and irrigation",
+  },
+  {
+    name: "Smart sensors",
+    detail: "Soil moisture, temperature, humidity and water level sensor nodes.",
+    image: BRAND_IMAGES.iotLab,
+    status: "Testing",
+    category: "IoT & Electronics",
+    technology: "Sensors, embedded systems and wireless connectivity",
+    application: "Farm and environmental monitoring",
+  },
+  {
+    name: "Smart irrigation unit",
+    detail: "Solar capable scheduling and control for irrigation blocks.",
+    image: BRAND_IMAGES.irrigation,
+    status: "Testing",
+    category: "AgriTech",
+    technology: "Sensors, controllers and pump automation",
+    application: "Smart irrigation and water efficiency",
+  },
+  {
+    name: "Drip irrigation technology",
+    detail: "Efficient water delivery systems for farms and greenhouses.",
+    image: BRAND_IMAGES.irrigation,
+    status: "Testing",
+    category: "AgriTech",
+    technology: "Drip layout, filtration and sensor integration",
+    application: "Root-zone irrigation and fertigation",
+  },
+  {
+    name: "Greenhouse technology",
+    detail: "Modern greenhouse agriculture with technology integration.",
+    image: BRAND_IMAGES.greenhouse,
+    status: "In Development",
+    category: "AgriTech",
+    technology: "Climate monitoring, irrigation and remote sensing",
+    application: "Controlled environment farming",
+  },
+  {
+    name: "Agricultural drone technology",
+    detail: "Farm observation, mapping and monitoring applications.",
+    image: BRAND_IMAGES.drone,
+    status: "In Development",
+    category: "Robotics & Drone",
+    technology: "Aerial imagery, mapping and data capture",
+    application: "Farm observation and agricultural monitoring",
+  },
+  {
+    name: "Educational robotics kit",
+    detail: "Teaching kit covering microcontrollers, sensors and actuation.",
+    image: BRAND_IMAGES.robotics,
+    status: "In Development",
+    category: "Robotics & Drone",
+    technology: "Microcontrollers, sensors and actuation",
+    application: "Practical education and automation",
+  },
+  {
+    name: "Solar powered technology",
+    detail: "Solar support for IoT devices and agricultural systems.",
+    image: BRAND_IMAGES.solar,
+    status: "In Development",
+    category: "Solar & Energy",
+    technology: "Solar power, battery and charge management",
+    application: "Off-grid IoT and agricultural systems",
+  },
 ];
 
 export const INDUSTRIES = [
-  { name: "Agriculture", detail: "Smart, precision and digital agriculture technology.", image: BRAND_IMAGES.greenhouse },
-  { name: "Irrigation and water", detail: "Sensor driven irrigation, drip systems and water efficiency.", image: BRAND_IMAGES.irrigation },
-  { name: "Livestock", detail: "Technology assisted livestock monitoring and digital records.", image: BRAND_IMAGES.harvest },
-  { name: "Greenhouse farming", detail: "Controlled environment agriculture and technology integration.", image: BRAND_IMAGES.greenhouse },
-  { name: "Education and training", detail: "Practical AI, IoT, robotics and AgriTech capacity building.", image: BRAND_IMAGES.techTraining },
-  { name: "Research institutions", detail: "Instrumentation, datasets and joint applied research.", image: BRAND_IMAGES.lab },
-  { name: "Solar and energy", detail: "Solar powered technology supporting agricultural and IoT systems.", image: BRAND_IMAGES.solar },
-  { name: "Agribusiness and cooperatives", detail: "Farm data, monitoring and technology adoption support.", image: BRAND_IMAGES.control },
+  {
+    name: "Agriculture",
+    detail: "Smart, precision and digital agriculture technology.",
+    image: BRAND_IMAGES.greenhouse,
+  },
+  {
+    name: "Irrigation and water",
+    detail: "Sensor driven irrigation, drip systems and water efficiency.",
+    image: BRAND_IMAGES.irrigation,
+  },
+  {
+    name: "Livestock",
+    detail: "Technology assisted livestock monitoring and digital records.",
+    image: BRAND_IMAGES.harvest,
+  },
+  {
+    name: "Greenhouse farming",
+    detail: "Controlled environment agriculture and technology integration.",
+    image: BRAND_IMAGES.greenhouse,
+  },
+  {
+    name: "Education and training",
+    detail: "Practical AI, IoT, robotics and AgriTech capacity building.",
+    image: BRAND_IMAGES.techTraining,
+  },
+  {
+    name: "Research institutions",
+    detail: "Instrumentation, datasets and joint applied research.",
+    image: BRAND_IMAGES.lab,
+  },
+  {
+    name: "Solar and energy",
+    detail: "Solar powered technology supporting agricultural and IoT systems.",
+    image: BRAND_IMAGES.solar,
+  },
+  {
+    name: "Agribusiness and cooperatives",
+    detail: "Farm data, monitoring and technology adoption support.",
+    image: BRAND_IMAGES.control,
+  },
 ];
 
 export const EXHIBITION_IMAGES: { src: string; caption: string }[] = [
-  { src: BRAND_IMAGES.exhibition1, caption: "Presenting the Sysmart Agro system to visitors at an agricultural technology exhibition" },
-  { src: BRAND_IMAGES.exhibition2, caption: "Demonstrating live sensor readings from the Sysmart Agro controller" },
-  { src: BRAND_IMAGES.exhibition3, caption: "Officials and guests visiting the SYLUTION exhibition stand" },
-  { src: BRAND_IMAGES.exhibition4, caption: "Discussing smart agriculture technology with stakeholders on site" },
-  { src: BRAND_IMAGES.exhibition5, caption: "SYLUTION team attending a technology and innovation conference" },
+  {
+    src: BRAND_IMAGES.exhibition1,
+    caption:
+      "Presenting the Sysmart Agro system to visitors at an agricultural technology exhibition",
+  },
+  {
+    src: BRAND_IMAGES.exhibition2,
+    caption: "Demonstrating live sensor readings from the Sysmart Agro controller",
+  },
+  {
+    src: BRAND_IMAGES.exhibition3,
+    caption: "Officials and guests visiting the SYLUTION exhibition stand",
+  },
+  {
+    src: BRAND_IMAGES.exhibition4,
+    caption: "Discussing smart agriculture technology with stakeholders on site",
+  },
+  {
+    src: BRAND_IMAGES.exhibition5,
+    caption: "SYLUTION team attending a technology and innovation conference",
+  },
 ];
 
 export const GALLERY: { src: string; category: string; caption: string }[] = [
-  { src: BRAND_IMAGES.sysmart, category: "Sysmart Agro", caption: "Sysmart Agro field deployment and monitoring" },
+  {
+    src: BRAND_IMAGES.sysmart,
+    category: "Sysmart Agro",
+    caption: "Sysmart Agro field deployment and monitoring",
+  },
   ...EXHIBITION_IMAGES.map((e) => ({ src: e.src, category: "Exhibitions", caption: e.caption })),
-  { src: BRAND_IMAGES.iotLab, category: "IoT", caption: "Soil, climate and environmental sensor node work" },
-  { src: BRAND_IMAGES.pcb, category: "Electronics", caption: "Arduino-style controller prototyping and embedded electronics" },
+  {
+    src: BRAND_IMAGES.iotLab,
+    category: "IoT",
+    caption: "Soil, climate and environmental sensor node work",
+  },
+  {
+    src: BRAND_IMAGES.pcb,
+    category: "Electronics",
+    caption: "Arduino-style controller prototyping and embedded electronics",
+  },
   { src: BRAND_IMAGES.ai, category: "AI", caption: "Agricultural data and model review" },
-  { src: BRAND_IMAGES.robotics, category: "Robotics", caption: "Robotics and automation development" },
-  { src: BRAND_IMAGES.device, category: "Products", caption: "Connected IoT node and agricultural sensor systems" },
-  { src: BRAND_IMAGES.drone, category: "Drone", caption: "Agricultural drone technology for farm observation" },
-  { src: BRAND_IMAGES.techTraining, category: "Training", caption: "Practical IoT and electronics training session" },
-  { src: BRAND_IMAGES.training, category: "Training", caption: "Youth and women technology training" },
-  { src: BRAND_IMAGES.solar, category: "Solar", caption: "Solar power supporting agricultural technology" },
-  { src: BRAND_IMAGES.greenhouse, category: "Greenhouse", caption: "Greenhouse technology for controlled environment farming" },
-  { src: BRAND_IMAGES.irrigation, category: "Irrigation", caption: "Drip and smart irrigation technology" },
+  {
+    src: BRAND_IMAGES.robotics,
+    category: "Robotics",
+    caption: "Robotics and automation development",
+  },
+  {
+    src: BRAND_IMAGES.device,
+    category: "Products",
+    caption: "Connected IoT node and agricultural sensor systems",
+  },
+  {
+    src: BRAND_IMAGES.drone,
+    category: "Drone",
+    caption: "Agricultural drone technology for farm observation",
+  },
+  {
+    src: BRAND_IMAGES.techTraining,
+    category: "Training",
+    caption: "Practical IoT and electronics training session",
+  },
+  {
+    src: BRAND_IMAGES.training,
+    category: "Training",
+    caption: "Youth and women technology training",
+  },
+  {
+    src: BRAND_IMAGES.solar,
+    category: "Solar",
+    caption: "Solar power supporting agricultural technology",
+  },
+  {
+    src: BRAND_IMAGES.greenhouse,
+    category: "Greenhouse",
+    caption: "Greenhouse technology for controlled environment farming",
+  },
+  {
+    src: BRAND_IMAGES.irrigation,
+    category: "Irrigation",
+    caption: "Drip and smart irrigation technology",
+  },
   { src: BRAND_IMAGES.harvest, category: "Agriculture", caption: "Field and harvest activities" },
   { src: BRAND_IMAGES.lab, category: "Research", caption: "Research, testing and validation work" },
 ];
@@ -573,7 +881,12 @@ export const STATS = [
 export const TRAINING_AREAS: { group: string; items: string[] }[] = [
   {
     group: "Artificial Intelligence",
-    items: ["Artificial Intelligence", "AI applications in agriculture", "AI tools", "Agricultural data intelligence"],
+    items: [
+      "Artificial Intelligence",
+      "AI applications in agriculture",
+      "AI tools",
+      "Agricultural data intelligence",
+    ],
   },
   {
     group: "Internet of Things",
@@ -588,7 +901,12 @@ export const TRAINING_AREAS: { group: string; items: string[] }[] = [
   },
   {
     group: "Modern Agriculture",
-    items: ["Smart farming", "Precision agriculture", "Digital agriculture", "Modern farming practices"],
+    items: [
+      "Smart farming",
+      "Precision agriculture",
+      "Digital agriculture",
+      "Modern farming practices",
+    ],
   },
   {
     group: "Livestock Technology",
@@ -616,15 +934,51 @@ export const TRAINING_AREAS: { group: string; items: string[] }[] = [
 ];
 
 export const TRAINING_PROGRAMMES = [
-  { title: "Artificial Intelligence", detail: "AI foundations, AI tools and agricultural data intelligence.", image: BRAND_IMAGES.ai },
-  { title: "Internet of Things", detail: "Sensors, connected devices, monitoring systems and smart agriculture.", image: BRAND_IMAGES.iotLab },
-  { title: "ESP32 and Arduino", detail: "Hands on microcontroller and sensor projects from zero to working system.", image: BRAND_IMAGES.electronics },
-  { title: "Modern Agriculture", detail: "Smart farming, precision agriculture and digital agriculture practices.", image: BRAND_IMAGES.greenhouse },
-  { title: "Livestock Technology", detail: "Modern livestock management, monitoring and digital records.", image: BRAND_IMAGES.harvest },
-  { title: "Robotics and Automation", detail: "Robotics, sensors, automation and practical projects.", image: BRAND_IMAGES.robotics },
-  { title: "Drone Technology", detail: "Farm observation, mapping, monitoring and practical demonstrations.", image: BRAND_IMAGES.drone },
-  { title: "Smart Irrigation", detail: "Sensor based irrigation, drip systems and water efficiency.", image: BRAND_IMAGES.irrigation },
-  { title: "Youth and Women Empowerment", detail: "Dedicated sessions, equipment access and mentorship.", image: BRAND_IMAGES.training },
+  {
+    title: "Artificial Intelligence",
+    detail: "AI foundations, AI tools and agricultural data intelligence.",
+    image: BRAND_IMAGES.ai,
+  },
+  {
+    title: "Internet of Things",
+    detail: "Sensors, connected devices, monitoring systems and smart agriculture.",
+    image: BRAND_IMAGES.iotLab,
+  },
+  {
+    title: "ESP32 and Arduino",
+    detail: "Hands on microcontroller and sensor projects from zero to working system.",
+    image: BRAND_IMAGES.electronics,
+  },
+  {
+    title: "Modern Agriculture",
+    detail: "Smart farming, precision agriculture and digital agriculture practices.",
+    image: BRAND_IMAGES.greenhouse,
+  },
+  {
+    title: "Livestock Technology",
+    detail: "Modern livestock management, monitoring and digital records.",
+    image: BRAND_IMAGES.harvest,
+  },
+  {
+    title: "Robotics and Automation",
+    detail: "Robotics, sensors, automation and practical projects.",
+    image: BRAND_IMAGES.robotics,
+  },
+  {
+    title: "Drone Technology",
+    detail: "Farm observation, mapping, monitoring and practical demonstrations.",
+    image: BRAND_IMAGES.drone,
+  },
+  {
+    title: "Smart Irrigation",
+    detail: "Sensor based irrigation, drip systems and water efficiency.",
+    image: BRAND_IMAGES.irrigation,
+  },
+  {
+    title: "Youth and Women Empowerment",
+    detail: "Dedicated sessions, equipment access and mentorship.",
+    image: BRAND_IMAGES.training,
+  },
 ];
 
 export const TRAINING_AUDIENCES = ["Youth", "Women", "Farmers", "Students", "Agripreneurs"];
@@ -661,18 +1015,43 @@ export const FAQS = [
 ];
 
 export const CAREERS = [
-  { role: "Embedded Systems Engineer", type: "Full-time", location: "Kano, Nigeria", team: "Electronics" },
+  {
+    role: "Embedded Systems Engineer",
+    type: "Full-time",
+    location: "Kano, Nigeria",
+    team: "Electronics",
+  },
   { role: "IoT Solutions Engineer", type: "Full-time", location: "Kano, Nigeria", team: "IoT" },
-  { role: "Machine Learning Engineer", type: "Hybrid", location: "Abuja / Remote", team: "AI Research" },
+  {
+    role: "Machine Learning Engineer",
+    type: "Hybrid",
+    location: "Abuja / Remote",
+    team: "AI Research",
+  },
   { role: "PCB Design Engineer", type: "Full-time", location: "Kano, Nigeria", team: "Hardware" },
-  { role: "Automation and Controls Engineer", type: "Full-time", location: "Field-based", team: "Industrial" },
+  {
+    role: "Automation and Controls Engineer",
+    type: "Full-time",
+    location: "Field-based",
+    team: "Industrial",
+  },
   { role: "Full Stack Software Engineer", type: "Hybrid", location: "Remote", team: "Platform" },
-  { role: "Drone Pilot and Instructor", type: "Full-time", location: "Kano, Nigeria", team: "Academy" },
+  {
+    role: "Drone Pilot and Instructor",
+    type: "Full-time",
+    location: "Kano, Nigeria",
+    team: "Academy",
+  },
   { role: "Partnerships Manager", type: "Full-time", location: "Kano, Nigeria", team: "Growth" },
 ];
 
-
-export type ProjectStatus = "Active Project" | "Under development" | "Research phase" | "Pilot testing" | "Coming soon" | "Testing";
+export type ProjectStatus =
+  | "Active Project"
+  | "Under development"
+  | "Research phase"
+  | "Pilot testing"
+  | "Coming soon"
+  | "Testing";
 
 export const PROJECTS: {
   slug: string;
@@ -697,7 +1076,8 @@ export const PROJECTS: {
     category: "Hardware",
     status: "Testing",
     image: BRAND_IMAGES.irrigation,
-    summary: "Solar powered controller that automates pumps and valves from soil moisture thresholds.",
+    summary:
+      "Solar powered controller that automates pumps and valves from soil moisture thresholds.",
   },
   {
     slug: "environmental-monitoring-node",
@@ -721,7 +1101,8 @@ export const PROJECTS: {
     category: "Academy",
     status: "Under development",
     image: BRAND_IMAGES.robotics,
-    summary: "Teaching kit for schools and universities covering microcontrollers, sensors and actuation.",
+    summary:
+      "Teaching kit for schools and universities covering microcontrollers, sensors and actuation.",
   },
   {
     slug: "computer-vision-crop-inspection",
@@ -756,7 +1137,8 @@ export const CASE_STUDIES = [
       "A solar capable controller concept for automating pumps and valves from soil moisture thresholds.",
     evidence:
       "The engineering focus is the link between sensor readings, local control logic and reliable pump or valve switching.",
-    nextStep: "Continue testing sensor thresholds, pump control and operation under variable power conditions.",
+    nextStep:
+      "Continue testing sensor thresholds, pump control and operation under variable power conditions.",
   },
   {
     slug: "computer-vision-crop-inspection-case-study",
@@ -768,35 +1150,84 @@ export const CASE_STUDIES = [
       "An image-based research effort exploring crop-stress detection on edge hardware without depending on continuous internet access.",
     evidence:
       "The work connects crop imagery, locally collected data and model experiments with a practical low-cost deployment target.",
-    nextStep: "Continue research, dataset preparation and evaluation before any wider deployment claim is made.",
+    nextStep:
+      "Continue research, dataset preparation and evaluation before any wider deployment claim is made.",
   },
 ];
 
 export const COMING_SOON = [
-  { name: "Marketplace", detail: "Order SYLUTION devices, kits and agricultural technology online." },
-  { name: "Agricultural financing", detail: "A financing pathway to help farmers adopt smart technology." },
-  { name: "Future AI products", detail: "New agricultural intelligence tools under research and development." },
-  { name: "Future IoT products", detail: "New sensors, controllers and monitoring devices under development." },
+  {
+    name: "Marketplace",
+    detail: "Order SYLUTION devices, kits and agricultural technology online.",
+  },
+  {
+    name: "Agricultural financing",
+    detail: "A financing pathway to help farmers adopt smart technology.",
+  },
+  {
+    name: "Future AI products",
+    detail: "New agricultural intelligence tools under research and development.",
+  },
+  {
+    name: "Future IoT products",
+    detail: "New sensors, controllers and monitoring devices under development.",
+  },
 ];
 
 export const SYSMART_FLOW = [
-  { step: "Sensors", detail: "Soil moisture, temperature, humidity and water level sensing in the field." },
-  { step: "IoT controller", detail: "A solar capable controller reads the sensors and drives pumps and valves." },
+  {
+    step: "Sensors",
+    detail: "Soil moisture, temperature, humidity and water level sensing in the field.",
+  },
+  {
+    step: "IoT controller",
+    detail: "A solar capable controller reads the sensors and drives pumps and valves.",
+  },
   { step: "Connectivity", detail: "GSM and wireless links move readings out of the farm." },
-  { step: "Data collection", detail: "Readings are timestamped and queued, including when the network drops." },
-  { step: "Cloud database", detail: "Field data is stored as a continuous record per farm and per block." },
-  { step: "AI analysis", detail: "Models study the readings to flag stress, waste and irrigation needs." },
+  {
+    step: "Data collection",
+    detail: "Readings are timestamped and queued, including when the network drops.",
+  },
+  {
+    step: "Cloud database",
+    detail: "Field data is stored as a continuous record per farm and per block.",
+  },
+  {
+    step: "AI analysis",
+    detail: "Models study the readings to flag stress, waste and irrigation needs.",
+  },
   { step: "Dashboard", detail: "The farmer and our team see live status, history and alerts." },
-  { step: "Smart decision", detail: "Irrigation and control actions run automatically or on approval." },
+  {
+    step: "Smart decision",
+    detail: "Irrigation and control actions run automatically or on approval.",
+  },
 ];
 
 export const RND_PROCESS = [
-  { step: "Problem", detail: "We start from a real farm or field problem, described by the people facing it." },
-  { step: "Research", detail: "Desk research, sensor selection and technical study of the possible approach." },
-  { step: "Engineering", detail: "Circuits, firmware, enclosures and software built into a working unit." },
-  { step: "Testing", detail: "Bench and laboratory testing for accuracy, power use and reliability." },
-  { step: "Field validation", detail: "Supervised testing under real dust, heat, water and power conditions." },
-  { step: "Product development", detail: "Refinement, documentation and preparation for wider use." },
+  {
+    step: "Problem",
+    detail: "We start from a real farm or field problem, described by the people facing it.",
+  },
+  {
+    step: "Research",
+    detail: "Desk research, sensor selection and technical study of the possible approach.",
+  },
+  {
+    step: "Engineering",
+    detail: "Circuits, firmware, enclosures and software built into a working unit.",
+  },
+  {
+    step: "Testing",
+    detail: "Bench and laboratory testing for accuracy, power use and reliability.",
+  },
+  {
+    step: "Field validation",
+    detail: "Supervised testing under real dust, heat, water and power conditions.",
+  },
+  {
+    step: "Product development",
+    detail: "Refinement, documentation and preparation for wider use.",
+  },
 ];
 
 export const RND_FOCUS = [
@@ -816,17 +1247,20 @@ export const TECH_PILLARS = [
   {
     slug: "artificial-intelligence",
     title: "Artificial Intelligence",
-    detail: "AI systems, agricultural intelligence, computer vision, analytics and intelligent decision support.",
+    detail:
+      "AI systems, agricultural intelligence, computer vision, analytics and intelligent decision support.",
   },
   {
     slug: "iot",
     title: "Internet of Things",
-    detail: "Sensors, connected devices, embedded systems, smart monitoring, data collection and automation.",
+    detail:
+      "Sensors, connected devices, embedded systems, smart monitoring, data collection and automation.",
   },
   {
     slug: "electronics",
     title: "Electronics and Embedded Systems",
-    detail: "Controllers, sensors, microcontrollers, hardware systems and smart electronic systems.",
+    detail:
+      "Controllers, sensors, microcontrollers, hardware systems and smart electronic systems.",
   },
   {
     slug: "robotics",
