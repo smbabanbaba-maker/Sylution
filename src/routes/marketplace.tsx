@@ -8,24 +8,44 @@ import { U, BRAND_IMAGES } from "@/lib/site-data";
 export const Route = createFileRoute("/marketplace")({
   head: () => ({
     meta: [
-      { title: "Marketplace, Coming Soon | SYLUTION" },
+      { title: "SYLUTION Marketplace Initiative" },
       {
         name: "description",
         content:
-          "The SYLUTION Marketplace will connect farmers with verified equipment, inputs, spare parts and buyers. Launching soon from Kano, Nigeria.",
+          "SYLUTION is developing a future marketplace direction for farmers, cooperatives and agribusinesses to discover agricultural technology and services from Kano, Nigeria.",
       },
-      { property: "og:title", content: "SYLUTION Marketplace, Coming Soon" },
-      { property: "og:description", content: "Verified agricultural equipment, inputs and buyers in one trusted platform." },
+      { property: "og:title", content: "SYLUTION Marketplace Initiative" },
+      {
+        property: "og:description",
+        content:
+          "A future marketplace direction for agricultural technology, equipment and services.",
+      },
     ],
   }),
   component: Marketplace,
 });
 
 const FEATURES = [
-  { icon: BadgeCheck, title: "Verified suppliers", text: "Every listing inspected and rated by our field team." },
-  { icon: Truck, title: "Logistics built in", text: "Delivery and installation scheduled at checkout." },
-  { icon: ShoppingBag, title: "Spare parts", text: "Genuine components for irrigation, solar and machinery." },
-  { icon: Timer, title: "Live availability", text: "Real stock levels from our service points." },
+  {
+    icon: BadgeCheck,
+    title: "Clearer discovery",
+    text: "A future space to help visitors discover agricultural technology and service categories.",
+  },
+  {
+    icon: Truck,
+    title: "Service pathways",
+    text: "A future structure for connecting technology enquiries with the right service conversation.",
+  },
+  {
+    icon: ShoppingBag,
+    title: "Technology categories",
+    text: "Agricultural equipment and connected systems can be organised as the initiative develops.",
+  },
+  {
+    icon: Timer,
+    title: "Future availability",
+    text: "Product and service availability will be confirmed directly by SYLUTION as the initiative advances.",
+  },
 ];
 
 function Marketplace() {
@@ -33,13 +53,8 @@ function Marketplace() {
     <>
       <PageHero
         eyebrow="Marketplace"
-        title={
-          <>
-            A trusted place to buy, sell and service farm technology{" "}
-            <span className="text-gradient-brand"> coming soon</span>
-          </>
-        }
-        subtitle="We are building a marketplace where farmers, cooperatives and agribusinesses can source verified equipment, inputs and spare parts, and reach buyers with confidence."
+        title={<>A future place to discover and connect around farm technology</>}
+        subtitle="We are exploring a marketplace direction where farmers, cooperatives and agribusinesses can discover technology categories and begin informed conversations with suppliers and service providers."
         image={BRAND_IMAGES.harvest}
         compact
       >
@@ -48,12 +63,16 @@ function Marketplace() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-70" />
             <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
           </span>
-          Launching soon
+          Future product initiative
         </span>
       </PageHero>
 
       <section className="container-x section-y">
-        <SectionHeading eyebrow="What to expect" title="Designed around trust, not just transactions" align="center" />
+        <SectionHeading
+          eyebrow="What to expect"
+          title="Designed around trust, not just transactions"
+          align="center"
+        />
         <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-4">
           {FEATURES.map((f, i) => (
             <Reveal key={f.title} delay={i * 0.07}>
@@ -73,14 +92,15 @@ function Marketplace() {
             <div>
               <h3 className="font-display text-xl font-bold">Want early access?</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Tell us what you plan to buy or sell and we will contact you before launch.
+                Tell us what technology or service you want to explore and we will record your
+                interest as the initiative develops.
               </p>
             </div>
             <Link
               to="/contact"
               className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.04]"
             >
-              Join the waitlist
+              Register interest
             </Link>
           </div>
         </Reveal>

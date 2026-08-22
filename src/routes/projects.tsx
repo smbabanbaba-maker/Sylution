@@ -12,15 +12,15 @@ export const Route = createFileRoute("/projects")({
       { title: "Projects | SYLUTION IoT, AI and Electronics Engineering" },
       {
         name: "description",
-          content:
-            "Current development and research projects at SYLUTION, including the Sysmart Agro smart agriculture platform, environmental monitoring nodes and educational robotics.",
-        },
-        { property: "og:title", content: "SYLUTION projects, from research to active development" },
-        {
-          property: "og:description",
-          content:
-            "An honest view of what SYLUTION is building: active projects, research work and systems under development in Kano, Nigeria.",
-        },
+        content:
+          "Current development and research projects at SYLUTION, including the Sysmart Agro smart agriculture platform, environmental monitoring nodes and educational robotics.",
+      },
+      { property: "og:title", content: "SYLUTION projects, from research to active development" },
+      {
+        property: "og:description",
+        content:
+          "An honest view of what SYLUTION is building: active projects, research work and systems under development in Kano, Nigeria.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -56,14 +56,15 @@ function ProjectsPage() {
               <p className="eyebrow">Flagship project</p>
               <h2 className="mt-4 font-display text-3xl font-bold">Sysmart Agro</h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                An intelligent IoT powered smart agriculture platform combining a field controller, soil and climate
-                sensing, remote irrigation control and a monitoring dashboard.
+                An intelligent IoT powered smart agriculture platform combining a field controller,
+                soil and climate sensing, remote irrigation control and a monitoring dashboard.
               </p>
               <span className="mt-6 inline-flex rounded-full bg-primary/15 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-primary">
                 Status: Active Project
               </span>
               <span className="mt-6 flex items-center gap-2 text-sm font-semibold text-primary">
-                Open the project page <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                Open the project page{" "}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </span>
             </div>
           </Link>
@@ -80,11 +81,18 @@ function ProjectsPage() {
               {items.map((p, i) => (
                 <Reveal key={p.slug} delay={(i % 3) * 0.07}>
                   <article className="card-luxe h-full overflow-hidden">
-                    <img src={p.image} alt={p.name} loading="lazy" className="h-44 w-full object-cover" />
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      loading="lazy"
+                      className="h-44 w-full object-cover"
+                    />
                     <div className="p-6">
                       <p className="eyebrow">{p.category}</p>
                       <h3 className="mt-3 font-display text-lg font-bold">{p.name}</h3>
-                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.summary}</p>
+                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                        {p.summary}
+                      </p>
                       <span className="mt-5 inline-flex rounded-full border border-border px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-muted-foreground">
                         {p.status}
                       </span>
@@ -103,11 +111,11 @@ function ProjectsPage() {
         <div className="card-luxe p-8 text-center sm:p-12">
           <h2 className="font-display text-2xl font-bold">Completed commercial projects</h2>
           <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground">
-            We only list a project here once it has been delivered and verified. Case studies will be published as
-            deployments complete.
+            We only list a project here once it has been delivered and verified. Case studies will
+            be published as deployments complete.
           </p>
           <span className="mt-6 inline-flex rounded-full border border-border px-4 py-2 text-xs font-bold uppercase tracking-wide text-muted-foreground">
-            Coming soon
+            Future commercial listing
           </span>
         </div>
       </section>

@@ -54,7 +54,7 @@ function ProductsPage() {
         <SectionHeading
           eyebrow="Our products"
           title="Intelligent products. Connected systems. Real-world solutions."
-          description="A focused product ecosystem for practical engineering—not an online electronics shop. Each category is labelled honestly as an active project, in development or coming soon."
+          description="A focused product ecosystem for practical engineering—not an online electronics shop. The work moves through design, development, testing, field deployment and improvement, with each category labelled honestly."
         />
         <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-5">
           {PRODUCT_CATEGORIES.map((category, index) => (

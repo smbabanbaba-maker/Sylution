@@ -8,24 +8,44 @@ import { U, BRAND_IMAGES } from "@/lib/site-data";
 export const Route = createFileRoute("/loans")({
   head: () => ({
     meta: [
-      { title: "Loan Application, Coming Soon | SYLUTION" },
+      { title: "Farm Technology Financing Initiative | SYLUTION" },
       {
         name: "description",
         content:
-          "SYLUTION is building an equipment and input financing application for farmers and agribusinesses, in partnership with banks and development funders.",
+          "SYLUTION is developing an equipment and input financing pathway for farmers and agribusinesses, with potential collaboration from banks and development funders.",
       },
-      { property: "og:title", content: "Loan Application, Coming Soon | SYLUTION" },
-      { property: "og:description", content: "Farm technology financing designed with banks and development partners." },
+      { property: "og:title", content: "Farm Technology Financing Initiative | SYLUTION" },
+      {
+        property: "og:description",
+        content:
+          "A farm technology financing pathway under development and open to bank and development-partner collaboration.",
+      },
     ],
   }),
   component: Loans,
 });
 
 const STEPS = [
-  { icon: FileCheck2, title: "Apply in minutes", text: "A short digital form with document upload from any phone." },
-  { icon: LineChart, title: "Data-backed scoring", text: "Farm records and telemetry strengthen the application." },
-  { icon: ShieldCheck, title: "Partner underwriting", text: "Reviewed by licensed banks and development funders." },
-  { icon: Banknote, title: "Equipment disbursed", text: "Funds released against verified equipment and installation." },
+  {
+    icon: FileCheck2,
+    title: "Apply in minutes",
+    text: "A short digital form with document upload from any phone.",
+  },
+  {
+    icon: LineChart,
+    title: "Data-backed scoring",
+    text: "Farm records and telemetry strengthen the application.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Partner underwriting",
+    text: "Reviewed by licensed banks and development funders.",
+  },
+  {
+    icon: Banknote,
+    title: "Equipment disbursed",
+    text: "Funds released against verified equipment and installation.",
+  },
 ];
 
 function Loans() {
@@ -33,12 +53,8 @@ function Loans() {
     <>
       <PageHero
         eyebrow="Loan Application"
-        title={
-          <>
-            Financing for farm technology <span className="text-gradient-brand"> coming soon</span>
-          </>
-        }
-        subtitle="We are working with banks and development partners to make irrigation, solar, greenhouses and machinery affordable through structured, transparent financing."
+        title={<>Financing for farm technology</>}
+        subtitle="We are designing a structured financing pathway for irrigation, solar, greenhouses and machinery, and are open to collaboration with banks and development partners."
         image={BRAND_IMAGES.team}
         compact
       >
@@ -47,12 +63,16 @@ function Loans() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-70" />
             <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
           </span>
-          Applications open soon
+          Design and partnership phase
         </span>
       </PageHero>
 
       <section className="container-x section-y">
-        <SectionHeading eyebrow="How it will work" title="Four steps from application to installed equipment" align="center" />
+        <SectionHeading
+          eyebrow="How it will work"
+          title="Four steps from application to installed equipment"
+          align="center"
+        />
         <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-4">
           {STEPS.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.07}>
@@ -73,9 +93,11 @@ function Loans() {
         <Reveal delay={0.2}>
           <div className="card-luxe mt-14 flex flex-wrap items-center justify-between gap-6 p-8">
             <div>
-              <h3 className="font-display text-xl font-bold">Are you a lender or development partner?</h3>
+              <h3 className="font-display text-xl font-bold">
+                Are you a lender or development partner?
+              </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                We are onboarding underwriting partners for the first financing cohort.
+                We are seeking underwriting partners for a future financing cohort.
               </p>
             </div>
             <Link

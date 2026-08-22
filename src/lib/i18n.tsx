@@ -37,7 +37,7 @@ const en: Dict = {
   "hero.eyebrow": "AgriTech powered by AI, IoT and Smart Technology · Kano, Nigeria",
   "hero.title": "AgriTech innovation powered by AI, IoT and smart technology",
   "hero.sub":
-    "SYLUTION LTD applies artificial intelligence, Internet of Things, electronics, robotics, drone and solar technology to modern agriculture and real world problems in Nigeria.",
+    "SYLUTION LTD builds intelligent systems for real-world applications, combining artificial intelligence, Internet of Things, electronics, robotics, drone and solar technology—with AgriTech as our main application area in Nigeria.",
   "hero.cta1": "Explore IoT",
   "hero.cta2": "Our Technologies",
   "hero.cta3": "Contact Us",
@@ -79,7 +79,7 @@ const ha: Dict = {
   "hero.eyebrow": "AgriTech ta hanyar AI, IoT da Fasahar Zamani · Kano, Najeriya",
   "hero.title": "Kirkire-kirkiren AgriTech ta hanyar AI, IoT da fasahar zamani",
   "hero.sub":
-    "SYLUTION LTD tana amfani da basirar wucin gadi, IoT, na'urorin lantarki, robotics, jirage marasa matuki da fasahar hasken rana domin noman zamani da matsalolin gaskiya a Najeriya.",
+    "SYLUTION LTD tana gina tsarin fasaha masu aiki ga matsalolin rayuwa, tana haɗa AI, IoT, na'urorin lantarki, robotics, jirage marasa matuki da hasken rana—tare da AgriTech a matsayin babban fannin amfani a Najeriya.",
   "hero.cta1": "Duba IoT",
   "hero.cta2": "Fasahohinmu",
   "hero.cta3": "Tuntube Mu",
@@ -118,7 +118,8 @@ const fr: Dict = {
   "nav.loans": "Crédits",
   "nav.careers": "Carrières",
   "nav.contact": "Contact",
-  "hero.eyebrow": "AgriTech portée par l'IA, l'IoT et les technologies intelligentes · Kano, Nigeria",
+  "hero.eyebrow":
+    "AgriTech portée par l'IA, l'IoT et les technologies intelligentes · Kano, Nigeria",
   "hero.title": "Innovation AgriTech portée par l'IA, l'IoT et les technologies intelligentes",
   "hero.sub":
     "SYLUTION LTD applique l'intelligence artificielle, l'IoT, l'électronique, la robotique, les drones et le solaire à l'agriculture moderne et aux problèmes réels au Nigeria.",
@@ -195,12 +196,14 @@ const PHRASES: Record<Exclude<LangCode, "en">, Dict> = {
     Capabilities: "Iyawarmu",
     "Six technology pillars, one integrated system": "Ginshikai shida na fasaha, tsari guda daya",
     "In the field": "A gona",
-    "Real projects, real farms, real results": "Ayyuka na gaskiya, gonaki na gaskiya, sakamako na gaskiya",
+    "Real projects, real farms, real results":
+      "Ayyuka na gaskiya, gonaki na gaskiya, sakamako na gaskiya",
     Newsroom: "Sashen Labarai",
     "Latest from SYLUTION": "Sabbin labarai daga SYLUTION",
     // About
     "About SYLUTION": "Game da SYLUTION",
-    "Built in Kano. Engineered for the continent.": "An gina shi a Kano. An kera shi don nahiyar Afirka.",
+    "Built in Kano. Engineered for the continent.":
+      "An gina shi a Kano. An kera shi don nahiyar Afirka.",
     "SYLUTION is an innovation company working at the intersection of agriculture, engineering and artificial intelligence, creating technology that African farms can actually own, run and profit from.":
       "SYLUTION kamfani ne na kirkire-kirkire da ke hada noma, injiniyanci da basirar wucin gadi, yana kera fasahar da gonakin Afirka za su iya mallaka, sarrafawa da samun riba a kanta.",
     "Our story": "Tarihinmu",
@@ -222,7 +225,8 @@ const PHRASES: Record<Exclude<LangCode, "en">, Dict> = {
       "Inda ake gina fasahar noma ta gaba a Afirka",
     "Eight disciplines under one roof": "Fannoni takwas a rufi guda",
     Pipeline: "Matakan Aiki",
-    "From question to deployed product in five gates": "Daga tambaya zuwa kayan aiki cikin matakai biyar",
+    "From question to deployed product in five gates":
+      "Daga tambaya zuwa kayan aiki cikin matakai biyar",
     "Inside the centre": "Cikin cibiyar",
     Facilities: "Kayan aiki",
     // Training
@@ -230,7 +234,8 @@ const PHRASES: Record<Exclude<LangCode, "en">, Dict> = {
     "Technology only creates value when people can run it":
       "Fasaha tana amfani ne kawai idan mutane sun iya sarrafa ta",
     Programmes: "Shirye-shirye",
-    "Eleven programmes, one practical standard": "Shirye-shirye goma sha daya, matsayi guda na aiki",
+    "Eleven programmes, one practical standard":
+      "Shirye-shirye goma sha daya, matsayi guda na aiki",
     // Gallery
     Gallery: "Hotuna",
     "The work, as it actually looks": "Aikin, kamar yadda yake a zahiri",
@@ -269,9 +274,11 @@ const PHRASES: Record<Exclude<LangCode, "en">, Dict> = {
     "An innovation company built in Africa, engineered for the world":
       "Une entreprise d'innovation née en Afrique, conçue pour le monde",
     Capabilities: "Compétences",
-    "Six technology pillars, one integrated system": "Six piliers technologiques, un système intégré",
+    "Six technology pillars, one integrated system":
+      "Six piliers technologiques, un système intégré",
     "In the field": "Sur le terrain",
-    "Real projects, real farms, real results": "De vrais projets, de vraies fermes, de vrais résultats",
+    "Real projects, real farms, real results":
+      "De vrais projets, de vraies fermes, de vrais résultats",
     Newsroom: "Actualités",
     "Latest from SYLUTION": "Dernières nouvelles de SYLUTION",
     "About SYLUTION": "À propos de SYLUTION",
@@ -295,7 +302,8 @@ const PHRASES: Record<Exclude<LangCode, "en">, Dict> = {
       "Là où se construit la prochaine génération de technologies agricoles africaines",
     "Eight disciplines under one roof": "Huit disciplines sous un même toit",
     Pipeline: "Processus",
-    "From question to deployed product in five gates": "De la question au produit déployé en cinq étapes",
+    "From question to deployed product in five gates":
+      "De la question au produit déployé en cinq étapes",
     "Inside the centre": "À l'intérieur du centre",
     Facilities: "Installations",
     "SYLUTION Academy": "Académie SYLUTION",
@@ -326,7 +334,8 @@ const PHRASES: Record<Exclude<LangCode, "en">, Dict> = {
     Marketplace: "Marché",
     "Loan Application": "Demande de crédit",
     "What to expect": "À quoi s'attendre",
-    "Designed around trust, not just transactions": "Conçu autour de la confiance, pas seulement des transactions",
+    "Designed around trust, not just transactions":
+      "Conçu autour de la confiance, pas seulement des transactions",
     "How it will work": "Comment cela fonctionnera",
     "Four steps from application to installed equipment":
       "Quatre étapes, de la demande à l'équipement installé",
@@ -346,7 +355,8 @@ const PHRASES: Record<Exclude<LangCode, "en">, Dict> = {
     "SYLUTION is an innovation company working at the intersection of agriculture, engineering and artificial intelligence, creating technology that African farms can actually own, run and profit from.":
       "شركة SYLUTION شركة ابتكار تعمل عند تقاطع الزراعة والهندسة والذكاء الاصطناعي، وتصنع تقنيات تستطيع المزارع الأفريقية امتلاكها وتشغيلها والربح منها.",
     "Our story": "قصتنا",
-    "It started with one irrigation block and a stubborn question": "بدأ الأمر بحقل ري واحد وسؤال عنيد",
+    "It started with one irrigation block and a stubborn question":
+      "بدأ الأمر بحقل ري واحد وسؤال عنيد",
     "Core values": "قيمنا الأساسية",
     "Four commitments that govern every project": "أربعة التزامات تحكم كل مشروع",
     Milestones: "محطات",
@@ -477,7 +487,6 @@ const EXTRA: Record<Exclude<LangCode, "en">, Dict> = {
 };
 
 const LangContext = createContext<{
-
   lang: LangCode;
   setLang: (l: LangCode) => void;
   t: (key: string) => string;
@@ -502,8 +511,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const t = (key: string) => DICTS[lang][key] ?? en[key] ?? key;
   const tr = (text: string) =>
-    lang === "en" ? text : PHRASES[lang][text] ?? EXTRA[lang][text] ?? text;
-
+    lang === "en" ? text : (PHRASES[lang][text] ?? EXTRA[lang][text] ?? text);
 
   return <LangContext.Provider value={{ lang, setLang, t, tr }}>{children}</LangContext.Provider>;
 }

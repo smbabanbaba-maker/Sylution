@@ -17,7 +17,8 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About SYLUTION" },
       {
         property: "og:description",
-        content: "Our story, vision, mission and core values as an African agricultural innovation company.",
+        content:
+          "Our story, vision, mission and core values as an African agricultural innovation company.",
       },
     ],
   }),
@@ -25,19 +26,54 @@ export const Route = createFileRoute("/about")({
 });
 
 const TIMELINE = [
-  { year: "2024", title: "The idea begins", text: "The SYLUTION idea takes shape in Kano, around AI, IoT and agriculture." },
-  { year: "2024", title: "Early development", text: "First learning, research and electronics experiments begin in earnest." },
-  { year: "2025", title: "Engineering", text: "Sensor nodes, controllers and dashboards are engineered and tested." },
-  { year: "2025", title: "Sysmart Agro", text: "Our flagship smart farming system enters active development and field deployment." },
-  { year: "2026", title: "Company registration and growth", text: "SYLUTION LTD operates from the Technology Incubation Centre, Kano." },
+  {
+    year: "2024",
+    title: "The idea begins",
+    text: "The SYLUTION idea takes shape in Kano, around AI, IoT and agriculture.",
+  },
+  {
+    year: "2024",
+    title: "Early development",
+    text: "First learning, research and electronics experiments begin in earnest.",
+  },
+  {
+    year: "2025",
+    title: "Engineering",
+    text: "Sensor nodes, controllers and dashboards are engineered and tested.",
+  },
+  {
+    year: "2025",
+    title: "Sysmart Agro",
+    text: "Our flagship smart farming system enters active development and field deployment.",
+  },
+  {
+    year: "2026",
+    title: "Company registration and growth",
+    text: "SYLUTION LTD operates from the Technology Incubation Centre, Kano.",
+  },
 ];
 
-
 const VALUES = [
-  { icon: Gem, title: "Excellence", text: "Nothing leaves our workshop until it survives the field, not just the bench." },
-  { icon: Users, title: "Farmer first", text: "Every product starts with a farmer interview and ends with farmer results." },
-  { icon: Compass, title: "Integrity", text: "Honest measurement, honest reporting, honest pricing, with every partner." },
-  { icon: Target, title: "Impact", text: "We measure ourselves in yield, water saved, energy displaced and income gained." },
+  {
+    icon: Gem,
+    title: "Excellence",
+    text: "We take engineering from bench testing toward supervised field validation, documenting what works and what needs improvement.",
+  },
+  {
+    icon: Users,
+    title: "Farmer first",
+    text: "We start from the operational needs of farmers and the people who use each system.",
+  },
+  {
+    icon: Compass,
+    title: "Integrity",
+    text: "We use honest measurement, honest reporting and clear status labels with every partner.",
+  },
+  {
+    icon: Target,
+    title: "Impact",
+    text: "We focus on practical improvements in water, energy, monitoring and decision-making as evidence becomes available.",
+  },
 ];
 
 function About() {
@@ -70,14 +106,17 @@ function About() {
           />
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground">
             <p>
-              The development journey began with a focus on sensor-driven irrigation on test plots near Kano, observing the potential for water and energy efficiency.
+              The development journey began with a focus on sensor-driven irrigation on test plots
+              near Kano, observing the potential for water and energy efficiency.
             </p>
             <p>
-              That result funded the next system, then the next. Today SYLUTION designs its own electronics, writes its own software, and conducts research into drone technology and smart agriculture to support farmers and institutions.
+              That result funded the next system, then the next. Today SYLUTION designs its own
+              electronics, writes its own software, and conducts research into drone technology and
+              smart agriculture to support farmers and institutions.
             </p>
             <p>
-              We remain a Nigerian company with a continental ambition, proving that world-class agricultural
-              technology can be conceived, engineered and supported from Africa itself.
+              We remain a Nigerian company with a continental ambition, proving that world-class
+              agricultural technology can be conceived, engineered and supported from Africa itself.
             </p>
           </div>
         </Reveal>
@@ -102,8 +141,8 @@ function About() {
               An Africa where every farm is precise, powered and profitable.
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              We see a continent where technology is not imported as a favour but engineered locally, maintained
-              locally and owned by the people who work the land.
+              We see a continent where technology is not imported as a favour but engineered
+              locally, maintained locally and owned by the people who work the land.
             </p>
           </div>
         </Reveal>
@@ -111,18 +150,22 @@ function About() {
           <div className="card-luxe h-full p-8">
             <p className="eyebrow">Mission</p>
             <h2 className="mt-4 font-display text-2xl font-bold">
-              To design, build and deploy agricultural technology that measurably raises income.
+              To design, build and validate agricultural technology for practical real-world use.
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              We deliver irrigation, energy, intelligence and training as one integrated service, installed
-              properly, supported locally and proven with data.
+              We bring irrigation, energy, intelligence and training into one engineering direction,
+              supported locally and refined through testing and evidence.
             </p>
           </div>
         </Reveal>
       </section>
 
       <section className="container-x pb-20">
-        <SectionHeading eyebrow="Core values" title="Four commitments that govern every project" align="center" />
+        <SectionHeading
+          eyebrow="Core values"
+          title="Four commitments that govern every project"
+          align="center"
+        />
         <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-4">
           {VALUES.map((v, i) => (
             <Reveal key={v.title} delay={i * 0.07}>
@@ -144,7 +187,9 @@ function About() {
           {TIMELINE.map((item, i) => (
             <Reveal key={item.year} delay={i * 0.06}>
               <div className="grid gap-4 rounded-2xl border border-border bg-surface p-6 sm:grid-cols-[7rem_1fr] sm:items-center">
-                <p className="font-display text-2xl font-extrabold text-gradient-brand">{item.year}</p>
+                <p className="font-display text-2xl font-extrabold text-gradient-brand">
+                  {item.year}
+                </p>
                 <div>
                   <h3 className="font-display text-base font-bold">{item.title}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">{item.text}</p>
@@ -154,7 +199,6 @@ function About() {
           ))}
         </div>
       </section>
-
 
       <CTASection />
     </>

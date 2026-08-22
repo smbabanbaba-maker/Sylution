@@ -494,7 +494,12 @@ export type ProductCategory = {
   shortName: string;
   detail: string;
   image: string;
-  status: "Active Project" | "In Development" | "Coming Soon";
+  status:
+    | "Active Project"
+    | "Active Engineering"
+    | "Engineering & Development"
+    | "Development"
+    | "Coming Soon";
   items: string[];
 };
 
@@ -504,9 +509,9 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     name: "Smart Devices & Consumer Electronics",
     shortName: "Smart Devices",
     detail:
-      "A future-facing category for portable electronics, smart home devices and connected consumer products. Items not yet verified as SYLUTION releases are clearly marked Concept / Coming Soon.",
+      "An active technology direction for portable electronics, smart home devices and connected consumer products. Items not yet verified as SYLUTION releases are clearly marked Concept / Future Product.",
     image: BRAND_IMAGES.electronics,
-    status: "Coming Soon",
+    status: "Development",
     items: [
       "Bluetooth speakers",
       "Wireless audio devices",
@@ -523,7 +528,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     detail:
       "Sensors, controllers, embedded systems, PCB-based devices and monitoring systems built around connected engineering.",
     image: BRAND_IMAGES.device,
-    status: "In Development",
+    status: "Active Engineering",
     items: [
       "Smart sensors",
       "IoT devices",
@@ -557,7 +562,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     detail:
       "Robotics systems, educational automation and drone technology for agricultural observation, mapping and practical engineering.",
     image: BRAND_IMAGES.robotics,
-    status: "In Development",
+    status: "Engineering & Development",
     items: [
       "Robotics systems",
       "Agricultural robotics",
@@ -572,7 +577,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     detail:
       "Solar-powered devices, energy monitoring and off-grid power support for connected agricultural and IoT systems.",
     image: BRAND_IMAGES.solar,
-    status: "In Development",
+    status: "Engineering & Development",
     items: [
       "Solar-powered devices",
       "Smart energy systems",
@@ -633,7 +638,7 @@ export const PRODUCTS: ProductRecord[] = [
     name: "Greenhouse technology",
     detail: "Modern greenhouse agriculture with technology integration.",
     image: BRAND_IMAGES.greenhouse,
-    status: "In Development",
+    status: "Development",
     category: "AgriTech",
     technology: "Climate monitoring, irrigation and remote sensing",
     application: "Controlled environment farming",
@@ -642,7 +647,7 @@ export const PRODUCTS: ProductRecord[] = [
     name: "Agricultural drone technology",
     detail: "Farm observation, mapping and monitoring applications.",
     image: BRAND_IMAGES.drone,
-    status: "In Development",
+    status: "Engineering Build",
     category: "Robotics & Drone",
     technology: "Aerial imagery, mapping and data capture",
     application: "Farm observation and agricultural monitoring",
@@ -651,7 +656,7 @@ export const PRODUCTS: ProductRecord[] = [
     name: "Educational robotics kit",
     detail: "Teaching kit covering microcontrollers, sensors and actuation.",
     image: BRAND_IMAGES.robotics,
-    status: "In Development",
+    status: "Engineering Build",
     category: "Robotics & Drone",
     technology: "Microcontrollers, sensors and actuation",
     application: "Practical education and automation",
@@ -660,7 +665,7 @@ export const PRODUCTS: ProductRecord[] = [
     name: "Solar powered technology",
     detail: "Solar support for IoT devices and agricultural systems.",
     image: BRAND_IMAGES.solar,
-    status: "In Development",
+    status: "Engineering Build",
     category: "Solar & Energy",
     technology: "Solar power, battery and charge management",
     application: "Off-grid IoT and agricultural systems",

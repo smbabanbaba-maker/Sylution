@@ -17,7 +17,8 @@ export const Route = createFileRoute("/platforms")({
       { property: "og:title", content: "Products & Technology Platforms | SYLUTION LTD" },
       {
         property: "og:description",
-        content: "The SYLUTION ecosystem: one Nigerian innovation company, four technology platforms.",
+        content:
+          "The SYLUTION ecosystem: one Nigerian innovation company, four technology platforms.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -103,12 +104,21 @@ function PlatformsPage() {
           <div className="mt-12 card-luxe p-6 sm:p-10">
             <div className="text-center">
               <p className="eyebrow justify-center">Parent company</p>
-              <h3 className="mt-3 font-display text-2xl font-extrabold sm:text-3xl">SYLUTION LTD</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Nigerian AgriTech & Technology Innovation Company</p>
+              <h3 className="mt-3 font-display text-2xl font-extrabold sm:text-3xl">
+                SYLUTION LTD
+              </h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Nigerian AgriTech & Technology Innovation Company
+              </p>
             </div>
             <div aria-hidden className="mx-auto my-8 h-10 w-px bg-border" />
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {["Artificial Intelligence", "Internet of Things", "AgriTech", "Smart Technology"].map((f) => (
+              {[
+                "Artificial Intelligence",
+                "Internet of Things",
+                "AgriTech",
+                "Smart Technology",
+              ].map((f) => (
                 <div
                   key={f}
                   className="rounded-2xl border border-border bg-surface px-4 py-3 text-center text-sm font-semibold"
@@ -157,9 +167,13 @@ function PlatformsPage() {
                     <span className="grid h-11 w-11 place-items-center rounded-2xl bg-primary/15 text-primary">
                       <p.icon className="h-5 w-5" />
                     </span>
-                    <h3 className="mt-5 font-display text-lg font-extrabold tracking-tight">{p.name}</h3>
+                    <h3 className="mt-5 font-display text-lg font-extrabold tracking-tight">
+                      {p.name}
+                    </h3>
                     <p className="mt-1 text-sm font-semibold text-primary">{p.tagline}</p>
-                    <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
+                    <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
+                      {p.description}
+                    </p>
                     <dl className="mt-5 grid grid-cols-2 gap-3 text-xs">
                       <div className="rounded-xl border border-border p-3">
                         <dt className="text-muted-foreground">Category</dt>
@@ -192,7 +206,9 @@ function PlatformsPage() {
           {["Future AI Products", "New IoT Products", "Marketplace"].map((f) => (
             <div key={f} className="rounded-2xl border border-dashed border-border p-6 text-center">
               <p className="font-display text-sm font-bold">{f}</p>
-              <p className="mt-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">Coming soon</p>
+              <p className="mt-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                Future direction
+              </p>
             </div>
           ))}
         </div>
