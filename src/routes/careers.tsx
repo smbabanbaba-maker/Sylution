@@ -40,7 +40,7 @@ function Careers() {
 
       <section className="container-x section-y">
         <SectionHeading eyebrow="Why SYLUTION" title="What you get here" />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-2 gap-5 md:grid-cols-3">
           {PERKS.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.07}>
               <div className="card-luxe h-full p-7">

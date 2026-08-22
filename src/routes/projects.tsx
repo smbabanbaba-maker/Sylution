@@ -76,7 +76,7 @@ function ProjectsPage() {
         return (
           <section key={group} className="container-x pb-20">
             <SectionHeading eyebrow={group} title={`${group} projects`} />
-            <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid grid-cols-2 gap-5 lg:grid-cols-3">
               {items.map((p, i) => (
                 <Reveal key={p.slug} delay={(i % 3) * 0.07}>
                   <article className="card-luxe h-full overflow-hidden">

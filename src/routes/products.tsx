@@ -46,7 +46,7 @@ function ProductsPage() {
 
       <section className="container-x section-y">
         <SectionHeading eyebrow="Catalogue" title="Devices and systems" />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-4">
           {PRODUCTS.map((p, i) => (
             <Reveal key={p.name} delay={(i % 4) * 0.06}>
               <article className="card-luxe group flex h-full flex-col overflow-hidden">

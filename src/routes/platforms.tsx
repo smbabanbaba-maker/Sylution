@@ -107,7 +107,7 @@ function PlatformsPage() {
               <p className="mt-2 text-sm text-muted-foreground">Nigerian AgriTech & Technology Innovation Company</p>
             </div>
             <div aria-hidden className="mx-auto my-8 h-10 w-px bg-border" />
-            <div className="grid gap-3 sm:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               {["Artificial Intelligence", "Internet of Things", "AgriTech", "Smart Technology"].map((f) => (
                 <div
                   key={f}
@@ -118,7 +118,7 @@ function PlatformsPage() {
               ))}
             </div>
             <div aria-hidden className="mx-auto my-8 h-10 w-px bg-border" />
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
               {PLATFORMS.map((p) => (
                 <Link
                   key={p.name}
@@ -138,7 +138,7 @@ function PlatformsPage() {
       <section className="border-y border-border bg-surface section-y">
         <div className="container-x">
           <SectionHeading eyebrow="Platforms" title="Products & technology platforms" />
-          <div className="mt-12 grid gap-5 md:grid-cols-2">
+          <div className="mt-12 grid grid-cols-2 gap-5">
             {PLATFORMS.map((p, i) => (
               <Reveal key={p.name} delay={(i % 2) * 0.08}>
                 <article className="card-luxe group flex h-full flex-col overflow-hidden">
@@ -188,7 +188,7 @@ function PlatformsPage() {
           description="The SYLUTION ecosystem is structured so new products, platforms and programmes can join it as they are developed."
           align="center"
         />
-        <div className="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-3">
+        <div className="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-3">
           {["Future AI Products", "New IoT Products", "Marketplace"].map((f) => (
             <div key={f} className="rounded-2xl border border-dashed border-border p-6 text-center">
               <p className="font-display text-sm font-bold">{f}</p>

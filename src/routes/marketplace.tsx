@@ -54,7 +54,7 @@ function Marketplace() {
 
       <section className="container-x section-y">
         <SectionHeading eyebrow="What to expect" title="Designed around trust, not just transactions" align="center" />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-4">
           {FEATURES.map((f, i) => (
             <Reveal key={f.title} delay={i * 0.07}>
               <div className="card-luxe h-full p-7">

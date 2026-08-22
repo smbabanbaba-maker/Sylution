@@ -71,7 +71,7 @@ function InvestorsPage() {
       </PageHero>
 
       <section className="container-x section-y">
-        <div className="grid gap-px overflow-hidden rounded-3xl border border-border sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-border lg:grid-cols-4">
           {STAGE.map((s) => (
             <div key={s.label} className="glass px-6 py-7">
               <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{s.label}</p>
@@ -87,7 +87,7 @@ function InvestorsPage() {
           title="Why SYLUTION"
           description="Six reasons an investor or development financier should look closely at what we are building."
         />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-3">
           {WHY.map((w, i) => (
             <Reveal key={w.title} delay={(i % 3) * 0.07}>
               <div className="card-luxe h-full p-7">

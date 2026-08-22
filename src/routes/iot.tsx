@@ -76,7 +76,7 @@ function IoTPage() {
           title="Six layers, engineered in house"
           description="Hardware, firmware, connectivity, cloud and interface are built by the same team, so nothing is left to a third party integration."
         />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-3">
           {HIGHLIGHTS.map((h, i) => (
             <Reveal key={h.title} delay={(i % 3) * 0.07}>
               <div className="card-luxe h-full p-7">
@@ -100,7 +100,7 @@ function IoTPage() {
             description="From the sensor in the field to the decision on the screen, five layers that keep working with or without a network."
             align="center"
           />
-          <div className="mt-14 grid gap-4 md:grid-cols-5">
+          <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-5">
             {IOT_STACK.map((s, i) => (
               <Reveal key={s.layer} delay={i * 0.07}>
                 <div className="card-luxe relative h-full p-6">
@@ -125,7 +125,7 @@ function IoTPage() {
           title="Target applications for our connected systems"
           description="One platform, many industries. Each application uses the same tested device, network and cloud foundation."
         />
-        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-3">
           {IOT_APPLICATIONS.map((g, i) => (
             <Reveal key={g.group} delay={(i % 3) * 0.07}>
               <div className="card-luxe h-full p-7">

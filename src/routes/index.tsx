@@ -307,7 +307,7 @@ function Home() {
           title="From sensing to real-world impact"
           description="A connected engineering foundation that brings field signals, intelligence and practical control into one system."
         />
-        <div className="mt-12 grid gap-3 md:grid-cols-5">
+        <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-5">
           {TECHNOLOGY_FLOW.map((item, i) => (
             <Reveal key={item.label} delay={i * 0.06}>
               <div className="group relative h-full rounded-3xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow">
@@ -397,7 +397,7 @@ function Home() {
           description="The Sysmart Agro flow, presented as a clear operating sequence rather than a claim about commercial availability."
           align="center"
         />
-        <div className="relative mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
+        <div className="relative mt-12 grid grid-cols-2 gap-3 lg:grid-cols-6">
           {SYSMART_SYSTEM.map((item, i) => (
             <Reveal key={item.label} delay={i * 0.05}>
               <div className="card-luxe h-full p-5 text-center">
@@ -462,7 +462,7 @@ function Home() {
           title="Six pillars, one connected system"
           description="Each pillar works alone and works better together, from a connected sensor to an AI-advised farm."
         />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-3">
           {PILLARS.map((p, i) => (
             <Reveal key={p.slug} delay={i * 0.06}>
               <Link
@@ -619,7 +619,7 @@ function Home() {
             All news <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-2 gap-5 md:grid-cols-3">
           {NEWS.slice(0, 3).map((n, i) => (
             <Reveal key={n.slug} delay={i * 0.08}>
               <article className="card-luxe group h-full overflow-hidden">

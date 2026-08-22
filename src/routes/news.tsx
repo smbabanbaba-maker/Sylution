@@ -48,7 +48,7 @@ function News() {
         </Reveal>
 
         <SectionHeading eyebrow="More stories" title="Recent updates" />
-        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-2 gap-5 lg:grid-cols-3">
           {rest.map((n, i) => (
             <Reveal key={n.slug} delay={(i % 3) * 0.07}>
               <article className="card-luxe group h-full overflow-hidden">

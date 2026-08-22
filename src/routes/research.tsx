@@ -63,7 +63,7 @@ function Research() {
           title="Eight disciplines under one roof"
           description="Research at SYLUTION is not theoretical. Every programme is aimed at producing practical solutions for field application."
         />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-4">
           {LABS.map((l, i) => (
             <Reveal key={l.title} delay={(i % 4) * 0.07}>
               <div className="card-luxe h-full p-7">
@@ -81,7 +81,7 @@ function Research() {
       <section className="border-y border-border bg-surface section-y">
         <div className="container-x">
           <SectionHeading eyebrow="Pipeline" title="From research question to system validation in six stages" align="center" />
-          <div className="mt-12 grid gap-4 md:grid-cols-5">
+          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-5">
             {PIPELINE.map((p, i) => (
               <Reveal key={p.step} delay={i * 0.07}>
                 <div className="card-luxe h-full p-6">
@@ -97,7 +97,7 @@ function Research() {
 
       <section className="container-x section-y">
         <SectionHeading eyebrow="Inside the centre" title="Facilities" />
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3">
           {[
             { src: BRAND_IMAGES.lab, label: "Laboratory analysis" },
             { src: BRAND_IMAGES.electronics, label: "System instrumentation" },

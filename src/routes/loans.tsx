@@ -53,7 +53,7 @@ function Loans() {
 
       <section className="container-x section-y">
         <SectionHeading eyebrow="How it will work" title="Four steps from application to installed equipment" align="center" />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-4">
           {STEPS.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.07}>
               <div className="card-luxe h-full p-7">

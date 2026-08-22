@@ -136,7 +136,7 @@ function SysmartAgroPage() {
             description="Every layer of Sysmart Agro is engineered in house, from the board to the dashboard."
             align="center"
           />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-3">
             {TECHNOLOGIES.map((t, i) => (
               <Reveal key={t.title} delay={(i % 3) * 0.07}>
                 <div className="card-luxe h-full p-7">
@@ -159,7 +159,7 @@ function SysmartAgroPage() {
           description="The Sysmart Agro operational flow, from a reading in the soil to an irrigation decision on the farm."
           align="center"
         />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
           {SYSMART_FLOW.map((f, i) => (
             <Reveal key={f.step} delay={(i % 4) * 0.07}>
               <div className="card-luxe relative h-full p-6">
@@ -181,7 +181,7 @@ function SysmartAgroPage() {
           title="Where the project stands today"
           description="We publish the real state of each phase. Nothing here is marked complete before it is."
         />
-        <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-3">
           {TIMELINE.map((p, i) => (
             <Reveal key={p.phase} delay={(i % 3) * 0.07}>
               <div className="card-luxe h-full p-6">

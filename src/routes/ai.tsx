@@ -56,7 +56,7 @@ function AIPage() {
           title="Focusing on Applied AI"
           description="Our AI research is measured against real-world targets: accuracy in the field, operational efficiency, and cost reduction."
         />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-3">
           {AI_CAPABILITIES.map((c, i) => (
             <Reveal key={c.title} delay={(i % 3) * 0.06}>
               <div className="card-luxe h-full p-7">
@@ -71,7 +71,7 @@ function AIPage() {
       <section className="border-y border-border bg-surface section-y">
         <div className="container-x">
           <SectionHeading eyebrow="Method" title="From raw telemetry to deployed intelligence" align="center" />
-          <div className="mt-12 grid gap-4 md:grid-cols-4">
+          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
             {PIPELINE.map((p, i) => (
               <Reveal key={p.step} delay={i * 0.07}>
                 <div className="card-luxe h-full p-6">

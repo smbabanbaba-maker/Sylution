@@ -38,7 +38,7 @@ function IndustriesPage() {
 
       <section className="container-x section-y">
         <SectionHeading eyebrow="Sectors" title={`${INDUSTRIES.length} industries, one engineering standard`} />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-3">
           {INDUSTRIES.map((ind, i) => (
             <Reveal key={ind.name} delay={(i % 3) * 0.06}>
               <article className="card-luxe group flex h-full flex-col overflow-hidden">

@@ -48,7 +48,7 @@ function Training() {
           title="Eleven programmes, one practical standard"
           description="Every programme mixes classroom fundamentals with supervised hands-on operation, focusing on practical skill acquisition."
         />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-3">
           {TRAINING_PROGRAMMES.map((p, i) => (
             <Reveal key={p.title} delay={(i % 3) * 0.07}>
               <article className="card-luxe group flex h-full flex-col overflow-hidden">
@@ -75,7 +75,7 @@ function Training() {
       </section>
 
       <section className="border-y border-border bg-surface section-y">
-        <div className="container-x grid gap-10 lg:grid-cols-3">
+        <div className="container-x grid grid-cols-2 gap-10 lg:grid-cols-3">
           {[
             { value: "Hands on", label: "Practical sessions on real equipment" },
             { value: "3", label: "Languages of instruction: English, Hausa, French" },

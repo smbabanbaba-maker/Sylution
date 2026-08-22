@@ -67,7 +67,7 @@ function PartnersPage() {
           title="Six collaboration pathways"
           description="Each pathway has a different starting point, but all of them run through our engineering team in Kano."
         />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-3">
           {TYPES.map((t, i) => (
             <Reveal key={t.title} delay={(i % 3) * 0.07}>
               <div className="card-luxe h-full p-7">
@@ -85,7 +85,7 @@ function PartnersPage() {
       <section className="border-y border-border bg-surface section-y">
         <div className="container-x">
           <SectionHeading eyebrow="Process" title="How a partnership begins" align="center" />
-          <div className="mt-12 grid gap-4 md:grid-cols-4">
+          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
             {STEPS.map((s, i) => (
               <Reveal key={s.n} delay={i * 0.07}>
                 <div className="card-luxe h-full p-6">
