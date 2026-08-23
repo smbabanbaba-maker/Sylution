@@ -124,6 +124,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://images.unsplash.com" },
       {
         rel: "icon",
+        href: "/brand/sylution-favicon-48.png",
+        type: "image/png",
+        sizes: "48x48",
+      },
+      {
+        rel: "icon",
         href: "/favicon.ico",
         type: "image/x-icon",
         sizes: "16x16 32x32 48x48 64x64 128x128 256x256",
