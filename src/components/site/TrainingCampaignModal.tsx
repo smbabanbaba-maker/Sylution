@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, BadgeCheck, GraduationCap, X } from "lucide-react";
-import { BRAND_IMAGES } from "@/lib/site-data";
 
 const DISMISSAL_KEY = "sylution-training-campaign-dismissed";
 
@@ -67,7 +66,7 @@ export function TrainingCampaignModal() {
       >
         <div className="relative min-h-[190px] overflow-hidden sm:min-h-[520px]">
           <img
-            src={BRAND_IMAGES.techTraining}
+            src="/brand/tech-training.jpg"
             alt="Practical SYLUTION smart agriculture technology training"
             className="h-full min-h-[190px] w-full object-cover sm:min-h-[520px]"
           />
