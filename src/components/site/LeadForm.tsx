@@ -47,7 +47,7 @@ export function LeadForm() {
         <Reveal delay={0.12}>
           <form
             className="card-luxe space-y-5 p-6 sm:p-8 lg:p-10"
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
               const form = e.currentTarget;
               const fd = new FormData(form);
@@ -75,26 +75,34 @@ export function LeadForm() {
               }
 
               setSending(true);
-              const body = [
-                `Name: ${name}`,
-                `Email: ${email}`,
-                `Phone: ${phone}`,
-                `Interest: ${need}`,
-                "",
-                message || "(no additional details)",
-              ].join("\n");
-              const href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(
-                `New enquiry from ${name} (${need})`,
-              )}&body=${encodeURIComponent(body)}`;
+              const submission = new FormData();
+              submission.set("name", name);
+              submission.set("email", email);
+              submission.set("phone", phone);
+              submission.set("interest", need);
+              submission.set("message", message || "(no additional details)");
+              submission.set("_subject", `New enquiry from ${name} (${need})`);
+              submission.set("_replyto", email);
+              submission.set("_template", "table");
 
-              window.setTimeout(() => {
-                setSending(false);
-                form.reset();
-                window.location.href = href;
-                toast.success("Enquiry ready to send", {
-                  description: "Your email app is opening with the details filled in for our team.",
+              try {
+                const response = await fetch(`https://formsubmit.co/ajax/${CONTACT.email}`, {
+                  method: "POST",
+                  headers: { Accept: "application/json" },
+                  body: submission,
                 });
-              }, 500);
+                if (!response.ok) throw new Error("Email service rejected the enquiry");
+                form.reset();
+                toast.success("Enquiry sent", {
+                  description: "Thank you. Our team will respond within two working days.",
+                });
+              } catch {
+                toast.error("Unable to send the enquiry", {
+                  description: `Please email ${CONTACT.email} directly or try again shortly.`,
+                });
+              } finally {
+                setSending(false);
+              }
             }}
           >
             <h3 className="font-display text-xl font-bold tracking-tight">Request a callback</h3>

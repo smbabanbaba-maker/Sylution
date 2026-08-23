@@ -86,17 +86,33 @@ function Contact() {
         <Reveal delay={0.12}>
           <form
             className="card-luxe space-y-5 p-6 sm:p-8 lg:p-10"
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              setSending(true);
               const form = e.currentTarget;
-              setTimeout(() => {
-                setSending(false);
+              const submission = new FormData(form);
+              submission.set("_subject", `New contact message: ${String(submission.get("subject") ?? "General enquiry")}`);
+              submission.set("_replyto", String(submission.get("email") ?? ""));
+              submission.set("_template", "table");
+              setSending(true);
+
+              try {
+                const response = await fetch(`https://formsubmit.co/ajax/${CONTACT.email}`, {
+                  method: "POST",
+                  headers: { Accept: "application/json" },
+                  body: submission,
+                });
+                if (!response.ok) throw new Error("Email service rejected the message");
                 form.reset();
                 toast.success("Message sent", {
                   description: "Thank you. Our team will respond within two working days.",
                 });
-              }, 700);
+              } catch {
+                toast.error("Unable to send the message", {
+                  description: `Please email ${CONTACT.email} directly or try again shortly.`,
+                });
+              } finally {
+                setSending(false);
+              }
             }}
           >
             <h2 className="font-display text-xl font-bold tracking-tight">Send us a message</h2>
