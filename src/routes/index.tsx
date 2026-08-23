@@ -32,6 +32,7 @@ import {
   AGRITECH_AREAS,
   EXHIBITION_IMAGES,
   PRODUCT_CATEGORIES,
+  CONTACT,
 } from "@/lib/site-data";
 import { useLang } from "@/lib/i18n";
 
@@ -55,6 +56,43 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { property: "og:url", content: "https://www.sylution.com.ng/" },
+    ],
+    links: [{ rel: "canonical", href: "https://www.sylution.com.ng/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://www.sylution.com.ng/#organization",
+              name: CONTACT.legalName,
+              url: "https://www.sylution.com.ng/",
+              logo: "https://www.sylution.com.ng/brand/sylution-logo.webp",
+              email: CONTACT.email,
+              telephone: CONTACT.phones[0],
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Technology Incubation Centre (TIC), Farm Centre",
+                addressLocality: "Kano",
+                addressCountry: "NG",
+              },
+              sameAs: CONTACT.socials.map((social) => social.href),
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://www.sylution.com.ng/#website",
+              url: "https://www.sylution.com.ng/",
+              name: "SYLUTION LTD",
+              publisher: { "@id": "https://www.sylution.com.ng/#organization" },
+              inLanguage: ["en", "ha", "fr", "ar"],
+            },
+          ],
+        }),
+      },
     ],
   }),
   component: Home,

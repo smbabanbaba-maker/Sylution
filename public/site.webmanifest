@@ -1,0 +1,23 @@
+{
+  "name": "SYLUTION LTD",
+  "short_name": "SYLUTION",
+  "description": "SYLUTION LTD — IoT, AI, electronics, robotics, drone and AgriTech innovation in Nigeria.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f7f5",
+  "theme_color": "#f7f7f5",
+  "icons": [
+    {
+      "src": "/brand/sylution-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/brand/sylution-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

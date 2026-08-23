@@ -84,6 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "SYLUTION is an Internet of Things, Artificial Intelligence, Electronics and Technology Innovation company based at TIC Kano, Nigeria, serving 15 industries.",
       },
       { name: "author", content: "SYLUTION" },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
       { name: "theme-color", content: "#f2f1ee" },
       { property: "og:site_name", content: "SYLUTION" },
       { property: "og:type", content: "website" },
@@ -100,8 +101,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "SYLUTION is an Internet of Things, Artificial Intelligence, Electronics and Technology Innovation company based at TIC Kano, Nigeria, serving 15 industries.",
       },
-      { property: "og:image", content: "/brand/sylution-logo.webp" },
-      { name: "twitter:image", content: "/brand/sylution-logo.webp" },
+      {
+        property: "og:image",
+        content: "https://www.sylution.com.ng/brand/sylution-logo.png",
+      },
+      { property: "og:image:alt", content: "Official SYLUTION LTD logo" },
+      {
+        name: "twitter:image",
+        content: "https://www.sylution.com.ng/brand/sylution-logo.png",
+      },
+      { name: "twitter:image:alt", content: "Official SYLUTION LTD logo" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -114,9 +123,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://images.unsplash.com" },
       {
         rel: "icon",
-        href: "/brand/sylution-logo.webp",
+        href: "/favicon.ico",
         type: "image/x-icon",
+        sizes: "16x16 32x32 48x48 64x64 128x128 256x256",
       },
+      {
+        rel: "apple-touch-icon",
+        href: "/brand/sylution-logo.png",
+        sizes: "192x192",
+      },
+      { rel: "manifest", href: "/site.webmanifest" },
     ],
   }),
   shellComponent: RootShell,
