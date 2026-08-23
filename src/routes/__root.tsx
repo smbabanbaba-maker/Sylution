@@ -19,6 +19,7 @@ import { Nav } from "@/components/site/Nav";
 import { LeadForm } from "@/components/site/LeadForm";
 import { Footer } from "@/components/site/Footer";
 import { SylutionAssistant } from "@/components/site/SylutionAssistant";
+import { TrainingCampaignModal } from "@/components/site/TrainingCampaignModal";
 import { CONTACT } from "@/lib/site-data";
 
 function NotFoundComponent() {
@@ -180,6 +181,7 @@ function RootComponent() {
         <Footer />
         <FloatingWhatsApp />
         <SylutionAssistant />
+        <TrainingCampaignModal />
         <Toaster position="top-right" richColors />
       </LanguageProvider>
     </QueryClientProvider>
