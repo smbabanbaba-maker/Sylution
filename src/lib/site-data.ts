@@ -312,7 +312,7 @@ export const SOLUTIONS: Solution[] = [
       "Practical, hands on training in AI, IoT, modern agriculture, livestock technology, robotics and drone technology.",
     capabilities: [
       "Hands on practical sessions",
-      "English, Hausa and French delivery",
+      "English and Hausa delivery",
       "Youth and women programmes",
       "Student and institution cohorts",
       "Follow up and mentorship",

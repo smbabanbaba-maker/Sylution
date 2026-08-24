@@ -38,7 +38,7 @@ function Training() {
       <PageHero
         eyebrow="SYLUTION Academy"
         title="Technology only creates value when people can run it"
-        subtitle="Practical, hands-on training for farmers, technicians, students, and institutions, delivered on real equipment in real-world field conditions."
+        subtitle="Practical, hands-on training for farmers, technicians, students, and institutions, delivered on real equipment in real-world field conditions. Agricultural training is delivered in English and Hausa only."
         image={BRAND_IMAGES.training}
         compact
       >
