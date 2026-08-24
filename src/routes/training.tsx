@@ -25,7 +25,7 @@ export const Route = createFileRoute("/training")({
       {
         property: "og:description",
         content:
-          "Practical training programmes delivered in English, Hausa and French at our Kano centre.",
+          "Practical training programmes delivered in English and Hausa at our Kano centre.",
       },
     ],
   }),
@@ -259,7 +259,7 @@ function Training() {
         <div className="container-x grid grid-cols-2 gap-10 lg:grid-cols-3">
           {[
             { value: "Hands on", label: "Practical sessions on real equipment" },
-            { value: "3", label: "Languages of instruction: English, Hausa, French" },
+            { value: "2", label: "Languages of instruction: English and Hausa" },
             { value: "Open", label: "Youth, women, students and institutions welcome" },
           ].map((s, i) => (
             <Reveal key={s.label} delay={i * 0.08}>

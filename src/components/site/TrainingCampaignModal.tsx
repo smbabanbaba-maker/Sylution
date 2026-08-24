@@ -115,7 +115,7 @@ export function TrainingCampaignModal() {
           </p>
 
           <div className="mt-7 flex flex-wrap gap-2 text-xs font-semibold text-foreground">
-            {["Hands-on learning", "Supervised practice", "English · Hausa · French"].map(
+            {["Hands-on learning", "Supervised practice", "English · Hausa"].map(
               (item) => (
                 <span
                   key={item}
