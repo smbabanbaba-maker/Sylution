@@ -511,8 +511,9 @@
     radial-gradient(circle at 18% 18%, color-mix(in oklab, var(--brand) 56%, transparent) 0 2px, transparent 2.5px),
     radial-gradient(circle at 74% 56%, color-mix(in oklab, var(--brand) 36%, transparent) 0 2px, transparent 2.5px);
   background-size: 340px 300px, 480px 420px, 340px 300px, 480px 420px;
-  opacity: 0.14;
+  opacity: 0.2;
   mix-blend-mode: multiply;
+  animation: circuit-overlay-drift 18s linear infinite;
 }
 
 @utility signal-sweep {
@@ -528,6 +529,8 @@
 
 @utility hero-image-live {
   transform: scale(1.015);
+  opacity: 0.58;
+  filter: saturate(0.82) contrast(0.94);
   animation: hero-image-breathe 12s ease-in-out infinite;
 }
 
@@ -548,11 +551,11 @@
   background:
     linear-gradient(
       90deg,
-      color-mix(in srgb, var(--soft-white) 86%, transparent) 0%,
-      color-mix(in srgb, var(--soft-white) 54%, transparent) 48%,
-      color-mix(in srgb, var(--soft-white) 6%, transparent) 100%
+      color-mix(in srgb, var(--white) 98%, transparent) 0%,
+      color-mix(in srgb, var(--white) 92%, transparent) 48%,
+      color-mix(in srgb, var(--white) 58%, transparent) 100%
     ),
-    linear-gradient(180deg, color-mix(in srgb, var(--soft-white) 32%, transparent) 0%, color-mix(in srgb, var(--soft-white) 6%, transparent) 55%, color-mix(in srgb, var(--soft-white) 46%, transparent) 100%);
+    linear-gradient(180deg, color-mix(in srgb, var(--white) 78%, transparent) 0%, color-mix(in srgb, var(--white) 28%, transparent) 55%, color-mix(in srgb, var(--white) 78%, transparent) 100%);
 }
 
 @utility eyebrow {
@@ -654,6 +657,15 @@
   }
   to {
     background-position: 180px 90px, -160px 110px, 180px 90px, -160px 110px;
+  }
+}
+
+@keyframes circuit-overlay-drift {
+  from {
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+  to {
+    background-position: 180px 90px, -140px 120px, 180px 90px, -140px 120px;
   }
 }
 
