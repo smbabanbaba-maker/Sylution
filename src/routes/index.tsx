@@ -574,12 +574,12 @@ function Home() {
         </div>
       </section>
 
-      {/* TECHNOLOGY FOUNDATION */}
+      {/* SERVICES */}
       <section className="container-x section-y">
         <SectionHeading
-          eyebrow="Technology foundation"
-          title="Six pillars, one connected system"
-          description="Each pillar works alone and works better together, from a connected sensor to an AI-advised farm."
+          eyebrow="Our services"
+          title="Technology services for real-world systems"
+          description="Explore the specialist services SYLUTION brings together—from intelligent software and connected devices to practical engineering for agriculture, industry and energy."
         />
         <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-3">
           {PILLARS.map((p, i) => (
