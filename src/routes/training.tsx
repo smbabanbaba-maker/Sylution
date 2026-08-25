@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
+  BadgeCheck,
   CheckCircle2,
   CircleHelp,
   GraduationCap,
@@ -39,7 +40,7 @@ function Training() {
         eyebrow="SYLUTION Academy"
         title="Technology only creates value when people can run it"
         subtitle="Practical, hands-on training for farmers, technicians, students, and institutions, delivered on real equipment in real-world field conditions. Agricultural training is delivered in English and Hausa only."
-        image={BRAND_IMAGES.training}
+        image={BRAND_IMAGES.trainingBanner}
         compact
       >
         <Link to="/contact" className="btn-base btn-primary">
@@ -202,6 +203,17 @@ function Training() {
                 </li>
               ))}
             </ul>
+            <div className="mt-7 border-t border-border pt-6">
+              <div className="flex items-center gap-3 text-primary">
+                <BadgeCheck className="h-5 w-5" />
+                <span className="text-xs font-bold uppercase tracking-[0.18em]">
+                  Certificate of Completion
+                </span>
+              </div>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                Participants who meet the required attendance and assessment standards receive a certificate of completion.
+              </p>
+            </div>
             <div className="mt-7 border-t border-border pt-6">
               <div className="flex items-center gap-3 text-primary">
                 <Handshake className="h-5 w-5" />

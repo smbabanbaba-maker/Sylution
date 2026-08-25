@@ -3,6 +3,7 @@ export const BRAND_IMAGES = {
   drone: "/brand/tech-drone-field.jpg",
   control: "/brand/sylution-control.png",
   training: "/brand/sylution-training.jpg",
+  trainingBanner: "/brand/sylution-agri-training-banner.jpg",
   solar: "/brand/tech-solar-controller.jpg",
   lab: "/brand/sylution-lab.jpg",
   irrigation: "/brand/sylution-irrigation.jpg",
