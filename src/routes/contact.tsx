@@ -13,7 +13,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Contact SYLUTION at the Technology Incubation Centre, Form Center, Kano State, Nigeria. Email officialsylution@gmail.com or call +2349117957946.",
+          `Contact SYLUTION at ${CONTACT.address}. Email ${CONTACT.email} or call ${CONTACT.phones.join(" or ")}.`,
       },
       { property: "og:title", content: "Contact SYLUTION" },
       { property: "og:description", content: "Talk to our team about projects, partnerships, training and financing." },
