@@ -136,15 +136,16 @@
 
   /* A restrained circuit-board texture: visible on white surfaces, never competing with copy. */
   body::before {
-    opacity: 0.14;
+    opacity: 0.18;
     background-image:
       linear-gradient(90deg, transparent 0 12%, color-mix(in oklab, var(--brand) 26%, transparent) 12% 12.12%, transparent 12.12% 38%, color-mix(in oklab, var(--ink) 15%, transparent) 38% 38.1%, transparent 38.1% 100%),
       linear-gradient(28deg, transparent 0 49%, color-mix(in oklab, var(--brand) 24%, transparent) 49% 49.15%, transparent 49.15% 100%),
       linear-gradient(152deg, transparent 0 67%, color-mix(in oklab, var(--ink) 12%, transparent) 67% 67.12%, transparent 67.12% 100%);
     background-size: 360px 300px, 520px 420px, 440px 360px;
     background-position: 4% 7%, 66% 24%, 20% 82%;
-    mask-image: radial-gradient(ellipse at 72% 10%, black 0%, transparent 74%);
+    mask-image: linear-gradient(180deg, black 0%, black 100%);
     animation: circuit-drift 18s ease-in-out infinite alternate;
+
   }
 
   body::after {
@@ -426,6 +427,32 @@
   }
 }
 
+@utility mobile-menu-surface {
+  position: relative;
+  isolation: isolate;
+  background: var(--white);
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.2;
+    background-image:
+      linear-gradient(90deg, transparent 0 14%, color-mix(in oklab, var(--brand) 48%, transparent) 14% 14.2%, transparent 14.2% 62%, color-mix(in oklab, var(--ink) 28%, transparent) 62% 62.16%, transparent 62.16% 100%),
+      linear-gradient(30deg, transparent 0 54%, color-mix(in oklab, var(--brand) 34%, transparent) 54% 54.2%, transparent 54.2% 100%),
+      radial-gradient(circle at 14% 14%, color-mix(in oklab, var(--brand) 60%, transparent) 0 2px, transparent 2.5px),
+      radial-gradient(circle at 62% 54%, color-mix(in oklab, var(--ink) 36%, transparent) 0 2px, transparent 2.5px);
+    background-size: 420px 280px, 520px 360px, 420px 280px, 520px 360px;
+    mix-blend-mode: multiply;
+    animation: mobile-circuit-pan 14s linear infinite;
+  }
+  & > .container-x {
+    position: relative;
+    z-index: 1;
+  }
+}
+
 @utility nav-link {
   position: relative;
   overflow: hidden;
@@ -619,6 +646,15 @@
 @keyframes circuit-drift {
   from { transform: translate3d(-0.5%, 0, 0); }
   to { transform: translate3d(0.8%, -0.8%, 0); }
+}
+
+@keyframes mobile-circuit-pan {
+  from {
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+  to {
+    background-position: 180px 90px, -160px 110px, 180px 90px, -160px 110px;
+  }
 }
 
 @keyframes signal-sweep {

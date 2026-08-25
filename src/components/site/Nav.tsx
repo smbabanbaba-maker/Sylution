@@ -173,7 +173,7 @@ export function Nav() {
       </div>
 
       {open && (
-        <div className="bg-white text-foreground shadow-luxe max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border animate-in fade-in-0 slide-in-from-top-2 duration-300 xl:hidden">
+        <div className="mobile-menu-surface text-foreground shadow-luxe max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border animate-in fade-in-0 slide-in-from-top-2 duration-300 xl:hidden">
           <div className="container-x space-y-1 py-5">
             {[...MAIN, { to: "/contact", key: "nav.contact" } as const].map((item) => {
               const active = isPathActive(pathname, item.to);
