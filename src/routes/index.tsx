@@ -325,6 +325,27 @@ function Home() {
         </motion.div>
       </section>
 
+      {/* WELCOME MESSAGE */}
+      <section className="border-y border-border bg-surface section-y-sm">
+        <div className="container-x grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
+          <Reveal>
+            <p className="eyebrow">
+              <span aria-hidden className="h-px w-8 shrink-0 bg-primary" /> Welcome to SYLUTION
+            </p>
+            <h2 className="mt-4 font-display text-2xl font-bold leading-tight sm:text-3xl">
+              Technology engineered for practical progress
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Welcome to SYLUTION LTD, a Nigerian technology innovation company applying AI, IoT,
+              electronics, robotics and software to agriculture, industry, energy and real-world
+              problems.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* AUDIENCE MARQUEE */}
       <section className="border-y border-border bg-surface py-5">
         <div className="flex overflow-hidden">
