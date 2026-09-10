@@ -226,9 +226,9 @@ function Home() {
       >
         <motion.div style={{ y }} className="absolute inset-0 -z-20">
           <img
-            src={BRAND_IMAGES.sysmart}
-            alt="Sysmart Agro smart agriculture system in an irrigated field"
-            className="hero-image-live absolute inset-0 h-full w-full object-cover object-center"
+            src="/brand/sylution-technology-core-wide.jpeg"
+            alt="SYLUTION technology core with drone, robotic arm, sensors and embedded systems"
+            className="hero-image-live absolute inset-0 h-full w-full object-cover object-right"
             loading="eager"
           />
         </motion.div>
@@ -236,7 +236,6 @@ function Home() {
         <div aria-hidden className="circuit-overlay pointer-events-none absolute inset-0 -z-10" />
         <div aria-hidden className="signal-sweep pointer-events-none -z-10" />
         <div aria-hidden className="hero-tech-core pointer-events-none absolute right-[5%] top-[18%] hidden h-[58vh] w-[44vw] max-w-[620px] lg:block">
-          <img src="/brand/sylution-technology-core.png" alt="" className="hero-tech-image" />
           <span className="hero-tech-orbit hero-tech-orbit--one" />
           <span className="hero-tech-orbit hero-tech-orbit--two" />
           <span className="hero-tech-orbit hero-tech-orbit--three" />
