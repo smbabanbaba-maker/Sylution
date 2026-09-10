@@ -262,7 +262,7 @@ function Home() {
 
         <motion.div
           style={{ opacity: fade }}
-          className="container-x flex min-h-[100svh] flex-col justify-center pb-20 pt-28 sm:pb-24 sm:pt-32"
+          className="container-x relative z-10 flex min-h-[100svh] flex-col justify-center pb-20 pt-28 sm:pb-24 sm:pt-32"
         >
           <motion.p
             className="eyebrow"

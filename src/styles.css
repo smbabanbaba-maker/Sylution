@@ -736,7 +736,7 @@
 
 
 @utility hero-tech-core {
-  z-index: -9;
+  z-index: 0;
   transform: translateZ(0);
   opacity: 0.86;
   filter: drop-shadow(0 24px 42px color-mix(in srgb, var(--brand) 10%, transparent));
