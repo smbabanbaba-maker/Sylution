@@ -733,3 +733,136 @@
 @utility animate-scroll-cue {
   animation: scroll-cue 2.2s ease-in-out infinite;
 }
+
+
+@utility hero-tech-core {
+  z-index: -9;
+  transform: translateZ(0);
+  opacity: 0.86;
+  filter: drop-shadow(0 24px 42px color-mix(in srgb, var(--brand) 10%, transparent));
+}
+
+@utility hero-tech-orbit {
+  position: absolute;
+  inset: 13% 8%;
+  border: 1px solid color-mix(in srgb, var(--brand) 25%, transparent);
+  border-radius: 42% 58% 55% 45%;
+  transform: rotate(-18deg);
+  animation: hero-orbit-spin 12s linear infinite;
+}
+
+@utility hero-tech-orbit--two {
+  inset: 23% 19%;
+  border-color: color-mix(in srgb, var(--ink) 18%, transparent);
+  border-radius: 58% 42% 44% 56%;
+  transform: rotate(38deg);
+  animation-duration: 9s;
+  animation-direction: reverse;
+}
+
+@utility hero-tech-orbit--three {
+  inset: 34% 29%;
+  border-color: color-mix(in srgb, var(--brand) 36%, transparent);
+  border-radius: 48% 52% 64% 36%;
+  transform: rotate(72deg);
+  animation-duration: 7s;
+}
+
+@utility hero-tech-node {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border: 2px solid color-mix(in srgb, var(--brand) 72%, white);
+  border-radius: 999px;
+  background: var(--white);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--brand) 10%, transparent), 0 0 22px color-mix(in srgb, var(--brand) 55%, transparent);
+}
+
+@utility hero-tech-node--core {
+  left: 48%;
+  top: 45%;
+  width: 32px;
+  height: 32px;
+  border-width: 3px;
+  background: radial-gradient(circle at 38% 35%, white 0 12%, var(--brand) 20% 44%, var(--ink) 47% 100%);
+  box-shadow: 0 0 0 12px color-mix(in srgb, var(--brand) 9%, transparent), 0 0 48px color-mix(in srgb, var(--brand) 52%, transparent);
+  animation: hero-core-pulse 2.2s ease-in-out infinite;
+}
+
+@utility hero-tech-node--sensor {
+  left: 18%;
+  top: 28%;
+  animation: hero-node-float 3.6s ease-in-out infinite;
+}
+
+@utility hero-tech-node--ai {
+  right: 16%;
+  top: 22%;
+  animation: hero-node-float 4.2s ease-in-out -1.4s infinite;
+}
+
+@utility hero-tech-node--field {
+  right: 11%;
+  bottom: 18%;
+  animation: hero-node-float 3.9s ease-in-out -2.2s infinite;
+}
+
+@utility hero-tech-pulse {
+  position: absolute;
+  width: 54px;
+  height: 2px;
+  transform-origin: left center;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--brand) 88%, transparent), transparent);
+  animation: hero-signal-dash 2.4s linear infinite;
+}
+
+@utility hero-tech-pulse--one {
+  left: 23%;
+  top: 32%;
+  transform: rotate(18deg);
+}
+
+@utility hero-tech-pulse--two {
+  right: 21%;
+  top: 29%;
+  transform: rotate(148deg);
+  animation-delay: -0.8s;
+}
+
+@utility hero-tech-pulse--three {
+  right: 17%;
+  bottom: 24%;
+  transform: rotate(-152deg);
+  animation-delay: -1.5s;
+}
+
+@keyframes hero-orbit-spin {
+  from { transform: rotate(-18deg) scale(1); }
+  50% { transform: rotate(162deg) scale(1.025); }
+  to { transform: rotate(342deg) scale(1); }
+}
+
+@keyframes hero-core-pulse {
+  0%, 100% { transform: scale(0.94); }
+  50% { transform: scale(1.12); }
+}
+
+@keyframes hero-node-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(8px, -12px, 0); }
+}
+
+@keyframes hero-signal-dash {
+  0% { opacity: 0; clip-path: inset(0 100% 0 0); }
+  25%, 70% { opacity: 0.9; clip-path: inset(0 0 0 0); }
+  100% { opacity: 0; clip-path: inset(0 0 0 100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-tech-orbit,
+  .hero-tech-node,
+  .hero-tech-pulse,
+  .hero-tech-node--core {
+    animation: none;
+  }
+}

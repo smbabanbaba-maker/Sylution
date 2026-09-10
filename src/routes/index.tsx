@@ -235,6 +235,18 @@ function Home() {
         <div aria-hidden className="veil-side absolute inset-0 -z-10" />
         <div aria-hidden className="circuit-overlay pointer-events-none absolute inset-0 -z-10" />
         <div aria-hidden className="signal-sweep pointer-events-none -z-10" />
+        <div aria-hidden className="hero-tech-core pointer-events-none absolute right-[5%] top-[18%] hidden h-[58vh] w-[44vw] max-w-[620px] lg:block">
+          <span className="hero-tech-orbit hero-tech-orbit--one" />
+          <span className="hero-tech-orbit hero-tech-orbit--two" />
+          <span className="hero-tech-orbit hero-tech-orbit--three" />
+          <span className="hero-tech-node hero-tech-node--core" />
+          <span className="hero-tech-node hero-tech-node--sensor" />
+          <span className="hero-tech-node hero-tech-node--ai" />
+          <span className="hero-tech-node hero-tech-node--field" />
+          <span className="hero-tech-pulse hero-tech-pulse--one" />
+          <span className="hero-tech-pulse hero-tech-pulse--two" />
+          <span className="hero-tech-pulse hero-tech-pulse--three" />
+        </div>
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_32%,color-mix(in_oklab,var(--brand)_18%,transparent),transparent_28%)]"
