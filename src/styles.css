@@ -866,3 +866,48 @@
     animation: none;
   }
 }
+
+
+@utility hero-tech-image {
+  position: absolute;
+  inset: 7% 0 4%;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  mix-blend-mode: multiply;
+  opacity: 0.78;
+  filter: saturate(0.82) contrast(1.02);
+  transform: translate3d(0, 0, 0) scale(0.97);
+  animation: hero-assembly 8.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes hero-assembly {
+  0%, 100% {
+    opacity: 0.68;
+    transform: translate3d(0, 4px, 0) scale(0.965);
+    filter: saturate(0.74) contrast(0.98);
+  }
+  22% {
+    opacity: 0.82;
+    transform: translate3d(-4px, -2px, 0) scale(0.99);
+    filter: saturate(0.88) contrast(1.03);
+  }
+  48%, 58% {
+    opacity: 0.88;
+    transform: translate3d(2px, -6px, 0) scale(1.012);
+    filter: saturate(0.96) contrast(1.05);
+  }
+  80% {
+    opacity: 0.78;
+    transform: translate3d(5px, 1px, 0) scale(0.985);
+    filter: saturate(0.82) contrast(1.01);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-tech-image {
+    animation: none;
+  }
+}
