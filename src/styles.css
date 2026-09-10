@@ -911,3 +911,20 @@
     animation: none;
   }
 }
+
+/* Mobile logo fit: keep the supplied SYLUTION mark centered and unclipped in compact phone headers. */
+@media (max-width: 639px) {
+  .brand-mark-shell {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.18rem;
+    border-radius: 0.82rem;
+  }
+
+  .brand-mark-shell img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+}
