@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
-import { CONTACT, LOGO_SRC, SOLUTIONS } from "@/lib/site-data";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { LOGO_SRC, CONTACT, SOLUTIONS } from "@/lib/site-data";
+import { toast } from "sonner";
 import { useLang } from "@/lib/i18n";
 
 const SOCIAL_MARKS: Record<string, string> = {
@@ -15,113 +16,154 @@ const SOCIAL_MARKS: Record<string, string> = {
 export function Footer() {
   const { t } = useLang();
   return (
-    <footer className="footer-shell mt-20 border-t border-border">
-      <div className="container-x py-14 sm:py-16">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.35fr_0.8fr_1fr_1.15fr] lg:gap-12">
+    <footer className="footer-shell relative mt-24 overflow-hidden border-t border-border">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[46rem] -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]"
+      />
+      <div className="container-x relative py-16">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <Link
-              to="/"
-              className="inline-flex items-center gap-3 rounded-full"
-              aria-label="SYLUTION home"
-            >
+            <Link to="/" className="flex items-center gap-3">
               <img
                 src={LOGO_SRC}
-                alt=""
-                aria-hidden="true"
-                className="h-11 w-11 rounded-xl bg-white p-1.5 object-contain"
+                alt="SYLUTION logo"
+                className="h-12 w-12 rounded-md object-contain"
               />
-              <span className="font-display text-lg font-extrabold tracking-[0.1em]">SYLUTION</span>
+              <span className="font-display text-xl font-extrabold tracking-tight">SYLUTION</span>
             </Link>
-            <p className="mt-5 max-w-sm text-sm leading-7 text-muted-foreground">
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
               {t("footer.about")}
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
-              {CONTACT.socials.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label={`SYLUTION on ${social.name}`}
-                  className="grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-white/5 transition-colors hover:border-white/50 hover:bg-white/10"
-                >
-                  <img
-                    src={SOCIAL_MARKS[social.name]}
-                    alt=""
-                    aria-hidden="true"
-                    className="h-4 w-4 object-contain"
-                  />
-                </a>
-              ))}
+              {CONTACT.socials.map((s) => {
+                const mark = SOCIAL_MARKS[s.name];
+                return (
+                  <a
+                    key={s.name}
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    aria-label={`SYLUTION on ${s.name}`}
+                    className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/[0.03] transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-white/10"
+                  >
+                    <img src={mark} alt="" aria-hidden="true" className="h-4 w-4 object-contain" />
+                  </a>
+                );
+              })}
             </div>
+            <a
+              href={`https://wa.me/${CONTACT.whatsapp}`}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/60 bg-primary/10 px-3.5 py-2 text-xs font-bold text-white transition-colors hover:bg-primary/20"
+            >
+              <img
+                src="/brand/social/whatsapp.svg"
+                alt=""
+                aria-hidden="true"
+                className="h-4 w-4 object-contain"
+              />
+              Chat with SYLUTION on WhatsApp
+            </a>
           </div>
 
           <FooterCol
             title={t("footer.quick")}
             links={[
+              { label: "Home", to: "/" },
               { label: "About", to: "/about" },
+              { label: "Products & Platforms", to: "/platforms" },
               { label: "Sysmart Agro", to: "/sysmart-agro" },
               { label: "Projects", to: "/projects" },
-              { label: "Training", to: "/training" },
+              { label: "Partners", to: "/partners" },
+              { label: "Investors", to: "/investors" },
+              { label: "Gallery", to: "/gallery" },
               { label: "News", to: "/news" },
               { label: "Careers", to: "/careers" },
+              { label: "Contact", to: "/contact" },
+              { label: "FAQ", to: "/faq" },
+              { label: "All pages", to: "/explore" },
             ]}
           />
 
           <FooterCol
             title={t("footer.solutions")}
-            links={SOLUTIONS.slice(0, 6).map((solution) => ({
-              label: solution.title,
+            links={SOLUTIONS.slice(0, 8).map((s) => ({
+              label: s.title,
               to: "/solutions/$slug",
-              params: { slug: solution.slug },
+              params: { slug: s.slug },
             }))}
           />
 
           <div>
-            <h3 className="font-display text-sm font-bold uppercase tracking-[0.14em]">
+            <h3 className="font-display text-sm font-bold uppercase tracking-[0.2em]">
               {t("footer.contact")}
             </h3>
-            <ul className="mt-5 space-y-4 text-sm leading-6 text-muted-foreground">
+            <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
               <li className="flex gap-3">
-                <MapPin aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-primary" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <span>{CONTACT.address}</span>
               </li>
               <li className="flex gap-3">
-                <Mail aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-primary" />
-                <a href={`mailto:${CONTACT.email}`} className="break-all hover:text-white">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <a href={`mailto:${CONTACT.email}`} className="hover:text-foreground">
                   {CONTACT.email}
                 </a>
               </li>
-              {CONTACT.phones.slice(0, 1).map((phone) => (
-                <li key={phone} className="flex gap-3">
-                  <Phone aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-primary" />
-                  <a href={`tel:${phone}`} className="hover:text-white">
-                    {phone}
+              {CONTACT.phones.map((p) => (
+                <li key={p} className="flex gap-3">
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  <a href={`tel:${p}`} className="hover:text-foreground">
+                    {p}
                   </a>
                 </li>
               ))}
             </ul>
-            <Link
-              to="/contact"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-[var(--leaf)]"
+
+            <form
+              className="mt-6"
+              onSubmit={(e) => {
+                e.preventDefault();
+                e.currentTarget.reset();
+                toast.success("Subscribed", {
+                  description: "You are on the SYLUTION newsletter list.",
+                });
+              }}
             >
-              {t("nav.contact")} <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
-            </Link>
+              <label htmlFor="newsletter" className="eyebrow">
+                Newsletter
+              </label>
+              <div className="mt-6 flex overflow-hidden rounded-full border border-white/15 bg-white/10">
+                <input
+                  id="newsletter"
+                  type="email"
+                  required
+                  placeholder="Your email address"
+                  className="min-w-0 flex-1 bg-transparent px-4 py-2.5 text-sm text-white outline-none placeholder:text-white/50"
+                />
+                <button
+                  type="submit"
+                  aria-label="Subscribe"
+                  className="grid w-12 place-items-center bg-primary text-primary-foreground transition-opacity hover:opacity-90"
+                >
+                  <Send className="h-4 w-4" />
+                </button>
+              </div>
+            </form>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-white/15 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {new Date().getFullYear()} SYLUTION LTD. {t("footer.rights")}
-          </p>
-          <div className="flex flex-wrap gap-x-5 gap-y-2">
-            <Link to="/privacy" className="hover:text-white">
+        <div className="mt-14 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 SYLUTION LTD. {t("footer.rights")}</p>
+          <div className="flex gap-5">
+            <Link to="/privacy" className="hover:text-foreground">
               Privacy
             </Link>
-            <Link to="/terms" className="hover:text-white">
+            <Link to="/terms" className="hover:text-foreground">
               Terms
             </Link>
-            <Link to="/faq" className="hover:text-white">
+            <Link to="/faq" className="hover:text-foreground">
               FAQ
             </Link>
           </div>
@@ -140,16 +182,16 @@ function FooterCol({
 }) {
   return (
     <div>
-      <h3 className="font-display text-sm font-bold uppercase tracking-[0.14em]">{title}</h3>
-      <ul className="mt-5 space-y-3 text-sm">
-        {links.map((link) => (
-          <li key={link.label}>
+      <h3 className="font-display text-sm font-bold uppercase tracking-[0.2em]">{title}</h3>
+      <ul className="mt-5 space-y-2.5 text-sm">
+        {links.map((l) => (
+          <li key={l.label}>
             <Link
-              to={link.to}
-              params={link.params as never}
-              className="text-muted-foreground transition-colors hover:text-white"
+              to={l.to}
+              params={l.params as never}
+              className="text-muted-foreground transition-colors hover:text-foreground"
             >
-              {link.label}
+              {l.label}
             </Link>
           </li>
         ))}

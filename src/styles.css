@@ -50,22 +50,20 @@
 :root {
   --radius: 0.75rem;
 
-  /* Field-lab palette: forest green and warm paper, with the logo's coral as a precise accent. */
-  --navy: #173b31;
-  --sylution-red: #d95b49;
-  --red-deep: #a94135;
-  --coral: #d95b49;
-  --leaf: #cbdc6b;
-  --soft-white: #f5f5ed;
+  /* Refined original SYLUTION identity: clean white, deep black and signature red. */
+  --navy: #0b0d10;
+  --sylution-red: #e53935;
+  --red-deep: #b91c1c;
+  --soft-white: #f7f7f5;
   --white: #ffffff;
-  --primary-text: #1c2d26;
-  --secondary-text: #5d6a62;
+  --primary-text: #111214;
+  --secondary-text: #5f6368;
 
   --ink: var(--primary-text);
   --background: var(--soft-white);
   --foreground: var(--primary-text);
-  --surface: #eceee5;
-  --surface-2: #e2e7dc;
+  --surface: #efefed;
+  --surface-2: #e5e5e2;
 
   --card: var(--white);
   --card-foreground: var(--primary-text);
@@ -74,31 +72,31 @@
 
   --brand: var(--sylution-red);
   --brand-soft: var(--red-deep);
-  --primary: #1d513e;
+  --primary: var(--sylution-red);
   --primary-foreground: var(--white);
 
-  --secondary: #e5ebe1;
-  --secondary-foreground: #234336;
-  --muted: #edf0e8;
+  --secondary: #ededeb;
+  --secondary-foreground: var(--primary-text);
+  --muted: #ededeb;
   --muted-foreground: var(--secondary-text);
-  --accent: #e7ede4;
+  --accent: #f0f0ee;
   --accent-foreground: var(--primary-text);
   --destructive: var(--red-deep);
   --destructive-foreground: var(--white);
 
-  --border: #d7dfd4;
-  --input: #bdc9be;
-  --ring: color-mix(in srgb, var(--primary) 32%, transparent);
+  --border: #d9d9d5;
+  --input: #c9c9c4;
+  --ring: color-mix(in srgb, var(--sylution-red) 42%, transparent);
 
-  --gradient-brand: linear-gradient(135deg, #1d513e, #2f7655);
+  --gradient-brand: linear-gradient(135deg, var(--sylution-red), var(--red-deep));
   --gradient-veil: linear-gradient(
     180deg,
     color-mix(in srgb, var(--soft-white) 70%, transparent) 0%,
     color-mix(in srgb, var(--soft-white) 94%, transparent) 55%,
     var(--background) 100%
   );
-  --shadow-luxe: 0 24px 64px -42px color-mix(in srgb, var(--navy) 34%, transparent);
-  --shadow-glow: 0 0 0 1px color-mix(in srgb, var(--primary) 8%, transparent), 0 20px 46px -34px color-mix(in srgb, var(--primary) 30%, transparent);
+  --shadow-luxe: 0 34px 80px -44px color-mix(in srgb, var(--navy) 58%, transparent);
+  --shadow-glow: 0 0 0 1px color-mix(in srgb, var(--sylution-red) 10%, transparent), 0 26px 60px -32px color-mix(in srgb, var(--sylution-red) 23%, transparent);
 }
 
 
@@ -136,17 +134,25 @@
     z-index: 0;
   }
 
-  /* Quiet paper grain: no animated circuit texture behind long-form copy. */
+  /* A restrained circuit-board texture: visible on white surfaces, never competing with copy. */
   body::before {
-    opacity: 0.4;
-    background-image: radial-gradient(color-mix(in oklab, var(--ink) 7%, transparent) 0.7px, transparent 0.8px);
-    background-size: 24px 24px;
-    mask-image: linear-gradient(180deg, black 0%, transparent 70%);
+    opacity: 0.18;
+    background-image:
+      linear-gradient(90deg, transparent 0 12%, color-mix(in oklab, var(--brand) 26%, transparent) 12% 12.12%, transparent 12.12% 38%, color-mix(in oklab, var(--ink) 15%, transparent) 38% 38.1%, transparent 38.1% 100%),
+      linear-gradient(28deg, transparent 0 49%, color-mix(in oklab, var(--brand) 24%, transparent) 49% 49.15%, transparent 49.15% 100%),
+      linear-gradient(152deg, transparent 0 67%, color-mix(in oklab, var(--ink) 12%, transparent) 67% 67.12%, transparent 67.12% 100%);
+    background-size: 360px 300px, 520px 420px, 440px 360px;
+    background-position: 4% 7%, 66% 24%, 20% 82%;
+    mask-image: linear-gradient(180deg, black 0%, black 100%);
+    animation: circuit-drift 18s ease-in-out infinite alternate;
+
   }
 
   body::after {
-    opacity: 0.3;
-    background: radial-gradient(ellipse at 85% 0%, color-mix(in oklab, var(--leaf) 18%, transparent), transparent 34%);
+    opacity: 0.16;
+    background-image: radial-gradient(circle, color-mix(in oklab, var(--brand) 42%, transparent) 0 1px, transparent 1.5px);
+    background-size: 26px 26px;
+    mask-image: linear-gradient(180deg, black 0%, transparent 40%, black 100%);
   }
 
   #root {
@@ -587,21 +593,55 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  border-radius: 1.25rem;
-  border: 1px solid var(--border);
-  background: var(--card);
-  box-shadow: 0 8px 24px -20px color-mix(in oklab, var(--navy) 28%, transparent);
+  border-radius: var(--radius-3xl);
+  border: 1px solid color-mix(in oklab, var(--ink) 9%, transparent);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--card) 96%, var(--brand) 4%) 0%,
+      color-mix(in oklab, var(--surface) 78%, var(--card)) 100%
+    );
+  box-shadow:
+    0 1px 1px oklch(0.2 0.02 265 / 0.04),
+    0 12px 28px -22px oklch(0.2 0.02 265 / 0.28);
   transition:
-    transform 0.24s ease,
-    box-shadow 0.24s ease,
-    border-color 0.24s ease;
+    transform 0.5s cubic-bezier(0.2, 0.7, 0.3, 1),
+    box-shadow 0.5s ease,
+    border-color 0.5s ease;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(180deg, color-mix(in oklab, var(--card) 60%, transparent), transparent 42%);
+    opacity: 0.7;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -35%;
+    width: 24%;
+    pointer-events: none;
+    transform: skewX(-18deg);
+    background: linear-gradient(90deg, transparent, color-mix(in oklab, white 42%, transparent), transparent);
+    opacity: 0;
+    transition: transform 0.75s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.35s ease;
+  }
   &:hover {
-    transform: translateY(-3px);
-    border-color: color-mix(in oklab, var(--primary) 28%, var(--border));
-    box-shadow: var(--shadow-luxe);
+    transform: translateY(-6px);
+    border-color: color-mix(in oklab, var(--brand) 34%, transparent);
+    box-shadow: var(--shadow-glow);
+  }
+  &:hover::after {
+    opacity: 0.72;
+    transform: translateX(560%) skewX(-18deg);
   }
   &:focus-within {
-    border-color: color-mix(in oklab, var(--primary) 42%, var(--border));
+    border-color: color-mix(in oklab, var(--brand) 34%, transparent);
   }
 }
 
@@ -886,478 +926,5 @@
     height: 100%;
     object-fit: contain;
     object-position: center;
-  }
-}
-
-
-@layer components {
-  .site-header {
-    box-shadow: 0 4px 18px -16px color-mix(in srgb, var(--navy) 36%, transparent);
-  }
-
-  .home-hero {
-    position: relative;
-    overflow: hidden;
-    background:
-      radial-gradient(ellipse at 82% 18%, color-mix(in srgb, var(--leaf) 16%, transparent), transparent 30%),
-      linear-gradient(135deg, #f6f7ef 0%, #f0f4ec 58%, #f7f5eb 100%);
-  }
-
-  .home-hero::after {
-    position: absolute;
-    top: 0;
-    right: 48%;
-    width: 1px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--primary) 8%, transparent), transparent);
-    content: "";
-    pointer-events: none;
-  }
-
-  .home-hero-grid {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    align-items: center;
-    gap: 2rem;
-    padding-block: clamp(2.5rem, 6vw, 5.5rem);
-  }
-
-  .home-hero-copy {
-    max-width: 52rem;
-    padding-block: 1rem;
-  }
-
-  .home-hero-visual {
-    position: relative;
-    isolation: isolate;
-    min-height: 19rem;
-    overflow: hidden;
-    aspect-ratio: 1.08 / 1;
-    border: 1px solid color-mix(in srgb, var(--navy) 10%, transparent);
-    border-radius: 1.5rem;
-    background: var(--surface-2);
-    box-shadow: 0 28px 64px -38px color-mix(in srgb, var(--navy) 45%, transparent);
-  }
-
-  .home-hero-visual > img,
-  .feature-photo > img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .home-hero-visual > img {
-    object-position: 56% center;
-  }
-
-  .home-hero-image-shade {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgb(15 34 26 / 3%) 32%, rgb(15 34 26 / 58%) 100%);
-  }
-
-  .home-hero-image-label {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    padding: 0.65rem 0.9rem;
-    border: 1px solid rgb(255 255 255 / 35%);
-    border-radius: 999px;
-    background: rgb(255 255 255 / 92%);
-    color: var(--ink);
-    font-size: 0.7rem;
-    line-height: 1.4;
-    box-shadow: 0 8px 24px rgb(0 0 0 / 9%);
-  }
-
-  .home-label-index {
-    display: grid;
-    width: 2rem;
-    height: 2rem;
-    place-items: center;
-    border-radius: 50%;
-    background: var(--primary);
-    color: white;
-    font-size: 0.65rem;
-    font-weight: 800;
-  }
-
-  .home-hero-project-card {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
-    left: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    max-width: 25rem;
-    padding: 0.6rem 0.75rem;
-    border: 1px solid rgb(255 255 255 / 60%);
-    border-radius: 1rem;
-    background: rgb(255 255 255 / 94%);
-    box-shadow: 0 12px 36px rgb(0 0 0 / 16%);
-  }
-
-  .home-hero-project-card img {
-    width: 3.25rem;
-    height: 3.25rem;
-    flex: 0 0 auto;
-    border-radius: 0.65rem;
-    object-fit: cover;
-  }
-
-  .home-hero-project-card strong,
-  .home-hero-project-card small {
-    display: block;
-  }
-
-  .home-hero-project-card strong {
-    font-size: 0.74rem;
-    letter-spacing: 0.09em;
-  }
-
-  .home-hero-project-card small {
-    margin-top: 0.2rem;
-    color: var(--secondary-text);
-    font-size: 0.7rem;
-  }
-
-  .discipline-strip {
-    border-block: 1px solid var(--border);
-    background: var(--card);
-  }
-
-  .feature-photo {
-    position: relative;
-    min-height: 20rem;
-    overflow: hidden;
-    aspect-ratio: 1.18 / 1;
-    border: 1px solid var(--border);
-    border-radius: 1.5rem;
-    background: var(--surface);
-    box-shadow: var(--shadow-luxe);
-  }
-
-  .feature-photo-status {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    padding: 0.65rem 0.9rem;
-    border: 1px solid rgb(255 255 255 / 60%);
-    border-radius: 999px;
-    background: rgb(255 255 255 / 94%);
-    color: var(--ink);
-    font-size: 0.72rem;
-    font-weight: 700;
-    box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
-  }
-
-  .feature-step {
-    min-height: 6rem;
-    padding: 0.9rem;
-    border: 1px solid var(--border);
-    border-radius: 0.9rem;
-    background: var(--surface);
-  }
-
-  .feature-step span,
-  .process-card-number {
-    color: var(--brand-soft);
-    font-size: 0.66rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-  }
-
-  .feature-step p {
-    margin-top: 0.55rem;
-    font-size: 0.78rem;
-    font-weight: 700;
-    line-height: 1.4;
-  }
-
-  .capabilities-section {
-    background: var(--surface);
-  }
-
-  .capability-card {
-    position: relative;
-    display: flex;
-    min-height: 17rem;
-    height: 100%;
-    flex-direction: column;
-    overflow: hidden;
-    padding: 1.35rem;
-    border: 1px solid var(--border);
-    border-radius: 1.25rem;
-    background: var(--card);
-    color: var(--foreground);
-    box-shadow: 0 8px 24px -20px color-mix(in srgb, var(--navy) 32%, transparent);
-    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
-  }
-
-  .capability-card:hover {
-    transform: translateY(-3px);
-    border-color: color-mix(in srgb, var(--primary) 36%, var(--border));
-    box-shadow: var(--shadow-luxe);
-  }
-
-  .capability-number {
-    position: absolute;
-    top: 1.15rem;
-    right: 1.2rem;
-    color: color-mix(in srgb, var(--primary) 48%, var(--border));
-    font-family: var(--font-display);
-    font-size: 0.74rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-  }
-
-  .capability-icon {
-    display: inline-grid;
-    width: 2.9rem;
-    height: 2.9rem;
-    place-items: center;
-    border-radius: 0.9rem;
-    background: var(--secondary);
-    color: var(--primary);
-  }
-
-  .capability-card h3 {
-    margin-top: 1.35rem;
-    font-family: var(--font-display);
-    font-size: 1.08rem;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-  }
-
-  .capability-card > p {
-    margin-top: 0.65rem;
-    color: var(--secondary-text);
-    font-size: 0.875rem;
-    line-height: 1.65;
-  }
-
-  .capability-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-top: auto;
-    padding-top: 1.3rem;
-    color: var(--primary);
-    font-size: 0.82rem;
-    font-weight: 800;
-  }
-
-  .process-card {
-    height: 100%;
-    padding: 1.1rem;
-    border: 1px solid var(--border);
-    border-radius: 1rem;
-    background: var(--surface);
-  }
-
-  .page-hero {
-    position: relative;
-    overflow: hidden;
-    background:
-      radial-gradient(ellipse at 10% 10%, color-mix(in srgb, var(--leaf) 17%, transparent), transparent 34%),
-      linear-gradient(135deg, var(--background), #edf2e9 68%, #f6f5ed);
-  }
-
-  .page-hero-layout {
-    display: grid;
-    align-items: center;
-    gap: 2rem;
-    padding-block: clamp(2.75rem, 5vw, 5rem);
-  }
-
-  .page-hero-copy {
-    position: relative;
-    z-index: 1;
-    max-width: 54rem;
-  }
-
-  .page-hero-media {
-    position: relative;
-    min-height: 17rem;
-    overflow: hidden;
-    aspect-ratio: 1.28 / 1;
-    border: 1px solid color-mix(in srgb, var(--navy) 12%, transparent);
-    border-radius: 1.4rem;
-    background: var(--surface-2);
-    box-shadow: var(--shadow-luxe);
-  }
-
-  .page-hero-media > img {
-    width: 100%;
-    height: 100%;
-    min-height: inherit;
-    object-fit: cover;
-  }
-
-  .page-hero-media-shade {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 48%, rgb(16 37 27 / 32%));
-  }
-
-  .page-hero-location {
-    position: absolute;
-    left: 1rem;
-    right: auto;
-    bottom: 1rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    padding: 0.65rem 0.85rem;
-    border: 1px solid rgb(255 255 255 / 55%);
-    border-radius: 999px;
-    background: rgb(255 255 255 / 92%);
-    color: var(--ink);
-    font-size: 0.72rem;
-    font-weight: 700;
-  }
-
-  .notice-panel {
-    padding: 1.15rem;
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--primary);
-    border-radius: 1rem;
-    background: var(--surface);
-  }
-
-  .status-pill {
-    display: inline-flex;
-    min-height: 2.6rem;
-    align-items: center;
-    gap: 0.65rem;
-    padding: 0.6rem 0.9rem;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: var(--card);
-    color: var(--foreground);
-    font-size: 0.78rem;
-    font-weight: 700;
-  }
-
-  .cta-panel {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    min-height: 21rem;
-    padding: clamp(1.5rem, 5vw, 4rem);
-    border-radius: 1.6rem;
-    background: linear-gradient(120deg, #173b31 0%, #1d513e 62%, #285d42 100%);
-    box-shadow: 0 28px 70px -42px color-mix(in srgb, var(--navy) 65%, transparent);
-  }
-
-  .cta-panel-orbit {
-    position: absolute;
-    z-index: -1;
-    top: -8rem;
-    right: -4rem;
-    width: min(50vw, 34rem);
-    aspect-ratio: 1;
-    border: 1px solid rgb(255 255 255 / 12%);
-    border-radius: 50%;
-    background: radial-gradient(circle, rgb(203 220 107 / 15%), transparent 66%);
-  }
-
-  .cta-panel-index {
-    position: absolute;
-    right: clamp(1.5rem, 5vw, 4rem);
-    bottom: 2rem;
-    color: rgb(255 255 255 / 46%);
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-  }
-
-  .btn-accent {
-    background: var(--leaf);
-    color: #18392c;
-    box-shadow: 0 10px 24px -14px rgb(0 0 0 / 35%);
-  }
-
-  .btn-accent:hover {
-    background: #d9e787;
-  }
-
-  .btn-on-dark {
-    border: 1px solid rgb(255 255 255 / 38%);
-    background: rgb(255 255 255 / 6%);
-    color: white;
-  }
-
-  .btn-on-dark:hover {
-    border-color: rgb(255 255 255 / 70%);
-    background: rgb(255 255 255 / 12%);
-  }
-
-  @media (min-width: 1024px) {
-    .home-hero-grid {
-      grid-template-columns: minmax(0, 1.02fr) minmax(25rem, 0.98fr);
-      gap: clamp(2rem, 4vw, 4.5rem);
-    }
-
-    .page-hero-layout {
-      min-height: 31rem;
-      grid-template-columns: minmax(0, 1.04fr) minmax(22rem, 0.96fr);
-      gap: clamp(2rem, 4vw, 4rem);
-    }
-  }
-
-  @media (max-width: 639px) {
-    .home-hero-visual {
-      min-height: 17rem;
-      aspect-ratio: 1.02 / 1;
-      border-radius: 1.15rem;
-    }
-
-    .home-hero-image-label {
-      top: 0.75rem;
-      left: 0.75rem;
-      padding: 0.5rem 0.65rem;
-      font-size: 0.62rem;
-    }
-
-    .home-hero-project-card {
-      right: 5rem;
-      bottom: 0.7rem;
-      left: 0.7rem;
-    }
-
-    .page-hero-media {
-      min-height: 14rem;
-      aspect-ratio: 1.18 / 1;
-      border-radius: 1.1rem;
-    }
-
-    .capability-card {
-      min-height: 16rem;
-      padding: 1.1rem;
-    }
-
-    .cta-panel {
-      min-height: auto;
-      border-radius: 1.2rem;
-    }
-
-    .cta-panel-index {
-      position: relative;
-      right: auto;
-      bottom: auto;
-      display: block;
-      margin-top: 2rem;
-    }
   }
 }

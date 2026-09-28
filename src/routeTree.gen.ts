@@ -16,6 +16,7 @@ import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CompanyProfileRouteImport } from './routes/company-profile'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ElectronicsRouteImport } from './routes/electronics'
+import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as IndustriesRouteImport } from './routes/industries'
@@ -71,6 +72,11 @@ const ContactRoute = ContactRouteImport.update({
 const ElectronicsRoute = ElectronicsRouteImport.update({
   id: '/electronics',
   path: '/electronics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExploreRoute = ExploreRouteImport.update({
+  id: '/explore',
+  path: '/explore',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -187,6 +193,7 @@ export interface FileRoutesByFullPath {
   '/company-profile': typeof CompanyProfileRoute
   '/contact': typeof ContactRoute
   '/electronics': typeof ElectronicsRoute
+  '/explore': typeof ExploreRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/industries': typeof IndustriesRoute
@@ -217,6 +224,7 @@ export interface FileRoutesByTo {
   '/company-profile': typeof CompanyProfileRoute
   '/contact': typeof ContactRoute
   '/electronics': typeof ElectronicsRoute
+  '/explore': typeof ExploreRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/industries': typeof IndustriesRoute
@@ -248,6 +256,7 @@ export interface FileRoutesById {
   '/company-profile': typeof CompanyProfileRoute
   '/contact': typeof ContactRoute
   '/electronics': typeof ElectronicsRoute
+  '/explore': typeof ExploreRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/industries': typeof IndustriesRoute
@@ -280,6 +289,7 @@ export interface FileRouteTypes {
     | '/company-profile'
     | '/contact'
     | '/electronics'
+    | '/explore'
     | '/faq'
     | '/gallery'
     | '/industries'
@@ -310,6 +320,7 @@ export interface FileRouteTypes {
     | '/company-profile'
     | '/contact'
     | '/electronics'
+    | '/explore'
     | '/faq'
     | '/gallery'
     | '/industries'
@@ -340,6 +351,7 @@ export interface FileRouteTypes {
     | '/company-profile'
     | '/contact'
     | '/electronics'
+    | '/explore'
     | '/faq'
     | '/gallery'
     | '/industries'
@@ -371,6 +383,7 @@ export interface RootRouteChildren {
   CompanyProfileRoute: typeof CompanyProfileRoute
   ContactRoute: typeof ContactRoute
   ElectronicsRoute: typeof ElectronicsRoute
+  ExploreRoute: typeof ExploreRoute
   FaqRoute: typeof FaqRoute
   GalleryRoute: typeof GalleryRoute
   IndustriesRoute: typeof IndustriesRoute
@@ -443,6 +456,13 @@ declare module '@tanstack/react-router' {
       path: '/electronics'
       fullPath: '/electronics'
       preLoaderRoute: typeof ElectronicsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/explore': {
+      id: '/explore'
+      path: '/explore'
+      fullPath: '/explore'
+      preLoaderRoute: typeof ExploreRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -603,6 +623,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompanyProfileRoute: CompanyProfileRoute,
   ContactRoute: ContactRoute,
   ElectronicsRoute: ElectronicsRoute,
+  ExploreRoute: ExploreRoute,
   FaqRoute: FaqRoute,
   GalleryRoute: GalleryRoute,
   IndustriesRoute: IndustriesRoute,
