@@ -16,11 +16,10 @@ import appCss from "../styles.css?url";
 
 import { LanguageProvider } from "@/lib/i18n";
 import { Nav } from "@/components/site/Nav";
-import { LeadForm } from "@/components/site/LeadForm";
 import { Footer } from "@/components/site/Footer";
 import { SylutionAssistant } from "@/components/site/SylutionAssistant";
-import { TrainingCampaignModal } from "@/components/site/TrainingCampaignModal";
 import { CONTACT } from "@/lib/site-data";
+import { absoluteUrl } from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -74,33 +73,33 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
+  head: ({ matches }) => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "SYLUTION | IoT, AI and Electronics Technology Company" },
+      { title: "SYLUTION | AgriTech & Intelligent Systems" },
       {
         name: "description",
         content:
-          "SYLUTION is an Internet of Things, Artificial Intelligence, Electronics and Technology Innovation company based at TIC Kano, Nigeria, serving 15 industries.",
+          "SYLUTION combines AI, IoT, electronics and field engineering to develop practical technology for agriculture, energy and industry in Nigeria.",
       },
       { name: "author", content: "SYLUTION" },
       { name: "robots", content: "index, follow, max-image-preview:large" },
-      { name: "theme-color", content: "#f2f1ee" },
+      { name: "theme-color", content: "#f5f5ed" },
       { property: "og:site_name", content: "SYLUTION" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "SYLUTION | IoT, AI and Electronics Technology Company" },
-      { name: "twitter:title", content: "SYLUTION | IoT, AI and Electronics Technology Company" },
+      { property: "og:title", content: "SYLUTION | AgriTech & Intelligent Systems" },
+      { name: "twitter:title", content: "SYLUTION | AgriTech & Intelligent Systems" },
       {
         property: "og:description",
         content:
-          "SYLUTION is an Internet of Things, Artificial Intelligence, Electronics and Technology Innovation company based at TIC Kano, Nigeria, serving 15 industries.",
+          "AI, IoT and engineering for practical challenges in agriculture, energy and industry. Based at TIC Kano, Nigeria.",
       },
       {
         name: "twitter:description",
         content:
-          "SYLUTION is an Internet of Things, Artificial Intelligence, Electronics and Technology Innovation company based at TIC Kano, Nigeria, serving 15 industries.",
+          "AI, IoT and engineering for practical challenges in agriculture, energy and industry. Based at TIC Kano, Nigeria.",
       },
       {
         property: "og:image",
@@ -114,6 +113,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image:alt", content: "Official SYLUTION LTD logo" },
     ],
     links: [
+      { rel: "canonical", href: absoluteUrl(matches[matches.length - 1]?.pathname ?? "/") },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
@@ -183,11 +183,9 @@ function RootComponent() {
             <Outlet />
           </PageTransition>
         </main>
-        <LeadForm />
         <Footer />
         <FloatingWhatsApp />
         <SylutionAssistant />
-        <TrainingCampaignModal />
         <Toaster position="top-right" richColors />
       </LanguageProvider>
     </QueryClientProvider>
@@ -241,7 +239,7 @@ function FloatingWhatsApp() {
       target="_blank"
       rel="noreferrer noopener"
       aria-label="Chat with SYLUTION on WhatsApp"
-      className="fixed bottom-5 right-[5.5rem] z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] shadow-[0_16px_40px_-18px_rgba(37,211,102,0.7)] transition-transform duration-300 hover:scale-110 active:scale-95 sm:right-[6.5rem]"
+      className="fixed bottom-[4.75rem] right-4 z-50 grid h-12 w-12 place-items-center rounded-full bg-[#25D366] shadow-[0_16px_40px_-18px_rgba(37,211,102,0.7)] transition-transform duration-300 hover:scale-110 active:scale-95 sm:bottom-5 sm:right-[6.5rem] sm:h-14 sm:w-14"
     >
       <img
         src="/brand/social/whatsapp.svg"

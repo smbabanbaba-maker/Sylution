@@ -20,7 +20,7 @@ export const Route = createFileRoute("/company-profile")({
       {
         property: "og:description",
         content:
-          "A five page profile of SYLUTION, an IoT, AI and electronics engineering company operating from the Technology Incubation Centre, Kano.",
+          "An eight-page profile of SYLUTION, an IoT, AI and electronics engineering company operating from the Technology Incubation Centre, Kano.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -59,7 +59,7 @@ function CompanyProfilePage() {
       <PageHero
         eyebrow="Company profile"
         title="Download the SYLUTION profile"
-        subtitle="A concise five page document covering who we are, our IoT first engineering stack, our capabilities and the industries we serve. Ideal for procurement teams, investors and partners."
+        subtitle="An eight-page document covering who we are, our engineering approach, capabilities, current work and the industries we serve."
         image={BRAND_IMAGES.iotLab}
         compact
       >
@@ -94,10 +94,7 @@ function CompanyProfilePage() {
             ))}
           </ul>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              to="/iot"
-              className="btn-base btn-ghost"
-            >
+            <Link to="/iot" className="btn-base btn-ghost">
               Explore our IoT platform <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -111,7 +108,7 @@ function CompanyProfilePage() {
               </span>
               <div>
                 <p className="font-display text-base font-bold">SYLUTION Company Profile</p>
-                <p className="text-xs text-muted-foreground">PDF, 5 pages, English</p>
+                <p className="text-xs text-muted-foreground">PDF, 8 pages, English</p>
               </div>
             </div>
             <div className="mt-6 overflow-hidden rounded-2xl border border-border">
