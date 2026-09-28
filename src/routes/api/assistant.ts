@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 import {
-  SYLUTION_ASSISTANT_CONTEXT,
-  SYLUTION_ASSISTANT_SYSTEM_INSTRUCTION,
+  getSylutionAssistantContext,
+  getSylutionAssistantSystemInstruction,
 } from "@/lib/assistant-knowledge";
 
 const messageSchema = z.object({
@@ -131,7 +131,7 @@ export const Route = createFileRoute("/api/assistant")({
                 systemInstruction: {
                   parts: [
                     {
-                      text: `${SYLUTION_ASSISTANT_SYSTEM_INSTRUCTION}\n\nUse this verified context as the only source of company facts:\n${SYLUTION_ASSISTANT_CONTEXT}`,
+                      text: `${getSylutionAssistantSystemInstruction()}\n\nUse this verified context as the only source of company facts:\n${getSylutionAssistantContext()}`,
                     },
                   ],
                 },

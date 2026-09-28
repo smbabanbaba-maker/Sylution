@@ -83,6 +83,7 @@ export function Footer() {
               { label: "Careers", to: "/careers" },
               { label: "Contact", to: "/contact" },
               { label: "FAQ", to: "/faq" },
+              { label: "All pages", to: "/explore" },
             ]}
           />
 

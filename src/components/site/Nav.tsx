@@ -4,6 +4,8 @@ import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { LOGO_SRC, SOLUTIONS } from "@/lib/site-data";
 import { LANGS, useLang } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+import { SiteSearch } from "@/components/site/SiteSearch";
+import { FINDER_TEXT } from "@/lib/site-pages";
 
 const MAIN = [
   { to: "/", key: "nav.home" },
@@ -25,9 +27,15 @@ const MAIN = [
   { to: "/careers", key: "nav.careers" },
 ] as const;
 
-const PRIMARY: string[] = ["/platforms", "/iot", "/ai", "/electronics", "/products", "/sysmart-agro"];
+const PRIMARY: string[] = [
+  "/platforms",
+  "/iot",
+  "/ai",
+  "/electronics",
+  "/products",
+  "/sysmart-agro",
+];
 const HIDDEN_FROM_MORE: string[] = ["/", "/about"];
-
 
 export function Nav() {
   const { t, lang, setLang } = useLang();
@@ -60,16 +68,31 @@ export function Nav() {
       )}
     >
       <div className="container-x flex h-16 items-center justify-between gap-3 lg:h-[4.5rem]">
-        <Link to="/" className="group flex shrink-0 items-center gap-3 rounded-full transition-opacity hover:opacity-90" onClick={() => setOpen(false)}>
+        <Link
+          to="/"
+          className="group flex shrink-0 items-center gap-3 rounded-full transition-opacity hover:opacity-90"
+          onClick={() => setOpen(false)}
+        >
           <span className="brand-mark-shell h-10 w-10 lg:h-12 lg:w-12">
-            <img src={LOGO_SRC} alt="SYLUTION logo" className="h-full w-full rounded-lg object-contain" />
+            <img
+              src={LOGO_SRC}
+              alt="SYLUTION logo"
+              className="h-full w-full rounded-lg object-contain"
+            />
           </span>
-          <span className="font-display text-base font-extrabold tracking-[0.12em] lg:text-lg">SYLUTION</span>
+          <span className="font-display text-base font-extrabold tracking-[0.12em] lg:text-lg">
+            SYLUTION
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-0.5 xl:flex">
+        <nav className="hidden items-center gap-0.5 2xl:flex">
           {MAIN.slice(0, 2).map((item) => (
-            <NavLink key={item.to} to={item.to} label={t(item.key)} active={isPathActive(pathname, item.to)} />
+            <NavLink
+              key={item.to}
+              to={item.to}
+              label={t(item.key)}
+              active={isPathActive(pathname, item.to)}
+            />
           ))}
 
           <div
@@ -83,7 +106,12 @@ export function Nav() {
               className="flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent/60 hover:text-foreground"
             >
               {t("nav.solutions")}
-              <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-300", solOpen && "rotate-180")} />
+              <ChevronDown
+                className={cn(
+                  "h-3.5 w-3.5 transition-transform duration-300",
+                  solOpen && "rotate-180",
+                )}
+              />
             </Link>
             {solOpen && (
               <div className="absolute left-1/2 top-full w-[46rem] -translate-x-1/2 pt-3">
@@ -104,21 +132,43 @@ export function Nav() {
           </div>
 
           {MAIN.filter((i) => PRIMARY.includes(i.to)).map((item) => (
-            <NavLink key={item.to} to={item.to} label={t(item.key)} active={isPathActive(pathname, item.to)} />
+            <NavLink
+              key={item.to}
+              to={item.to}
+              label={t(item.key)}
+              active={isPathActive(pathname, item.to)}
+            />
           ))}
 
-          <div className="relative" onMouseEnter={() => setMoreOpen(true)} onMouseLeave={() => setMoreOpen(false)}>
+          <div
+            className="relative"
+            onMouseEnter={() => setMoreOpen(true)}
+            onMouseLeave={() => setMoreOpen(false)}
+          >
             <button
               aria-expanded={moreOpen}
               className="flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent/60 hover:text-foreground"
             >
               {t("nav.more")}
-              <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-300", moreOpen && "rotate-180")} />
+              <ChevronDown
+                className={cn(
+                  "h-3.5 w-3.5 transition-transform duration-300",
+                  moreOpen && "rotate-180",
+                )}
+              />
             </button>
             {moreOpen && (
               <div className="absolute right-0 top-full w-56 pt-3">
                 <div className="grid gap-1 rounded-3xl border border-border bg-popover/95 p-3 shadow-luxe backdrop-blur-xl animate-in fade-in-0 zoom-in-95 duration-200">
-                  {MAIN.filter((i) => !PRIMARY.includes(i.to) && !HIDDEN_FROM_MORE.includes(i.to)).map((item) => (
+                  <Link
+                    to="/explore"
+                    className="rounded-2xl px-3 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-accent"
+                  >
+                    {FINDER_TEXT[lang].allPages}
+                  </Link>
+                  {MAIN.filter(
+                    (i) => !PRIMARY.includes(i.to) && !HIDDEN_FROM_MORE.includes(i.to),
+                  ).map((item) => (
                     <Link
                       key={item.to}
                       to={item.to}
@@ -131,10 +181,10 @@ export function Nav() {
               </div>
             )}
           </div>
-
         </nav>
 
         <div className="flex items-center gap-2">
+          <SiteSearch />
           <div className="hidden items-center gap-0.5 rounded-full border border-border px-1 py-1 md:flex">
             {LANGS.map((l) => (
               <button
@@ -153,16 +203,13 @@ export function Nav() {
             ))}
           </div>
 
-          <Link
-            to="/contact"
-            className="btn-base btn-primary hidden px-5 py-2.5 lg:inline-flex"
-          >
+          <Link to="/contact" className="btn-base btn-primary hidden px-5 py-2.5 lg:inline-flex">
             <Phone className="h-4 w-4" />
             {t("nav.contact")}
           </Link>
 
           <button
-            className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-border bg-card/70 backdrop-blur transition-colors hover:bg-accent xl:hidden"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-border bg-card/70 backdrop-blur transition-colors hover:bg-accent 2xl:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
@@ -173,25 +220,34 @@ export function Nav() {
       </div>
 
       {open && (
-        <div className="mobile-menu-surface text-foreground shadow-luxe max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border animate-in fade-in-0 slide-in-from-top-2 duration-300 xl:hidden">
+        <div className="mobile-menu-surface text-foreground shadow-luxe max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border animate-in fade-in-0 slide-in-from-top-2 duration-300 2xl:hidden">
           <div className="container-x space-y-1 py-5">
             {[...MAIN, { to: "/contact", key: "nav.contact" } as const].map((item) => {
               const active = isPathActive(pathname, item.to);
               return (
-              <Link
-                key={item.to}
-                to={item.to}
-                onClick={() => setOpen(false)}
-                aria-current={active ? "page" : undefined}
-                className={cn(
-                  "flex min-h-11 items-center rounded-xl px-3 text-[0.975rem] font-medium transition-colors",
-                  active ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted hover:text-primary active:bg-muted",
-                )}
-              >
-                {t(item.key)}
-              </Link>
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  onClick={() => setOpen(false)}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "flex min-h-11 items-center rounded-xl px-3 text-[0.975rem] font-medium transition-colors",
+                    active
+                      ? "bg-primary/10 text-primary"
+                      : "text-foreground hover:bg-muted hover:text-primary active:bg-muted",
+                  )}
+                >
+                  {t(item.key)}
+                </Link>
               );
             })}
+            <Link
+              to="/explore"
+              onClick={() => setOpen(false)}
+              className="flex min-h-11 items-center rounded-xl px-3 text-[0.975rem] font-semibold text-primary transition-colors hover:bg-muted"
+            >
+              {FINDER_TEXT[lang].allPages}
+            </Link>
             <div className="pt-3">
               <p className="eyebrow px-3 pb-2">{t("nav.solutions")}</p>
               <div className="grid grid-cols-2 gap-1">
@@ -215,7 +271,9 @@ export function Nav() {
                   onClick={() => setLang(l.code)}
                   className={cn(
                     "min-h-11 flex-1 rounded-full border border-border text-xs font-bold transition-colors",
-                    lang === l.code ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                    lang === l.code
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground",
                   )}
                 >
                   {l.short}
