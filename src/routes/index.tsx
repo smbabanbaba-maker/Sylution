@@ -1,18 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  Activity,
   ArrowRight,
   ArrowUpRight,
   Brain,
   Bot,
   CircuitBoard,
-  Cpu,
-  Droplets,
   GraduationCap,
   Plane,
   Radio,
-  ShieldCheck,
-  Sparkles,
   Sprout,
   Sun,
 } from "lucide-react";
@@ -21,37 +16,26 @@ import { HomeHero } from "@/components/site/HomeHero";
 import { SectionHeading } from "@/components/site/PageHero";
 import { CTASection } from "@/components/site/CTASection";
 import { CaseStudies } from "@/components/site/CaseStudies";
-import { TechnicalAssessmentCTA } from "@/components/site/TechnicalAssessmentCTA";
 import { StatusBadge } from "@/components/site/StatusKey";
-import {
-  SOLUTIONS,
-  STATS,
-  NEWS,
-  GALLERY,
-  BRAND_IMAGES,
-  AGRITECH_AREAS,
-  EXHIBITION_IMAGES,
-  PRODUCT_CATEGORIES,
-  CONTACT,
-} from "@/lib/site-data";
+import { BRAND_IMAGES, CONTACT } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SYLUTION LTD | AgriTech Innovation Powered by AI, IoT & Smart Technology" },
+      { title: "SYLUTION LTD | Engineering Services, Products & Practical Training" },
       {
         name: "description",
         content:
-          "SYLUTION LTD builds AI, IoT and AgriTech systems in Nigeria and provides hands-on training in AI, IoT, electronics, drones and modern agriculture for students, farmers and technicians in Kano.",
+          "SYLUTION is a Kano-based engineering and training company. We build custom AI, IoT, electronics, robotics and software systems; develop smart-agriculture projects; and teach practical technology skills.",
       },
       {
         property: "og:title",
-        content: "SYLUTION LTD | AgriTech Innovation Powered by AI, IoT & Smart Technology",
+        content: "SYLUTION LTD | Engineering Services, Products & Practical Training",
       },
       {
         property: "og:description",
         content:
-          "AI, IoT and engineering applied to AgriTech, from our base at the Technology Incubation Centre, Farm Centre, Kano, Nigeria.",
+          "Custom AI, IoT and engineering services; smart-agriculture projects with clear development stages; and practical technology training in Kano, Nigeria.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -131,196 +115,10 @@ const PILLARS = [
   },
 ];
 
-const AUDIENCES = [
-  "Farmers",
-  "Agripreneurs",
-  "Youth",
-  "Women",
-  "Cooperatives",
-  "Universities",
-  "Research Institutions",
-  "Government Institutions",
-  "NGOs",
-  "Development Organisations",
-];
-
-const TECHNOLOGY_FLOW = [
-  {
-    step: "01",
-    label: "Sense",
-    title: "Sensors & Electronics",
-    detail: "Measure the field and the machine.",
-    icon: CircuitBoard,
-  },
-  {
-    step: "02",
-    label: "Connect",
-    title: "IoT & Connectivity",
-    detail: "Move useful signals from remote sites.",
-    icon: Radio,
-  },
-  {
-    step: "03",
-    label: "Intelligence",
-    title: "AI & Data",
-    detail: "Turn readings into clearer decisions.",
-    icon: Brain,
-  },
-  {
-    step: "04",
-    label: "Automate",
-    title: "Control & Robotics",
-    detail: "Close the loop with practical action.",
-    icon: Bot,
-  },
-  {
-    step: "05",
-    label: "Impact",
-    title: "Smart Agriculture",
-    detail: "Apply engineering to real systems.",
-    icon: Sprout,
-  },
-];
-
-const SYSMART_SYSTEM = [
-  { label: "Field", detail: "Agricultural conditions", icon: Sprout },
-  { label: "Sensors", detail: "Soil & climate sensing", icon: Activity },
-  { label: "IoT", detail: "Connected controller", icon: Radio },
-  { label: "AI / Data", detail: "Agricultural intelligence", icon: Brain },
-  { label: "Irrigation", detail: "Smart control", icon: Droplets },
-  { label: "Monitoring", detail: "Live dashboard", icon: Cpu },
-];
-
-const PROOF_POINTS = [
-  { value: "Kano", label: "Nigeria" },
-  { value: "Active", label: "Projects" },
-  { value: "Engineering", label: "& R&D" },
-  { value: "Technology", label: "Training" },
-  { value: "Strategic", label: "Partnerships" },
-];
-
-const TRAINING_AREAS = [
-  "AI",
-  "IoT",
-  "Robotics",
-  "Electronics",
-  "Drone Technology",
-  "Modern Agriculture",
-  "Smart Farming",
-];
-
-const OFFERS = [
-  {
-    icon: CircuitBoard,
-    title: "Engineering services",
-    detail:
-      "We scope custom AI, IoT sensors, electronics and embedded systems, robotics, drones, solar and smart-agriculture work around a real need.",
-    link: "/solutions" as const,
-    action: "Explore engineering services",
-  },
-  {
-    icon: Sprout,
-    title: "Products and projects",
-    detail:
-      "Sysmart Agro is our flagship smart-farming project. Other listed products are in development, testing or research; none are available to order online.",
-    link: "/products" as const,
-    action: "See products and stages",
-  },
-  {
-    icon: GraduationCap,
-    title: "Practical training",
-    detail:
-      "Hands-on programmes cover AI, IoT, ESP32/Arduino, electronics, drones, robotics and modern agriculture. Ask us to confirm dates and availability.",
-    link: "/training" as const,
-    action: "View training programmes",
-  },
-];
-
 function Home() {
   return (
     <>
       <HomeHero />
-
-      {/* CLEAR OFFER SUMMARY */}
-      <section className="container-x section-y-sm">
-        <SectionHeading
-          eyebrow="What SYLUTION does"
-          title="We build technology, develop products and teach practical skills"
-          description="SYLUTION is a technology engineering and training company based in Kano, Nigeria. Smart agriculture is our main application area."
-        />
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {OFFERS.map((offer, i) => (
-            <Reveal key={offer.title} delay={i * 0.07}>
-              <article className="card-luxe flex h-full flex-col p-6">
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-primary/10 text-primary">
-                  <offer.icon aria-hidden="true" className="h-5 w-5" />
-                </span>
-                <h3 className="mt-5 font-display text-lg font-bold">{offer.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {offer.detail}
-                </p>
-                <Link
-                  to={offer.link}
-                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-                >
-                  {offer.action} <ArrowRight className="h-4 w-4" />
-                </Link>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* AUDIENCE MARQUEE */}
-      <section className="border-y border-border bg-surface py-5">
-        <div className="flex overflow-hidden">
-          <div className="animate-marquee flex shrink-0 gap-10 whitespace-nowrap pr-10">
-            {[...AUDIENCES, ...AUDIENCES].map((a, i) => (
-              <span
-                key={i}
-                className="flex items-center gap-10 text-sm font-semibold tracking-wide text-muted-foreground"
-              >
-                {a}
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* TECHNOLOGY FLOW */}
-      <section className="container-x section-y">
-        <SectionHeading
-          eyebrow="Technology flow"
-          title="From sensing to real-world impact"
-          description="A connected engineering foundation that brings field signals, intelligence and practical control into one system."
-        />
-        <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-5">
-          {TECHNOLOGY_FLOW.map((item, i) => (
-            <Reveal key={item.label} delay={i * 0.06}>
-              <div className="group relative h-full rounded-3xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow">
-                <div className="flex items-center justify-between gap-3">
-                  <span className="font-display text-xs font-extrabold tracking-[0.2em] text-primary">
-                    {item.step}
-                  </span>
-                  <item.icon className="h-5 w-5 text-primary transition-transform duration-300 group-hover:scale-110" />
-                </div>
-                <p className="mt-7 text-xs font-bold uppercase tracking-[0.18em] text-primary">
-                  {item.label}
-                </p>
-                <h3 className="mt-2 font-display text-lg font-bold">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.detail}</p>
-                {i < TECHNOLOGY_FLOW.length - 1 && (
-                  <span
-                    aria-hidden
-                    className="absolute -right-3 top-1/2 z-10 hidden h-px w-6 bg-primary/40 md:block"
-                  />
-                )}
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
 
       {/* SYSMART AGRO PRODUCT STORY */}
       <section className="border-y border-border bg-surface section-y">
@@ -350,19 +148,17 @@ function Home() {
                 climate sensing, irrigation control and monitoring. It is in development and field
                 testing, not available to purchase online.
               </p>
-              <div className="mt-7 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
-                {SYSMART_SYSTEM.map((item) => (
-                  <div
-                    key={item.label}
-                    className="rounded-2xl border border-border bg-card px-3 py-4"
-                  >
-                    <item.icon className="h-4 w-4 text-primary" />
-                    <p className="mt-3 text-sm font-semibold">{item.label}</p>
-                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                      {item.detail}
-                    </p>
-                  </div>
-                ))}
+              <div className="mt-6 flex flex-wrap gap-2.5">
+                {["IoT controller", "Soil & climate sensing", "Smart irrigation control"].map(
+                  (feature) => (
+                    <span
+                      key={feature}
+                      className="rounded-full border border-border bg-card px-3 py-1.5 text-xs font-semibold text-muted-foreground"
+                    >
+                      {feature}
+                    </span>
+                  ),
+                )}
               </div>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link to="/sysmart-agro" className="btn-base btn-primary group">
@@ -375,128 +171,6 @@ function Home() {
               </div>
             </Reveal>
           </div>
-        </div>
-      </section>
-
-      {/* SYSTEM VISUAL */}
-      <section className="container-x section-y">
-        <SectionHeading
-          eyebrow="System view"
-          title="Field signals, connected decisions"
-          description="The Sysmart Agro flow, presented as a clear operating sequence rather than a claim about commercial availability."
-          align="center"
-        />
-        <div className="relative mt-12 grid grid-cols-2 gap-3 lg:grid-cols-6">
-          {SYSMART_SYSTEM.map((item, i) => (
-            <Reveal key={item.label} delay={i * 0.05}>
-              <div className="card-luxe h-full p-5 text-center">
-                <span className="mx-auto grid h-11 w-11 place-items-center rounded-2xl bg-primary/15 text-primary">
-                  <item.icon className="h-5 w-5" />
-                </span>
-                <p className="mt-4 font-display text-sm font-bold">{item.label}</p>
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{item.detail}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* OUR PRODUCTS */}
-      <section className="border-y border-border bg-surface section-y-sm">
-        <div className="container-x">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHeading
-              eyebrow="Product development"
-              title="Products and systems at different stages"
-              description="Not an online shop: Sysmart Agro and the other product directions below are projects in development, testing or research. No items are available to order online."
-            />
-            <Link
-              to="/products"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
-            >
-              See all product stages <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-5">
-            {PRODUCT_CATEGORIES.map((category, index) => (
-              <Reveal key={category.slug} delay={index * 0.05}>
-                <Link
-                  to="/products"
-                  className="group block h-full overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
-                >
-                  <div className="relative h-32 overflow-hidden">
-                    <img
-                      src={category.image}
-                      alt={category.name}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <span className="absolute left-3 top-3">
-                      <StatusBadge status={category.status} />
-                    </span>
-                  </div>
-                  <div className="p-4">
-                    <p className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-primary">
-                      0{index + 1}
-                    </p>
-                    <h3 className="mt-2 font-display text-sm font-bold leading-tight">
-                      {category.shortName}
-                    </h3>
-                    <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-muted-foreground">
-                      {category.detail}
-                    </p>
-                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-primary">
-                      View project stage{" "}
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                    </span>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* AGRITECH APPLICATION */}
-      <section className="border-y border-border bg-surface section-y">
-        <div className="container-x grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
-          <Reveal>
-            <SectionHeading
-              eyebrow="AgriTech"
-              title="AI + IoT + Engineering, applied to agriculture"
-              description="Our technology foundation exists to solve agricultural problems. These are the areas where we apply it."
-            />
-            <div className="mt-8 flex flex-wrap gap-2">
-              {["AI", "IoT", "Engineering"].map((x) => (
-                <span
-                  key={x}
-                  className="rounded-full bg-primary/15 px-4 py-1.5 text-sm font-semibold text-primary"
-                >
-                  {x}
-                </span>
-              ))}
-              <span className="px-1 py-1.5 text-sm font-semibold text-muted-foreground">to</span>
-              <span className="rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-primary-foreground">
-                AgriTech
-              </span>
-            </div>
-            <Link to="/industries" className="btn-base btn-ghost mt-8">
-              Explore AgriTech <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Reveal>
-          <Reveal delay={0.12}>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {AGRITECH_AREAS.slice(0, 9).map((a, i) => (
-                <div
-                  key={a}
-                  className={`group rounded-2xl border border-border bg-card px-5 py-4 text-sm font-semibold transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 ${i === 0 ? "sm:col-span-2 bg-primary/8" : ""}`}
-                >
-                  <span className="mr-3 inline-block h-1.5 w-1.5 rounded-full bg-primary align-middle transition-transform duration-300 group-hover:scale-150" />
-                  {a}
-                </div>
-              ))}
-            </div>
-          </Reveal>
         </div>
       </section>
 
@@ -532,60 +206,6 @@ function Home() {
         </div>
       </section>
 
-      {/* ENGINEERING IN THE REAL WORLD */}
-      <section className="border-y border-border bg-surface section-y">
-        <div className="container-x">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHeading
-              eyebrow="Engineering in the real world"
-              title="Systems, tools and people at work"
-              description="A visual record of SYLUTION technology development, field work, training and agricultural applications."
-            />
-            <Link
-              to="/gallery"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
-            >
-              Open the gallery <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <div className="mt-12 grid gap-3 md:grid-cols-12 md:grid-rows-2">
-            {[
-              {
-                src: BRAND_IMAGES.sysmart,
-                label: "Sysmart Agro",
-                className: "md:col-span-5 md:row-span-2",
-              },
-              { src: BRAND_IMAGES.iotLab, label: "IoT sensors", className: "md:col-span-3" },
-              { src: BRAND_IMAGES.pcb, label: "Electronics", className: "md:col-span-4" },
-              { src: BRAND_IMAGES.drone, label: "Drone technology", className: "md:col-span-3" },
-              {
-                src: BRAND_IMAGES.greenhouse,
-                label: "Greenhouse & irrigation",
-                className: "md:col-span-4",
-              },
-            ].map((item, i) => (
-              <Reveal key={item.label} delay={i * 0.05} className={item.className}>
-                <figure className="group relative h-full min-h-48 overflow-hidden rounded-3xl border border-border bg-card">
-                  <img
-                    src={item.src}
-                    alt={item.label}
-                    loading="lazy"
-                    className="h-full min-h-48 w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 bg-gradient-to-t from-background/85 via-transparent to-transparent"
-                  />
-                  <figcaption className="absolute inset-x-0 bottom-0 p-5 text-sm font-semibold">
-                    {item.label}
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* TRAINING */}
       <section className="container-x section-y">
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
@@ -611,19 +231,6 @@ function Home() {
               agriculture. Sessions are taught in English or Hausa in Kano; ask us to confirm dates
               and availability.
             </p>
-            <div className="mt-7 flex flex-wrap gap-2">
-              {TRAINING_AREAS.map((area) => (
-                <span
-                  key={area}
-                  className="rounded-full border border-border bg-card px-3 py-1.5 text-xs font-semibold text-muted-foreground"
-                >
-                  {area}
-                </span>
-              ))}
-            </div>
-            <p className="mt-7 text-sm font-semibold text-foreground">
-              Youth · Women · Farmers · Students · Agripreneurs
-            </p>
             <Link to="/training" className="btn-base btn-ghost mt-8">
               See training programmes <ArrowRight className="h-4 w-4" />
             </Link>
@@ -631,107 +238,8 @@ function Home() {
         </div>
       </section>
 
-      {/* PROOF / CREDIBILITY */}
-      <section className="border-y border-border bg-surface section-y-sm">
-        <div className="container-x">
-          <div className="grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-3 lg:grid-cols-5">
-            {PROOF_POINTS.map((point) => (
-              <div key={point.label} className="bg-card px-5 py-6 text-center">
-                <p className="font-display text-lg font-extrabold text-gradient-brand">
-                  {point.value}
-                </p>
-                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">
-                  {point.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <CaseStudies />
 
-      {/* NEWS */}
-      <section className="container-x section-y">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading
-            eyebrow="Newsroom"
-            title="Latest from SYLUTION"
-            description="Selected project, technology and training updates."
-          />
-          <Link
-            to="/news"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
-          >
-            All news <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-        <div className="mt-10 grid grid-cols-2 gap-5 md:grid-cols-3">
-          {NEWS.slice(0, 3).map((n, i) => (
-            <Reveal key={n.slug} delay={i * 0.08}>
-              <article className="card-luxe group h-full overflow-hidden">
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src={n.image}
-                    alt={n.title}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-6">
-                  <p className="eyebrow">{n.category}</p>
-                  <h3 className="mt-3 font-display text-lg font-bold leading-snug">{n.title}</h3>
-                  <p className="mt-3 text-sm text-muted-foreground">{n.excerpt}</p>
-                  <p className="mt-4 text-xs text-muted-foreground">
-                    {new Date(n.date).toLocaleDateString("en-GB", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
-                  </p>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* VISUAL ENGAGEMENT */}
-      <section className="border-y border-border bg-surface section-y-sm">
-        <div className="container-x">
-          <SectionHeading
-            eyebrow="In the field"
-            title="The work, as it actually looks"
-            description="Existing SYLUTION images from systems, exhibitions, training and agricultural activities."
-            align="center"
-          />
-          <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
-            {GALLERY.filter((g) => g.category !== "Exhibitions")
-              .slice(0, 8)
-              .map((g, i) => (
-                <Reveal key={`${g.src}-${i}`} delay={i * 0.04}>
-                  <div className="group relative overflow-hidden rounded-2xl">
-                    <img
-                      src={g.src}
-                      alt={g.caption}
-                      loading="lazy"
-                      className="h-40 w-full object-cover transition-transform duration-700 group-hover:scale-110 sm:h-52"
-                    />
-                    <div
-                      aria-hidden
-                      className="absolute inset-0 bg-gradient-to-t from-background/85 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                    />
-                    <p className="absolute inset-x-0 bottom-0 translate-y-3 p-4 text-xs font-medium opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                      {g.caption}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-          </div>
-        </div>
-      </section>
-
-      <TechnicalAssessmentCTA />
       <CTASection />
     </>
   );

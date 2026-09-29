@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Check, Menu, X, ChevronDown, Phone } from "lucide-react";
 import { LOGO_SRC, SOLUTIONS } from "@/lib/site-data";
 import { LANGS, useLang } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
@@ -44,6 +44,10 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const [solOpen, setSolOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+  const [languageOpen, setLanguageOpen] = useState(false);
+  const languageRootRef = useRef<HTMLDivElement>(null);
+  const languageButtonRef = useRef<HTMLButtonElement>(null);
+  const currentLanguage = LANGS.find((item) => item.code === lang) ?? LANGS[0];
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -60,6 +64,25 @@ export function Nav() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!languageOpen) return;
+    const onPointerDown = (event: PointerEvent) => {
+      if (!languageRootRef.current?.contains(event.target as Node)) setLanguageOpen(false);
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setLanguageOpen(false);
+        languageButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [languageOpen]);
+
   return (
     <header
       className={cn(
@@ -67,10 +90,10 @@ export function Nav() {
         scrolled ? "nav-shell" : "nav-transparent",
       )}
     >
-      <div className="container-x flex h-16 items-center justify-between gap-3 lg:h-[4.5rem]">
+      <div className="nav-header container-x flex h-16 items-center justify-between gap-3 lg:h-[4.5rem]">
         <Link
           to="/"
-          className="group flex shrink-0 items-center gap-3 rounded-full transition-opacity hover:opacity-90"
+          className="nav-header__brand group flex shrink-0 items-center gap-3 rounded-full transition-opacity hover:opacity-90"
           onClick={() => setOpen(false)}
         >
           <span className="brand-mark-shell h-10 w-10 lg:h-12 lg:w-12">
@@ -183,24 +206,52 @@ export function Nav() {
           </div>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="nav-header__actions flex items-center gap-2">
           <SiteSearch />
-          <div className="hidden items-center gap-0.5 rounded-full border border-border px-1 py-1 md:flex">
-            {LANGS.map((l) => (
-              <button
-                key={l.code}
-                onClick={() => setLang(l.code)}
-                className={cn(
-                  "rounded-full px-2.5 py-1 text-[0.68rem] font-bold tracking-wide transition-all duration-300",
-                  lang === l.code
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:text-foreground",
-                )}
-                aria-label={l.label}
+          <div ref={languageRootRef} className="language-switcher">
+            <button
+              ref={languageButtonRef}
+              type="button"
+              className="language-switcher__trigger"
+              onClick={() => setLanguageOpen((value) => !value)}
+              aria-label={`Language: ${currentLanguage.label}`}
+              aria-expanded={languageOpen}
+              aria-controls="language-switcher-options"
+            >
+              <LanguageMark language={currentLanguage} />
+              <span className="language-switcher__current">{currentLanguage.short}</span>
+              <ChevronDown
+                aria-hidden="true"
+                className={cn("language-switcher__chevron", languageOpen && "is-open")}
+              />
+            </button>
+            {languageOpen && (
+              <div
+                id="language-switcher-options"
+                className="language-switcher__menu"
+                role="group"
+                aria-label={t("language.choose")}
               >
-                {l.short}
-              </button>
-            ))}
+                {LANGS.map((item) => (
+                  <button
+                    key={item.code}
+                    type="button"
+                    className="language-switcher__option"
+                    aria-pressed={lang === item.code}
+                    onClick={() => {
+                      setLang(item.code);
+                      setLanguageOpen(false);
+                      languageButtonRef.current?.focus();
+                    }}
+                  >
+                    <LanguageMark language={item} />
+                    <span className="language-switcher__name">{item.label}</span>
+                    <span className="language-switcher__code">{item.short}</span>
+                    {lang === item.code && <Check aria-hidden="true" className="h-4 w-4" />}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           <Link
@@ -267,22 +318,6 @@ export function Nav() {
                 ))}
               </div>
             </div>
-            <div className="flex gap-1 pt-4">
-              {LANGS.map((l) => (
-                <button
-                  key={l.code}
-                  onClick={() => setLang(l.code)}
-                  className={cn(
-                    "min-h-11 flex-1 rounded-full border border-border text-xs font-bold transition-colors",
-                    lang === l.code
-                      ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:bg-muted hover:text-foreground",
-                  )}
-                >
-                  {l.short}
-                </button>
-              ))}
-            </div>
           </div>
         </div>
       )}
@@ -304,5 +339,26 @@ function NavLink({ to, label, active }: { to: string; label: string; active: boo
     >
       {label}
     </Link>
+  );
+}
+
+function LanguageMark({ language }: { language: (typeof LANGS)[number] }) {
+  if ("flag" in language) {
+    return (
+      <img
+        src={`/brand/flags/${language.flag}.svg`}
+        alt=""
+        aria-hidden="true"
+        className="language-switcher__flag"
+        width="20"
+        height="15"
+      />
+    );
+  }
+
+  return (
+    <span className="language-switcher__arabic" aria-hidden="true" lang="ar" dir="rtl">
+      ع
+    </span>
   );
 }

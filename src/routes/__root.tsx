@@ -170,6 +170,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
         <ScrollTop />
+        <HomeHeroFloatingActions />
         <RouteProgress />
         <a
           href="#main"
@@ -231,6 +232,35 @@ function ScrollTop() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, [pathname]);
+  return null;
+}
+
+function HomeHeroFloatingActions() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+
+  useEffect(() => {
+    if (pathname !== "/") {
+      document.documentElement.removeAttribute("data-home-hero-visible");
+      return;
+    }
+
+    const updateVisibility = () => {
+      const hero = document.querySelector(".home-hero");
+      const visible = hero instanceof HTMLElement && hero.getBoundingClientRect().bottom > 0;
+      document.documentElement.toggleAttribute("data-home-hero-visible", visible);
+    };
+
+    const frame = window.requestAnimationFrame(updateVisibility);
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    window.addEventListener("resize", updateVisibility);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateVisibility);
+      window.removeEventListener("resize", updateVisibility);
+      document.documentElement.removeAttribute("data-home-hero-visible");
+    };
+  }, [pathname]);
+
   return null;
 }
 
