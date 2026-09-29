@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Mail, MapPin, Phone, MessageCircle, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { toast } from "sonner";
 import { PageHero, SectionHeading } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
@@ -76,7 +76,12 @@ function Contact() {
               </div>
             </li>
             <li className="card-luxe flex gap-4 p-6">
-              <MessageCircle className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+              <img
+                src="/brand/social/whatsapp.svg"
+                alt=""
+                aria-hidden="true"
+                className="mt-0.5 h-5 w-5 shrink-0 object-contain"
+              />
               <div>
                 <p className="text-sm font-semibold">WhatsApp</p>
                 <a
