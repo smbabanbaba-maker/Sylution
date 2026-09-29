@@ -19,7 +19,6 @@ import { Nav } from "@/components/site/Nav";
 import { LeadForm } from "@/components/site/LeadForm";
 import { Footer } from "@/components/site/Footer";
 import { SylutionAssistant } from "@/components/site/SylutionAssistant";
-import { TrainingCampaignModal } from "@/components/site/TrainingCampaignModal";
 import { CONTACT } from "@/lib/site-data";
 import { absoluteUrl } from "@/lib/seo";
 
@@ -87,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "author", content: "SYLUTION" },
       { name: "robots", content: "index, follow, max-image-preview:large" },
-      { name: "theme-color", content: "#f5f5ed" },
+      { name: "theme-color", content: "#F7F7F5" },
       { property: "og:site_name", content: "SYLUTION" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -105,12 +104,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         property: "og:image",
-        content: "https://www.sylution.com.ng/brand/sylution-logo.png",
+        content: "https://www.sylution.com.ng/brand/sylution-logo-dark-red.webp",
       },
       { property: "og:image:alt", content: "Official SYLUTION LTD logo" },
       {
         name: "twitter:image",
-        content: "https://www.sylution.com.ng/brand/sylution-logo.png",
+        content: "https://www.sylution.com.ng/brand/sylution-logo-dark-red.webp",
       },
       { name: "twitter:image:alt", content: "Official SYLUTION LTD logo" },
     ],
@@ -126,7 +125,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://images.unsplash.com" },
       {
         rel: "icon",
-        href: "/brand/sylution-favicon-48.png",
+        href: "/brand/sylution-favicon-dark-red.png",
         type: "image/png",
         sizes: "48x48",
       },
@@ -138,8 +137,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "apple-touch-icon",
-        href: "/brand/sylution-logo.png",
-        sizes: "192x192",
+        href: "/brand/sylution-apple-touch-icon-dark-red.png",
+        sizes: "180x180",
       },
       { rel: "manifest", href: "/site.webmanifest" },
     ],
@@ -189,7 +188,6 @@ function RootComponent() {
         <Footer />
         <FloatingWhatsApp />
         <SylutionAssistant />
-        <TrainingCampaignModal />
         <Toaster position="top-right" richColors />
       </LanguageProvider>
     </QueryClientProvider>
@@ -243,7 +241,7 @@ function FloatingWhatsApp() {
       target="_blank"
       rel="noreferrer noopener"
       aria-label="Chat with SYLUTION on WhatsApp"
-      className="fixed bottom-[4.75rem] right-4 z-50 grid h-12 w-12 place-items-center rounded-full bg-[#25D366] shadow-[0_16px_40px_-18px_rgba(37,211,102,0.7)] transition-transform duration-300 hover:scale-110 active:scale-95 sm:bottom-5 sm:right-[6.5rem] sm:h-14 sm:w-14"
+      className="fixed bottom-[4.75rem] right-4 z-50 grid h-12 w-12 place-items-center rounded-full bg-primary shadow-glow transition-transform duration-300 hover:scale-110 active:scale-95 sm:bottom-5 sm:right-[6.5rem] sm:h-14 sm:w-14"
     >
       <img
         src="/brand/social/whatsapp.svg"

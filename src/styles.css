@@ -50,10 +50,11 @@
 :root {
   --radius: 0.75rem;
 
-  /* Refined original SYLUTION identity: clean white, deep black and signature red. */
-  --navy: #0b0d10;
-  --sylution-red: #e53935;
-  --red-deep: #b91c1c;
+  /* SYLUTION identity: deep red, crisp white and confident black. */
+  --navy: #111214;
+  --brand-red: #8b0d1f;
+  --red-deep: #5b0a13;
+  --red-accent: #a61d2d;
   --soft-white: #f7f7f5;
   --white: #ffffff;
   --primary-text: #111214;
@@ -70,9 +71,9 @@
   --popover: var(--white);
   --popover-foreground: var(--primary-text);
 
-  --brand: var(--sylution-red);
+  --brand: var(--brand-red);
   --brand-soft: var(--red-deep);
-  --primary: var(--sylution-red);
+  --primary: var(--brand-red);
   --primary-foreground: var(--white);
 
   --secondary: #ededeb;
@@ -81,14 +82,14 @@
   --muted-foreground: var(--secondary-text);
   --accent: #f0f0ee;
   --accent-foreground: var(--primary-text);
-  --destructive: var(--red-deep);
+  --destructive: #a52a2a;
   --destructive-foreground: var(--white);
 
   --border: #d9d9d5;
   --input: #c9c9c4;
-  --ring: color-mix(in srgb, var(--sylution-red) 42%, transparent);
+  --ring: color-mix(in srgb, var(--brand-red) 42%, transparent);
 
-  --gradient-brand: linear-gradient(135deg, var(--sylution-red), var(--red-deep));
+  --gradient-brand: linear-gradient(135deg, var(--brand-red), var(--red-deep));
   --gradient-veil: linear-gradient(
     180deg,
     color-mix(in srgb, var(--soft-white) 70%, transparent) 0%,
@@ -96,10 +97,10 @@
     var(--background) 100%
   );
   --shadow-luxe: 0 34px 80px -44px color-mix(in srgb, var(--navy) 58%, transparent);
-  --shadow-glow: 0 0 0 1px color-mix(in srgb, var(--sylution-red) 10%, transparent), 0 26px 60px -32px color-mix(in srgb, var(--sylution-red) 23%, transparent);
+  --shadow-glow:
+    0 0 0 1px color-mix(in srgb, var(--brand-red) 10%, transparent),
+    0 26px 60px -32px color-mix(in srgb, var(--brand-red) 23%, transparent);
 }
-
-
 
 @layer base {
   * {
@@ -136,21 +137,47 @@
 
   /* A restrained circuit-board texture: visible on white surfaces, never competing with copy. */
   body::before {
-    opacity: 0.18;
+    opacity: 0.055;
     background-image:
-      linear-gradient(90deg, transparent 0 12%, color-mix(in oklab, var(--brand) 26%, transparent) 12% 12.12%, transparent 12.12% 38%, color-mix(in oklab, var(--ink) 15%, transparent) 38% 38.1%, transparent 38.1% 100%),
-      linear-gradient(28deg, transparent 0 49%, color-mix(in oklab, var(--brand) 24%, transparent) 49% 49.15%, transparent 49.15% 100%),
-      linear-gradient(152deg, transparent 0 67%, color-mix(in oklab, var(--ink) 12%, transparent) 67% 67.12%, transparent 67.12% 100%);
-    background-size: 360px 300px, 520px 420px, 440px 360px;
-    background-position: 4% 7%, 66% 24%, 20% 82%;
+      linear-gradient(
+        90deg,
+        transparent 0 12%,
+        color-mix(in oklab, var(--brand) 26%, transparent) 12% 12.12%,
+        transparent 12.12% 38%,
+        color-mix(in oklab, var(--ink) 15%, transparent) 38% 38.1%,
+        transparent 38.1% 100%
+      ),
+      linear-gradient(
+        28deg,
+        transparent 0 49%,
+        color-mix(in oklab, var(--brand) 24%, transparent) 49% 49.15%,
+        transparent 49.15% 100%
+      ),
+      linear-gradient(
+        152deg,
+        transparent 0 67%,
+        color-mix(in oklab, var(--ink) 12%, transparent) 67% 67.12%,
+        transparent 67.12% 100%
+      );
+    background-size:
+      360px 300px,
+      520px 420px,
+      440px 360px;
+    background-position:
+      4% 7%,
+      66% 24%,
+      20% 82%;
     mask-image: linear-gradient(180deg, black 0%, black 100%);
     animation: circuit-drift 18s ease-in-out infinite alternate;
-
   }
 
   body::after {
-    opacity: 0.16;
-    background-image: radial-gradient(circle, color-mix(in oklab, var(--brand) 42%, transparent) 0 1px, transparent 1.5px);
+    opacity: 0.045;
+    background-image: radial-gradient(
+      circle,
+      color-mix(in oklab, var(--brand) 42%, transparent) 0 1px,
+      transparent 1.5px
+    );
     background-size: 26px 26px;
     mask-image: linear-gradient(180deg, black 0%, transparent 40%, black 100%);
   }
@@ -291,8 +318,8 @@
   box-shadow: var(--shadow-glow);
   &:hover {
     box-shadow:
-      0 0 0 1px oklch(0.19 0.008 265 / 0.06),
-      0 24px 48px -20px oklch(0.545 0.215 27.6 / 0.46);
+      0 0 0 1px color-mix(in srgb, var(--navy) 8%, transparent),
+      0 24px 48px -20px color-mix(in srgb, var(--brand-red) 42%, transparent);
   }
 }
 
@@ -358,7 +385,12 @@
     inset: 0;
     pointer-events: none;
     z-index: 1;
-    background: linear-gradient(135deg, color-mix(in oklab, white 10%, transparent), transparent 35%, color-mix(in oklab, var(--brand) 12%, transparent));
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, white 10%, transparent),
+      transparent 35%,
+      color-mix(in oklab, var(--brand) 12%, transparent)
+    );
     opacity: 0.55;
     transition: opacity 0.45s ease;
   }
@@ -366,7 +398,9 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.3, 1), filter 0.45s ease;
+    transition:
+      transform 0.8s cubic-bezier(0.2, 0.7, 0.3, 1),
+      filter 0.45s ease;
   }
   &:hover::after {
     opacity: 0.85;
@@ -376,7 +410,6 @@
     filter: saturate(1.08) contrast(1.02);
   }
 }
-
 
 @utility glass {
   background: color-mix(in oklab, var(--card) 78%, transparent);
@@ -394,7 +427,7 @@
 @utility nav-shell {
   background: color-mix(in srgb, var(--navy) 94%, transparent);
   color: var(--white);
-  border-bottom: 1px solid color-mix(in srgb, var(--sylution-red) 24%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--brand-red) 24%, transparent);
   box-shadow: 0 14px 34px -26px color-mix(in srgb, var(--navy) 78%, transparent);
   backdrop-filter: blur(18px) saturate(135%);
   & .nav-link,
@@ -423,7 +456,7 @@
   & > div > div > a:hover,
   & > div > div > button:hover {
     color: var(--foreground);
-    background: color-mix(in srgb, var(--sylution-red) 8%, transparent);
+    background: color-mix(in srgb, var(--brand-red) 8%, transparent);
   }
 }
 
@@ -439,11 +472,35 @@
     pointer-events: none;
     opacity: 0.2;
     background-image:
-      linear-gradient(90deg, transparent 0 14%, color-mix(in oklab, var(--brand) 48%, transparent) 14% 14.2%, transparent 14.2% 62%, color-mix(in oklab, var(--ink) 28%, transparent) 62% 62.16%, transparent 62.16% 100%),
-      linear-gradient(30deg, transparent 0 54%, color-mix(in oklab, var(--brand) 34%, transparent) 54% 54.2%, transparent 54.2% 100%),
-      radial-gradient(circle at 14% 14%, color-mix(in oklab, var(--brand) 60%, transparent) 0 2px, transparent 2.5px),
-      radial-gradient(circle at 62% 54%, color-mix(in oklab, var(--ink) 36%, transparent) 0 2px, transparent 2.5px);
-    background-size: 420px 280px, 520px 360px, 420px 280px, 520px 360px;
+      linear-gradient(
+        90deg,
+        transparent 0 14%,
+        color-mix(in oklab, var(--brand) 48%, transparent) 14% 14.2%,
+        transparent 14.2% 62%,
+        color-mix(in oklab, var(--ink) 28%, transparent) 62% 62.16%,
+        transparent 62.16% 100%
+      ),
+      linear-gradient(
+        30deg,
+        transparent 0 54%,
+        color-mix(in oklab, var(--brand) 34%, transparent) 54% 54.2%,
+        transparent 54.2% 100%
+      ),
+      radial-gradient(
+        circle at 14% 14%,
+        color-mix(in oklab, var(--brand) 60%, transparent) 0 2px,
+        transparent 2.5px
+      ),
+      radial-gradient(
+        circle at 62% 54%,
+        color-mix(in oklab, var(--ink) 36%, transparent) 0 2px,
+        transparent 2.5px
+      );
+    background-size:
+      420px 280px,
+      520px 360px,
+      420px 280px,
+      520px 360px;
     mix-blend-mode: multiply;
     animation: mobile-circuit-pan 14s linear infinite;
   }
@@ -461,7 +518,9 @@
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--muted-foreground);
-  transition: color 0.25s ease, background-color 0.25s ease;
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease;
   &::after {
     content: "";
     position: absolute;
@@ -488,14 +547,16 @@
 @utility brand-mark-shell {
   display: grid;
   place-items: center;
-  border: 1px solid color-mix(in srgb, var(--sylution-red) 22%, var(--border));
+  border: 1px solid color-mix(in srgb, var(--brand-red) 22%, var(--border));
   border-radius: 0.95rem;
   background: color-mix(in oklab, var(--card) 88%, transparent);
   padding: 0.3rem;
   box-shadow:
-      0 0 0 4px color-mix(in oklab, var(--brand) 5%, transparent),
-      0 16px 30px -20px color-mix(in oklab, var(--brand) 42%, transparent);
-  transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 220ms ease;
+    0 0 0 4px color-mix(in oklab, var(--brand) 5%, transparent),
+    0 16px 30px -20px color-mix(in oklab, var(--brand) 42%, transparent);
+  transition:
+    transform 220ms cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 220ms ease;
   &:hover {
     transform: translateY(-2px) rotate(-2deg);
     box-shadow:
@@ -506,11 +567,33 @@
 
 @utility circuit-overlay {
   background-image:
-    linear-gradient(90deg, transparent 0 18%, color-mix(in oklab, var(--brand) 45%, transparent) 18% 18.2%, transparent 18.2% 100%),
-    linear-gradient(31deg, transparent 0 56%, color-mix(in oklab, var(--ink) 25%, transparent) 56% 56.18%, transparent 56.18% 100%),
-    radial-gradient(circle at 18% 18%, color-mix(in oklab, var(--brand) 56%, transparent) 0 2px, transparent 2.5px),
-    radial-gradient(circle at 74% 56%, color-mix(in oklab, var(--brand) 36%, transparent) 0 2px, transparent 2.5px);
-  background-size: 340px 300px, 480px 420px, 340px 300px, 480px 420px;
+    linear-gradient(
+      90deg,
+      transparent 0 18%,
+      color-mix(in oklab, var(--brand) 45%, transparent) 18% 18.2%,
+      transparent 18.2% 100%
+    ),
+    linear-gradient(
+      31deg,
+      transparent 0 56%,
+      color-mix(in oklab, var(--ink) 25%, transparent) 56% 56.18%,
+      transparent 56.18% 100%
+    ),
+    radial-gradient(
+      circle at 18% 18%,
+      color-mix(in oklab, var(--brand) 56%, transparent) 0 2px,
+      transparent 2.5px
+    ),
+    radial-gradient(
+      circle at 74% 56%,
+      color-mix(in oklab, var(--brand) 36%, transparent) 0 2px,
+      transparent 2.5px
+    );
+  background-size:
+    340px 300px,
+    480px 420px,
+    340px 300px,
+    480px 420px;
   opacity: 0.24;
   mix-blend-mode: multiply;
   animation: circuit-overlay-drift 18s linear infinite;
@@ -520,7 +603,12 @@
   position: absolute;
   inset: 0 auto 0 -30%;
   width: 22%;
-  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--brand) 16%, transparent), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--brand) 16%, transparent),
+    transparent
+  );
   filter: blur(20px);
   opacity: 0;
   transform: skewX(-18deg);
@@ -533,7 +621,6 @@
   filter: saturate(0.62) contrast(0.88);
   animation: hero-image-breathe 12s ease-in-out infinite;
 }
-
 
 @utility shadow-luxe {
   box-shadow: var(--shadow-luxe);
@@ -555,7 +642,12 @@
       color-mix(in srgb, var(--white) 96%, transparent) 48%,
       color-mix(in srgb, var(--white) 82%, transparent) 100%
     ),
-    linear-gradient(180deg, color-mix(in srgb, var(--white) 92%, transparent) 0%, color-mix(in srgb, var(--white) 62%, transparent) 55%, color-mix(in srgb, var(--white) 92%, transparent) 100%);
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--white) 92%, transparent) 0%,
+      color-mix(in srgb, var(--white) 62%, transparent) 55%,
+      color-mix(in srgb, var(--white) 92%, transparent) 100%
+    );
 }
 
 @utility eyebrow {
@@ -570,8 +662,8 @@
 }
 
 @utility accent-brand {
-  color: var(--sylution-red);
-  background: color-mix(in srgb, var(--sylution-red) 12%, transparent);
+  color: var(--brand-red);
+  background: color-mix(in srgb, var(--brand-red) 12%, transparent);
 }
 
 @utility footer-shell {
@@ -585,7 +677,7 @@
     color: color-mix(in srgb, var(--white) 76%, transparent);
   }
   & a:hover {
-    color: var(--sylution-red);
+    color: var(--red-accent);
   }
 }
 
@@ -595,12 +687,11 @@
   overflow: hidden;
   border-radius: var(--radius-3xl);
   border: 1px solid color-mix(in oklab, var(--ink) 9%, transparent);
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in oklab, var(--card) 96%, var(--brand) 4%) 0%,
-      color-mix(in oklab, var(--surface) 78%, var(--card)) 100%
-    );
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--card) 96%, var(--brand) 4%) 0%,
+    color-mix(in oklab, var(--surface) 78%, var(--card)) 100%
+  );
   box-shadow:
     0 1px 1px oklch(0.2 0.02 265 / 0.04),
     0 12px 28px -22px oklch(0.2 0.02 265 / 0.28);
@@ -615,7 +706,11 @@
     pointer-events: none;
     z-index: -1;
     border-radius: inherit;
-    background: linear-gradient(180deg, color-mix(in oklab, var(--card) 60%, transparent), transparent 42%);
+    background: linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--card) 60%, transparent),
+      transparent 42%
+    );
     opacity: 0.7;
   }
   &::after {
@@ -627,9 +722,16 @@
     width: 24%;
     pointer-events: none;
     transform: skewX(-18deg);
-    background: linear-gradient(90deg, transparent, color-mix(in oklab, white 42%, transparent), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, white 42%, transparent),
+      transparent
+    );
     opacity: 0;
-    transition: transform 0.75s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.35s ease;
+    transition:
+      transform 0.75s cubic-bezier(0.23, 1, 0.32, 1),
+      opacity 0.35s ease;
   }
   &:hover {
     transform: translateY(-6px);
@@ -645,39 +747,74 @@
   }
 }
 
-
 @keyframes circuit-drift {
-  from { transform: translate3d(-0.5%, 0, 0); }
-  to { transform: translate3d(0.8%, -0.8%, 0); }
+  from {
+    transform: translate3d(-0.5%, 0, 0);
+  }
+  to {
+    transform: translate3d(0.8%, -0.8%, 0);
+  }
 }
 
 @keyframes mobile-circuit-pan {
   from {
-    background-position: 0 0, 0 0, 0 0, 0 0;
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0;
   }
   to {
-    background-position: 180px 90px, -160px 110px, 180px 90px, -160px 110px;
+    background-position:
+      180px 90px,
+      -160px 110px,
+      180px 90px,
+      -160px 110px;
   }
 }
 
 @keyframes circuit-overlay-drift {
   from {
-    background-position: 0 0, 0 0, 0 0, 0 0;
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0;
   }
   to {
-    background-position: 180px 90px, -140px 120px, 180px 90px, -140px 120px;
+    background-position:
+      180px 90px,
+      -140px 120px,
+      180px 90px,
+      -140px 120px;
   }
 }
 
 @keyframes signal-sweep {
-  0%, 55%, 100% { opacity: 0; transform: translateX(-20%) skewX(-18deg); }
-  15%, 35% { opacity: 0.8; }
-  48% { opacity: 0; transform: translateX(520%) skewX(-18deg); }
+  0%,
+  55%,
+  100% {
+    opacity: 0;
+    transform: translateX(-20%) skewX(-18deg);
+  }
+  15%,
+  35% {
+    opacity: 0.8;
+  }
+  48% {
+    opacity: 0;
+    transform: translateX(520%) skewX(-18deg);
+  }
 }
 
 @keyframes hero-image-breathe {
-  0%, 100% { transform: scale(1.015) translate3d(0, 0, 0); }
-  50% { transform: scale(1.04) translate3d(-0.4%, -0.3%, 0); }
+  0%,
+  100% {
+    transform: scale(1.015) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.04) translate3d(-0.4%, -0.3%, 0);
+  }
 }
 
 @keyframes float-slow {
@@ -734,7 +871,6 @@
   animation: scroll-cue 2.2s ease-in-out infinite;
 }
 
-
 @utility hero-tech-core {
   z-index: 0;
   transform: translateZ(0);
@@ -775,7 +911,9 @@
   border: 2px solid color-mix(in srgb, var(--brand) 72%, white);
   border-radius: 999px;
   background: var(--white);
-  box-shadow: 0 0 0 6px color-mix(in srgb, var(--brand) 10%, transparent), 0 0 22px color-mix(in srgb, var(--brand) 55%, transparent);
+  box-shadow:
+    0 0 0 6px color-mix(in srgb, var(--brand) 10%, transparent),
+    0 0 22px color-mix(in srgb, var(--brand) 55%, transparent);
 }
 
 @utility hero-tech-node--core {
@@ -784,8 +922,15 @@
   width: 32px;
   height: 32px;
   border-width: 3px;
-  background: radial-gradient(circle at 38% 35%, white 0 12%, var(--brand) 20% 44%, var(--ink) 47% 100%);
-  box-shadow: 0 0 0 12px color-mix(in srgb, var(--brand) 9%, transparent), 0 0 48px color-mix(in srgb, var(--brand) 52%, transparent);
+  background: radial-gradient(
+    circle at 38% 35%,
+    white 0 12%,
+    var(--brand) 20% 44%,
+    var(--ink) 47% 100%
+  );
+  box-shadow:
+    0 0 0 12px color-mix(in srgb, var(--brand) 9%, transparent),
+    0 0 48px color-mix(in srgb, var(--brand) 52%, transparent);
   animation: hero-core-pulse 2.2s ease-in-out infinite;
 }
 
@@ -812,7 +957,11 @@
   width: 54px;
   height: 2px;
   transform-origin: left center;
-  background: linear-gradient(90deg, color-mix(in srgb, var(--brand) 88%, transparent), transparent);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--brand) 88%, transparent),
+    transparent
+  );
   animation: hero-signal-dash 2.4s linear infinite;
 }
 
@@ -837,25 +986,51 @@
 }
 
 @keyframes hero-orbit-spin {
-  from { transform: rotate(-18deg) scale(1); }
-  50% { transform: rotate(162deg) scale(1.025); }
-  to { transform: rotate(342deg) scale(1); }
+  from {
+    transform: rotate(-18deg) scale(1);
+  }
+  50% {
+    transform: rotate(162deg) scale(1.025);
+  }
+  to {
+    transform: rotate(342deg) scale(1);
+  }
 }
 
 @keyframes hero-core-pulse {
-  0%, 100% { transform: scale(0.94); }
-  50% { transform: scale(1.12); }
+  0%,
+  100% {
+    transform: scale(0.94);
+  }
+  50% {
+    transform: scale(1.12);
+  }
 }
 
 @keyframes hero-node-float {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(8px, -12px, 0); }
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(8px, -12px, 0);
+  }
 }
 
 @keyframes hero-signal-dash {
-  0% { opacity: 0; clip-path: inset(0 100% 0 0); }
-  25%, 70% { opacity: 0.9; clip-path: inset(0 0 0 0); }
-  100% { opacity: 0; clip-path: inset(0 0 0 100%); }
+  0% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  25%,
+  70% {
+    opacity: 0.9;
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    opacity: 0;
+    clip-path: inset(0 0 0 100%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -866,7 +1041,6 @@
     animation: none;
   }
 }
-
 
 @utility hero-tech-image {
   position: absolute;
@@ -884,7 +1058,8 @@
 }
 
 @keyframes hero-assembly {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.68;
     transform: translate3d(0, 4px, 0) scale(0.965);
     filter: saturate(0.74) contrast(0.98);
@@ -894,7 +1069,8 @@
     transform: translate3d(-4px, -2px, 0) scale(0.99);
     filter: saturate(0.88) contrast(1.03);
   }
-  48%, 58% {
+  48%,
+  58% {
     opacity: 0.88;
     transform: translate3d(2px, -6px, 0) scale(1.012);
     filter: saturate(0.96) contrast(1.05);
@@ -927,4 +1103,624 @@
     object-fit: contain;
     object-position: center;
   }
+}
+
+/* SYLUTION homepage: deep-red, white and black, with a visible animated field drone. */
+.home-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--soft-white);
+}
+
+.home-hero__glow {
+  position: absolute;
+  z-index: -1;
+  top: -11rem;
+  right: 10%;
+  width: min(50vw, 46rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--brand) 10%, transparent),
+    transparent 67%
+  );
+  pointer-events: none;
+}
+
+.home-hero__layout {
+  position: relative;
+  display: grid;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  min-height: min(52rem, calc(100svh - 4.25rem));
+  padding-block: 7.4rem 3.4rem;
+}
+
+.home-hero__copy {
+  position: relative;
+  z-index: 2;
+  max-width: 42rem;
+}
+
+.home-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+  color: var(--brand);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1.55;
+  text-transform: uppercase;
+}
+
+.home-hero__eyebrow-mark {
+  flex: 0 0 2.4rem;
+  height: 3px;
+  border-radius: 99px;
+  background: var(--brand);
+}
+
+.home-hero__title {
+  display: grid;
+  gap: 0.08em;
+  max-width: 12ch;
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.4vw, 5.35rem);
+  font-weight: 800;
+  letter-spacing: -0.075em;
+  line-height: 0.99;
+  text-wrap: balance;
+}
+
+.home-hero__title-accent {
+  color: var(--brand);
+}
+
+.home-hero__description {
+  max-width: 39rem;
+  margin: 1.45rem 0 0;
+  color: var(--secondary-text);
+  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+  line-height: 1.75;
+}
+
+.home-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.8rem;
+}
+
+.home-hero__primary {
+  gap: 1rem;
+  min-height: 3.6rem;
+  padding: 0.45rem 0.55rem 0.45rem 1.35rem;
+  border-radius: 999px;
+  background: var(--gradient-brand);
+  box-shadow: 0 13px 28px -18px color-mix(in srgb, var(--brand) 75%, transparent);
+}
+
+.home-hero__arrow {
+  display: grid;
+  width: 2.55rem;
+  height: 2.55rem;
+  flex: 0 0 2.55rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--brand);
+}
+
+.home-hero__secondary {
+  min-height: 3.25rem;
+  gap: 0.6rem;
+  border: 1px solid color-mix(in srgb, var(--brand) 24%, var(--border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--white) 72%, transparent);
+  color: var(--ink);
+}
+
+.home-hero__secondary:hover {
+  border-color: var(--brand);
+  background: var(--white);
+  color: var(--brand);
+}
+
+.home-hero__proof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 1.65rem;
+  color: var(--secondary-text);
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.home-hero__proof-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.home-hero__proof-item svg {
+  color: var(--brand);
+}
+
+.home-hero__proof-divider {
+  width: 1px;
+  height: 1rem;
+  background: var(--border);
+}
+
+.home-hero__visual {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  min-height: 28rem;
+  aspect-ratio: 1.12;
+  border: 1px solid color-mix(in srgb, var(--brand) 15%, var(--border));
+  border-radius: clamp(1.35rem, 3vw, 2.25rem);
+  background: var(--surface);
+  box-shadow: var(--shadow-luxe);
+}
+
+.home-hero__picture,
+.home-hero__picture img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.home-hero__picture img {
+  object-fit: cover;
+  object-position: 68% 50%;
+}
+
+.home-hero__image-wash {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(247, 247, 245, 0.12) 0%,
+    transparent 42%,
+    rgba(17, 18, 20, 0.2) 100%
+  );
+  pointer-events: none;
+}
+
+.home-hero__visual-caption {
+  position: absolute;
+  z-index: 4;
+  bottom: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  max-width: calc(100% - 2rem);
+  padding: 0.62rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(17, 18, 20, 0.83);
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  backdrop-filter: blur(12px);
+}
+
+.home-hero__caption-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  flex: 0 0 0.5rem;
+  border-radius: 50%;
+  background: var(--red-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--red-accent) 24%, transparent);
+}
+
+.home-hero__leaf {
+  position: absolute;
+  z-index: 4;
+  top: 1rem;
+  left: 1rem;
+  display: grid;
+  width: 2.65rem;
+  height: 2.65rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--brand);
+  box-shadow: 0 8px 22px -14px rgba(17, 18, 20, 0.6);
+  backdrop-filter: blur(12px);
+}
+
+.drone-scene {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.drone-scene__sun {
+  position: absolute;
+  top: 13%;
+  right: 18%;
+  width: clamp(3rem, 8vw, 6rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.72),
+    rgba(255, 255, 255, 0.16) 62%,
+    transparent 72%
+  );
+}
+
+.drone-scene__flight-path {
+  position: absolute;
+  inset: 0;
+  opacity: 0.68;
+}
+
+.drone-scene__flight-path svg {
+  width: 100%;
+  height: 100%;
+}
+
+.drone-scene__flight-path path {
+  fill: none;
+  stroke: var(--brand);
+  stroke-dasharray: 4 12;
+  stroke-linecap: round;
+  stroke-width: 2.4;
+  animation: drone-route-dash 8s linear infinite;
+}
+
+.drone-scene__scan {
+  position: absolute;
+  top: 51%;
+  left: 51%;
+  width: 30%;
+  height: 38%;
+  border-right: 2px solid color-mix(in srgb, var(--brand) 76%, transparent);
+  background: linear-gradient(
+    108deg,
+    transparent 47%,
+    color-mix(in srgb, var(--brand) 22%, transparent) 100%
+  );
+  clip-path: polygon(49% 0, 100% 100%, 0 100%);
+  opacity: 0.48;
+  transform-origin: top center;
+  animation: drone-scan-sweep 4.8s ease-in-out infinite alternate;
+}
+
+.drone-scene__flight {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  width: min(79%, 33rem);
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 19px 12px rgba(17, 18, 20, 0.18));
+  animation: drone-flight 5.4s ease-in-out infinite;
+}
+
+.drone-scene__craft {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.drone-scene__propeller {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: drone-rotor-spin 0.22s linear infinite;
+}
+
+.drone-scene__rotor:nth-of-type(even) .drone-scene__propeller {
+  animation-duration: 0.18s;
+}
+
+.drone-scene__tag {
+  position: absolute;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  max-width: 12rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  font-size: 0.69rem;
+  font-weight: 800;
+  line-height: 1.25;
+  box-shadow: 0 14px 28px -22px rgba(17, 18, 20, 0.75);
+  backdrop-filter: blur(12px);
+}
+
+.drone-scene__tag--sensing {
+  top: 18%;
+  right: 5%;
+}
+
+.drone-scene__tag--data {
+  bottom: 21%;
+  left: 4%;
+}
+
+.drone-scene__tag-icon {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 2rem;
+  place-items: center;
+  border-radius: 0.65rem;
+  background: color-mix(in srgb, var(--brand) 10%, var(--white));
+  color: var(--brand);
+}
+
+.drone-scene__scan-point {
+  position: absolute;
+  right: 34%;
+  bottom: 15%;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow:
+    0 0 0 5px color-mix(in srgb, var(--brand) 20%, transparent),
+    0 0 24px color-mix(in srgb, var(--brand) 55%, transparent);
+  animation: drone-point-pulse 2.8s ease-in-out infinite;
+}
+
+.home-hero__bottom-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--brand) 20%, transparent),
+    transparent
+  );
+}
+
+@keyframes drone-flight {
+  0%,
+  100% {
+    translate: -14px 2px;
+    rotate: -1.2deg;
+  }
+  50% {
+    translate: 14px -13px;
+    rotate: 1.3deg;
+  }
+}
+
+@keyframes drone-rotor-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes drone-route-dash {
+  to {
+    stroke-dashoffset: -64;
+  }
+}
+
+@keyframes drone-scan-sweep {
+  from {
+    rotate: -8deg;
+    opacity: 0.26;
+  }
+  to {
+    rotate: 8deg;
+    opacity: 0.58;
+  }
+}
+
+@keyframes drone-point-pulse {
+  0%,
+  100% {
+    scale: 0.9;
+  }
+  50% {
+    scale: 1.15;
+  }
+}
+
+@media (min-width: 900px) {
+  .home-hero__layout {
+    grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+  }
+}
+
+@media (max-width: 899px) {
+  .home-hero__layout {
+    min-height: auto;
+    gap: 1.75rem;
+    padding-block: 6.75rem 2.5rem;
+  }
+
+  .home-hero__copy {
+    max-width: 46rem;
+  }
+
+  .home-hero__title {
+    max-width: 14ch;
+    font-size: clamp(2.65rem, 7.5vw, 4.45rem);
+  }
+
+  .home-hero__visual {
+    min-height: 23rem;
+    aspect-ratio: 1.38;
+  }
+
+  .home-hero__picture img {
+    object-position: 55% 58%;
+  }
+}
+
+@media (max-width: 639px) {
+  .home-hero__layout {
+    gap: 1.35rem;
+    padding-block: 6.25rem 1.75rem;
+  }
+
+  .home-hero__eyebrow {
+    align-items: flex-start;
+    max-width: 35rem;
+    margin-bottom: 0.95rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+  }
+
+  .home-hero__eyebrow-mark {
+    flex-basis: 1.6rem;
+    margin-top: 0.52rem;
+  }
+
+  .home-hero__title {
+    max-width: 12ch;
+    font-size: clamp(2.35rem, 10.6vw, 3.8rem);
+    letter-spacing: -0.07em;
+  }
+
+  .home-hero__description {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .home-hero__actions {
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+  }
+
+  .home-hero__primary {
+    min-height: 3.25rem;
+    padding-left: 1rem;
+    font-size: 0.86rem;
+  }
+
+  .home-hero__arrow {
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-basis: 2.25rem;
+  }
+
+  .home-hero__secondary {
+    min-height: 2.9rem;
+    font-size: 0.82rem;
+  }
+
+  .home-hero__proof {
+    gap: 0.55rem;
+    margin-top: 1rem;
+    font-size: 0.68rem;
+  }
+
+  .home-hero__visual {
+    min-height: 18rem;
+    aspect-ratio: 1.14;
+    border-radius: 1.3rem;
+  }
+
+  .home-hero__picture img {
+    object-position: 50% 61%;
+  }
+
+  .drone-scene__flight {
+    top: 43%;
+    width: 88%;
+  }
+
+  .drone-scene__tag {
+    gap: 0.4rem;
+    max-width: 10.5rem;
+    padding: 0.48rem 0.58rem;
+    font-size: 0.62rem;
+  }
+
+  .drone-scene__tag--sensing {
+    top: 12%;
+    right: 3%;
+  }
+
+  .drone-scene__tag--data {
+    bottom: 19%;
+    left: 3%;
+  }
+
+  .drone-scene__tag-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    flex-basis: 1.75rem;
+  }
+
+  .home-hero__visual-caption {
+    bottom: 0.65rem;
+    left: 0.65rem;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.62rem;
+  }
+
+  .home-hero__leaf {
+    top: 0.65rem;
+    left: 0.65rem;
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+}
+
+@media (max-width: 359px) {
+  .home-hero__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .home-hero__primary,
+  .home-hero__secondary {
+    justify-content: center;
+  }
+
+  .drone-scene__tag--sensing {
+    top: 7%;
+    right: 2%;
+  }
+
+  .drone-scene__tag--data {
+    bottom: 16%;
+    left: 2%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drone-scene__flight-path path,
+  .drone-scene__scan,
+  .drone-scene__flight,
+  .drone-scene__propeller,
+  .drone-scene__scan-point {
+    animation: none !important;
+  }
+}
+
+.nav-contact,
+.nav-contact:hover {
+  color: var(--white);
 }

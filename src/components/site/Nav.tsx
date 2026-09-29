@@ -203,7 +203,10 @@ export function Nav() {
             ))}
           </div>
 
-          <Link to="/contact" className="btn-base btn-primary hidden px-5 py-2.5 lg:inline-flex">
+          <Link
+            to="/contact"
+            className="btn-base btn-primary nav-contact hidden px-5 py-2.5 lg:inline-flex"
+          >
             <Phone className="h-4 w-4" />
             {t("nav.contact")}
           </Link>
