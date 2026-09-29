@@ -992,7 +992,7 @@ export const TRAINING_AUDIENCES = ["Youth", "Women", "Farmers", "Students", "Agr
 export const FAQS = [
   {
     q: "What does SYLUTION do?",
-    a: "SYLUTION LTD is a Nigerian technology innovation company applying Artificial Intelligence, Internet of Things, electronics, robotics, drone technology and smart technologies to modern agriculture and real world problems. AgriTech is our main application area.",
+    a: "SYLUTION LTD is a Nigerian technology engineering and training company. We design AI, IoT, electronics, robotics, drone and solar systems, with smart agriculture as our main application area, and teach practical technology skills through the Academy.",
   },
   {
     q: "Where is SYLUTION based?",
@@ -1004,15 +1004,19 @@ export const FAQS = [
   },
   {
     q: "What is Sysmart Agro?",
-    a: "Sysmart Agro is our flagship AI and IoT powered smart agriculture project, combining field sensors, a smart controller, data collection, AI analysis and a monitoring dashboard. It is currently in active development and field deployment.",
+    a: "Sysmart Agro is our flagship AI and IoT powered smart agriculture project, combining field sensors, a smart controller, data collection, AI analysis and a monitoring dashboard. It is in active development and field testing, and is not currently available to purchase online.",
   },
   {
     q: "Are your products commercially available?",
-    a: "Our projects are in active development, testing, or field deployment stages. We label the status of every project honestly and provide updates as they advance through our engineering pipeline.",
+    a: "No items on this website are currently offered for direct online purchase. Project labels describe engineering stages, not stock or a promise of commercial availability. Contact us to ask what can be scoped or tested now.",
+  },
+  {
+    q: "Can I order online or apply for farm financing?",
+    a: "No. The marketplace is not live, online orders and checkout are not open, and SYLUTION is not accepting farm-finance applications. Both are future initiatives; the financing concept depends on possible partner discussions.",
   },
   {
     q: "Who can join your training programmes?",
-    a: "Youth, women, farmers, students and agripreneurs. Training covers AI, IoT, modern agriculture, livestock technology, robotics and drone technology.",
+    a: "Youth, women, farmers, students and agripreneurs. Training covers AI, IoT, electronics, modern agriculture, livestock technology, robotics and drone technology. Ask SYLUTION to confirm dates and availability; an enquiry is not an instant enrolment.",
   },
   {
     q: "How do I start a project or partnership with SYLUTION?",
@@ -1164,11 +1168,13 @@ export const CASE_STUDIES = [
 export const COMING_SOON = [
   {
     name: "Marketplace",
-    detail: "Order SYLUTION devices, kits and agricultural technology online.",
+    detail:
+      "A future marketplace idea; it is not live and does not accept listings, orders or payments.",
   },
   {
     name: "Agricultural financing",
-    detail: "A financing pathway to help farmers adopt smart technology.",
+    detail:
+      "A possible partner-led financing concept under exploration; no applications are being accepted.",
   },
   {
     name: "Future AI products",

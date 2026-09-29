@@ -1,50 +1,46 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Banknote, FileCheck2, LineChart, ShieldCheck } from "lucide-react";
+import { Banknote, FileCheck2, ShieldCheck } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
+import { StatusBadge } from "@/components/site/StatusKey";
 import { U, BRAND_IMAGES } from "@/lib/site-data";
 
 export const Route = createFileRoute("/loans")({
   head: () => ({
     meta: [
-      { title: "Farm Technology Financing Initiative | SYLUTION" },
+      { title: "Farm Technology Financing Concept | SYLUTION" },
       {
         name: "description",
         content:
-          "SYLUTION is developing an equipment and input financing pathway for farmers and agribusinesses, with potential collaboration from banks and development funders.",
+          "SYLUTION is exploring a partner-led farm-technology financing concept. No loan applications are being accepted, and SYLUTION does not issue loans.",
       },
-      { property: "og:title", content: "Farm Technology Financing Initiative | SYLUTION" },
+      { property: "og:title", content: "Farm Technology Financing Concept | SYLUTION" },
       {
         property: "og:description",
         content:
-          "A farm technology financing pathway under development and open to bank and development-partner collaboration.",
+          "A future partner-led concept only; no financing applications are open and SYLUTION is not a lender.",
       },
     ],
   }),
   component: Loans,
 });
 
-const STEPS = [
+const NOTICES = [
   {
     icon: FileCheck2,
-    title: "Apply in minutes",
-    text: "A short digital form with document upload from any phone.",
-  },
-  {
-    icon: LineChart,
-    title: "Data-backed scoring",
-    text: "Farm records and telemetry strengthen the application.",
+    title: "Applications are not open",
+    text: "There is no loan application form or active financing cohort on this website.",
   },
   {
     icon: ShieldCheck,
-    title: "Partner underwriting",
-    text: "Reviewed by licensed banks and development funders.",
+    title: "SYLUTION does not issue loans",
+    text: "Any future financing would depend on an agreement with a suitable licensed finance partner.",
   },
   {
     icon: Banknote,
-    title: "Equipment disbursed",
-    text: "Funds released against verified equipment and installation.",
+    title: "Partnership discussions only",
+    text: "Banks and development organisations may contact SYLUTION to discuss a possible future pathway.",
   },
 ];
 
@@ -52,29 +48,26 @@ function Loans() {
   return (
     <>
       <PageHero
-        eyebrow="Loan Application"
-        title={<>Financing for farm technology</>}
-        subtitle="We are designing a structured financing pathway for irrigation, solar, greenhouses and machinery, and are open to collaboration with banks and development partners."
+        eyebrow="Farm-finance concept"
+        title="Exploring ways to finance farm technology"
+        subtitle="SYLUTION is exploring a possible partner-led financing pathway for farm technology. This page is not accepting loan applications; SYLUTION does not lend or make credit decisions."
         image={BRAND_IMAGES.team}
         compact
       >
-        <span className="glass inline-flex items-center gap-3 rounded-full px-5 py-2.5 text-sm font-semibold">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-70" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
-          </span>
-          Design and partnership phase
-        </span>
+        <div className="flex flex-wrap items-center gap-3">
+          <StatusBadge status="Future initiative" />
+          <span className="text-sm font-semibold">No loan applications are open</span>
+        </div>
       </PageHero>
 
       <section className="container-x section-y">
         <SectionHeading
-          eyebrow="How it will work"
-          title="Four steps from application to installed equipment"
+          eyebrow="Current status"
+          title="What this page does—and does not—offer"
           align="center"
         />
         <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-4">
-          {STEPS.map((s, i) => (
+          {NOTICES.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.07}>
               <div className="card-luxe h-full p-7">
                 <span className="grid h-12 w-12 place-items-center rounded-2xl bg-primary/15 text-primary">
@@ -97,14 +90,15 @@ function Loans() {
                 Are you a lender or development partner?
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                We are seeking underwriting partners for a future financing cohort.
+                We welcome a conversation about a future financing concept. This is not an
+                application or a commitment to provide finance.
               </p>
             </div>
             <Link
               to="/contact"
               className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.04]"
             >
-              Talk to our team
+              Discuss future collaboration
             </Link>
           </div>
         </Reveal>

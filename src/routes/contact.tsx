@@ -12,11 +12,13 @@ export const Route = createFileRoute("/contact")({
       { title: "Contact SYLUTION, TIC Kano, Nigeria" },
       {
         name: "description",
-        content:
-          `Contact SYLUTION at ${CONTACT.address}. Email ${CONTACT.email} or call ${CONTACT.phones.join(" or ")}.`,
+        content: `Contact SYLUTION at ${CONTACT.address}. Email ${CONTACT.email} or call ${CONTACT.phones.join(" or ")}.`,
       },
       { property: "og:title", content: "Contact SYLUTION" },
-      { property: "og:description", content: "Talk to our team about projects, partnerships, training and financing." },
+      {
+        property: "og:description",
+        content: "Talk to our team about projects, partnerships, training and financing.",
+      },
     ],
   }),
   component: Contact,
@@ -29,8 +31,8 @@ function Contact() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Let's talk about your project"
-        subtitle="Whether you manage two hectares or twenty thousand, represent a bank, a ministry, an NGO or a university, our team will respond within two working days."
+        title="Tell us what you need"
+        subtitle="Ask about engineering services, Sysmart Agro, products in development, training, research or partnership. This form sends an enquiry—not an online order, course enrolment or loan application. We aim to reply within two working days."
         image={BRAND_IMAGES.drone}
         compact
       />
@@ -50,7 +52,10 @@ function Contact() {
               <Mail className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
               <div>
                 <p className="text-sm font-semibold">Email</p>
-                <a href={`mailto:${CONTACT.email}`} className="mt-1 block text-sm text-muted-foreground hover:text-foreground">
+                <a
+                  href={`mailto:${CONTACT.email}`}
+                  className="mt-1 block text-sm text-muted-foreground hover:text-foreground"
+                >
                   {CONTACT.email}
                 </a>
               </div>
@@ -60,7 +65,11 @@ function Contact() {
               <div>
                 <p className="text-sm font-semibold">Phone</p>
                 {CONTACT.phones.map((p) => (
-                  <a key={p} href={`tel:${p}`} className="mt-1 block text-sm text-muted-foreground hover:text-foreground">
+                  <a
+                    key={p}
+                    href={`tel:${p}`}
+                    className="mt-1 block text-sm text-muted-foreground hover:text-foreground"
+                  >
                     {p}
                   </a>
                 ))}
@@ -90,7 +99,10 @@ function Contact() {
               e.preventDefault();
               const form = e.currentTarget;
               const submission = new FormData(form);
-              submission.set("_subject", `New contact message: ${String(submission.get("subject") ?? "General enquiry")}`);
+              submission.set(
+                "_subject",
+                `New contact message: ${String(submission.get("subject") ?? "General enquiry")}`,
+              );
               submission.set("_replyto", String(submission.get("email") ?? ""));
               submission.set("_template", "table");
               setSending(true);
@@ -115,7 +127,7 @@ function Contact() {
               }
             }}
           >
-            <h2 className="font-display text-xl font-bold tracking-tight">Send us a message</h2>
+            <h2 className="font-display text-xl font-bold tracking-tight">Send an enquiry</h2>
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Full name" name="name" />
               <Field label="Organisation" name="org" required={false} />
@@ -128,12 +140,23 @@ function Contact() {
               <label htmlFor="subject" className="field-label">
                 Subject
               </label>
-              <select
-                id="subject"
-                name="subject"
-                className="field-input"
-              >
-                {["Technical Assessment", "Project enquiry", "Partnership", "Training", "Financing", "Careers", "Other"].map((o) => (
+              <select id="subject" name="subject" className="field-input">
+                {[
+                  "AI, data or software",
+                  "IoT sensors and monitoring",
+                  "Electronics and embedded systems",
+                  "Robotics and automation",
+                  "Drone technology",
+                  "Solar and energy",
+                  "Smart agriculture and irrigation",
+                  "Sysmart Agro project",
+                  "Training academy",
+                  "Research or partnership",
+                  "Marketplace feedback (not an order)",
+                  "Farm-finance partnership concept (not an application)",
+                  "Careers",
+                  "Other",
+                ].map((o) => (
                   <option key={o}>{o}</option>
                 ))}
               </select>
@@ -151,12 +174,8 @@ function Contact() {
                 className="field-input"
               />
             </div>
-            <button
-              type="submit"
-              disabled={sending}
-              className="btn-base btn-primary mt-2 w-full"
-            >
-              {sending ? "Sending…" : "Send message"} <Send className="h-4 w-4" />
+            <button type="submit" disabled={sending} className="btn-base btn-primary mt-2 w-full">
+              {sending ? "Sending…" : "Send enquiry"} <Send className="h-4 w-4" />
             </button>
           </form>
         </Reveal>
@@ -195,13 +214,7 @@ function Field({
       <label htmlFor={name} className="field-label">
         {label}
       </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        required={required}
-        className="field-input"
-      />
+      <input id={name} name={name} type={type} required={required} className="field-input" />
     </div>
   );
 }

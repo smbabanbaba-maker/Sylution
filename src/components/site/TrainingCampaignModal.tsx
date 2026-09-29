@@ -73,7 +73,7 @@ export function TrainingCampaignModal() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-7">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/25 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] backdrop-blur-sm">
-              <BadgeCheck className="h-3.5 w-3.5 text-[#ff6b67]" /> Active programme
+              <BadgeCheck className="h-3.5 w-3.5 text-[#ff6b67]" /> Training area
             </span>
             <p className="mt-3 max-w-xs text-sm font-medium leading-6 text-white/90">
               Practical technology for people building the future of agriculture.
@@ -102,7 +102,7 @@ export function TrainingCampaignModal() {
             id="training-campaign-title"
             className="max-w-lg font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-4xl"
           >
-            SYLUTION SMART AGRICULTURE TRAINING
+            SYLUTION ACADEMY TRAINING
           </h2>
           <p className="mt-4 text-sm font-bold leading-6 text-primary">
             AI · IoT · Smart Irrigation · Greenhouse · Drone · Solar · Robotics
@@ -111,33 +111,29 @@ export function TrainingCampaignModal() {
             id="training-campaign-description"
             className="mt-4 max-w-md text-base leading-7 text-muted-foreground"
           >
-            Practical technology training for farmers, youth, women, students and agripreneurs.
+            Practical technology training for farmers, youth, women, students and agripreneurs. Ask
+            us to confirm dates or a group cohort; this is not instant enrolment.
           </p>
 
           <div className="mt-7 flex flex-wrap gap-2 text-xs font-semibold text-foreground">
-            {["Hands-on learning", "Supervised practice", "English · Hausa"].map(
-              (item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-border bg-muted/60 px-3 py-2"
-                >
-                  {item}
-                </span>
-              ),
-            )}
+            {["Hands-on learning", "Supervised practice", "English · Hausa"].map((item) => (
+              <span key={item} className="rounded-full border border-border bg-muted/60 px-3 py-2">
+                {item}
+              </span>
+            ))}
           </div>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link to="/training" onClick={dismiss} className="btn-base btn-primary justify-center">
-              Explore Training <ArrowRight className="h-4 w-4" />
+              View programmes and ask about dates <ArrowRight className="h-4 w-4" />
             </Link>
             <button type="button" onClick={dismiss} className="btn-base btn-ghost justify-center">
               Close
             </button>
           </div>
           <p className="mt-5 text-xs leading-5 text-muted-foreground">
-            Open to individuals, institutions and partners seeking practical agriculture technology
-            skills.
+            For individuals, institutions and partners seeking practical agriculture-technology
+            skills. Availability is confirmed by enquiry.
           </p>
         </div>
       </div>

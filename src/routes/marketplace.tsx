@@ -3,6 +3,7 @@ import { ShoppingBag, Truck, BadgeCheck, Timer } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
+import { StatusBadge } from "@/components/site/StatusKey";
 import { U, BRAND_IMAGES } from "@/lib/site-data";
 
 export const Route = createFileRoute("/marketplace")({
@@ -53,18 +54,15 @@ function Marketplace() {
     <>
       <PageHero
         eyebrow="Marketplace"
-        title={<>A future place to discover and connect around farm technology</>}
-        subtitle="We are exploring a marketplace direction where farmers, cooperatives and agribusinesses can discover technology categories and begin informed conversations with suppliers and service providers."
+        title={<>A marketplace idea—not a live shop</>}
+        subtitle="We are exploring a future way to discover farm technology. There are no live listings, checkout, orders or payments on this page."
         image={BRAND_IMAGES.harvest}
         compact
       >
-        <span className="glass inline-flex items-center gap-3 rounded-full px-5 py-2.5 text-sm font-semibold">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-70" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
-          </span>
-          Future product initiative
-        </span>
+        <div className="flex flex-wrap items-center gap-3">
+          <StatusBadge status="Future initiative" />
+          <span className="text-sm font-semibold">No online ordering</span>
+        </div>
       </PageHero>
 
       <section className="container-x section-y">
@@ -90,17 +88,17 @@ function Marketplace() {
         <Reveal delay={0.2}>
           <div className="card-luxe mt-14 flex flex-wrap items-center justify-between gap-6 p-8">
             <div>
-              <h3 className="font-display text-xl font-bold">Want early access?</h3>
+              <h3 className="font-display text-xl font-bold">Want to shape the idea?</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Tell us what technology or service you want to explore and we will record your
-                interest as the initiative develops.
+                Share what technology or service you would want to find. This is feedback only—it
+                does not create an account, reserve an item or place an order.
               </p>
             </div>
             <Link
               to="/contact"
               className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.04]"
             >
-              Register interest
+              Share marketplace feedback
             </Link>
           </div>
         </Reveal>

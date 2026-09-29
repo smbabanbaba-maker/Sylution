@@ -24,7 +24,8 @@ const STATIC_PAGES: SitePage[] = [
   {
     path: "/",
     title: "Home",
-    summary: "SYLUTION's main page for AgriTech, AI, IoT, electronics and intelligent systems.",
+    summary:
+      "See what SYLUTION builds, the projects it develops and the hands-on technology training it teaches.",
     category: "Start here",
     keywords: "home homepage gida sylution about company start",
     changefreq: "weekly",
@@ -42,7 +43,8 @@ const STATIC_PAGES: SitePage[] = [
   {
     path: "/solutions",
     title: "Solutions",
-    summary: "Explore SYLUTION's engineering capabilities, technologies and application areas.",
+    summary:
+      "Explore engineering service capabilities; scope and availability are confirmed after an enquiry.",
     category: "Solutions",
     keywords: "solutions services capabilities technologies hanyoyin warware ayyuka",
     changefreq: "weekly",
@@ -51,7 +53,8 @@ const STATIC_PAGES: SitePage[] = [
   {
     path: "/platforms",
     title: "Products and platforms",
-    summary: "Explore SYLUTION products, software platforms and connected technology.",
+    summary:
+      "Understand engineering services, products in development and practical training under one company; no online orders.",
     category: "Projects & products",
     keywords: "platforms products kayayyaki software devices devices na'urori",
     changefreq: "monthly",
@@ -61,7 +64,7 @@ const STATIC_PAGES: SitePage[] = [
     path: "/sysmart-agro",
     title: "Sysmart Agro",
     summary:
-      "A connected agriculture project exploring farm sensing, irrigation control and monitoring.",
+      "SYLUTION's flagship smart-agriculture project is in development and field testing; it is not available to purchase online.",
     category: "Projects & products",
     keywords:
       "sysmart smart farm agriculture farming noma irrigation sensors soil crops ruwa ban ruwa",
@@ -71,7 +74,8 @@ const STATIC_PAGES: SitePage[] = [
   {
     path: "/products",
     title: "Products",
-    summary: "Browse product concepts and technology work across SYLUTION's ecosystem.",
+    summary:
+      "See product directions and engineering stages; no items are currently offered for direct online purchase.",
     category: "Projects & products",
     keywords: "products kayayyaki devices hardware tools",
     changefreq: "weekly",
@@ -89,7 +93,8 @@ const STATIC_PAGES: SitePage[] = [
   {
     path: "/marketplace",
     title: "Marketplace",
-    summary: "Find information about SYLUTION's marketplace and technology ecosystem.",
+    summary:
+      "A future marketplace idea; not live and not accepting listings, orders, checkout or payments.",
     category: "Projects & products",
     keywords: "marketplace market kasuwa buy purchase vendors products",
     changefreq: "monthly",
@@ -194,7 +199,7 @@ const STATIC_PAGES: SitePage[] = [
     path: "/training",
     title: "Training and academy",
     summary:
-      "Find training information for AI, IoT, agriculture, robotics and practical technology.",
+      "Explore hands-on AI, IoT and agriculture training; ask SYLUTION to confirm dates and availability, as enquiries are not instant enrolments.",
     category: "Learning & updates",
     keywords:
       "training academy courses education skills horo makaranta koyo students formation cours apprentissage التدريب دورات تعليم",
@@ -221,9 +226,9 @@ const STATIC_PAGES: SitePage[] = [
   },
   {
     path: "/loans",
-    title: "Farm technology financing",
+    title: "Farm technology financing concept",
     summary:
-      "Information about financing pathways for irrigation, solar, greenhouses and machinery.",
+      "A future partner-led financing concept for farm technology; no loan applications are being accepted.",
     category: "Projects & products",
     keywords:
       "loans loan finance financing credit credits bank rance rancen noma farm equipment irrigation prêt prêts financement crédits قروض تمويل",
@@ -296,7 +301,7 @@ export const SITE_PAGES: SitePage[] = [
   ...SOLUTIONS.map((solution): SitePage => ({
     path: `/solutions/${solution.slug}`,
     title: solution.title,
-    summary: solution.summary,
+    summary: `Engineering service capability: ${solution.summary} Scope and availability are confirmed by enquiry.`,
     category: "Solutions",
     keywords: [
       solution.title,
@@ -382,7 +387,7 @@ export const FINDER_TEXT: Record<
     button: "Search the site",
     title: "Search SYLUTION",
     description: "Find a page, service, product or project.",
-    placeholder: "Try “training”, “IoT”, “irrigation” or “loans”",
+    placeholder: "Try “training”, “IoT”, “irrigation” or “farm finance”",
     noResults: "No matching pages. Try another word.",
     allPages: "Browse all pages",
     pageCount: "pages",
@@ -395,7 +400,7 @@ export const FINDER_TEXT: Record<
     button: "Nemo a shafin",
     title: "Nemo a SYLUTION",
     description: "Nemo shafi, hidima, kaya ko aiki.",
-    placeholder: "Gwada “horo”, “IoT”, “ban ruwa” ko “rance”",
+    placeholder: "Gwada “horo”, “IoT”, “ban ruwa” ko “kuɗin noma”",
     noResults: "Ba a sami shafin da ya dace ba. Gwada wata kalma.",
     allPages: "Duba dukkan shafuka",
     pageCount: "shafuka",
@@ -407,7 +412,7 @@ export const FINDER_TEXT: Record<
     button: "Rechercher sur le site",
     title: "Rechercher sur SYLUTION",
     description: "Trouvez une page, un service, un produit ou un projet.",
-    placeholder: "Essayez « formation », « IoT », « irrigation » ou « crédits »",
+    placeholder: "Essayez « formation », « IoT », « irrigation » ou « financement agricole »",
     noResults: "Aucune page correspondante. Essayez un autre mot.",
     allPages: "Parcourir toutes les pages",
     pageCount: "pages",

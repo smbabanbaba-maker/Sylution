@@ -3,25 +3,26 @@ import { ArrowRight, Check, CircleDot } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
+import { StatusBadge, StatusKey } from "@/components/site/StatusKey";
 import { PRODUCT_CATEGORIES, PRODUCTS, BRAND_IMAGES } from "@/lib/site-data";
 
 export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
-      { title: "Intelligent Products and Connected Systems | SYLUTION LTD" },
+      { title: "Products in Development | SYLUTION LTD" },
       {
         name: "description",
         content:
-          "Explore SYLUTION LTD intelligent products and connected systems across Smart Devices, IoT and Electronics, AgriTech, Robotics and Drone, and Solar and Energy.",
+          "Explore SYLUTION product directions across AgriTech, IoT, electronics, robotics, drones and solar. Development stages are labelled; no items are available to order online.",
       },
       {
         property: "og:title",
-        content: "SYLUTION LTD | Intelligent Products and Connected Systems",
+        content: "SYLUTION LTD | Products in Development",
       },
       {
         property: "og:description",
         content:
-          "AI, IoT, embedded systems, AgriTech, robotics, drone and solar technology developed for real-world applications.",
+          "See what SYLUTION is building and testing in AI, IoT, AgriTech, robotics, drone and solar technology; this is not an online shop.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -35,8 +36,8 @@ function ProductsPage() {
     <>
       <PageHero
         eyebrow="Products ecosystem"
-        title="Intelligent products, connected systems"
-        subtitle="SYLUTION develops technology across AI, IoT, electronics, embedded systems, robotics, drone and solar engineering—with AgriTech as our main application area."
+        title="Products and systems in development"
+        subtitle="See what SYLUTION is building across AgriTech, IoT, electronics, robotics, drones and solar. This is a development catalogue—not an online shop."
         image={BRAND_IMAGES.device}
         compact
       >
@@ -45,7 +46,7 @@ function ProductsPage() {
             Explore products <ArrowRight className="h-4 w-4" />
           </a>
           <Link to="/contact" className="btn-base btn-ghost">
-            Discuss a product
+            Ask about a product project
           </Link>
         </div>
       </PageHero>
@@ -54,8 +55,9 @@ function ProductsPage() {
         <SectionHeading
           eyebrow="Our products"
           title="Intelligent products. Connected systems. Real-world solutions."
-          description="A focused product ecosystem for practical engineering—not an online electronics shop. The work moves through design, development, testing, field deployment and improvement, with each category labelled honestly."
+          description="These are product directions and engineering projects. No items on this page are currently offered for direct online purchase; use an enquiry to ask what is being built or tested."
         />
+        <StatusKey />
         <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-5">
           {PRODUCT_CATEGORIES.map((category, index) => (
             <Reveal key={category.slug} delay={index * 0.06}>
@@ -67,8 +69,8 @@ function ProductsPage() {
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <span className="absolute left-3 top-3 rounded-full border border-white/40 bg-white/90 px-2.5 py-1 text-[0.58rem] font-bold uppercase tracking-[0.12em] text-primary">
-                    {category.status}
+                  <span className="absolute left-3 top-3">
+                    <StatusBadge status={category.status} />
                   </span>
                 </div>
                 <div className="flex flex-1 flex-col p-5">
@@ -120,8 +122,8 @@ function ProductsPage() {
                       loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <span className="absolute left-3 top-3 rounded-full border border-white/40 bg-white/90 px-3 py-1 text-[0.62rem] font-bold uppercase tracking-wider text-primary">
-                      {product.status}
+                    <span className="absolute left-3 top-3">
+                      <StatusBadge status={product.status} />
                     </span>
                   </div>
                   <div className="flex flex-1 flex-col p-6">
@@ -155,7 +157,7 @@ function ProductsPage() {
                       to="/contact"
                       className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary"
                     >
-                      Explore with SYLUTION <ArrowRight className="h-4 w-4" />
+                      Ask about this project <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
                 </article>
@@ -168,18 +170,18 @@ function ProductsPage() {
       <section className="container-x section-y-sm">
         <div className="grid gap-8 rounded-3xl border border-border bg-card p-7 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <p className="eyebrow">Future product pages</p>
+            <p className="eyebrow">Availability</p>
             <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl">
-              A clear path from engineering direction to specification
+              Not ready to buy online
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              Future detailed pages can carry product overview, features, specifications,
-              technology, use cases, gallery, documentation and partnership information as each
-              direction becomes verified and ready.
+              The entries above describe engineering work, prototypes and product directions—not
+              stock available for sale. You can ask about a project or a custom system; the team
+              will confirm what is currently possible.
             </p>
           </div>
           <Link to="/contact" className="btn-base btn-primary">
-            Request a specification sheet <ArrowRight className="h-4 w-4" />
+            Send a product enquiry <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
@@ -188,15 +190,15 @@ function ProductsPage() {
         <div className="container-x text-center">
           <SectionHeading
             eyebrow="Marketplace"
-            title="Online ordering is coming later"
-            description="A future marketplace may support SYLUTION devices, kits and agricultural technology. Until then, contact the team for a technical discussion and current project status."
+            title="There is no online ordering yet"
+            description="The marketplace is a future initiative, not a live shop. No online listings, orders or payments are available."
             align="center"
           />
           <Link
             to="/marketplace"
             className="mt-8 inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold transition-colors hover:bg-accent"
           >
-            Visit marketplace <ArrowRight className="h-4 w-4" />
+            Learn about the future marketplace <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
