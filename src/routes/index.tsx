@@ -1,6 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
 import {
   Activity,
   ArrowRight,
@@ -19,6 +17,7 @@ import {
   Sun,
 } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
+import { HomeHero } from "@/components/site/HomeHero";
 import { SectionHeading } from "@/components/site/PageHero";
 import { CTASection } from "@/components/site/CTASection";
 import { CaseStudies } from "@/components/site/CaseStudies";
@@ -34,7 +33,6 @@ import {
   PRODUCT_CATEGORIES,
   CONTACT,
 } from "@/lib/site-data";
-import { useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -71,7 +69,7 @@ export const Route = createFileRoute("/")({
               "@id": "https://www.sylution.com.ng/#organization",
               name: CONTACT.legalName,
               url: "https://www.sylution.com.ng/",
-              logo: "https://www.sylution.com.ng/brand/sylution-logo.webp",
+              logo: "https://www.sylution.com.ng/brand/sylution-logo-dark-red.webp",
               email: CONTACT.email,
               telephone: CONTACT.phones[0],
               address: {
@@ -211,131 +209,9 @@ const TRAINING_AREAS = [
 ];
 
 function Home() {
-  const { t } = useLang();
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
-  const fade = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
-
   return (
     <>
-      {/* HERO */}
-      <section
-        ref={heroRef}
-        className="relative isolate min-h-[100svh] overflow-hidden bg-[var(--soft-white)] text-foreground"
-      >
-        <motion.div style={{ y }} className="absolute inset-0 -z-20">
-          <img
-            src="/brand/sylution-technology-core-wide.jpeg"
-            alt="SYLUTION technology core with drone, robotic arm, sensors and embedded systems"
-            className="hero-image-live absolute inset-0 h-full w-full object-cover object-right"
-            loading="eager"
-          />
-        </motion.div>
-        <div aria-hidden className="veil-side absolute inset-0 -z-10" />
-        <div aria-hidden className="circuit-overlay pointer-events-none absolute inset-0 -z-10" />
-        <div aria-hidden className="signal-sweep pointer-events-none -z-10" />
-        <div aria-hidden className="hero-tech-core pointer-events-none absolute right-[5%] top-[18%] hidden h-[58vh] w-[44vw] max-w-[620px] lg:block">
-          <span className="hero-tech-orbit hero-tech-orbit--one" />
-          <span className="hero-tech-orbit hero-tech-orbit--two" />
-          <span className="hero-tech-orbit hero-tech-orbit--three" />
-          <span className="hero-tech-node hero-tech-node--core" />
-          <span className="hero-tech-node hero-tech-node--sensor" />
-          <span className="hero-tech-node hero-tech-node--ai" />
-          <span className="hero-tech-node hero-tech-node--field" />
-          <span className="hero-tech-pulse hero-tech-pulse--one" />
-          <span className="hero-tech-pulse hero-tech-pulse--two" />
-          <span className="hero-tech-pulse hero-tech-pulse--three" />
-        </div>
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_32%,color-mix(in_oklab,var(--brand)_18%,transparent),transparent_28%)]"
-        />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 opacity-60">
-          <span className="absolute left-[12%] top-[34%] h-2 w-2 rounded-full bg-primary shadow-glow" />
-          <span className="absolute left-[12.5%] top-[35%] h-px w-[22%] origin-left rotate-[12deg] bg-primary/35" />
-          <span className="absolute right-[19%] top-[27%] h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-          <span className="absolute right-[18%] top-[28%] h-px w-[17%] origin-left rotate-[155deg] bg-primary/30" />
-          <span className="absolute bottom-[23%] left-[45%] h-1.5 w-1.5 rounded-full border border-primary/70" />
-          <span className="absolute bottom-[23.35%] left-[45.2%] h-px w-[18%] origin-left rotate-[-8deg] bg-primary/30" />
-        </div>
-
-        <motion.div
-          style={{ opacity: fade }}
-          className="container-x relative z-10 flex min-h-[100svh] flex-col justify-center pb-20 pt-28 sm:pb-24 sm:pt-32"
-        >
-          <motion.p
-            className="eyebrow"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <span aria-hidden className="h-px w-8 shrink-0 bg-primary" />
-            {t("hero.eyebrow")}
-          </motion.p>
-
-          <motion.h1
-            className="mt-6 max-w-4xl text-[2.35rem] font-extrabold leading-[1.04] sm:text-6xl lg:text-[4.25rem]"
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 0.7, 0.25, 1] }}
-          >
-            {t("hero.title")}
-          </motion.h1>
-
-          <motion.p
-            className="mt-6 max-w-2xl text-[0.975rem] leading-relaxed text-muted-foreground sm:mt-7 sm:text-lg"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-          >
-            {t("hero.sub")}
-          </motion.p>
-
-          <motion.div
-            className="mt-9 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.3 }}
-          >
-            <Link to="/sysmart-agro" className="btn-base btn-primary group">
-              Explore Sysmart Agro
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link to="/contact" className="btn-base btn-ghost">
-              Talk to an Engineer
-            </Link>
-          </motion.div>
-
-          <motion.div
-            className="mt-14 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-3xl border border-border shadow-luxe sm:grid-cols-4"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.42 }}
-          >
-            {STATS.map((s) => (
-              <div key={s.label} className="bg-card/80 px-5 py-6 backdrop-blur-xl">
-                <p className="font-display text-2xl font-extrabold text-gradient-brand sm:text-3xl">
-                  {s.value}
-                </p>
-                <p className="mt-1 text-xs text-muted-foreground">{s.label}</p>
-              </div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            className="mt-12 hidden items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:flex"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.9 }}
-          >
-            <span aria-hidden className="relative h-10 w-px overflow-hidden bg-border">
-              <span className="absolute inset-x-0 top-0 h-4 animate-scroll-cue bg-primary" />
-            </span>
-            Scroll to explore
-          </motion.div>
-        </motion.div>
-      </section>
+      <HomeHero />
 
       {/* WELCOME MESSAGE */}
       <section className="border-y border-border bg-surface section-y-sm">
