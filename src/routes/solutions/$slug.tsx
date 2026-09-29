@@ -27,17 +27,16 @@ export const Route = createFileRoute("/solutions/$slug")({
 
 function SolutionPage() {
   const s = Route.useLoaderData() as Solution;
-  const shots = GALLERY.slice(0, 12).filter((_, i) => i % 2 === 0).slice(0, 3);
+  const shots = GALLERY.slice(0, 12)
+    .filter((_, i) => i % 2 === 0)
+    .slice(0, 3);
 
   return (
     <>
       <PageHero eyebrow={s.tagline} title={s.title} subtitle={s.summary} image={s.image} compact>
         <div className="flex flex-wrap gap-3">
-          <Link
-            to="/contact"
-            className="btn-base btn-primary"
-          >
-            Request a proposal <ArrowRight className="h-4 w-4" />
+          <Link to="/contact" className="btn-base btn-primary">
+            Ask about this service <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
             to="/solutions"
@@ -50,7 +49,10 @@ function SolutionPage() {
 
       <section className="container-x grid gap-14 section-y lg:grid-cols-[1.1fr_0.9fr]">
         <Reveal>
-          <SectionHeading eyebrow="What we deliver" title={`Inside our ${s.title.toLowerCase()} practice`} />
+          <SectionHeading
+            eyebrow="What this capability covers"
+            title={`How we use ${s.title.toLowerCase()}`}
+          />
           <ul className="mt-8 space-y-4">
             {s.capabilities.map((c) => (
               <li key={c} className="flex gap-4 rounded-2xl border border-border bg-surface p-4">
@@ -65,15 +67,27 @@ function SolutionPage() {
 
         <Reveal delay={0.12}>
           <div className="card-luxe p-8">
-            <p className="eyebrow">Typical outcomes</p>
-            <div className="mt-6 space-y-6">
-              {s.outcomes.map((o) => (
-                <div key={o.label} className="border-b border-border pb-5 last:border-0 last:pb-0">
-                  <p className="font-display text-3xl font-extrabold text-gradient-brand">{o.value}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{o.label}</p>
-                </div>
-              ))}
-            </div>
+            <p className="eyebrow">How to start</p>
+            <h2 className="mt-4 font-display text-xl font-bold">
+              A scoped conversation, not an instant order
+            </h2>
+            <ol className="mt-5 space-y-4 text-sm leading-relaxed text-muted-foreground">
+              <li>
+                <strong className="text-foreground">1. Tell us the problem.</strong> Share your
+                site, system, location and goal.
+              </li>
+              <li>
+                <strong className="text-foreground">2. Confirm fit and availability.</strong> Our
+                team will explain what is feasible and what stage any related project has reached.
+              </li>
+              <li>
+                <strong className="text-foreground">3. Agree the next step.</strong> Any proposal or
+                delivery plan follows only after the scope is understood.
+              </li>
+            </ol>
+            <Link to="/contact" className="btn-base btn-primary mt-7">
+              Send a service enquiry <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
           <div className="mt-6 overflow-hidden rounded-2xl">
             <img src={s.image} alt={s.title} loading="lazy" className="h-64 w-full object-cover" />

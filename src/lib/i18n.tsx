@@ -16,7 +16,7 @@ const en: Dict = {
   "nav.about": "About",
   "nav.iot": "IoT",
   "nav.sysmart": "Sysmart Agro",
-  "nav.platforms": "Products & Platforms",
+  "nav.platforms": "Our work",
   "nav.projects": "Projects",
   "nav.partners": "Partners",
   "nav.investors": "Investors",
@@ -31,7 +31,7 @@ const en: Dict = {
   "nav.gallery": "Gallery",
   "nav.news": "News",
   "nav.marketplace": "Marketplace",
-  "nav.loans": "Loans",
+  "nav.loans": "Farm finance concept",
   "nav.careers": "Careers",
   "nav.contact": "Contact",
   "hero.eyebrow": "AgriTech powered by AI, IoT and Smart Technology · Kano, Nigeria",
@@ -39,18 +39,20 @@ const en: Dict = {
   "hero.titleLead": "AgriTech innovation",
   "hero.titleAccent": "powered by AI, IoT and engineering",
   "hero.sub":
-    "SYLUTION LTD builds intelligent systems for real-world applications, combining artificial intelligence, Internet of Things, electronics, robotics, drone and solar technology—with AgriTech as our main application area in Nigeria.",
-  "hero.cta1": "Explore Sysmart Agro",
+    "We build sensors, controllers and software for agriculture and practical needs. We also teach hands-on AI, IoT and electronics in Kano.",
+  "hero.cta1": "Explore the Sysmart Agro project",
   "hero.cta2": "Talk to an engineer",
   "hero.cta3": "Contact Us",
+  "hero.trainingCta": "Practical training: AI, IoT and smart farming",
   "hero.visual.alt": "Illustration of a drone surveying a smart agriculture field",
   "hero.visual.sensing": "Connected field sensing",
   "hero.visual.aerial": "Aerial crop data",
-  "cta.title": "Let's build the next deployment together",
-  "cta.sub": "Investors, banks, governments, NGOs, universities and enterprises, talk to our team.",
-  "cta.button": "Start a conversation",
+  "cta.title": "Discuss a service, project or training need",
+  "cta.sub":
+    "Send an enquiry and we will confirm scope and availability. This is not an order, course booking or loan application.",
+  "cta.button": "Send an enquiry",
   "footer.about":
-    "An African technology company engineering Internet of Things devices, artificial intelligence, electronics, robotics and software for industry, energy, cities, healthcare and agriculture.",
+    "A technology engineering and training company based in Kano, Nigeria. We build AI, IoT and electronics systems, with smart agriculture as our main focus.",
 
   "footer.quick": "Quick Links",
   "footer.solutions": "Solutions",
@@ -63,7 +65,7 @@ const ha: Dict = {
   "nav.about": "Game da Mu",
   "nav.iot": "IoT",
   "nav.sysmart": "Sysmart Agro",
-  "nav.platforms": "Products & Platforms",
+  "nav.platforms": "Ayyukanmu",
   "nav.projects": "Ayyuka",
   "nav.partners": "Abokan Hulɗa",
   "nav.investors": "Masu Zuba Jari",
@@ -78,7 +80,7 @@ const ha: Dict = {
   "nav.gallery": "Hotuna",
   "nav.news": "Labarai",
   "nav.marketplace": "Kasuwa",
-  "nav.loans": "Rance",
+  "nav.loans": "Tunani kan kuɗin noma",
   "nav.careers": "Aikin Yi",
   "nav.contact": "Tuntube Mu",
   "hero.eyebrow": "AgriTech ta hanyar AI, IoT da Fasahar Zamani · Kano, Najeriya",
@@ -86,18 +88,20 @@ const ha: Dict = {
   "hero.titleLead": "Kirkire-kirkiren AgriTech",
   "hero.titleAccent": "ta hanyar AI, IoT da injiniya",
   "hero.sub":
-    "SYLUTION LTD tana gina tsarin fasaha masu aiki ga matsalolin rayuwa, tana haɗa AI, IoT, na'urorin lantarki, robotics, jirage marasa matuki da hasken rana—tare da AgriTech a matsayin babban fannin amfani a Najeriya.",
-  "hero.cta1": "Duba Sysmart Agro",
+    "Muna gina na'urorin auna bayanai, masu sarrafawa da manhajoji don noma da bukatu na zahiri. Muna koyar da AI, IoT da lantarki ta aiki da hannu a Kano.",
+  "hero.cta1": "Duba aikin Sysmart Agro",
   "hero.cta2": "Tattauna da injiniya",
   "hero.cta3": "Tuntube Mu",
+  "hero.trainingCta": "Horo mai amfani: AI, IoT da noma na zamani",
   "hero.visual.alt": "Hoton jirgi mara matuƙi yana duba gonar fasaha",
   "hero.visual.sensing": "Auna gonaki ta IoT",
   "hero.visual.aerial": "Bayanan gona daga sama",
-  "cta.title": "Bari mu gina aiki na gaba tare",
-  "cta.sub": "Masu zuba jari, bankuna, gwamnati, NGO, jami'o'i da kamfanoni, ku tuntube mu.",
-  "cta.button": "Fara tattaunawa",
+  "cta.title": "Tattauna bukatar sabis, aiki ko horo",
+  "cta.sub":
+    "Aika tambaya domin mu tabbatar da abin da ake bukata da samuwa. Wannan ba oda ba ce, ba rajistar horo ko neman rance ba.",
+  "cta.button": "Aika tambaya",
   "footer.about":
-    "Kamfanin fasaha na Afirka da ke kera na'urorin IoT, basirar wucin gadi, na'urorin lantarki, robotics da manhajoji domin masana'antu, makamashi, birane, lafiya da noma.",
+    "Kamfanin injiniyan fasaha da horo ne a Kano, Najeriya. Muna gina tsarin AI, IoT da lantarki, tare da mayar da hankali kan noma na zamani.",
 
   "footer.quick": "Hanyoyin Sauri",
   "footer.solutions": "Ayyukanmu",
@@ -110,7 +114,7 @@ const fr: Dict = {
   "nav.about": "À propos",
   "nav.iot": "IoT",
   "nav.sysmart": "Sysmart Agro",
-  "nav.platforms": "Produits & Plateformes",
+  "nav.platforms": "Nos activités",
   "nav.projects": "Projets",
   "nav.partners": "Partenaires",
   "nav.investors": "Investisseurs",
@@ -125,7 +129,7 @@ const fr: Dict = {
   "nav.gallery": "Galerie",
   "nav.news": "Actualités",
   "nav.marketplace": "Marché",
-  "nav.loans": "Crédits",
+  "nav.loans": "Projet de financement agricole",
   "nav.careers": "Carrières",
   "nav.contact": "Contact",
   "hero.eyebrow":
@@ -134,18 +138,20 @@ const fr: Dict = {
   "hero.titleLead": "Innovation AgriTech",
   "hero.titleAccent": "propulsée par l'IA, l'IoT et l'ingénierie",
   "hero.sub":
-    "SYLUTION LTD applique l'intelligence artificielle, l'IoT, l'électronique, la robotique, les drones et le solaire à l'agriculture moderne et aux problèmes réels au Nigeria.",
-  "hero.cta1": "Découvrir Sysmart Agro",
+    "Nous construisons des capteurs, des contrôleurs et des logiciels pour l'agriculture et des besoins concrets. Nous enseignons aussi l'IA, l'IoT et l'électronique à Kano.",
+  "hero.cta1": "Découvrir le projet Sysmart Agro",
   "hero.cta2": "Parler à un ingénieur",
   "hero.cta3": "Nous contacter",
+  "hero.trainingCta": "Formation pratique : IA, IoT et agriculture intelligente",
   "hero.visual.alt": "Illustration d'un drone qui observe un champ agricole connecté",
   "hero.visual.sensing": "Capteurs connectés",
   "hero.visual.aerial": "Données agricoles aériennes",
-  "cta.title": "Construisons ensemble le prochain déploiement",
-  "cta.sub": "Investisseurs, banques, gouvernements, ONG, universités et entreprises.",
-  "cta.button": "Démarrer la conversation",
+  "cta.title": "Parlons de votre besoin en service, projet ou formation",
+  "cta.sub":
+    "Envoyez une demande pour confirmer le périmètre et les disponibilités. Ce n'est ni une commande, ni une inscription, ni une demande de prêt.",
+  "cta.button": "Envoyer une demande",
   "footer.about":
-    "Une entreprise technologique africaine qui conçoit des objets connectés, de l'intelligence artificielle, de l'électronique, de la robotique et des logiciels pour l'industrie, l'énergie, les villes, la santé et l'agriculture.",
+    "Entreprise d'ingénierie technologique et de formation basée à Kano, au Nigeria. Nous créons des systèmes d'IA, d'IoT et d'électronique, principalement pour l'agriculture intelligente.",
 
   "footer.quick": "Liens rapides",
   "footer.solutions": "Solutions",
@@ -158,7 +164,7 @@ const ar: Dict = {
   "nav.about": "من نحن",
   "nav.iot": "إنترنت الأشياء",
   "nav.sysmart": "سيسمارت أجرو",
-  "nav.platforms": "المنتجات والمنصات",
+  "nav.platforms": "أعمالنا",
   "nav.projects": "المشاريع",
   "nav.partners": "الشركاء",
   "nav.investors": "المستثمرون",
@@ -173,7 +179,7 @@ const ar: Dict = {
   "nav.gallery": "المعرض",
   "nav.news": "الأخبار",
   "nav.marketplace": "السوق",
-  "nav.loans": "التمويل",
+  "nav.loans": "مبادرة تمويل زراعي",
   "nav.careers": "الوظائف",
   "nav.contact": "اتصل بنا",
   "hero.eyebrow": "تقنيات زراعية مدعومة بالذكاء الاصطناعي وإنترنت الأشياء · كانو، نيجيريا",
@@ -181,18 +187,20 @@ const ar: Dict = {
   "hero.titleLead": "ابتكار زراعي متقدم",
   "hero.titleAccent": "مدعوم بالذكاء الاصطناعي وإنترنت الأشياء",
   "hero.sub":
-    "تطبق شركة SYLUTION LTD الذكاء الاصطناعي وإنترنت الأشياء والإلكترونيات والروبوتات والطائرات المسيّرة والطاقة الشمسية على الزراعة الحديثة والمشكلات الواقعية في نيجيريا.",
-  "hero.cta1": "استكشف Sysmart Agro",
+    "نصمم أجهزة الاستشعار ووحدات التحكم والبرمجيات للزراعة والاحتياجات العملية. كما ندرّس الذكاء الاصطناعي وإنترنت الأشياء والإلكترونيات عملياً في كانو.",
+  "hero.cta1": "استكشف مشروع Sysmart Agro",
   "hero.cta2": "تحدث إلى مهندس",
   "hero.cta3": "اتصل بنا",
+  "hero.trainingCta": "تدريب عملي: الذكاء الاصطناعي وإنترنت الأشياء والزراعة الذكية",
   "hero.visual.alt": "رسم لطائرة مسيّرة تراقب حقلاً زراعياً ذكياً",
   "hero.visual.sensing": "استشعار متصل",
   "hero.visual.aerial": "بيانات زراعية جوية",
-  "cta.title": "لنبنِ المشروع القادم معًا",
-  "cta.sub": "المستثمرون والبنوك والحكومات والمنظمات والجامعات والشركات.",
-  "cta.button": "ابدأ المحادثة",
+  "cta.title": "تحدث معنا عن خدمة أو مشروع أو تدريب",
+  "cta.sub":
+    "أرسل استفسارًا لنتأكد من النطاق والتوفر. هذا ليس طلب شراء أو تسجيلًا في دورة أو طلب قرض.",
+  "cta.button": "أرسل استفسارًا",
   "footer.about":
-    "شركة تقنية أفريقية تهندس أجهزة إنترنت الأشياء والذكاء الاصطناعي والإلكترونيات والروبوتات والبرمجيات للصناعة والطاقة والمدن والصحة والزراعة.",
+    "شركة للهندسة التقنية والتدريب مقرها كانو، نيجيريا. نبني أنظمة الذكاء الاصطناعي وإنترنت الأشياء والإلكترونيات، مع تركيز رئيسي على الزراعة الذكية.",
 
   "footer.quick": "روابط سريعة",
   "footer.solutions": "الحلول",
@@ -253,9 +261,21 @@ const PHRASES: Record<Exclude<LangCode, "en">, Dict> = {
     "SYLUTION Academy": "Makarantar SYLUTION",
     "Technology only creates value when people can run it":
       "Fasaha tana amfani ne kawai idan mutane sun iya sarrafa ta",
+    "Practical training in AI, IoT and smart agriculture":
+      "Koyon AI, IoT da noma na zamani ta hanyar aiki da hannu",
+    "Learn AI tools, IoT sensors, ESP32/Arduino, electronics, smart irrigation, drones, robotics and modern agriculture through guided, hands-on projects. For youth, women, farmers, students, technicians and institutions. Taught in English or Hausa in Kano.":
+      "Koyi kayan aikin AI, na'urorin IoT, ESP32/Arduino, lantarki, ban ruwa mai sarrafa kansa, drones, robotics da noma na zamani ta ayyukan gwaji tare da kulawa. Horon ya dace da matasa, mata, manoma, ɗalibai, ƙwararru da cibiyoyi; ana koyar da shi da Hausa ko Turanci a Kano.",
     Programmes: "Shirye-shirye",
-    "Eleven programmes, one practical standard":
-      "Shirye-shirye goma sha daya, matsayi guda na aiki",
+    "Nine practical programmes, one hands-on approach":
+      "Shirye-shiryen horo tara masu aiki da hannu",
+    "Choose from AI and connected sensors to smart farming, drones and automation. Every programme includes guided practice on real equipment.":
+      "Zaɓi daga AI da na'urorin firikwensin IoT zuwa noma na zamani, drones da automation. Kowane shiri yana da aikin gwaji tare da kulawa a kan kayan aiki na gaske.",
+    "See the nine programmes": "Duba shirye-shiryen horo tara",
+    "Ask about training": "Tambayi game da horo",
+    "Ask about training or request a cohort": "Tambayi game da horo ko neman horon rukuni",
+    "This form sends an enquiry, not an instant enrolment. Select ‘Training academy’ and tell us your topic, audience and group size; the team will confirm availability and next steps within two working days.":
+      "Wannan fom ɗin tambaya ne, ba shiga horo kai tsaye ba. Zaɓi ‘Training academy’ kuma ka bayyana fannin da kake so, waɗanda za su halarta da girman rukuni; ƙungiyarmu za ta tabbatar da samuwa da mataki na gaba cikin kwanakin aiki biyu.",
+    "Send a training enquiry": "Aika tambayar horo",
     // Gallery
     Gallery: "Hotuna",
     "The work, as it actually looks": "Aikin, kamar yadda yake a zahiri",
@@ -329,8 +349,21 @@ const PHRASES: Record<Exclude<LangCode, "en">, Dict> = {
     "SYLUTION Academy": "Académie SYLUTION",
     "Technology only creates value when people can run it":
       "La technologie ne crée de valeur que si les gens savent l'utiliser",
+    "Practical training in AI, IoT and smart agriculture":
+      "Formation pratique en IA, IoT et agriculture intelligente",
+    "Learn AI tools, IoT sensors, ESP32/Arduino, electronics, smart irrigation, drones, robotics and modern agriculture through guided, hands-on projects. For youth, women, farmers, students, technicians and institutions. Taught in English or Hausa in Kano.":
+      "Apprenez les outils d'IA, les capteurs IoT, ESP32/Arduino, l'électronique, l'irrigation intelligente, les drones, la robotique et l'agriculture moderne grâce à des projets pratiques encadrés. Pour les jeunes, les femmes, les agriculteurs, les étudiants, les techniciens et les institutions. Formation en anglais ou en haoussa à Kano.",
     Programmes: "Programmes",
-    "Eleven programmes, one practical standard": "Onze programmes, un même standard pratique",
+    "Nine practical programmes, one hands-on approach":
+      "Neuf programmes pratiques, une même approche concrète",
+    "Choose from AI and connected sensors to smart farming, drones and automation. Every programme includes guided practice on real equipment.":
+      "Choisissez parmi l'IA, les capteurs connectés, l'agriculture intelligente, les drones et l'automatisation. Chaque programme comprend une pratique encadrée sur du matériel réel.",
+    "See the nine programmes": "Voir les neuf programmes",
+    "Ask about training": "Se renseigner sur la formation",
+    "Ask about training or request a cohort": "Se renseigner ou demander une session de groupe",
+    "This form sends an enquiry, not an instant enrolment. Select ‘Training academy’ and tell us your topic, audience and group size; the team will confirm availability and next steps within two working days.":
+      "Ce formulaire envoie une demande, il ne confirme pas une inscription immédiate. Choisissez « Training academy » et indiquez le sujet, le public et la taille du groupe ; notre équipe confirmera les disponibilités et la suite sous deux jours ouvrés.",
+    "Send a training enquiry": "Envoyer une demande de formation",
     Gallery: "Galerie",
     "The work, as it actually looks": "Le travail, tel qu'il est vraiment",
     "What we are building, shipping and proving": "Ce que nous construisons, livrons et prouvons",
@@ -397,8 +430,20 @@ const PHRASES: Record<Exclude<LangCode, "en">, Dict> = {
     "SYLUTION Academy": "أكاديمية SYLUTION",
     "Technology only creates value when people can run it":
       "التقنية لا تصنع قيمة إلا حين يستطيع الناس تشغيلها",
+    "Practical training in AI, IoT and smart agriculture":
+      "تدريب عملي في الذكاء الاصطناعي وإنترنت الأشياء والزراعة الذكية",
+    "Learn AI tools, IoT sensors, ESP32/Arduino, electronics, smart irrigation, drones, robotics and modern agriculture through guided, hands-on projects. For youth, women, farmers, students, technicians and institutions. Taught in English or Hausa in Kano.":
+      "تعلّم أدوات الذكاء الاصطناعي، وحساسات إنترنت الأشياء، وESP32/Arduino، والإلكترونيات، والري الذكي، والطائرات المسيّرة، والروبوتات والزراعة الحديثة من خلال مشاريع عملية بإشراف. التدريب موجّه للشباب والنساء والمزارعين والطلاب والفنيين والمؤسسات، ويُقدّم بالإنجليزية أو الهوسا في كانو.",
     Programmes: "البرامج",
-    "Eleven programmes, one practical standard": "أحد عشر برنامجًا بمعيار عملي واحد",
+    "Nine practical programmes, one hands-on approach": "تسعة برامج تدريبية بتعلّم عملي",
+    "Choose from AI and connected sensors to smart farming, drones and automation. Every programme includes guided practice on real equipment.":
+      "اختر من الذكاء الاصطناعي والحساسات المتصلة إلى الزراعة الذكية والطائرات المسيّرة والأتمتة. يتضمن كل برنامج تدريبًا عمليًا بإشراف وعلى معدات حقيقية.",
+    "See the nine programmes": "اعرض البرامج التسعة",
+    "Ask about training": "استفسر عن التدريب",
+    "Ask about training or request a cohort": "استفسر عن التدريب أو اطلب مجموعة تدريبية",
+    "This form sends an enquiry, not an instant enrolment. Select ‘Training academy’ and tell us your topic, audience and group size; the team will confirm availability and next steps within two working days.":
+      "يرسل هذا النموذج استفسارًا ولا يؤكد التسجيل فورًا. اختر «Training academy» وأخبرنا بالموضوع والجمهور وحجم المجموعة؛ سيؤكد الفريق التوفر والخطوات التالية خلال يومي عمل.",
+    "Send a training enquiry": "أرسل استفسارًا عن التدريب",
     Gallery: "المعرض",
     "The work, as it actually looks": "العمل كما هو على أرض الواقع",
     "What we are building, shipping and proving": "ما نبنيه ونطلقه ونثبته",

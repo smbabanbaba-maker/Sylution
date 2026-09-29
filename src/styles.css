@@ -1578,8 +1578,8 @@
 
 @media (max-width: 639px) {
   .home-hero__layout {
-    gap: 1.35rem;
-    padding-block: 6.25rem 1.75rem;
+    gap: 1rem;
+    padding-block: 5.25rem 1.35rem;
   }
 
   .home-hero__eyebrow {
@@ -1596,20 +1596,20 @@
   }
 
   .home-hero__title {
-    max-width: 12ch;
-    font-size: clamp(2.35rem, 10.6vw, 3.8rem);
-    letter-spacing: -0.07em;
+    max-width: 18ch;
+    font-size: clamp(2.1rem, 8.8vw, 3.1rem);
+    letter-spacing: -0.06em;
   }
 
   .home-hero__description {
-    margin-top: 1rem;
+    margin-top: 0.8rem;
     font-size: 0.9rem;
-    line-height: 1.65;
+    line-height: 1.55;
   }
 
   .home-hero__actions {
-    gap: 0.6rem;
-    margin-top: 1.2rem;
+    gap: 0.5rem;
+    margin-top: 1rem;
   }
 
   .home-hero__primary {
@@ -1631,13 +1631,13 @@
 
   .home-hero__proof {
     gap: 0.55rem;
-    margin-top: 1rem;
+    margin-top: 0.75rem;
     font-size: 0.68rem;
   }
 
   .home-hero__visual {
-    min-height: 18rem;
-    aspect-ratio: 1.14;
+    min-height: 0;
+    aspect-ratio: 1.35;
     border-radius: 1.3rem;
   }
 

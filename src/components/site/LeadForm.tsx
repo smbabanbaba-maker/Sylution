@@ -5,14 +5,18 @@ import { CONTACT } from "@/lib/site-data";
 import { Reveal } from "./Reveal";
 
 const NEEDS = [
-  "IoT deployment",
-  "Artificial intelligence",
-  "Electronics and PCB",
-  "Industrial automation",
+  "AI, data or software",
+  "IoT sensors and monitoring",
+  "Electronics and embedded systems",
+  "Robotics and automation",
   "Drone technology",
-  "Renewable energy",
+  "Solar and energy",
+  "Smart agriculture and irrigation",
+  "Sysmart Agro project",
   "Training academy",
-  "Partnership or investment",
+  "Research or partnership",
+  "Marketplace feedback (not an order)",
+  "Farm-finance partnership concept (not an application)",
   "Other",
 ];
 
@@ -28,8 +32,9 @@ export function LeadForm() {
             Tell us what you need, we reply within two working days
           </h2>
           <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-            Share a few details about your site, process or product idea. Our engineering team reviews every enquiry
-            and comes back with a technical direction, not a sales script.
+            Share a few details about your site, process or product idea. We will confirm scope and
+            availability. This form is an enquiry—not a product order, course booking or loan
+            application.
           </p>
           <ul className="mt-8 space-y-3.5 text-sm text-muted-foreground">
             <li className="flex items-center gap-3">
@@ -39,7 +44,8 @@ export function LeadForm() {
               <Phone className="h-4 w-4 shrink-0 text-primary" /> {CONTACT.phones[0]}
             </li>
             <li className="flex items-center gap-3">
-              <ShieldCheck className="h-4 w-4 shrink-0 text-primary" /> Your details are used only to answer your enquiry.
+              <ShieldCheck className="h-4 w-4 shrink-0 text-primary" /> Your details are used only
+              to answer your enquiry.
             </li>
           </ul>
         </Reveal>
@@ -105,25 +111,32 @@ export function LeadForm() {
               }
             }}
           >
-            <h3 className="font-display text-xl font-bold tracking-tight">Request a callback</h3>
+            <h3 className="font-display text-xl font-bold tracking-tight">
+              Send a project enquiry
+            </h3>
             <div className="grid gap-4 sm:grid-cols-2">
               <LeadField label="Full name" name="lead-name" autoComplete="name" maxLength={100} />
-              <LeadField label="Email" name="lead-email" type="email" autoComplete="email" maxLength={255} />
+              <LeadField
+                label="Email"
+                name="lead-email"
+                type="email"
+                autoComplete="email"
+                maxLength={255}
+              />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <LeadField label="Phone number" name="lead-phone" type="tel" autoComplete="tel" maxLength={25} />
+              <LeadField
+                label="Phone number"
+                name="lead-phone"
+                type="tel"
+                autoComplete="tel"
+                maxLength={25}
+              />
               <div>
-                <label
-                  htmlFor="lead-need"
-                  className="field-label"
-                >
+                <label htmlFor="lead-need" className="field-label">
                   What do you need
                 </label>
-                <select
-                  id="lead-need"
-                  name="lead-need"
-                  className="field-input"
-                >
+                <select id="lead-need" name="lead-need" className="field-input">
                   {NEEDS.map((n) => (
                     <option key={n}>{n}</option>
                   ))}
@@ -131,10 +144,7 @@ export function LeadForm() {
               </div>
             </div>
             <div>
-              <label
-                htmlFor="lead-message"
-                className="field-label"
-              >
+              <label htmlFor="lead-message" className="field-label">
                 Details (optional)
               </label>
               <textarea
@@ -146,11 +156,7 @@ export function LeadForm() {
                 className="field-input"
               />
             </div>
-            <button
-              type="submit"
-              disabled={sending}
-              className="btn-base btn-primary mt-2 w-full"
-            >
+            <button type="submit" disabled={sending} className="btn-base btn-primary mt-2 w-full">
               {sending ? "Preparing…" : "Send my enquiry"} <Send className="h-4 w-4" />
             </button>
           </form>

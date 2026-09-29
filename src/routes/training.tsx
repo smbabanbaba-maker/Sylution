@@ -12,21 +12,25 @@ import { PageHero, SectionHeading } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
 import { BRAND_IMAGES, FAQS, TRAINING_PROGRAMMES } from "@/lib/site-data";
+import { useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/training")({
   head: () => ({
     meta: [
-      { title: "SYLUTION Academy, Drone, AI, Solar and Agritech Training" },
+      { title: "Hands-on AI, IoT and AgriTech Training in Kano | SYLUTION Academy" },
       {
         name: "description",
         content:
-          "SYLUTION Academy delivers hands-on training in drones, AI, robotics, smart irrigation, solar, greenhouse, agribusiness, digital agriculture, youth and women programmes.",
+          "Practical training in AI, IoT, ESP32/Arduino, electronics, smart irrigation, drones, robotics and modern agriculture. Taught in English or Hausa in Kano; ask SYLUTION about programme availability and group cohorts.",
       },
-      { property: "og:title", content: "SYLUTION Academy, Agricultural Technology Training" },
+      {
+        property: "og:title",
+        content: "SYLUTION Academy | Practical AI, IoT and AgriTech Training",
+      },
       {
         property: "og:description",
         content:
-          "Practical training programmes delivered in English and Hausa at our Kano centre.",
+          "Hands-on AI, IoT, electronics, drone and modern-agriculture training for students, farmers, technicians and institutions. Taught in English or Hausa in Kano.",
       },
     ],
   }),
@@ -34,25 +38,30 @@ export const Route = createFileRoute("/training")({
 });
 
 function Training() {
+  const { tr } = useLang();
+
   return (
     <>
       <PageHero
         eyebrow="SYLUTION Academy"
-        title="Technology only creates value when people can run it"
-        subtitle="Practical, hands-on training for farmers, technicians, students, and institutions, delivered on real equipment in real-world field conditions. Agricultural training is delivered in English and Hausa only."
+        title="Practical training in AI, IoT and smart agriculture"
+        subtitle="Learn AI tools, IoT sensors, ESP32/Arduino, electronics, smart irrigation, drones, robotics and modern agriculture through guided, hands-on projects. For youth, women, farmers, students, technicians and institutions. Taught in English or Hausa in Kano."
         image={BRAND_IMAGES.trainingBanner}
         compact
       >
-        <Link to="/contact" className="btn-base btn-primary">
-          Enrol or request a cohort <ArrowRight className="h-4 w-4" />
+        <a href="#programmes" className="btn-base btn-primary">
+          {tr("See the nine programmes")} <ArrowRight className="h-4 w-4" />
+        </a>
+        <Link to="/contact" className="btn-base btn-ghost">
+          {tr("Ask about training")} <ArrowRight className="h-4 w-4" />
         </Link>
       </PageHero>
 
-      <section className="container-x section-y">
+      <section id="programmes" className="container-x scroll-mt-24 section-y">
         <SectionHeading
           eyebrow="Programmes"
-          title="Eleven programmes, one practical standard"
-          description="Every programme mixes classroom fundamentals with supervised hands-on operation, focusing on practical skill acquisition."
+          title="Nine practical programmes, one hands-on approach"
+          description="Choose from AI and connected sensors to smart farming, drones and automation. Every programme includes guided practice on real equipment."
         />
         <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-3">
           {TRAINING_PROGRAMMES.map((p, i) => (
@@ -211,7 +220,8 @@ function Training() {
                 </span>
               </div>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                Participants who meet the required attendance and assessment standards receive a certificate of completion.
+                Participants who meet the required attendance and assessment standards receive a
+                certificate of completion.
               </p>
             </div>
             <div className="mt-7 border-t border-border pt-6">
@@ -235,11 +245,11 @@ function Training() {
           <div>
             <SectionHeading
               eyebrow="Registration"
-              title="Start with your objective"
-              description="Tell us who the training is for, what you want participants to learn and what equipment or setting is available."
+              title="Ask about training or request a cohort"
+              description="This form sends an enquiry, not an instant enrolment. Select ‘Training academy’ and tell us your topic, audience and group size; the team will confirm availability and next steps within two working days."
             />
             <Link to="/contact" className="btn-base btn-primary mt-7">
-              Enrol or request a cohort <ArrowRight className="h-4 w-4" />
+              {tr("Send a training enquiry")} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
           <div>

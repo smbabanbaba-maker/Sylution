@@ -3,6 +3,7 @@ import { ArrowRight, Cpu, Droplets, Radio, Sun, Gauge, ClipboardCheck } from "lu
 import { PageHero, SectionHeading } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
+import { StatusBadge } from "@/components/site/StatusKey";
 import { BRAND_IMAGES, SYSMART_FLOW } from "@/lib/site-data";
 
 export const Route = createFileRoute("/sysmart-agro")({
@@ -11,15 +12,15 @@ export const Route = createFileRoute("/sysmart-agro")({
       { title: "Sysmart Agro | Flagship IoT Project by SYLUTION" },
       {
         name: "description",
-          content:
-            "Sysmart Agro is the flagship IoT smart agriculture project of SYLUTION: a field controller with soil and climate sensing, remote irrigation control and a monitoring dashboard. Status: active project.",
-        },
-        { property: "og:title", content: "Sysmart Agro, IoT smart agriculture project by SYLUTION" },
-        {
-          property: "og:description",
-          content:
-            "Field controller, soil and climate sensing, remote irrigation control and dashboards, engineered in Kano, Nigeria. Currently in active development and field deployment.",
-        },
+        content:
+          "Sysmart Agro is the flagship IoT smart agriculture project of SYLUTION: a field controller with soil and climate sensing, remote irrigation control and a monitoring dashboard. Status: active project.",
+      },
+      { property: "og:title", content: "Sysmart Agro, IoT smart agriculture project by SYLUTION" },
+      {
+        property: "og:description",
+        content:
+          "Field controller, soil and climate sensing, remote irrigation control and dashboards, engineered in Kano, Nigeria. Currently in active development and field deployment.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -36,27 +37,76 @@ const OBJECTIVES = [
 ];
 
 const TECHNOLOGIES = [
-  { icon: Cpu, title: "Embedded controller", detail: "Custom board around an ESP32 class microcontroller with local control logic." },
-  { icon: Droplets, title: "Soil and climate sensing", detail: "Soil moisture, temperature and humidity inputs read on a fixed interval." },
-  { icon: Radio, title: "Connectivity", detail: "GSM and Wi-Fi uplink, with LoRa under evaluation for wider field coverage." },
-  { icon: Sun, title: "Power", detail: "Solar and battery operation designed for sites without stable grid supply." },
-  { icon: Gauge, title: "Dashboard", detail: "Web dashboard for readings, thresholds and pump status." },
-  { icon: ClipboardCheck, title: "Control", detail: "Relay driven pump and valve switching, manual override on the device." },
+  {
+    icon: Cpu,
+    title: "Embedded controller",
+    detail: "Custom board around an ESP32 class microcontroller with local control logic.",
+  },
+  {
+    icon: Droplets,
+    title: "Soil and climate sensing",
+    detail: "Soil moisture, temperature and humidity inputs read on a fixed interval.",
+  },
+  {
+    icon: Radio,
+    title: "Connectivity",
+    detail: "GSM and Wi-Fi uplink, with LoRa under evaluation for wider field coverage.",
+  },
+  {
+    icon: Sun,
+    title: "Power",
+    detail: "Solar and battery operation designed for sites without stable grid supply.",
+  },
+  {
+    icon: Gauge,
+    title: "Dashboard",
+    detail: "Web dashboard for readings, thresholds and pump status.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Control",
+    detail: "Relay driven pump and valve switching, manual override on the device.",
+  },
 ];
 
 function technologyAccent(title: string) {
-  if (title === "Soil and climate sensing" || title === "Connectivity") return "bg-primary/15 text-primary";
+  if (title === "Soil and climate sensing" || title === "Connectivity")
+    return "bg-primary/15 text-primary";
   if (title === "Power") return "bg-primary/15 text-primary";
   return "bg-primary/15 text-primary";
 }
 
 const TIMELINE = [
-  { phase: "Concept", detail: "Problem definition with farmers around Kano and requirement gathering.", state: "Completed" },
-  { phase: "Circuit design", detail: "Schematic, component selection and bench validation.", state: "Completed" },
-  { phase: "Engineering build", detail: "Enclosure, controller board, display and sensor integration.", state: "Completed" },
-  { phase: "Field testing", detail: "Installation on test plots, endurance and reliability observation.", state: "In progress" },
-  { phase: "Pilot deployment", detail: "Small group of farms running the full monitoring and control loop.", state: "Planned" },
-  { phase: "Commercial release", detail: "Production units, support and documentation.", state: "Planned" },
+  {
+    phase: "Concept",
+    detail: "Problem definition with farmers around Kano and requirement gathering.",
+    state: "Completed",
+  },
+  {
+    phase: "Circuit design",
+    detail: "Schematic, component selection and bench validation.",
+    state: "Completed",
+  },
+  {
+    phase: "Engineering build",
+    detail: "Enclosure, controller board, display and sensor integration.",
+    state: "Completed",
+  },
+  {
+    phase: "Field testing",
+    detail: "Installation on test plots, endurance and reliability observation.",
+    state: "In progress",
+  },
+  {
+    phase: "Pilot deployment",
+    detail: "Small group of farms running the full monitoring and control loop.",
+    state: "Planned",
+  },
+  {
+    phase: "Commercial release",
+    detail: "Production units, support and documentation.",
+    state: "Planned",
+  },
 ];
 
 const ROADMAP = [
@@ -78,19 +128,14 @@ function SysmartAgroPage() {
         compact
       >
         <div className="flex flex-wrap items-center gap-3">
-          <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-primary">
-            <span className="h-2 w-2 rounded-full bg-primary" /> Status: Active Project
+          <StatusBadge status="Active Project" />
+          <span className="text-sm font-semibold">
+            In development and field testing—not for online purchase.
           </span>
-          <Link
-            to="/contact"
-            className="btn-base btn-primary"
-          >
+          <Link to="/contact" className="btn-base btn-primary">
             Talk to the project team <ArrowRight className="h-4 w-4" />
           </Link>
-          <Link
-            to="/projects"
-            className="btn-base btn-ghost"
-          >
+          <Link to="/projects" className="btn-base btn-ghost">
             All projects
           </Link>
         </div>
@@ -108,7 +153,8 @@ function SysmartAgroPage() {
             />
           </div>
           <p className="mt-3 text-xs text-muted-foreground">
-            Sysmart Agro controller displaying live soil moisture and pump state during field deployment.
+            Sysmart Agro controller displaying live soil moisture and pump state during field
+            deployment.
           </p>
         </Reveal>
         <Reveal delay={0.12}>
@@ -140,7 +186,9 @@ function SysmartAgroPage() {
             {TECHNOLOGIES.map((t, i) => (
               <Reveal key={t.title} delay={(i % 3) * 0.07}>
                 <div className="card-luxe h-full p-7">
-                  <span className={`grid h-12 w-12 place-items-center rounded-2xl ${technologyAccent(t.title)}`}>
+                  <span
+                    className={`grid h-12 w-12 place-items-center rounded-2xl ${technologyAccent(t.title)}`}
+                  >
                     <t.icon className="h-6 w-6" />
                   </span>
                   <h3 className="mt-6 font-display text-lg font-bold">{t.title}</h3>
@@ -173,7 +221,6 @@ function SysmartAgroPage() {
           ))}
         </div>
       </section>
-
 
       <section className="container-x section-y">
         <SectionHeading
@@ -222,7 +269,12 @@ function SysmartAgroPage() {
           <Reveal delay={0.12}>
             <SectionHeading eyebrow="Gallery" title="Project images" />
             <div className="mt-8 grid grid-cols-2 gap-3">
-              {[BRAND_IMAGES.sysmart, BRAND_IMAGES.irrigation, BRAND_IMAGES.greenhouse, BRAND_IMAGES.pcb].map((src) => (
+              {[
+                BRAND_IMAGES.sysmart,
+                BRAND_IMAGES.irrigation,
+                BRAND_IMAGES.greenhouse,
+                BRAND_IMAGES.pcb,
+              ].map((src) => (
                 <div key={src} className="overflow-hidden rounded-2xl">
                   <img
                     src={src}

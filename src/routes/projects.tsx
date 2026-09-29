@@ -4,6 +4,8 @@ import { PageHero, SectionHeading } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
 import { CaseStudies } from "@/components/site/CaseStudies";
+import { StatusBadge, StatusKey } from "@/components/site/StatusKey";
+import { displayStatus } from "@/lib/status";
 import { BRAND_IMAGES, PROJECTS } from "@/lib/site-data";
 
 export const Route = createFileRoute("/projects")({
@@ -28,20 +30,21 @@ export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
 });
 
-const GROUPS = ["Active Project", "Testing", "Under development", "Research phase"] as const;
+const GROUPS = ["In development", "Testing / field validation", "Research"] as const;
 
 function ProjectsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Projects"
-        title="What our engineers are building"
-        subtitle="We publish the real stage of every project. Where something is still in research or under development, we say so."
+        eyebrow="Projects and research"
+        title="What our engineers are building and testing"
+        subtitle="These are internal projects and research—not a product shop or a list of completed client deployments. Each item is labelled by its current engineering stage."
         image={BRAND_IMAGES.iotLab}
         compact
       />
 
       <section className="container-x section-y">
+        <StatusKey />
         <Reveal>
           <Link
             to="/sysmart-agro"
@@ -59,8 +62,8 @@ function ProjectsPage() {
                 An intelligent IoT powered smart agriculture platform combining a field controller,
                 soil and climate sensing, remote irrigation control and a monitoring dashboard.
               </p>
-              <span className="mt-6 inline-flex rounded-full bg-primary/15 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-primary">
-                Status: Active Project
+              <span className="mt-6 inline-flex">
+                <StatusBadge status="Active Project" />
               </span>
               <span className="mt-6 flex items-center gap-2 text-sm font-semibold text-primary">
                 Open the project page{" "}
@@ -72,11 +75,13 @@ function ProjectsPage() {
       </section>
 
       {GROUPS.map((group) => {
-        const items = PROJECTS.filter((p) => p.status === group && p.slug !== "sysmart-agro");
+        const items = PROJECTS.filter(
+          (p) => displayStatus(p.status) === group && p.slug !== "sysmart-agro",
+        );
         if (!items.length) return null;
         return (
           <section key={group} className="container-x pb-20">
-            <SectionHeading eyebrow={group} title={`${group} projects`} />
+            <SectionHeading eyebrow={group} title={`Projects: ${group.toLowerCase()}`} />
             <div className="mt-10 grid grid-cols-2 gap-5 lg:grid-cols-3">
               {items.map((p, i) => (
                 <Reveal key={p.slug} delay={(i % 3) * 0.07}>
@@ -94,7 +99,7 @@ function ProjectsPage() {
                         {p.summary}
                       </p>
                       <span className="mt-5 inline-flex rounded-full border border-border px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-muted-foreground">
-                        {p.status}
+                        <StatusBadge status={p.status} />
                       </span>
                     </div>
                   </article>

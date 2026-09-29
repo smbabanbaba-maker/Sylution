@@ -22,6 +22,7 @@ import { SectionHeading } from "@/components/site/PageHero";
 import { CTASection } from "@/components/site/CTASection";
 import { CaseStudies } from "@/components/site/CaseStudies";
 import { TechnicalAssessmentCTA } from "@/components/site/TechnicalAssessmentCTA";
+import { StatusBadge } from "@/components/site/StatusKey";
 import {
   SOLUTIONS,
   STATS,
@@ -41,7 +42,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "SYLUTION LTD is a Nigerian technology innovation company applying AI, IoT, electronics, robotics, drone and smart technology to modern agriculture and real world problems.",
+          "SYLUTION LTD builds AI, IoT and AgriTech systems in Nigeria and provides hands-on training in AI, IoT, electronics, drones and modern agriculture for students, farmers and technicians in Kano.",
       },
       {
         property: "og:title",
@@ -208,29 +209,65 @@ const TRAINING_AREAS = [
   "Smart Farming",
 ];
 
+const OFFERS = [
+  {
+    icon: CircuitBoard,
+    title: "Engineering services",
+    detail:
+      "We scope custom AI, IoT sensors, electronics and embedded systems, robotics, drones, solar and smart-agriculture work around a real need.",
+    link: "/solutions" as const,
+    action: "Explore engineering services",
+  },
+  {
+    icon: Sprout,
+    title: "Products and projects",
+    detail:
+      "Sysmart Agro is our flagship smart-farming project. Other listed products are in development, testing or research; none are available to order online.",
+    link: "/products" as const,
+    action: "See products and stages",
+  },
+  {
+    icon: GraduationCap,
+    title: "Practical training",
+    detail:
+      "Hands-on programmes cover AI, IoT, ESP32/Arduino, electronics, drones, robotics and modern agriculture. Ask us to confirm dates and availability.",
+    link: "/training" as const,
+    action: "View training programmes",
+  },
+];
+
 function Home() {
   return (
     <>
       <HomeHero />
 
-      {/* WELCOME MESSAGE */}
-      <section className="border-y border-border bg-surface section-y-sm">
-        <div className="container-x grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
-          <Reveal>
-            <p className="eyebrow">
-              <span aria-hidden className="h-px w-8 shrink-0 bg-primary" /> Welcome to SYLUTION
-            </p>
-            <h2 className="mt-4 font-display text-2xl font-bold leading-tight sm:text-3xl">
-              Technology engineered for practical progress
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Welcome to SYLUTION LTD, a Nigerian technology innovation company applying AI, IoT,
-              electronics, robotics and software to agriculture, industry, energy and real-world
-              problems.
-            </p>
-          </Reveal>
+      {/* CLEAR OFFER SUMMARY */}
+      <section className="container-x section-y-sm">
+        <SectionHeading
+          eyebrow="What SYLUTION does"
+          title="We build technology, develop products and teach practical skills"
+          description="SYLUTION is a technology engineering and training company based in Kano, Nigeria. Smart agriculture is our main application area."
+        />
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {OFFERS.map((offer, i) => (
+            <Reveal key={offer.title} delay={i * 0.07}>
+              <article className="card-luxe flex h-full flex-col p-6">
+                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-primary/10 text-primary">
+                  <offer.icon aria-hidden="true" className="h-5 w-5" />
+                </span>
+                <h3 className="mt-5 font-display text-lg font-bold">{offer.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  {offer.detail}
+                </p>
+                <Link
+                  to={offer.link}
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                >
+                  {offer.action} <ArrowRight className="h-4 w-4" />
+                </Link>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </section>
 
@@ -296,8 +333,8 @@ function Home() {
                   alt="Sysmart Agro controller operating beside an irrigated crop field"
                   loading="lazy"
                 />
-                <span className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/85 px-3 py-1.5 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-primary backdrop-blur-md">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Active Project
+                <span className="absolute left-5 top-5">
+                  <StatusBadge status="Active Project" />
                 </span>
               </div>
             </Reveal>
@@ -309,8 +346,9 @@ function Home() {
                 Sysmart Agro
               </h2>
               <p className="mt-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                SYSMART AGRO is an IoT-powered smart agriculture system combining soil and climate
-                sensing, smart irrigation control, monitoring and agricultural intelligence.
+                Sysmart Agro is our flagship smart-agriculture project: an IoT controller, soil and
+                climate sensing, irrigation control and monitoring. It is in development and field
+                testing, not available to purchase online.
               </p>
               <div className="mt-7 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
                 {SYSMART_SYSTEM.map((item) => (
@@ -368,15 +406,15 @@ function Home() {
         <div className="container-x">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
-              eyebrow="Our products"
-              title="Intelligent products. Connected systems. Real-world solutions."
-              description="A focused ecosystem spanning smart devices, IoT, AgriTech, robotics, drone and solar engineering."
+              eyebrow="Product development"
+              title="Products and systems at different stages"
+              description="Not an online shop: Sysmart Agro and the other product directions below are projects in development, testing or research. No items are available to order online."
             />
             <Link
               to="/products"
               className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
             >
-              Explore Products <ArrowRight className="h-4 w-4" />
+              See all product stages <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
           <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-5">
@@ -393,8 +431,8 @@ function Home() {
                       loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <span className="absolute left-3 top-3 rounded-full border border-white/40 bg-white/90 px-2 py-1 text-[0.55rem] font-bold uppercase tracking-[0.1em] text-primary">
-                      {category.status}
+                    <span className="absolute left-3 top-3">
+                      <StatusBadge status={category.status} />
                     </span>
                   </div>
                   <div className="p-4">
@@ -408,7 +446,7 @@ function Home() {
                       {category.detail}
                     </p>
                     <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-primary">
-                      Explore Products{" "}
+                      View project stage{" "}
                       <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                     </span>
                   </div>
@@ -565,11 +603,13 @@ function Home() {
               <span aria-hidden className="h-px w-8 shrink-0 bg-primary" /> SYLUTION Academy
             </p>
             <h2 className="mt-5 font-display text-3xl font-bold leading-tight sm:text-4xl">
-              Building the next generation of technology talent
+              Learn practical AI, IoT and smart-agriculture skills
             </h2>
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Practical training that connects people with AI, IoT, electronics, robotics, drones
-              and modern agriculture.
+              Hands-on training for youth, women, farmers, students and technicians—covering AI
+              tools, IoT sensors, ESP32/Arduino, electronics, drones, robotics and modern
+              agriculture. Sessions are taught in English or Hausa in Kano; ask us to confirm dates
+              and availability.
             </p>
             <div className="mt-7 flex flex-wrap gap-2">
               {TRAINING_AREAS.map((area) => (
@@ -585,7 +625,7 @@ function Home() {
               Youth · Women · Farmers · Students · Agripreneurs
             </p>
             <Link to="/training" className="btn-base btn-ghost mt-8">
-              Explore training <ArrowRight className="h-4 w-4" />
+              See training programmes <ArrowRight className="h-4 w-4" />
             </Link>
           </Reveal>
         </div>

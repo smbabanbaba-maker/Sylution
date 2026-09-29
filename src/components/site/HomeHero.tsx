@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowRight, MapPin, Sprout } from "lucide-react";
+import { ArrowRight, GraduationCap, MapPin, Sprout } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useLang } from "@/lib/i18n";
 import { DroneFlight } from "@/components/site/DroneFlight";
@@ -76,6 +76,14 @@ export function HomeHero() {
               AI · IoT · AgriTech
             </span>
           </motion.div>
+          <Link
+            to="/training"
+            className="mt-4 inline-flex max-w-full items-center gap-2 text-xs font-semibold text-primary underline-offset-4 transition hover:underline sm:max-w-[34rem] sm:text-sm"
+          >
+            <GraduationCap aria-hidden="true" className="h-4 w-4 shrink-0" />
+            <span>{t("hero.trainingCta")}</span>
+            <ArrowRight aria-hidden="true" className="h-4 w-4 shrink-0" />
+          </Link>
         </div>
 
         <motion.div
