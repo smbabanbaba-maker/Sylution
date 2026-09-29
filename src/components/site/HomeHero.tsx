@@ -2,7 +2,6 @@ import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight, GraduationCap, MapPin, Sprout } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useLang } from "@/lib/i18n";
-import { DroneFlight } from "@/components/site/DroneFlight";
 
 export function HomeHero() {
   const { t } = useLang();
@@ -107,13 +106,9 @@ export function HomeHero() {
             />
           </picture>
           <div aria-hidden="true" className="home-hero__image-wash" />
-          <DroneFlight />
           <div className="home-hero__visual-caption">
             <span aria-hidden="true" className="home-hero__caption-dot" />
             Practical technology for the field
-          </div>
-          <div className="home-hero__leaf" aria-hidden="true">
-            <Sprout className="h-5 w-5" />
           </div>
         </motion.div>
       </div>

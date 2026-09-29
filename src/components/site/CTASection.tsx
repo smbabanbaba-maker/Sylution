@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { CONTACT } from "@/lib/site-data";
 import { useLang } from "@/lib/i18n";
@@ -19,12 +19,11 @@ export function CTASection() {
             <h2 className="mx-auto mt-5 max-w-2xl text-[1.75rem] font-bold leading-[1.15] sm:text-4xl lg:text-[2.6rem]">
               {t("cta.title")}
             </h2>
-            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">{t("cta.sub")}</p>
+            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              {t("cta.sub")}
+            </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <Link
-                to="/contact"
-                className="btn-base btn-primary"
-              >
+              <Link to="/contact" className="btn-base btn-primary">
                 {t("cta.button")}
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -32,9 +31,14 @@ export function CTASection() {
                 href={`https://wa.me/${CONTACT.whatsapp}`}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="btn-base btn-ghost"
+                className="btn-base whatsapp-brand"
               >
-                <MessageCircle className="h-4 w-4" />
+                <img
+                  src="/brand/social/whatsapp.svg"
+                  alt=""
+                  aria-hidden="true"
+                  className="h-4 w-4 object-contain"
+                />
                 WhatsApp
               </a>
             </div>

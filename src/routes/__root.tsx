@@ -241,7 +241,7 @@ function FloatingWhatsApp() {
       target="_blank"
       rel="noreferrer noopener"
       aria-label="Chat with SYLUTION on WhatsApp"
-      className="fixed bottom-[4.75rem] right-4 z-50 grid h-12 w-12 place-items-center rounded-full bg-primary shadow-glow transition-transform duration-300 hover:scale-110 active:scale-95 sm:bottom-5 sm:right-[6.5rem] sm:h-14 sm:w-14"
+      className="floating-whatsapp fixed bottom-[4.75rem] right-4 z-50 grid h-12 w-12 place-items-center rounded-full transition-transform duration-300 hover:scale-110 active:scale-95 sm:bottom-5 sm:right-[6.5rem] sm:h-14 sm:w-14"
     >
       <img
         src="/brand/social/whatsapp.svg"

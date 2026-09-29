@@ -45,9 +45,10 @@ export function Footer() {
                     target="_blank"
                     rel="noreferrer noopener"
                     aria-label={`SYLUTION on ${s.name}`}
-                    className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/[0.03] transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-white/10"
+                    data-social={s.name.toLowerCase()}
+                    className="footer-social-link"
                   >
-                    <img src={mark} alt="" aria-hidden="true" className="h-4 w-4 object-contain" />
+                    <img src={mark} alt="" aria-hidden="true" className="h-5 w-5 object-contain" />
                   </a>
                 );
               })}
@@ -56,7 +57,7 @@ export function Footer() {
               href={`https://wa.me/${CONTACT.whatsapp}`}
               target="_blank"
               rel="noreferrer noopener"
-              className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/60 bg-primary/10 px-3.5 py-2 text-xs font-bold text-white transition-colors hover:bg-primary/20"
+              className="whatsapp-brand mt-4 inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-bold transition-colors"
             >
               <img
                 src="/brand/social/whatsapp.svg"
