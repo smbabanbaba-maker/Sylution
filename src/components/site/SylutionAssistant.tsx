@@ -229,7 +229,7 @@ export function SylutionAssistant() {
         aria-expanded={open}
         aria-controls="sylution-assistant-title"
         aria-label={open ? "Close SYLUTION AI Assistant" : "Open SYLUTION AI Assistant"}
-        className="fixed bottom-5 right-4 z-50 grid h-14 w-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-glow transition-transform duration-300 hover:scale-110 active:scale-95 sm:right-6"
+        className="assistant-launcher fixed bottom-5 right-4 z-50 grid h-14 w-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-glow transition-transform duration-300 hover:scale-110 active:scale-95 sm:right-6"
       >
         {open ? <X className="h-6 w-6" /> : <Bot className="h-6 w-6" />}
         <span className="pointer-events-none absolute -top-1 -right-1 grid h-4 min-w-4 place-items-center rounded-full border-2 border-background bg-foreground px-1 text-[8px] font-black text-background">

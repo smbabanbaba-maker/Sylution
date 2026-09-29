@@ -48,7 +48,7 @@ export function SiteSearch() {
         aria-haspopup="dialog"
         aria-keyshortcuts="Control+K Meta+K /"
         title={`${copy.button} (Ctrl+K)`}
-        className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-border bg-card/70 backdrop-blur transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        className="site-search-trigger grid h-11 w-11 shrink-0 place-items-center rounded-full border border-border bg-card/70 backdrop-blur transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
         <Search aria-hidden="true" className="h-5 w-5" />
       </button>
