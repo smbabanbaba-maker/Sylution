@@ -52,6 +52,18 @@ const en: Dict = {
   "hero.paths.training.label": "SYLUTION Academy",
   "hero.paths.training.title": "Practical training",
   "hero.paths.training.detail": "Hands-on AI, IoT, electronics and smart farming. Ask about dates.",
+  "home.opportunities.eyebrow": "Work with SYLUTION",
+  "home.opportunities.title": "Build practical technology with us.",
+  "home.opportunities.subtitle":
+    "Explore engineering partnerships or review SYLUTION’s current stage and investor information.",
+  "home.opportunities.partners.title": "For partners",
+  "home.opportunities.partners.detail":
+    "Collaboration paths for universities, industry, government, development organisations and research teams.",
+  "home.opportunities.partners.action": "Explore partnerships",
+  "home.opportunities.investors.title": "For investors",
+  "home.opportunities.investors.detail":
+    "See the company profile, Sysmart Agro’s current stage and stated priorities for capital.",
+  "home.opportunities.investors.action": "View investor information",
   "cta.title": "Discuss a service, project or training need",
   "cta.sub":
     "Send an enquiry and we will confirm scope and availability. This is not an order, course booking or loan application.",
@@ -107,6 +119,18 @@ const ha: Dict = {
   "hero.paths.training.label": "Makarantar SYLUTION",
   "hero.paths.training.title": "Horo na aiki da hannu",
   "hero.paths.training.detail": "AI, IoT, lantarki da noman zamani. A tambaye mu ranakun horo.",
+  "home.opportunities.eyebrow": "Yi aiki tare da SYLUTION",
+  "home.opportunities.title": "Mu gina fasahar aiki tare.",
+  "home.opportunities.subtitle":
+    "Duba hanyoyin haɗin gwiwar injiniyanci, ko karanta matsayin SYLUTION da bayanan masu sha'awar saka jari.",
+  "home.opportunities.partners.title": "Ga abokan haɗin gwiwa",
+  "home.opportunities.partners.detail":
+    "Hanyoyin haɗin gwiwa ga jami'o'i, masana'antu, gwamnati, ƙungiyoyin ci gaba da masu bincike.",
+  "home.opportunities.partners.action": "Duba hanyoyin haɗin gwiwa",
+  "home.opportunities.investors.title": "Ga masu zuba jari",
+  "home.opportunities.investors.detail":
+    "Duba bayanin kamfani, matsayin Sysmart Agro na yanzu, da abin da kamfani ya bayyana cewa zai yi da jari.",
+  "home.opportunities.investors.action": "Duba bayanan masu zuba jari",
   "cta.title": "Tattauna bukatar sabis, aiki ko horo",
   "cta.sub":
     "Aika tambaya domin mu tabbatar da abin da ake bukata da samuwa. Wannan ba oda ba ce, ba rajistar horo ko neman rance ba.",
@@ -164,6 +188,18 @@ const fr: Dict = {
   "hero.paths.training.title": "Formation pratique",
   "hero.paths.training.detail":
     "IA, IoT, électronique et agriculture intelligente. Demandez les dates.",
+  "home.opportunities.eyebrow": "Travailler avec SYLUTION",
+  "home.opportunities.title": "Construisons ensemble une technologie utile.",
+  "home.opportunities.subtitle":
+    "Découvrez nos partenariats d’ingénierie ou consultez les informations actuelles de SYLUTION pour les investisseurs.",
+  "home.opportunities.partners.title": "Pour les partenaires",
+  "home.opportunities.partners.detail":
+    "Des pistes de collaboration pour les universités, l’industrie, les pouvoirs publics, les organismes de développement et la recherche.",
+  "home.opportunities.partners.action": "Découvrir les partenariats",
+  "home.opportunities.investors.title": "Pour les investisseurs",
+  "home.opportunities.investors.detail":
+    "Consultez le profil de l’entreprise, l’état actuel de Sysmart Agro et les priorités de financement annoncées.",
+  "home.opportunities.investors.action": "Voir les informations investisseurs",
   "cta.title": "Parlons de votre besoin en service, projet ou formation",
   "cta.sub":
     "Envoyez une demande pour confirmer le périmètre et les disponibilités. Ce n'est ni une commande, ni une inscription, ni une demande de prêt.",
@@ -221,6 +257,18 @@ const ar: Dict = {
   "hero.paths.training.title": "تدريب عملي",
   "hero.paths.training.detail":
     "الذكاء الاصطناعي وإنترنت الأشياء والإلكترونيات والزراعة الذكية. اسأل عن المواعيد.",
+  "home.opportunities.eyebrow": "تعاون مع SYLUTION",
+  "home.opportunities.title": "لنبنِ معًا تقنيات عملية.",
+  "home.opportunities.subtitle":
+    "اكتشف فرص التعاون الهندسي أو اطّلع على المرحلة الحالية ومعلومات المستثمرين لدى SYLUTION.",
+  "home.opportunities.partners.title": "للشركاء",
+  "home.opportunities.partners.detail":
+    "مسارات تعاون للجامعات والصناعة والجهات الحكومية ومؤسسات التنمية وفرق البحث.",
+  "home.opportunities.partners.action": "استكشف فرص الشراكة",
+  "home.opportunities.investors.title": "للمستثمرين",
+  "home.opportunities.investors.detail":
+    "اطّلع على ملف الشركة والمرحلة الحالية لمشروع Sysmart Agro وأولويات استخدام رأس المال المعلنة.",
+  "home.opportunities.investors.action": "عرض معلومات المستثمرين",
   "cta.title": "تحدث معنا عن خدمة أو مشروع أو تدريب",
   "cta.sub":
     "أرسل استفسارًا لنتأكد من النطاق والتوفر. هذا ليس طلب شراء أو تسجيلًا في دورة أو طلب قرض.",

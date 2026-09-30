@@ -10,13 +10,15 @@ import {
   Radio,
   Sprout,
   Sun,
+  Handshake,
+  Landmark,
 } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { HomeHero } from "@/components/site/HomeHero";
 import { SectionHeading } from "@/components/site/PageHero";
-import { CTASection } from "@/components/site/CTASection";
 import { CaseStudies } from "@/components/site/CaseStudies";
 import { StatusBadge } from "@/components/site/StatusKey";
+import { useLang } from "@/lib/i18n";
 import { BRAND_IMAGES, CONTACT } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
@@ -240,7 +242,70 @@ function Home() {
 
       <CaseStudies />
 
-      <CTASection />
+      <HomeOpportunitySection />
     </>
+  );
+}
+
+function HomeOpportunitySection() {
+  const { t } = useLang();
+  const opportunities = [
+    {
+      icon: Handshake,
+      title: "home.opportunities.partners.title",
+      detail: "home.opportunities.partners.detail",
+      action: "home.opportunities.partners.action",
+      to: "/partners" as const,
+    },
+    {
+      icon: Landmark,
+      title: "home.opportunities.investors.title",
+      detail: "home.opportunities.investors.detail",
+      action: "home.opportunities.investors.action",
+      to: "/investors" as const,
+    },
+  ];
+
+  return (
+    <section className="container-x section-y" aria-labelledby="home-opportunities-title">
+      <div className="mb-8 max-w-3xl">
+        <p className="eyebrow">{t("home.opportunities.eyebrow")}</p>
+        <h2
+          id="home-opportunities-title"
+          className="mt-5 font-display text-3xl font-bold leading-tight sm:text-4xl"
+        >
+          {t("home.opportunities.title")}
+        </h2>
+        <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+          {t("home.opportunities.subtitle")}
+        </p>
+      </div>
+      <div className="grid gap-4 md:grid-cols-2">
+        {opportunities.map((opportunity) => (
+          <Link
+            key={opportunity.to}
+            to={opportunity.to}
+            className="card-luxe group flex h-full items-start gap-5 p-6 transition-transform duration-300 hover:-translate-y-1 sm:p-8"
+          >
+            <span
+              aria-hidden="true"
+              className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/15 text-primary"
+            >
+              <opportunity.icon className="h-6 w-6" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block font-display text-lg font-bold">{t(opportunity.title)}</span>
+              <span className="mt-2 block text-sm leading-relaxed text-muted-foreground">
+                {t(opportunity.detail)}
+              </span>
+              <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                {t(opportunity.action)}
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </span>
+            </span>
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 }

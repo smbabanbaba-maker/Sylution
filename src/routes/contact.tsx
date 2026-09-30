@@ -157,6 +157,7 @@ function Contact() {
                   "Sysmart Agro project",
                   "Training academy",
                   "Research or partnership",
+                  "Investor or strategic investment enquiry",
                   "Marketplace feedback (not an order)",
                   "Farm-finance partnership concept (not an application)",
                   "Careers",
