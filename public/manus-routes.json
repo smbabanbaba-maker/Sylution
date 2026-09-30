@@ -1,0 +1,31 @@
+{
+  "routes": [
+    { "path": "/", "title": "Home" },
+    { "path": "/about", "title": "About" },
+    { "path": "/ai", "title": "AI" },
+    { "path": "/careers", "title": "Careers" },
+    { "path": "/company-profile", "title": "Company profile" },
+    { "path": "/contact", "title": "Contact" },
+    { "path": "/electronics", "title": "Electronics" },
+    { "path": "/explore", "title": "Explore" },
+    { "path": "/faq", "title": "FAQ" },
+    { "path": "/gallery", "title": "Gallery" },
+    { "path": "/industries", "title": "Industries" },
+    { "path": "/investors", "title": "Investors" },
+    { "path": "/iot", "title": "IoT" },
+    { "path": "/loans", "title": "Farm finance concept" },
+    { "path": "/marketplace", "title": "Marketplace" },
+    { "path": "/news", "title": "News" },
+    { "path": "/partners", "title": "Partners" },
+    { "path": "/platforms", "title": "Our work" },
+    { "path": "/privacy", "title": "Privacy" },
+    { "path": "/products", "title": "Products" },
+    { "path": "/projects", "title": "Projects" },
+    { "path": "/research", "title": "Research" },
+    { "path": "/solutions", "title": "Engineering services" },
+    { "path": "/solutions/:slug", "title": "Solution details" },
+    { "path": "/sysmart-agro", "title": "Sysmart Agro" },
+    { "path": "/terms", "title": "Terms" },
+    { "path": "/training", "title": "Training" }
+  ]
+}
