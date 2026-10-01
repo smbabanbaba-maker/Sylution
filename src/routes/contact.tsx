@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { toast } from "sonner";
 import { PageHero, SectionHeading } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CONTACT, U, BRAND_IMAGES } from "@/lib/site-data";
+import { formatProgrammeFee, getTrainingProgramme } from "@/lib/training-programmes";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -26,6 +27,19 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const [sending, setSending] = useState(false);
+  const [subject, setSubject] = useState("AI, data or software");
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const slug = new URLSearchParams(window.location.search).get("programme");
+    if (!slug) return;
+    const programme = getTrainingProgramme(slug);
+    if (!programme) return;
+    setSubject("Training academy");
+    setMessage(
+      `Hello SYLUTION Academy, I am interested in ${programme.title}. Listed tuition: ${formatProgrammeFee(programme.fee)}. Please confirm the next cohort date, available places and what the fee includes.`,
+    );
+  }, []);
 
   return (
     <>
@@ -99,6 +113,7 @@ function Contact() {
 
         <Reveal delay={0.12}>
           <form
+            id="academy-contact"
             className="card-luxe space-y-5 p-6 sm:p-8 lg:p-10"
             onSubmit={async (e) => {
               e.preventDefault();
@@ -120,6 +135,8 @@ function Contact() {
                 });
                 if (!response.ok) throw new Error("Email service rejected the message");
                 form.reset();
+                setSubject("AI, data or software");
+                setMessage("");
                 toast.success("Message sent", {
                   description: "Thank you. Our team will respond within two working days.",
                 });
@@ -145,7 +162,13 @@ function Contact() {
               <label htmlFor="subject" className="field-label">
                 Subject
               </label>
-              <select id="subject" name="subject" className="field-input">
+              <select
+                id="subject"
+                name="subject"
+                className="field-input"
+                value={subject}
+                onChange={(event) => setSubject(event.target.value)}
+              >
                 {[
                   "AI, data or software",
                   "IoT sensors and monitoring",
@@ -176,6 +199,8 @@ function Contact() {
                 name="message"
                 required
                 rows={5}
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
                 placeholder="Tell us about your site, system, crop, process or project objective."
                 className="field-input"
               />

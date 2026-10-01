@@ -38,6 +38,7 @@ import { Route as TrainingRouteImport } from './routes/training'
 import { Route as ApiAssistantRouteImport } from './routes/api/assistant'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions/index'
 import { Route as SolutionsSlugRouteImport } from './routes/solutions/$slug'
+import { Route as TrainingProgrammesSlugRouteImport } from './routes/training-programmes.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -184,6 +185,11 @@ const SolutionsSlugRoute = SolutionsSlugRouteImport.update({
   path: '/solutions/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrainingProgrammesSlugRoute = TrainingProgrammesSlugRouteImport.update({
+  id: '/training-programmes/$slug',
+  path: '/training-programmes/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -214,6 +220,7 @@ export interface FileRoutesByFullPath {
   '/training': typeof TrainingRoute
   '/api/assistant': typeof ApiAssistantRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
+  '/training-programmes/$slug': typeof TrainingProgrammesSlugRoute
   '/solutions/': typeof SolutionsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -245,6 +252,7 @@ export interface FileRoutesByTo {
   '/training': typeof TrainingRoute
   '/api/assistant': typeof ApiAssistantRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
+  '/training-programmes/$slug': typeof TrainingProgrammesSlugRoute
   '/solutions': typeof SolutionsIndexRoute
 }
 export interface FileRoutesById {
@@ -277,6 +285,7 @@ export interface FileRoutesById {
   '/training': typeof TrainingRoute
   '/api/assistant': typeof ApiAssistantRoute
   '/solutions/$slug': typeof SolutionsSlugRoute
+  '/training-programmes/$slug': typeof TrainingProgrammesSlugRoute
   '/solutions/': typeof SolutionsIndexRoute
 }
 export interface FileRouteTypes {
@@ -310,6 +319,7 @@ export interface FileRouteTypes {
     | '/training'
     | '/api/assistant'
     | '/solutions/$slug'
+    | '/training-programmes/$slug'
     | '/solutions/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -341,6 +351,7 @@ export interface FileRouteTypes {
     | '/training'
     | '/api/assistant'
     | '/solutions/$slug'
+    | '/training-programmes/$slug'
     | '/solutions'
   id:
     | '__root__'
@@ -372,6 +383,7 @@ export interface FileRouteTypes {
     | '/training'
     | '/api/assistant'
     | '/solutions/$slug'
+    | '/training-programmes/$slug'
     | '/solutions/'
   fileRoutesById: FileRoutesById
 }
@@ -404,6 +416,7 @@ export interface RootRouteChildren {
   TrainingRoute: typeof TrainingRoute
   ApiAssistantRoute: typeof ApiAssistantRoute
   SolutionsSlugRoute: typeof SolutionsSlugRoute
+  TrainingProgrammesSlugRoute: typeof TrainingProgrammesSlugRoute
   SolutionsIndexRoute: typeof SolutionsIndexRoute
 }
 
@@ -612,6 +625,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/training-programmes/$slug': {
+      id: '/training-programmes/$slug'
+      path: '/training-programmes/$slug'
+      fullPath: '/training-programmes/$slug'
+      preLoaderRoute: typeof TrainingProgrammesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -644,6 +664,7 @@ const rootRouteChildren: RootRouteChildren = {
   TrainingRoute: TrainingRoute,
   ApiAssistantRoute: ApiAssistantRoute,
   SolutionsSlugRoute: SolutionsSlugRoute,
+  TrainingProgrammesSlugRoute: TrainingProgrammesSlugRoute,
   SolutionsIndexRoute: SolutionsIndexRoute,
 }
 export const routeTree = rootRouteImport

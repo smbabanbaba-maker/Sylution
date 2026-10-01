@@ -452,11 +452,10 @@ const PHRASES: Record<Exclude<LangCode, "en">, Dict> = {
     "Learn AI tools, IoT sensors, ESP32/Arduino, electronics, smart irrigation, drones, robotics and modern agriculture through guided, hands-on projects. For youth, women, farmers, students, technicians and institutions. Taught in English or Hausa in Kano.":
       "Koyi kayan aikin AI, na'urorin IoT, ESP32/Arduino, lantarki, ban ruwa mai sarrafa kansa, drones, robotics da noma na zamani ta ayyukan gwaji tare da kulawa. Horon ya dace da matasa, mata, manoma, ɗalibai, ƙwararru da cibiyoyi; ana koyar da shi da Hausa ko Turanci a Kano.",
     Programmes: "Shirye-shirye",
-    "Nine practical programmes, one hands-on approach":
-      "Shirye-shiryen horo tara masu aiki da hannu",
-    "Choose from AI and connected sensors to smart farming, drones and automation. Every programme includes guided practice on real equipment.":
-      "Zaɓi daga AI da na'urorin firikwensin IoT zuwa noma na zamani, drones da automation. Kowane shiri yana da aikin gwaji tare da kulawa a kan kayan aiki na gaske.",
-    "See the nine programmes": "Duba shirye-shiryen horo tara",
+    "15 practical programmes, clearly priced": "Shirye-shiryen fasaha 15 masu bayyana farashinsu",
+    "Choose a programme to see its tuition, modules, duration and practical work. Confirm cohort dates and inclusions with the Academy.":
+      "Zaɓi shiri don duba kuɗin horo, darussa, tsawon lokaci da aikin gwaji. Tabbatar da ranakun rukuni da abin da kuɗin ya ƙunsa tare da makarantar.",
+    "Browse all 15 programmes": "Duba duk shirye-shirye 15",
     "Ask about training": "Tambayi game da horo",
     "Ask about training or request a cohort": "Tambayi game da horo ko neman horon rukuni",
     "This form sends an enquiry, not an instant enrolment. Select ‘Training academy’ and tell us your topic, audience and group size; the team will confirm availability and next steps within two working days.":
@@ -540,11 +539,10 @@ const PHRASES: Record<Exclude<LangCode, "en">, Dict> = {
     "Learn AI tools, IoT sensors, ESP32/Arduino, electronics, smart irrigation, drones, robotics and modern agriculture through guided, hands-on projects. For youth, women, farmers, students, technicians and institutions. Taught in English or Hausa in Kano.":
       "Apprenez les outils d'IA, les capteurs IoT, ESP32/Arduino, l'électronique, l'irrigation intelligente, les drones, la robotique et l'agriculture moderne grâce à des projets pratiques encadrés. Pour les jeunes, les femmes, les agriculteurs, les étudiants, les techniciens et les institutions. Formation en anglais ou en haoussa à Kano.",
     Programmes: "Programmes",
-    "Nine practical programmes, one hands-on approach":
-      "Neuf programmes pratiques, une même approche concrète",
-    "Choose from AI and connected sensors to smart farming, drones and automation. Every programme includes guided practice on real equipment.":
-      "Choisissez parmi l'IA, les capteurs connectés, l'agriculture intelligente, les drones et l'automatisation. Chaque programme comprend une pratique encadrée sur du matériel réel.",
-    "See the nine programmes": "Voir les neuf programmes",
+    "15 practical programmes, clearly priced": "15 programmes pratiques, avec des tarifs clairs",
+    "Choose a programme to see its tuition, modules, duration and practical work. Confirm cohort dates and inclusions with the Academy.":
+      "Choisissez un programme pour consulter les frais, les modules, la durée et les travaux pratiques. Confirmez les dates de session et les inclusions auprès de l'Académie.",
+    "Browse all 15 programmes": "Voir les 15 programmes",
     "Ask about training": "Se renseigner sur la formation",
     "Ask about training or request a cohort": "Se renseigner ou demander une session de groupe",
     "This form sends an enquiry, not an instant enrolment. Select ‘Training academy’ and tell us your topic, audience and group size; the team will confirm availability and next steps within two working days.":
@@ -621,10 +619,10 @@ const PHRASES: Record<Exclude<LangCode, "en">, Dict> = {
     "Learn AI tools, IoT sensors, ESP32/Arduino, electronics, smart irrigation, drones, robotics and modern agriculture through guided, hands-on projects. For youth, women, farmers, students, technicians and institutions. Taught in English or Hausa in Kano.":
       "تعلّم أدوات الذكاء الاصطناعي، وحساسات إنترنت الأشياء، وESP32/Arduino، والإلكترونيات، والري الذكي، والطائرات المسيّرة، والروبوتات والزراعة الحديثة من خلال مشاريع عملية بإشراف. التدريب موجّه للشباب والنساء والمزارعين والطلاب والفنيين والمؤسسات، ويُقدّم بالإنجليزية أو الهوسا في كانو.",
     Programmes: "البرامج",
-    "Nine practical programmes, one hands-on approach": "تسعة برامج تدريبية بتعلّم عملي",
-    "Choose from AI and connected sensors to smart farming, drones and automation. Every programme includes guided practice on real equipment.":
-      "اختر من الذكاء الاصطناعي والحساسات المتصلة إلى الزراعة الذكية والطائرات المسيّرة والأتمتة. يتضمن كل برنامج تدريبًا عمليًا بإشراف وعلى معدات حقيقية.",
-    "See the nine programmes": "اعرض البرامج التسعة",
+    "15 practical programmes, clearly priced": "15 برنامجًا عمليًا بأسعار واضحة",
+    "Choose a programme to see its tuition, modules, duration and practical work. Confirm cohort dates and inclusions with the Academy.":
+      "اختر برنامجًا للاطلاع على الرسوم والوحدات والمدة والتطبيق العملي. أكّد مواعيد المجموعة وما تشمله الرسوم مع الأكاديمية.",
+    "Browse all 15 programmes": "استعرض البرامج الخمسة عشر",
     "Ask about training": "استفسر عن التدريب",
     "Ask about training or request a cohort": "استفسر عن التدريب أو اطلب مجموعة تدريبية",
     "This form sends an enquiry, not an instant enrolment. Select ‘Training academy’ and tell us your topic, audience and group size; the team will confirm availability and next steps within two working days.":
@@ -685,6 +683,90 @@ const EXTRA: Record<Exclude<LangCode, "en">, Dict> = {
     Sectors: "Bangarori",
     "Technology pillars": "Ginshikan fasaha",
     "Coming soon": "Nan ba da jimawa ba",
+    "Practical technology training, with clear prices and pathways":
+      "Koyon fasaha ta aikace-aikace, tare da bayyanannun farashi da matakai",
+    "How to request a place": "Yadda ake neman gurbi",
+    "programmes to explore": "shirye-shiryen da za a bincika",
+    "typical course duration": "tsawon lokacin kwas da aka saba",
+    "published tuition; institutional quote by scope":
+      "farashin horo; cibiyoyi su nemi ƙididdiga bisa buƙata",
+    "Compare the topic, level, duration and fee. Open any programme for its full overview, modules, practical work and learning outcomes.":
+      "Kwatanta fanni, mataki, lokaci da kuɗi. Buɗe kowane shiri don cikakken bayani, darussa, aikin gwaji da sakamakon koyo.",
+    "Course catalogue": "Jerin kwasa-kwasai",
+    "Search programmes": "Nemo shirye-shirye",
+    "Search by course, skill or technology": "Nema da sunan kwas, ƙwarewa ko fasaha",
+    "Filter programmes by subject": "Tace shirye-shirye bisa fanni",
+    "All programmes": "Dukkan shirye-shirye",
+    "Engineering & AI": "Injiniyanci da AI",
+    "Smart agriculture": "Noma mai amfani da fasaha",
+    Professional: "Na ƙwararru",
+    "programmes shown": "shirye-shirye da aka nuna",
+    "View full programme": "Duba cikakken shiri",
+    Tuition: "Kuɗin horo",
+    "No programmes match your search": "Babu shiri da ya dace da bincikenku",
+    "Clear filters": "Share tacewa",
+    "Before you request a place": "Kafin neman gurbi",
+    "A clear enquiry first. Your place is confirmed with the Academy.":
+      "A fara da tambaya bayyananniya. Makarantar za ta tabbatar da gurbin ku.",
+    "The Apply button opens SYLUTION's contact details and a prefilled enquiry. It does not take payment or confirm enrolment. Ask about the next cohort, available places and what equipment or materials the listed tuition covers.":
+      "Maɓallin Apply zai buɗe bayanan tuntuɓar SYLUTION da saƙon tambaya da aka riga aka cika. Ba ya karɓar kuɗi ko tabbatar da rajista. Tambayi ranakun rukuni na gaba, guraben da ake da su da kayan aikin da kuɗin ya ƙunsa.",
+    "Contact the Academy": "Tuntuɓi makarantar",
+    "Choose a programme": "Zaɓi shiri",
+    "Review its modules, practical work, fee and duration.":
+      "Duba darussansa, aikin gwaji, kuɗi da tsawon lokaci.",
+    "Ask about dates": "Tambayi ranakun horo",
+    "Contact us to confirm the next cohort, place and fee inclusions.":
+      "Tuntuɓe mu don tabbatar da rukuni na gaba, gurbi da abin da kuɗin ya ƙunsa.",
+    "Confirm with SYLUTION": "Tabbatarwa da SYLUTION",
+    "The Academy confirms next steps; a request is not an enrolment.":
+      "Makarantar za ta bayyana mataki na gaba; tambaya ba rajista ba ce.",
+    Questions: "Tambayoyi",
+    "Good to know before you start": "Abubuwan da ya kamata ku sani kafin farawa",
+    "We confirm dates and cohort details directly, so you can ask before making a commitment.":
+      "Muna tabbatar da ranaku da bayanan rukuni kai tsaye, don ku yi tambaya kafin yanke shawara.",
+    "Tuition fee": "Kuɗin kwas",
+    Duration: "Tsawon lokaci",
+    "2–8 weeks": "Makonni 2–8",
+    "2 weeks": "Makonni 2",
+    "3 weeks": "Makonni 3",
+    "4 weeks": "Makonni 4",
+    "6 weeks": "Makonni 6",
+    "8 weeks": "Makonni 8",
+    "1 day to 8 weeks": "Rana 1 zuwa makonni 8",
+    "Course level": "Matakin kwas",
+    "Course format": "Tsarin horo",
+    "Confirm format with the Academy": "Tabbatar da tsarin horo da makarantar",
+    "What you will build or do": "Abin da za ku ƙera ko yi",
+    "Who this is for": "Waɗanda kwas ɗin ya dace da su",
+    "Learning outcomes": "Abubuwan da za ku iya bayan koyo",
+    "Programme at a glance": "Taƙaitaccen bayani kan shirin",
+    "Training is based in Kano. Ask whether this cohort is available in English or Hausa.":
+      "Ana gudanar da horo a Kano. Tambayi ko za a koyar da wannan rukuni da Turanci ko Hausa.",
+    "Course outline": "Tsarin kwas",
+    "What you will learn": "Abin da za ku koya",
+    "A clear view of the topics and practical work covered in this programme.":
+      "Bayyanannen jerin batutuwa da aikin gwaji da wannan shiri ya ƙunsa.",
+    Certificate: "Takardar shaida",
+    "The fee is quoted after SYLUTION understands your group, scope and delivery needs.":
+      "Za a ƙayyade kuɗin bayan SYLUTION ta fahimci rukuni, girman aiki da buƙatun gudanarwa.",
+    "Confirm the next cohort date, available places and what equipment or materials are covered by the listed tuition.":
+      "Tabbatar da ranar rukuni na gaba, guraben da ake da su da kayan aikin da kuɗin horo ya ƙunsa.",
+    "An enquiry is not a confirmed enrolment or payment. SYLUTION will explain the next step after checking availability.":
+      "Tambaya ba rajista ko biyan kuɗi ba ce. SYLUTION za ta bayyana mataki na gaba bayan duba samuwa.",
+    "Ready to ask about this programme?": "Kuna son tambaya game da wannan shirin?",
+    "Open our contact page to see the Academy's phone, WhatsApp and email. The enquiry form will already include this programme and its listed fee.":
+      "Buɗe shafin tuntuɓa don ganin waya, WhatsApp da imel na makarantar. Fom ɗin tambaya zai riga ya ƙunshi wannan shiri da kuɗinsa.",
+    "Apply / ask about dates": "Nemi gurbi / tambayi ranaku",
+    "Message Academy on WhatsApp": "Aika saƙo ga makaranta ta WhatsApp",
+    "Keep exploring": "Ci gaba da bincike",
+    "Related programmes": "Shirye-shirye masu alaƙa",
+    "Compare another course before contacting the Academy.":
+      "Kwatanta wani kwas kafin tuntuɓar makarantar.",
+    "Return to all programmes": "Koma ga duk shirye-shirye",
+    "Custom quote": "Ƙididdigar kuɗi ta musamman",
+    Foundational: "Matakin farko",
+    Intermediate: "Matsakaici",
+    "Foundational to intermediate": "Daga matakin farko zuwa matsakaici",
   },
   fr: {
     "Internet of Things": "Internet des objets",
@@ -710,6 +792,90 @@ const EXTRA: Record<Exclude<LangCode, "en">, Dict> = {
     Sectors: "Secteurs",
     "Technology pillars": "Piliers technologiques",
     "Coming soon": "Bientôt disponible",
+    "Practical technology training, with clear prices and pathways":
+      "Des formations technologiques pratiques, avec des tarifs et des parcours clairs",
+    "How to request a place": "Comment demander une place",
+    "programmes to explore": "programmes à découvrir",
+    "typical course duration": "durée habituelle d'une formation",
+    "published tuition; institutional quote by scope":
+      "tarifs publiés ; devis institutionnel selon le périmètre",
+    "Compare the topic, level, duration and fee. Open any programme for its full overview, modules, practical work and learning outcomes.":
+      "Comparez le sujet, le niveau, la durée et le tarif. Ouvrez un programme pour consulter sa présentation, ses modules, ses travaux pratiques et ses objectifs pédagogiques.",
+    "Course catalogue": "Catalogue des formations",
+    "Search programmes": "Rechercher des programmes",
+    "Search by course, skill or technology": "Rechercher par formation, compétence ou technologie",
+    "Filter programmes by subject": "Filtrer les programmes par sujet",
+    "All programmes": "Tous les programmes",
+    "Engineering & AI": "Ingénierie et IA",
+    "Smart agriculture": "Agriculture intelligente",
+    Professional: "Professionnel",
+    "programmes shown": "programmes affichés",
+    "View full programme": "Voir le programme complet",
+    Tuition: "Frais de formation",
+    "No programmes match your search": "Aucun programme ne correspond à votre recherche",
+    "Clear filters": "Effacer les filtres",
+    "Before you request a place": "Avant de demander une place",
+    "A clear enquiry first. Your place is confirmed with the Academy.":
+      "Commencez par une demande claire. L'Académie confirmera votre place.",
+    "The Apply button opens SYLUTION's contact details and a prefilled enquiry. It does not take payment or confirm enrolment. Ask about the next cohort, available places and what equipment or materials the listed tuition covers.":
+      "Le bouton de demande ouvre les coordonnées de SYLUTION et un message prérempli. Il ne déclenche aucun paiement et ne confirme pas l'inscription. Renseignez-vous sur la prochaine session, les places disponibles et le matériel compris dans les frais affichés.",
+    "Contact the Academy": "Contacter l'Académie",
+    "Choose a programme": "Choisir un programme",
+    "Review its modules, practical work, fee and duration.":
+      "Consultez ses modules, ses travaux pratiques, son tarif et sa durée.",
+    "Ask about dates": "Demander les dates",
+    "Contact us to confirm the next cohort, place and fee inclusions.":
+      "Contactez-nous pour confirmer la prochaine session, les places et les éléments inclus dans les frais.",
+    "Confirm with SYLUTION": "Confirmer avec SYLUTION",
+    "The Academy confirms next steps; a request is not an enrolment.":
+      "L'Académie confirme la suite ; une demande ne vaut pas inscription.",
+    Questions: "Questions",
+    "Good to know before you start": "À savoir avant de commencer",
+    "We confirm dates and cohort details directly, so you can ask before making a commitment.":
+      "Nous confirmons directement les dates et les détails des sessions afin que vous puissiez vous renseigner avant de vous engager.",
+    "Tuition fee": "Frais de formation",
+    Duration: "Durée",
+    "2–8 weeks": "2 à 8 semaines",
+    "2 weeks": "2 semaines",
+    "3 weeks": "3 semaines",
+    "4 weeks": "4 semaines",
+    "6 weeks": "6 semaines",
+    "8 weeks": "8 semaines",
+    "1 day to 8 weeks": "1 jour à 8 semaines",
+    "Course level": "Niveau",
+    "Course format": "Format de la formation",
+    "Confirm format with the Academy": "Confirmer le format avec l'Académie",
+    "What you will build or do": "Ce que vous réaliserez",
+    "Who this is for": "À qui s'adresse cette formation",
+    "Learning outcomes": "Objectifs pédagogiques",
+    "Programme at a glance": "La formation en bref",
+    "Training is based in Kano. Ask whether this cohort is available in English or Hausa.":
+      "Les formations ont lieu à Kano. Demandez si cette session est proposée en anglais ou en haoussa.",
+    "Course outline": "Programme détaillé",
+    "What you will learn": "Ce que vous apprendrez",
+    "A clear view of the topics and practical work covered in this programme.":
+      "Un aperçu clair des thèmes et des travaux pratiques de cette formation.",
+    Certificate: "Attestation",
+    "The fee is quoted after SYLUTION understands your group, scope and delivery needs.":
+      "Un devis sera établi après analyse de votre groupe, du périmètre et des modalités souhaitées.",
+    "Confirm the next cohort date, available places and what equipment or materials are covered by the listed tuition.":
+      "Confirmez la date de la prochaine session, les places disponibles et le matériel compris dans les frais affichés.",
+    "An enquiry is not a confirmed enrolment or payment. SYLUTION will explain the next step after checking availability.":
+      "Une demande ne confirme ni inscription ni paiement. SYLUTION vous indiquera la suite après vérification des disponibilités.",
+    "Ready to ask about this programme?": "Vous souhaitez des renseignements sur cette formation ?",
+    "Open our contact page to see the Academy's phone, WhatsApp and email. The enquiry form will already include this programme and its listed fee.":
+      "Consultez notre page Contact pour le téléphone, WhatsApp et l'e-mail de l'Académie. Le formulaire inclura déjà cette formation et son tarif affiché.",
+    "Apply / ask about dates": "Demander une place / les dates",
+    "Message Academy on WhatsApp": "Écrire à l'Académie sur WhatsApp",
+    "Keep exploring": "Poursuivre la découverte",
+    "Related programmes": "Formations associées",
+    "Compare another course before contacting the Academy.":
+      "Comparez une autre formation avant de contacter l'Académie.",
+    "Return to all programmes": "Retour à tous les programmes",
+    "Custom quote": "Devis personnalisé",
+    Foundational: "Fondamental",
+    Intermediate: "Intermédiaire",
+    "Foundational to intermediate": "Du niveau fondamental à intermédiaire",
   },
   ar: {
     "Internet of Things": "إنترنت الأشياء",
@@ -734,6 +900,90 @@ const EXTRA: Record<Exclude<LangCode, "en">, Dict> = {
     Sectors: "القطاعات",
     "Technology pillars": "الركائز التقنية",
     "Coming soon": "قريبًا",
+    "Practical technology training, with clear prices and pathways":
+      "تدريب تقني عملي بأسعار ومسارات واضحة",
+    "How to request a place": "كيفية طلب مقعد",
+    "programmes to explore": "برنامجًا للاستكشاف",
+    "typical course duration": "المدة المعتادة للدورة",
+    "published tuition; institutional quote by scope":
+      "الرسوم المنشورة؛ وتسعير المؤسسات حسب نطاق العمل",
+    "Compare the topic, level, duration and fee. Open any programme for its full overview, modules, practical work and learning outcomes.":
+      "قارن الموضوع والمستوى والمدة والرسوم. افتح أي برنامج للاطلاع على نبذته ووحداته والتطبيق العملي ومخرجات التعلم.",
+    "Course catalogue": "دليل الدورات",
+    "Search programmes": "ابحث في البرامج",
+    "Search by course, skill or technology": "ابحث باسم الدورة أو المهارة أو التقنية",
+    "Filter programmes by subject": "تصفية البرامج حسب المجال",
+    "All programmes": "كل البرامج",
+    "Engineering & AI": "الهندسة والذكاء الاصطناعي",
+    "Smart agriculture": "الزراعة الذكية",
+    Professional: "مهني",
+    "programmes shown": "برنامجًا معروضًا",
+    "View full programme": "عرض تفاصيل البرنامج",
+    Tuition: "رسوم التدريب",
+    "No programmes match your search": "لا توجد برامج تطابق بحثك",
+    "Clear filters": "مسح عوامل التصفية",
+    "Before you request a place": "قبل طلب مقعد",
+    "A clear enquiry first. Your place is confirmed with the Academy.":
+      "ابدأ باستفسار واضح. تؤكد الأكاديمية توفر المقعد.",
+    "The Apply button opens SYLUTION's contact details and a prefilled enquiry. It does not take payment or confirm enrolment. Ask about the next cohort, available places and what equipment or materials the listed tuition covers.":
+      "يفتح زر التقديم بيانات التواصل مع SYLUTION واستفسارًا مُعدًا مسبقًا. لا يتم الدفع أو تأكيد التسجيل عبره. اسأل عن موعد المجموعة القادمة والمقاعد المتاحة والمعدات أو المواد التي تشملها الرسوم المنشورة.",
+    "Contact the Academy": "تواصل مع الأكاديمية",
+    "Choose a programme": "اختر برنامجًا",
+    "Review its modules, practical work, fee and duration.":
+      "راجع وحداته والتطبيق العملي والرسوم والمدة.",
+    "Ask about dates": "استفسر عن المواعيد",
+    "Contact us to confirm the next cohort, place and fee inclusions.":
+      "تواصل معنا لتأكيد المجموعة القادمة والمقعد وما تشمله الرسوم.",
+    "Confirm with SYLUTION": "أكد مع SYLUTION",
+    "The Academy confirms next steps; a request is not an enrolment.":
+      "توضح الأكاديمية الخطوة التالية؛ فالاستفسار لا يُعد تسجيلًا.",
+    Questions: "أسئلة",
+    "Good to know before you start": "معلومات مهمة قبل البدء",
+    "We confirm dates and cohort details directly, so you can ask before making a commitment.":
+      "نؤكد المواعيد وتفاصيل المجموعة مباشرة حتى تتمكن من الاستفسار قبل الالتزام.",
+    "Tuition fee": "رسوم الدورة",
+    Duration: "المدة",
+    "2–8 weeks": "من أسبوعين إلى 8 أسابيع",
+    "2 weeks": "أسبوعان",
+    "3 weeks": "3 أسابيع",
+    "4 weeks": "4 أسابيع",
+    "6 weeks": "6 أسابيع",
+    "8 weeks": "8 أسابيع",
+    "1 day to 8 weeks": "من يوم واحد إلى 8 أسابيع",
+    "Course level": "مستوى الدورة",
+    "Course format": "نمط الدورة",
+    "Confirm format with the Academy": "أكد النمط مع الأكاديمية",
+    "What you will build or do": "ما ستصممه أو تنفذه",
+    "Who this is for": "الفئة المناسبة لهذه الدورة",
+    "Learning outcomes": "مخرجات التعلم",
+    "Programme at a glance": "نظرة سريعة على البرنامج",
+    "Training is based in Kano. Ask whether this cohort is available in English or Hausa.":
+      "يقام التدريب في كانو. استفسر عما إذا كانت هذه المجموعة متاحة بالإنجليزية أو الهوسا.",
+    "Course outline": "محتوى الدورة",
+    "What you will learn": "ما ستتعلمه",
+    "A clear view of the topics and practical work covered in this programme.":
+      "عرض واضح للموضوعات والتطبيق العملي في هذا البرنامج.",
+    Certificate: "الشهادة",
+    "The fee is quoted after SYLUTION understands your group, scope and delivery needs.":
+      "تحدد الرسوم بعد أن تفهم SYLUTION المجموعة ونطاق العمل واحتياجات التنفيذ.",
+    "Confirm the next cohort date, available places and what equipment or materials are covered by the listed tuition.":
+      "أكد موعد المجموعة القادمة والمقاعد المتاحة والمعدات أو المواد التي تشملها الرسوم المنشورة.",
+    "An enquiry is not a confirmed enrolment or payment. SYLUTION will explain the next step after checking availability.":
+      "الاستفسار لا يؤكد التسجيل أو الدفع. توضح SYLUTION الخطوة التالية بعد التحقق من التوفر.",
+    "Ready to ask about this programme?": "هل ترغب في الاستفسار عن هذا البرنامج؟",
+    "Open our contact page to see the Academy's phone, WhatsApp and email. The enquiry form will already include this programme and its listed fee.":
+      "افتح صفحة التواصل لمعرفة هاتف الأكاديمية وواتساب والبريد الإلكتروني. سيتضمن نموذج الاستفسار هذا البرنامج ورسومه المنشورة مسبقًا.",
+    "Apply / ask about dates": "قدّم طلبًا / استفسر عن المواعيد",
+    "Message Academy on WhatsApp": "راسل الأكاديمية عبر واتساب",
+    "Keep exploring": "تابع الاستكشاف",
+    "Related programmes": "برامج ذات صلة",
+    "Compare another course before contacting the Academy.":
+      "قارن دورة أخرى قبل التواصل مع الأكاديمية.",
+    "Return to all programmes": "العودة إلى جميع البرامج",
+    "Custom quote": "عرض سعر مخصص",
+    Foundational: "تأسيسي",
+    Intermediate: "متوسط",
+    "Foundational to intermediate": "من التأسيسي إلى المتوسط",
   },
 };
 

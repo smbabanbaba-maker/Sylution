@@ -17,6 +17,7 @@ import {
   TRAINING_AUDIENCES,
 } from "@/lib/site-data";
 import { displayStatus } from "@/lib/status";
+import { formatProgrammeFee, TRAINING_PROGRAMMES } from "@/lib/training-programmes";
 
 export function getSylutionAssistantContext() {
   const lines = [
@@ -34,7 +35,8 @@ export function getSylutionAssistantContext() {
     `Product ecosystem categories (not an online shop): ${PRODUCT_CATEGORIES.map((category) => `${category.name} (${displayStatus(category.status)}) — ${category.detail} Items: ${category.items.join(", ")}`).join(" | ")}`,
     `Current products and technology work (development-stage catalogue, not for online purchase): ${PRODUCTS.map((product) => `${product.name} (${displayStatus(product.status)}) — ${product.detail}; Technology: ${product.technology}; Application: ${product.application}`).join(" | ")}`,
     `Evidence-led case studies: ${CASE_STUDIES.map((study) => `${study.title} [${displayStatus(study.stage)}] — ${study.summary} Evidence: ${study.evidence} Next step: ${study.nextStep}`).join(" | ")}`,
-    `Training audiences: ${TRAINING_AUDIENCES.join(", ")}. Training areas: ${TRAINING_AREAS.map((group) => `${group.group}: ${group.items.join(", ")}`).join(" | ")}`,
+    `Academy programmes and published tuition: ${TRAINING_PROGRAMMES.map((programme) => `${programme.title} — ${formatProgrammeFee(programme.fee)}; ${programme.duration}; ${programme.summary}`).join(" | ")}`,
+    `Training audiences: ${TRAINING_AUDIENCES.join(", ")}. Training areas: ${TRAINING_AREAS.map((group) => `${group.group}: ${group.items.join(", ")}`).join(" | ")}. Fees and dates must be confirmed with the Academy; a website enquiry is not an enrolment.`,
     `Research and development process: ${RND_PROCESS.map((item) => `${item.step}: ${item.detail}`).join(" | ")}`,
     `Partner and collaboration areas: ${PARTNER_AREAS.join(", ")}.`,
     `Frequently asked questions: ${FAQS.map((item) => `Q: ${item.q} A: ${item.a}`).join(" | ")}`,

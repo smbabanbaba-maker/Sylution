@@ -939,54 +939,6 @@ export const TRAINING_AREAS: { group: string; items: string[] }[] = [
   },
 ];
 
-export const TRAINING_PROGRAMMES = [
-  {
-    title: "Artificial Intelligence",
-    detail: "AI foundations, AI tools and agricultural data intelligence.",
-    image: BRAND_IMAGES.ai,
-  },
-  {
-    title: "Internet of Things",
-    detail: "Sensors, connected devices, monitoring systems and smart agriculture.",
-    image: BRAND_IMAGES.iotLab,
-  },
-  {
-    title: "ESP32 and Arduino",
-    detail: "Hands on microcontroller and sensor projects from zero to working system.",
-    image: BRAND_IMAGES.electronics,
-  },
-  {
-    title: "Modern Agriculture",
-    detail: "Smart farming, precision agriculture and digital agriculture practices.",
-    image: BRAND_IMAGES.greenhouse,
-  },
-  {
-    title: "Livestock Technology",
-    detail: "Modern livestock management, monitoring and digital records.",
-    image: BRAND_IMAGES.harvest,
-  },
-  {
-    title: "Robotics and Automation",
-    detail: "Robotics, sensors, automation and practical projects.",
-    image: BRAND_IMAGES.robotics,
-  },
-  {
-    title: "Drone Technology",
-    detail: "Farm observation, mapping, monitoring and practical demonstrations.",
-    image: BRAND_IMAGES.drone,
-  },
-  {
-    title: "Smart Irrigation",
-    detail: "Sensor based irrigation, drip systems and water efficiency.",
-    image: BRAND_IMAGES.irrigation,
-  },
-  {
-    title: "Youth and Women Empowerment",
-    detail: "Dedicated sessions, equipment access and mentorship.",
-    image: BRAND_IMAGES.training,
-  },
-];
-
 export const TRAINING_AUDIENCES = ["Youth", "Women", "Farmers", "Students", "Agripreneurs"];
 
 export const FAQS = [

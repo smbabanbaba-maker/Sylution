@@ -26,6 +26,7 @@
     { "path": "/solutions/:slug", "title": "Solution details" },
     { "path": "/sysmart-agro", "title": "Sysmart Agro" },
     { "path": "/terms", "title": "Terms" },
-    { "path": "/training", "title": "Training" }
+    { "path": "/training", "title": "Training" },
+    { "path": "/training-programmes/:slug", "title": "Academy programme details" }
   ]
 }

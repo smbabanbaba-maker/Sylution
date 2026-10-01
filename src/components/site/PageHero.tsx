@@ -10,19 +10,27 @@ export function PageHero({
   children,
   compact,
 }: {
-  eyebrow: string;
+  eyebrow: ReactNode;
   title: ReactNode;
   subtitle?: string;
-  image: string;
+  image?: string;
   children?: ReactNode;
   compact?: boolean;
 }) {
   const { tr } = useLang();
   return (
     <section className="relative isolate overflow-hidden bg-[var(--soft-white)] text-foreground">
-      <div className="absolute inset-0 -z-20">
-        <img src={image} alt="" aria-hidden loading="eager" className="hero-image-live h-full w-full object-cover object-center" />
-      </div>
+      {image && (
+        <div className="absolute inset-0 -z-20">
+          <img
+            src={image}
+            alt=""
+            aria-hidden
+            loading="eager"
+            className="hero-image-live h-full w-full object-cover object-center"
+          />
+        </div>
+      )}
       <div aria-hidden className="veil-side absolute inset-0 -z-10" />
       <div aria-hidden className="circuit-overlay pointer-events-none absolute inset-0 -z-10" />
       <div aria-hidden className="signal-sweep pointer-events-none -z-10" />
@@ -30,7 +38,9 @@ export function PageHero({
         aria-hidden
         className="pointer-events-none absolute -right-24 top-10 -z-10 h-72 w-72 rounded-full bg-primary/25 blur-[110px] animate-float-slow"
       />
-      <div className={`container-x ${compact ? "pb-16 pt-28 sm:pt-32 lg:pb-24 lg:pt-44" : "pb-20 pt-32 sm:pt-36 lg:pb-32 lg:pt-52"}`}>
+      <div
+        className={`container-x ${compact ? "pb-16 pt-28 sm:pt-32 lg:pb-24 lg:pt-44" : "pb-20 pt-32 sm:pt-36 lg:pb-32 lg:pt-52"}`}
+      >
         <motion.p
           className="eyebrow"
           initial={{ opacity: 0, y: 14 }}
@@ -38,7 +48,7 @@ export function PageHero({
           transition={{ duration: 0.6 }}
         >
           <span aria-hidden className="h-px w-8 shrink-0 bg-primary" />
-          {tr(eyebrow)}
+          {typeof eyebrow === "string" ? tr(eyebrow) : eyebrow}
         </motion.p>
         <motion.h1
           className="mt-5 max-w-4xl text-[2.1rem] font-extrabold leading-[1.06] sm:text-5xl lg:text-[3.75rem]"
@@ -99,7 +109,9 @@ export function SectionHeading({
         {tr(eyebrow)}
       </p>
       <h2 className="mt-4 text-[1.75rem] font-bold leading-[1.15] sm:text-4xl">{tr(title)}</h2>
-      {description && <p className="mt-5 text-base leading-relaxed text-muted-foreground">{tr(description)}</p>}
+      {description && (
+        <p className="mt-5 text-base leading-relaxed text-muted-foreground">{tr(description)}</p>
+      )}
     </motion.div>
   );
 }

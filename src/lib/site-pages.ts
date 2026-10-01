@@ -1,5 +1,6 @@
 import type { LangCode } from "@/lib/i18n";
 import { SOLUTIONS } from "@/lib/site-data";
+import { formatProgrammeFee, TRAINING_PROGRAMMES } from "@/lib/training-programmes";
 
 export type FinderCategory =
   | "Start here"
@@ -312,6 +313,20 @@ export const SITE_PAGES: SitePage[] = [
     ].join(" "),
     changefreq: "monthly",
     priority: "0.7",
+  })),
+  ...TRAINING_PROGRAMMES.map((programme): SitePage => ({
+    path: `/training-programmes/${programme.slug}`,
+    title: programme.title,
+    summary: `${programme.summary} Tuition: ${formatProgrammeFee(programme.fee)} · ${programme.duration}. Ask SYLUTION to confirm the next cohort and availability.`,
+    category: "Learning & updates",
+    keywords: [
+      programme.title,
+      programme.category,
+      programme.summary,
+      programme.modules.join(" "),
+    ].join(" "),
+    changefreq: "monthly",
+    priority: "0.6",
   })),
 ];
 
