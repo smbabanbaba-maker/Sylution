@@ -1715,3 +1715,137 @@ html[data-home-hero-visible] .assistant-launcher {
     padding-inline: 0.55rem;
   }
 }
+
+/* SYLUTION homepage: editorial cohort photography with a deep-red/black treatment. */
+.home-hero {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.home-hero__backdrop {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.home-hero__backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 52%;
+  filter: saturate(0.86) contrast(1.06);
+}
+
+.home-hero__overlay {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(11, 8, 9, 0.93) 0%,
+      rgba(20, 9, 11, 0.82) 43%,
+      rgba(10, 7, 8, 0.52) 100%
+    ),
+    linear-gradient(0deg, rgba(36, 8, 12, 0.62) 0%, transparent 68%);
+}
+
+.home-hero__glow {
+  z-index: 0;
+}
+
+.home-hero__layout {
+  z-index: 1;
+}
+
+.home-hero__eyebrow,
+.home-hero__title-accent {
+  color: color-mix(in srgb, var(--brand-red) 38%, var(--white));
+}
+
+.home-hero__eyebrow-mark {
+  background: color-mix(in srgb, var(--brand-red) 38%, var(--white));
+}
+
+.home-hero__title {
+  color: var(--white);
+}
+
+.home-hero__description {
+  color: color-mix(in srgb, var(--white) 84%, transparent);
+}
+
+.home-hero__paths {
+  background: color-mix(in srgb, var(--white) 94%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.home-hero__path {
+  background: color-mix(in srgb, var(--white) 96%, transparent);
+}
+
+@media (max-width: 639px) {
+  .home-hero__backdrop img {
+    object-position: center 42%;
+  }
+
+  .home-hero__overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(11, 7, 9, 0.52) 0%,
+        rgba(18, 8, 10, 0.64) 48%,
+        rgba(13, 7, 9, 0.9) 100%
+      ),
+      linear-gradient(90deg, rgba(24, 8, 11, 0.28), rgba(10, 7, 8, 0.18));
+  }
+
+  .home-hero__layout {
+    gap: 1.1rem;
+    padding-block: 5rem 1.5rem;
+  }
+
+  .home-hero__title {
+    font-size: clamp(2.35rem, 9.8vw, 3.4rem);
+  }
+
+  .home-hero__description {
+    margin-top: 0.75rem;
+    line-height: 1.58;
+  }
+
+  .home-hero__paths {
+    gap: 0.6rem;
+    padding: 0.7rem;
+    border-radius: 1.2rem;
+  }
+
+  .home-hero__paths-list {
+    gap: 0.38rem;
+  }
+
+  .home-hero__path {
+    grid-template-columns: 1.35rem 2.1rem minmax(0, 1fr) 0.8rem;
+    gap: 0.48rem;
+    min-height: 4.9rem;
+    padding: 0.62rem 0.58rem;
+    border-radius: 0.9rem;
+  }
+
+  .home-hero__path-icon {
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 0.7rem;
+  }
+
+  .home-hero__path-icon svg {
+    width: 0.98rem;
+    height: 0.98rem;
+  }
+}
+
+.home-hero__paths-title {
+  color: var(--ink);
+}

@@ -36,6 +36,16 @@ export function HomeHero() {
 
   return (
     <section className="home-hero" aria-labelledby="home-hero-title">
+      <picture aria-hidden="true" className="home-hero__backdrop">
+        <source media="(max-width: 639px)" srcSet="/brand/sylution-home-hero-mobile.webp" />
+        <img
+          src="/brand/sylution-home-hero-desktop.webp"
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+        />
+      </picture>
+      <div aria-hidden="true" className="home-hero__overlay" />
       <div aria-hidden="true" className="home-hero__glow" />
       <div className="container-x home-hero__layout">
         <div className="home-hero__copy">
