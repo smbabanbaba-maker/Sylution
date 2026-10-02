@@ -37,9 +37,9 @@ export function HomeHero() {
   return (
     <section className="home-hero" aria-labelledby="home-hero-title">
       <picture aria-hidden="true" className="home-hero__backdrop">
-        <source media="(max-width: 639px)" srcSet="/brand/sylution-home-hero-mobile.webp" />
+        <source media="(max-width: 639px)" srcSet="/brand/sylution-home-hero-mobile-premium.webp" />
         <img
-          src="/brand/sylution-home-hero-desktop.webp"
+          src="/brand/sylution-home-hero-desktop-premium.webp"
           alt=""
           fetchPriority="high"
           decoding="async"
