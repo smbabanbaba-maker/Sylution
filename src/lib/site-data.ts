@@ -24,7 +24,7 @@ export const BRAND_IMAGES = {
   exhibition4: "/brand/exhibition-4.jpg",
   exhibition5: "/brand/exhibition-5.jpg",
 };
-export const LOGO_SRC = "/brand/sylution-logo-dark-red.webp";
+export const LOGO_SRC = "/brand/sylution-logo-square-dark-red.webp";
 
 export const U = (id: string, w = 1600, h = 1000) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${h}&q=80`;

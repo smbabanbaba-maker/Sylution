@@ -104,12 +104,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         property: "og:image",
-        content: "https://www.sylution.com.ng/brand/sylution-logo-dark-red.webp",
+        content: "https://www.sylution.com.ng/brand/sylution-logo-square-dark-red.webp",
       },
+      { property: "og:image:type", content: "image/webp" },
+      { property: "og:image:width", content: "512" },
+      { property: "og:image:height", content: "512" },
       { property: "og:image:alt", content: "Official SYLUTION LTD logo" },
       {
         name: "twitter:image",
-        content: "https://www.sylution.com.ng/brand/sylution-logo-dark-red.webp",
+        content: "https://www.sylution.com.ng/brand/sylution-logo-square-dark-red.webp",
       },
       { name: "twitter:image:alt", content: "Official SYLUTION LTD logo" },
     ],

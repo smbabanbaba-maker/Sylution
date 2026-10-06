@@ -58,7 +58,12 @@ export const Route = createFileRoute("/")({
               "@id": "https://www.sylution.com.ng/#organization",
               name: CONTACT.legalName,
               url: "https://www.sylution.com.ng/",
-              logo: "https://www.sylution.com.ng/brand/sylution-logo-dark-red.webp",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://www.sylution.com.ng/brand/sylution-logo-square-dark-red.webp",
+                width: 512,
+                height: 512,
+              },
               email: CONTACT.email,
               telephone: CONTACT.phones[0],
               address: {
