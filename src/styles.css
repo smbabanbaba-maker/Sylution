@@ -1846,6 +1846,83 @@ html[data-home-hero-visible] .assistant-launcher {
   }
 }
 
+@media (max-width: 639px) {
+  .home-hero__layout {
+    gap: 1rem;
+    padding-block: 5rem 1rem;
+  }
+
+  .home-hero__paths {
+    gap: 0.55rem;
+    padding: 0.65rem;
+    border-radius: 1.05rem;
+  }
+
+  .home-hero__paths-heading {
+    padding-inline: 0.1rem;
+  }
+
+  .home-hero__paths-overline,
+  .home-hero__paths-location {
+    display: none;
+  }
+
+  .home-hero__paths-title {
+    padding-inline: 0;
+    font-size: 0.94rem;
+    line-height: 1.2;
+  }
+
+  .home-hero__paths-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.4rem;
+  }
+
+  .home-hero__path {
+    display: flex;
+    min-width: 0;
+    min-height: 5.25rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.25rem;
+    border-radius: 0.9rem;
+    text-align: center;
+  }
+
+  .home-hero__path-number,
+  .home-hero__path-label,
+  .home-hero__path-detail,
+  .home-hero__path-arrow {
+    display: none;
+  }
+
+  .home-hero__path-icon {
+    width: 2rem;
+    height: 2rem;
+    margin-inline: auto;
+    border-radius: 0.65rem;
+  }
+
+  .home-hero__path-icon svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .home-hero__path-copy {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .home-hero__path-copy strong {
+    display: block;
+    overflow-wrap: anywhere;
+    font-size: 0.7rem;
+    line-height: 1.2;
+  }
+}
+
 .home-hero__paths-title {
   color: var(--ink);
 }
