@@ -11,6 +11,7 @@ import {
   Radio,
   Sprout,
   Sun,
+  Smartphone,
   Handshake,
   Landmark,
 } from "lucide-react";
@@ -119,6 +120,19 @@ const PILLARS = [
 ];
 
 const SYSMART_ICONS = [Sprout, CircuitBoard, Radio, Gauge];
+
+const SYSMART_TICKER_ITEMS = [
+  ...SYSMART_OVERVIEW.map((item, index) => ({
+    ...item,
+    icon: SYSMART_ICONS[index] ?? Sprout,
+  })),
+  {
+    title: "Mobile app · roadmap",
+    detail:
+      "Mobile access, offline readings and multi-zone scheduling are planned, not available to download yet.",
+    icon: Smartphone,
+  },
+];
 
 function Home() {
   return (
@@ -245,31 +259,39 @@ function SysmartAgroFeature() {
               monitoring dashboard. The project is in development and field testing. A public mobile
               app and offline access are roadmap items—not live services.
             </p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {SYSMART_OVERVIEW.map((item, index) => {
-                const Icon = SYSMART_ICONS[index] ?? Sprout;
-                return (
-                  <article
-                    key={item.title}
-                    className="rounded-2xl border border-border bg-background p-4"
-                  >
-                    <span className="grid h-9 w-9 place-items-center rounded-xl bg-primary/10 text-primary">
-                      <Icon className="h-4 w-4" />
-                    </span>
-                    <h3 className="mt-3 font-display text-sm font-bold">{item.title}</h3>
-                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                      {item.detail}
-                    </p>
-                  </article>
-                );
-              })}
-            </div>
-            <div className="mt-5 rounded-2xl border border-primary/20 bg-primary/5 p-4">
-              <p className="font-semibold">Mobile app · roadmap</p>
-              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                Mobile access, offline readings and multi-zone scheduling are planned, not available
-                to download yet.
-              </p>
+            <div
+              className="sysmart-ticker mt-6 rounded-2xl"
+              role="region"
+              aria-label="Sysmart Agro features and roadmap"
+              tabIndex={0}
+            >
+              <div className="sysmart-ticker__track">
+                {[0, 1].map((copy) => (
+                  <div key={copy} className="sysmart-ticker__group" aria-hidden={copy === 1}>
+                    {SYSMART_TICKER_ITEMS.map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <article
+                          key={item.title}
+                          className="sysmart-ticker__item flex items-start gap-3 rounded-2xl border border-border bg-background p-3"
+                        >
+                          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
+                            <Icon className="h-4 w-4" aria-hidden="true" />
+                          </span>
+                          <span className="min-w-0">
+                            <span className="block font-display text-sm font-bold leading-tight">
+                              {item.title}
+                            </span>
+                            <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
+                              {item.detail}
+                            </span>
+                          </span>
+                        </article>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link to="/sysmart-agro" className="btn-base btn-primary group">

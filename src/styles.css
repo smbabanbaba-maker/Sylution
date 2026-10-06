@@ -1926,3 +1926,60 @@ html[data-home-hero-visible] .assistant-launcher {
 .home-hero__paths-title {
   color: var(--ink);
 }
+
+.sysmart-ticker {
+  width: 100%;
+  overflow: hidden;
+}
+
+.sysmart-ticker__track {
+  display: flex;
+  width: max-content;
+  animation: sysmart-ticker-scroll 68s linear infinite;
+  will-change: transform;
+}
+
+.sysmart-ticker__group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: stretch;
+  gap: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.sysmart-ticker__item {
+  flex: 0 0 17rem;
+}
+
+@keyframes sysmart-ticker-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.sysmart-ticker:hover .sysmart-ticker__track,
+.sysmart-ticker:focus-within .sysmart-ticker__track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sysmart-ticker {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+  }
+
+  .sysmart-ticker__track {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  .sysmart-ticker__group[aria-hidden="true"] {
+    display: none;
+  }
+}
