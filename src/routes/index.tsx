@@ -217,9 +217,9 @@ function SysmartAgroFeature() {
       <section
         id="home-sysmart-agro"
         aria-labelledby="home-sysmart-agro-title"
-        className="mt-14 overflow-hidden rounded-[2rem] border border-primary/15 bg-card shadow-luxe"
+        className="mt-14 w-full min-w-0 max-w-full overflow-hidden rounded-[2rem] border border-primary/15 bg-card shadow-luxe"
       >
-        <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="grid min-w-0 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="relative min-h-[250px] bg-foreground sm:min-h-[360px]">
             <img
               src={BRAND_IMAGES.sysmart}
@@ -246,7 +246,7 @@ function SysmartAgroFeature() {
               </p>
             </div>
           </div>
-          <div className="p-5 sm:p-8 lg:p-10">
+          <div className="min-w-0 p-5 sm:p-8 lg:p-10">
             <p className="eyebrow">Built around real farm conditions</p>
             <h2
               id="home-sysmart-agro-title"
@@ -260,7 +260,7 @@ function SysmartAgroFeature() {
               app and offline access are roadmap items—not live services.
             </p>
             <div
-              className="sysmart-ticker mt-6 rounded-2xl"
+              className="sysmart-ticker mt-6 w-full min-w-0 max-w-full rounded-2xl"
               role="region"
               aria-label="Sysmart Agro features and roadmap"
               tabIndex={0}
