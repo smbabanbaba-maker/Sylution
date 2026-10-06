@@ -38,7 +38,7 @@ const PLATFORMS = [
     category: "AgriTech development project",
     status: "Active Project",
     description:
-      "Our flagship smart-agriculture project combines IoT sensors, a connected controller and monitoring. It is in development and field testing—not available to purchase online.",
+      "Our flagship smart-agriculture project connects field sensors, a controller and irrigation hardware with dashboard work. It is in development and field testing; the public mobile app is planned, not released.",
     to: "/sysmart-agro",
     cta: "View project status",
   },

@@ -4,7 +4,7 @@ import { PageHero, SectionHeading } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
 import { StatusBadge } from "@/components/site/StatusKey";
-import { BRAND_IMAGES, SYSMART_FLOW } from "@/lib/site-data";
+import { BRAND_IMAGES, SYSMART_FLOW, SYSMART_OVERVIEW } from "@/lib/site-data";
 
 export const Route = createFileRoute("/sysmart-agro")({
   head: () => ({
@@ -13,13 +13,13 @@ export const Route = createFileRoute("/sysmart-agro")({
       {
         name: "description",
         content:
-          "Sysmart Agro is the flagship IoT smart agriculture project of SYLUTION: a field controller with soil and climate sensing, remote irrigation control and a monitoring dashboard. Status: active project.",
+          "Sysmart Agro is SYLUTION's smart-agriculture project in development and field testing, connecting farm sensors, an IoT controller, irrigation hardware and dashboard work. Its public mobile app is not yet released.",
       },
       { property: "og:title", content: "Sysmart Agro, IoT smart agriculture project by SYLUTION" },
       {
         property: "og:description",
         content:
-          "Field controller, soil and climate sensing, remote irrigation control and dashboards, engineered in Kano, Nigeria. Currently in active development and field deployment.",
+          "A Kano-built smart-agriculture development project. Field sensing, a controller and irrigation hardware are under development and field testing; the public mobile app remains on the roadmap.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -27,14 +27,6 @@ export const Route = createFileRoute("/sysmart-agro")({
   }),
   component: SysmartAgroPage,
 });
-
-const OBJECTIVES = [
-  "Give farmers accurate soil and climate data instead of guesswork.",
-  "Automate irrigation so water and fuel are used only when required.",
-  "Keep working where mobile coverage and grid power are unreliable.",
-  "Stay affordable enough for smallholder and medium scale farms.",
-  "Provide a data record that banks and programmes can verify.",
-];
 
 const TECHNOLOGIES = [
   {
@@ -60,7 +52,8 @@ const TECHNOLOGIES = [
   {
     icon: Gauge,
     title: "Dashboard",
-    detail: "Web dashboard for readings, thresholds and pump status.",
+    detail:
+      "Dashboard work covers field readings, thresholds and pump status; there is no public app release yet.",
   },
   {
     icon: ClipboardCheck,
@@ -111,7 +104,7 @@ const TIMELINE = [
 
 const ROADMAP = [
   "Longer range LoRa gateway option for clustered farms",
-  "Mobile application with offline access to readings",
+  "Public mobile app and offline access to readings (planned, not released)",
   "Multi zone irrigation scheduling",
   "Predictive advice from accumulated field data",
   "Local manufacturing and assembly of production units",
@@ -123,7 +116,7 @@ function SysmartAgroPage() {
       <PageHero
         eyebrow="Flagship project"
         title="Sysmart Agro"
-        subtitle="An intelligent IoT powered smart agriculture platform developed by SYLUTION to improve productivity through connected technologies, smart monitoring and intelligent decision support."
+        subtitle="Sysmart Agro connects field sensors, an IoT controller, irrigation hardware and dashboard work. The project is in development and field testing; a public mobile app is not yet released."
         image={BRAND_IMAGES.sysmart}
         compact
       >
@@ -146,31 +139,30 @@ function SysmartAgroPage() {
           <div className="overflow-hidden rounded-3xl shadow-luxe">
             <img
               src={BRAND_IMAGES.sysmart}
-              alt="Sysmart Agro field controller installed beside an irrigated crop field"
+              alt="Illustrative Sysmart Agro controller concept beside an irrigated crop field"
               width={1248}
               height={832}
               className="h-full w-full object-cover"
             />
           </div>
           <p className="mt-3 text-xs text-muted-foreground">
-            Sysmart Agro controller displaying live soil moisture and pump state during field
-            deployment.
+            Illustrative product visualization; the screen reading is not a live field feed.
           </p>
         </Reveal>
         <Reveal delay={0.12}>
           <SectionHeading
             eyebrow="Project overview"
-            title="One box between the farmer and the field"
-            description="Sysmart Agro reads what is happening in the soil and the air, decides whether water is needed, switches the pump and reports everything back to a dashboard. The system runs the full monitoring and control loop today on our field sites."
+            title="A field-to-dashboard system in development"
+            description="The project is being developed to connect soil and climate readings with an IoT controller, irrigation hardware and dashboard work. Pump and valve control remain under field validation; mobile app access is a roadmap item, not a live service."
           />
-          <ul className="mt-8 space-y-3">
-            {OBJECTIVES.map((o) => (
-              <li key={o} className="flex gap-3 text-sm text-muted-foreground">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                {o}
-              </li>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            {SYSMART_OVERVIEW.map((item) => (
+              <article key={item.title} className="card-luxe p-5">
+                <h3 className="font-display text-sm font-bold">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.detail}</p>
+              </article>
             ))}
-          </ul>
+          </div>
         </Reveal>
       </section>
 
@@ -179,7 +171,7 @@ function SysmartAgroPage() {
           <SectionHeading
             eyebrow="Technologies used"
             title="System architecture"
-            description="Every layer of Sysmart Agro is engineered in house, from the board to the dashboard."
+            description="Hardware, connectivity and dashboard layers are being integrated; each capability remains subject to its stated testing or roadmap stage."
             align="center"
           />
           <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-3">
@@ -203,8 +195,8 @@ function SysmartAgroPage() {
       <section className="container-x section-y">
         <SectionHeading
           eyebrow="How it works"
-          title="From sensors to smart decisions"
-          description="The Sysmart Agro operational flow, from a reading in the soil to an irrigation decision on the farm."
+          title="How the system is designed to work"
+          description="The intended flow from a field reading to an irrigation decision. Several software and control layers remain under development or field validation."
           align="center"
         />
         <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">

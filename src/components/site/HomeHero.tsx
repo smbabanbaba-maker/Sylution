@@ -5,20 +5,20 @@ import { useLang } from "@/lib/i18n";
 
 const PATHWAYS = [
   {
-    id: "services",
-    href: "/solutions" as const,
-    icon: Brain,
-    label: "hero.paths.services.label",
-    title: "hero.paths.services.title",
-    detail: "hero.paths.services.detail",
-  },
-  {
     id: "products",
     href: "/sysmart-agro" as const,
     icon: CircuitBoard,
     label: "hero.paths.products.label",
     title: "hero.paths.products.title",
     detail: "hero.paths.products.detail",
+  },
+  {
+    id: "services",
+    href: "/solutions" as const,
+    icon: Brain,
+    label: "hero.paths.services.label",
+    title: "hero.paths.services.title",
+    detail: "hero.paths.services.detail",
   },
   {
     id: "academy",

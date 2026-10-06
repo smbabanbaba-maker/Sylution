@@ -17,7 +17,7 @@ export const BRAND_IMAGES = {
   techTraining: "/brand/tech-training.jpg",
   device: "/brand/tech-iot-node.jpg",
   city: "/brand/tech-city.jpg",
-  sysmart: "/brand/sysmart-agro.png",
+  sysmart: "/brand/showcase-sysmart.webp",
   exhibition1: "/brand/exhibition-1.jpg",
   exhibition2: "/brand/exhibition-2.jpg",
   exhibition3: "/brand/exhibition-3.jpg",
@@ -1138,32 +1138,65 @@ export const COMING_SOON = [
   },
 ];
 
+export const SYSMART_OVERVIEW = [
+  {
+    title: "Field sensing",
+    detail:
+      "Soil moisture, temperature, humidity and water-level readings are part of the field-testing scope.",
+  },
+  {
+    title: "Controller and irrigation",
+    detail:
+      "The controller is being tested with pumps and valves; thresholds and local manual override remain under validation.",
+  },
+  {
+    title: "Connectivity",
+    detail: "GSM and Wi-Fi are part of development; LoRa is still under evaluation.",
+  },
+  {
+    title: "Dashboard scope",
+    detail:
+      "Dashboard work covers readings, thresholds and pump status. A public mobile app and offline access remain on the roadmap.",
+  },
+];
+
 export const SYSMART_FLOW = [
   {
     step: "Sensors",
-    detail: "Soil moisture, temperature, humidity and water level sensing in the field.",
+    detail:
+      "Soil moisture, temperature, humidity and water-level readings are part of field testing.",
   },
   {
     step: "IoT controller",
-    detail: "A solar capable controller reads the sensors and drives pumps and valves.",
+    detail: "A solar-capable controller is being tested with sensor inputs, pumps and valves.",
   },
-  { step: "Connectivity", detail: "GSM and wireless links move readings out of the farm." },
+  {
+    step: "Connectivity",
+    detail: "GSM and Wi-Fi links are in development; LoRa remains under evaluation.",
+  },
   {
     step: "Data collection",
-    detail: "Readings are timestamped and queued, including when the network drops.",
+    detail:
+      "Timestamping and queuing readings for unreliable networks are being developed and validated.",
   },
   {
     step: "Cloud database",
-    detail: "Field data is stored as a continuous record per farm and per block.",
+    detail: "A cloud data layer is planned to organize records by farm and field block.",
   },
   {
     step: "AI analysis",
-    detail: "Models study the readings to flag stress, waste and irrigation needs.",
+    detail:
+      "Future analysis is intended to explore crop stress, water use and irrigation needs after field data is validated.",
   },
-  { step: "Dashboard", detail: "The farmer and our team see live status, history and alerts." },
+  {
+    step: "Dashboard",
+    detail:
+      "Dashboard work covers readings, thresholds and pump status; no public mobile app is released.",
+  },
   {
     step: "Smart decision",
-    detail: "Irrigation and control actions run automatically or on approval.",
+    detail:
+      "Automatic or approval-based irrigation decisions remain under development and field validation.",
   },
 ];
 

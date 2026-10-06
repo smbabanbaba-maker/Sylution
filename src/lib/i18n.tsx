@@ -74,9 +74,10 @@ const en: Dict = {
   "hero.paths.services.label": "Engineering service",
   "hero.paths.services.title": "Custom systems",
   "hero.paths.services.detail": "AI, IoT, electronics, robotics and software for real needs.",
-  "hero.paths.products.label": "Project in development",
-  "hero.paths.products.title": "Products & projects",
-  "hero.paths.products.detail": "Sysmart Agro is in development—not yet available to order online.",
+  "hero.paths.products.label": "Flagship AgriTech project",
+  "hero.paths.products.title": "Sysmart Agro",
+  "hero.paths.products.detail":
+    "In development and field testing. A mobile app is planned, not yet available.",
   "hero.paths.training.label": "SYLUTION Academy",
   "hero.paths.training.title": "Practical training",
   "hero.paths.training.detail": "Hands-on AI, IoT, electronics and smart farming. Ask about dates.",
@@ -167,10 +168,10 @@ const ha: Dict = {
   "hero.paths.services.label": "Sabis na injiniyanci",
   "hero.paths.services.title": "Tsarukan da aka ƙera bisa buƙata",
   "hero.paths.services.detail": "AI, IoT, lantarki, robotics da manhajoji don ainihin buƙatu.",
-  "hero.paths.products.label": "Aikin da ke ci gaba",
-  "hero.paths.products.title": "Kayayyaki da ayyuka",
+  "hero.paths.products.label": "Babban aikin noman zamani",
+  "hero.paths.products.title": "Sysmart Agro",
   "hero.paths.products.detail":
-    "Sysmart Agro yana kan gini; ba a shirya sayar da shi ta yanar gizo ba.",
+    "Ana haɓakawa da gwadawa a gona. Manhajar waya na cikin shirin gaba; ba a fitar da ita ba.",
   "hero.paths.training.label": "Makarantar SYLUTION",
   "hero.paths.training.title": "Horo na aiki da hannu",
   "hero.paths.training.detail": "AI, IoT, lantarki da noman zamani. A tambaye mu ranakun horo.",
@@ -265,10 +266,10 @@ const fr: Dict = {
   "hero.paths.services.title": "Systèmes sur mesure",
   "hero.paths.services.detail":
     "IA, IoT, électronique, robotique et logiciels pour des besoins concrets.",
-  "hero.paths.products.label": "Projet en développement",
-  "hero.paths.products.title": "Produits et projets",
+  "hero.paths.products.label": "Projet phare d’agritech",
+  "hero.paths.products.title": "Sysmart Agro",
   "hero.paths.products.detail":
-    "Sysmart Agro est en développement et n’est pas encore disponible à la commande.",
+    "En développement et en tests sur le terrain. L’application mobile est prévue, pas encore publiée.",
   "hero.paths.training.label": "SYLUTION Academy",
   "hero.paths.training.title": "Formation pratique",
   "hero.paths.training.detail":
@@ -361,10 +362,10 @@ const ar: Dict = {
   "hero.paths.services.title": "أنظمة حسب الحاجة",
   "hero.paths.services.detail":
     "أنظمة الذكاء الاصطناعي وإنترنت الأشياء والإلكترونيات والروبوتات حسب الحاجة.",
-  "hero.paths.products.label": "مشروع قيد التطوير",
-  "hero.paths.products.title": "المنتجات والمشاريع",
+  "hero.paths.products.label": "المشروع الزراعي التقني الرئيسي",
+  "hero.paths.products.title": "Sysmart Agro",
   "hero.paths.products.detail":
-    "مشروع Sysmart Agro قيد التطوير، ولم يصبح متاحاً للشراء عبر الإنترنت بعد.",
+    "قيد التطوير والاختبار الميداني. تطبيق الهاتف مخطط له ولم يُطرح بعد.",
   "hero.paths.training.label": "أكاديمية SYLUTION",
   "hero.paths.training.title": "تدريب عملي",
   "hero.paths.training.detail":

@@ -5,6 +5,7 @@ import {
   Brain,
   Bot,
   CircuitBoard,
+  Gauge,
   GraduationCap,
   Plane,
   Radio,
@@ -19,7 +20,7 @@ import { SectionHeading } from "@/components/site/PageHero";
 import { CaseStudies } from "@/components/site/CaseStudies";
 import { StatusBadge } from "@/components/site/StatusKey";
 import { useLang } from "@/lib/i18n";
-import { BRAND_IMAGES, CONTACT } from "@/lib/site-data";
+import { BRAND_IMAGES, CONTACT, SYSMART_OVERVIEW } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -117,64 +118,12 @@ const PILLARS = [
   },
 ];
 
+const SYSMART_ICONS = [Sprout, CircuitBoard, Radio, Gauge];
+
 function Home() {
   return (
     <>
       <HomeHero />
-
-      {/* SYSMART AGRO PRODUCT STORY */}
-      <section className="border-y border-border bg-surface section-y">
-        <div className="container-x">
-          <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <Reveal>
-              <div className="media-frame relative aspect-[4/3]">
-                <img
-                  src={BRAND_IMAGES.sysmart}
-                  alt="Sysmart Agro controller operating beside an irrigated crop field"
-                  loading="lazy"
-                />
-                <span className="absolute left-5 top-5">
-                  <StatusBadge status="Active Project" />
-                </span>
-              </div>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <p className="eyebrow">
-                <span aria-hidden className="h-px w-8 shrink-0 bg-primary" /> Flagship project
-              </p>
-              <h2 className="mt-5 font-display text-3xl font-bold leading-tight sm:text-4xl">
-                Sysmart Agro
-              </h2>
-              <p className="mt-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                Sysmart Agro is our flagship smart-agriculture project: an IoT controller, soil and
-                climate sensing, irrigation control and monitoring. It is in development and field
-                testing, not available to purchase online.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-2.5">
-                {["IoT controller", "Soil & climate sensing", "Smart irrigation control"].map(
-                  (feature) => (
-                    <span
-                      key={feature}
-                      className="rounded-full border border-border bg-card px-3 py-1.5 text-xs font-semibold text-muted-foreground"
-                    >
-                      {feature}
-                    </span>
-                  ),
-                )}
-              </div>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link to="/sysmart-agro" className="btn-base btn-primary group">
-                  Explore the project{" "}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-                <Link to="/projects" className="btn-base btn-ghost">
-                  View all projects
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
 
       {/* SERVICES */}
       <section className="container-x section-y">
@@ -206,6 +155,7 @@ function Home() {
             </Reveal>
           ))}
         </div>
+        <SysmartAgroFeature />
       </section>
 
       {/* TRAINING */}
@@ -244,6 +194,99 @@ function Home() {
 
       <HomeOpportunitySection />
     </>
+  );
+}
+
+function SysmartAgroFeature() {
+  return (
+    <Reveal delay={0.12}>
+      <section
+        id="home-sysmart-agro"
+        aria-labelledby="home-sysmart-agro-title"
+        className="mt-14 overflow-hidden rounded-[2rem] border border-primary/15 bg-card shadow-luxe"
+      >
+        <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="relative min-h-[250px] bg-foreground sm:min-h-[360px]">
+            <img
+              src={BRAND_IMAGES.sysmart}
+              alt="Illustrative Sysmart Agro controller concept beside an irrigated crop"
+              width={1248}
+              height={832}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent"
+            />
+            <span className="absolute left-5 top-5">
+              <StatusBadge status="Active Project" />
+            </span>
+            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
+                Flagship AgriTech project
+              </p>
+              <p className="mt-2 font-display text-2xl font-extrabold text-white">Sysmart Agro</p>
+              <p className="mt-1 max-w-md text-sm leading-relaxed text-white/80">
+                A field-to-dashboard system under development in Kano.
+              </p>
+            </div>
+          </div>
+          <div className="p-5 sm:p-8 lg:p-10">
+            <p className="eyebrow">Built around real farm conditions</p>
+            <h2
+              id="home-sysmart-agro-title"
+              className="mt-4 font-display text-2xl font-bold leading-tight sm:text-3xl"
+            >
+              How the Sysmart Agro platform is being built
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Sysmart Agro connects field sensors, a controller and irrigation hardware with a
+              monitoring dashboard. The project is in development and field testing. A public mobile
+              app and offline access are roadmap items—not live services.
+            </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {SYSMART_OVERVIEW.map((item, index) => {
+                const Icon = SYSMART_ICONS[index] ?? Sprout;
+                return (
+                  <article
+                    key={item.title}
+                    className="rounded-2xl border border-border bg-background p-4"
+                  >
+                    <span className="grid h-9 w-9 place-items-center rounded-xl bg-primary/10 text-primary">
+                      <Icon className="h-4 w-4" />
+                    </span>
+                    <h3 className="mt-3 font-display text-sm font-bold">{item.title}</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                      {item.detail}
+                    </p>
+                  </article>
+                );
+              })}
+            </div>
+            <div className="mt-5 rounded-2xl border border-primary/20 bg-primary/5 p-4">
+              <p className="font-semibold">Mobile app · roadmap</p>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                Mobile access, offline readings and multi-zone scheduling are planned, not available
+                to download yet.
+              </p>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link to="/sysmart-agro" className="btn-base btn-primary group">
+                Explore Sysmart Agro
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link to="/contact" className="btn-base btn-ghost">
+                Contact SYLUTION
+              </Link>
+            </div>
+          </div>
+        </div>
+        <p className="border-t border-border bg-surface px-5 py-3 text-xs text-muted-foreground sm:px-8">
+          Illustrative product visualization; the display reading is not live system data.
+        </p>
+      </section>
+    </Reveal>
   );
 }
 
