@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { LOGO_SRC, CONTACT, SOLUTIONS } from "@/lib/site-data";
-import { toast } from "sonner";
 import { useLang } from "@/lib/i18n";
 
 const SOCIAL_MARKS: Record<string, string> = {
@@ -121,37 +120,6 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-
-            <form
-              className="mt-6"
-              onSubmit={(e) => {
-                e.preventDefault();
-                e.currentTarget.reset();
-                toast.success("Subscribed", {
-                  description: "You are on the SYLUTION newsletter list.",
-                });
-              }}
-            >
-              <label htmlFor="newsletter" className="eyebrow">
-                Newsletter
-              </label>
-              <div className="mt-6 flex overflow-hidden rounded-full border border-white/15 bg-white/10">
-                <input
-                  id="newsletter"
-                  type="email"
-                  required
-                  placeholder="Your email address"
-                  className="min-w-0 flex-1 bg-transparent px-4 py-2.5 text-sm text-white outline-none placeholder:text-white/50"
-                />
-                <button
-                  type="submit"
-                  aria-label="Subscribe"
-                  className="grid w-12 place-items-center bg-primary text-primary-foreground transition-opacity hover:opacity-90"
-                >
-                  <Send className="h-4 w-4" />
-                </button>
-              </div>
-            </form>
           </div>
         </div>
 

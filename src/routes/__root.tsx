@@ -143,7 +143,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "/brand/sylution-apple-touch-icon-dark-red.png",
         sizes: "180x180",
       },
-      { rel: "manifest", href: "/site.webmanifest" },
     ],
   }),
   shellComponent: RootShell,
@@ -173,7 +172,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
         <ScrollTop />
-        <HomeHeroFloatingActions />
+        <HomeFloatingActionsVisibility />
         <RouteProgress />
         <a
           href="#main"
@@ -238,19 +237,27 @@ function ScrollTop() {
   return null;
 }
 
-function HomeHeroFloatingActions() {
+function HomeFloatingActionsVisibility() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
 
   useEffect(() => {
     if (pathname !== "/") {
-      document.documentElement.removeAttribute("data-home-hero-visible");
+      document.documentElement.removeAttribute("data-home-quiet-zone-visible");
       return;
     }
 
     const updateVisibility = () => {
       const hero = document.querySelector(".home-hero");
-      const visible = hero instanceof HTMLElement && hero.getBoundingClientRect().bottom > 0;
-      document.documentElement.toggleAttribute("data-home-hero-visible", visible);
+      const approach = document.querySelector(".home-approach-section");
+      const heroVisible = hero instanceof HTMLElement && hero.getBoundingClientRect().bottom > 0;
+      const approachRect = approach?.getBoundingClientRect();
+      const approachVisible = Boolean(
+        approachRect && approachRect.bottom > 0 && approachRect.top < window.innerHeight,
+      );
+      document.documentElement.toggleAttribute(
+        "data-home-quiet-zone-visible",
+        heroVisible || approachVisible,
+      );
     };
 
     const frame = window.requestAnimationFrame(updateVisibility);
@@ -260,7 +267,7 @@ function HomeHeroFloatingActions() {
       window.cancelAnimationFrame(frame);
       window.removeEventListener("scroll", updateVisibility);
       window.removeEventListener("resize", updateVisibility);
-      document.documentElement.removeAttribute("data-home-hero-visible");
+      document.documentElement.removeAttribute("data-home-quiet-zone-visible");
     };
   }, [pathname]);
 

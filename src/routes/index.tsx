@@ -139,6 +139,33 @@ const SYSMART_TICKER_ITEMS = [
   },
 ];
 
+const HOME_APPROACH_STEPS = [
+  {
+    icon: Brain,
+    number: "01",
+    title: "home.approach.step1.title",
+    detail: "home.approach.step1.detail",
+  },
+  {
+    icon: CircuitBoard,
+    number: "02",
+    title: "home.approach.step2.title",
+    detail: "home.approach.step2.detail",
+  },
+  {
+    icon: Gauge,
+    number: "03",
+    title: "home.approach.step3.title",
+    detail: "home.approach.step3.detail",
+  },
+  {
+    icon: GraduationCap,
+    number: "04",
+    title: "home.approach.step4.title",
+    detail: "home.approach.step4.detail",
+  },
+] as const;
+
 function Home() {
   return (
     <>
@@ -151,7 +178,7 @@ function Home() {
           title="Technology services for real-world systems"
           description="Explore the specialist services SYLUTION brings together—from intelligent software and connected devices to practical engineering for agriculture, industry and energy."
         />
-        <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {PILLARS.map((p, i) => (
             <Reveal key={p.slug} delay={i * 0.06}>
               <Link
@@ -176,6 +203,8 @@ function Home() {
         </div>
         <SysmartAgroFeature />
       </section>
+
+      <HomeApproachSection />
 
       {/* TRAINING */}
       <section className="container-x section-y">
@@ -314,6 +343,85 @@ function SysmartAgroFeature() {
         </p>
       </section>
     </Reveal>
+  );
+}
+
+function HomeApproachSection() {
+  const { t } = useLang();
+
+  return (
+    <section
+      className="home-approach-section container-x py-6 md:py-12"
+      aria-labelledby="home-approach-title"
+    >
+      <Reveal>
+        <div className="relative isolate overflow-hidden rounded-[2rem] bg-foreground p-5 text-white shadow-luxe sm:p-8 lg:p-10">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 -top-28 h-72 w-72 rounded-full bg-primary/30 blur-[100px]"
+          />
+          <div className="relative grid gap-6 xl:grid-cols-[0.82fr_1.18fr] xl:items-center xl:gap-8">
+            <div className="max-w-xl">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/60">
+                {t("home.approach.eyebrow")}
+              </p>
+              <h2
+                id="home-approach-title"
+                className="mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-4xl"
+              >
+                {t("home.approach.title")}
+              </h2>
+              <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/70 sm:text-base">
+                {t("home.approach.subtitle")}
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link to="/contact" className="btn-base btn-primary group">
+                  {t("home.approach.contact")}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  to="/solutions"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/20 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/10"
+                >
+                  {t("home.approach.services")}
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+
+            <ol
+              aria-labelledby="home-approach-title"
+              tabIndex={0}
+              className="home-approach-steps -mx-1 flex min-w-0 snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain px-1 pb-1 focus-visible:outline-2 focus-visible:outline-primary sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:p-0"
+            >
+              {HOME_APPROACH_STEPS.map((step) => (
+                <li
+                  key={step.number}
+                  className="group w-[86%] min-w-[86%] snap-start rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/60 hover:bg-white/[0.07] sm:w-auto sm:min-w-0 sm:p-5"
+                >
+                  <div className="flex items-start gap-3.5 sm:gap-4">
+                    <div className="flex shrink-0 flex-col items-center gap-2">
+                      <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary/20 text-white">
+                        <step.icon className="h-5 w-5" aria-hidden="true" />
+                      </span>
+                      <span className="text-xs font-bold tracking-[0.16em] text-white/45">
+                        {step.number}
+                      </span>
+                    </div>
+                    <div className="min-w-0 flex-1 pt-1">
+                      <h3 className="font-display text-base font-bold leading-snug text-white sm:text-lg">
+                        {t(step.title)}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-white/65">{t(step.detail)}</p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </Reveal>
+    </section>
   );
 }
 

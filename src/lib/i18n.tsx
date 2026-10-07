@@ -81,6 +81,23 @@ const en: Dict = {
   "hero.paths.training.label": "SYLUTION Academy",
   "hero.paths.training.title": "Practical training",
   "hero.paths.training.detail": "Hands-on AI, IoT, electronics and smart farming. Ask about dates.",
+  "home.approach.eyebrow": "A PRACTICAL APPROACH",
+  "home.approach.title": "From a real need to a useful system.",
+  "home.approach.subtitle":
+    "We start with the job and site conditions, define the scope, then build and test a system the team can use.",
+  "home.approach.step1.title": "Understand the need",
+  "home.approach.step1.detail":
+    "Clarify the task, field conditions and constraints before choosing technology.",
+  "home.approach.step2.title": "Design the system",
+  "home.approach.step2.detail":
+    "Select the sensors, electronics, software and power the job needs.",
+  "home.approach.step3.title": "Build and test",
+  "home.approach.step3.detail":
+    "Integrate the parts and test key functions for their intended use.",
+  "home.approach.step4.title": "Prepare the people",
+  "home.approach.step4.detail": "Explain operation and care, with hands-on training when needed.",
+  "home.approach.contact": "Discuss a project",
+  "home.approach.services": "Explore engineering services",
   "home.opportunities.eyebrow": "Work with SYLUTION",
   "home.opportunities.title": "Build practical technology with us.",
   "home.opportunities.subtitle":
@@ -175,6 +192,24 @@ const ha: Dict = {
   "hero.paths.training.label": "Makarantar SYLUTION",
   "hero.paths.training.title": "Horo na aiki da hannu",
   "hero.paths.training.detail": "AI, IoT, lantarki da noman zamani. A tambaye mu ranakun horo.",
+  "home.approach.eyebrow": "YADDA MUKE AIKI",
+  "home.approach.title": "Daga ainihin buƙata zuwa tsarin fasaha mai amfani.",
+  "home.approach.subtitle":
+    "Muna fara da fahimtar aikin da yanayin wurin, mu fayyace abin da ake bukata, sannan mu gina da gwada tsarin da mutane za su iya amfani da shi.",
+  "home.approach.step1.title": "Fahimtar buƙatar",
+  "home.approach.step1.detail":
+    "A fayyace aikin, yanayin gona ko wurin da ƙalubale kafin zaɓen fasaha.",
+  "home.approach.step2.title": "Tsara tsarin",
+  "home.approach.step2.detail":
+    "A zaɓi na'urorin auna bayanai, lantarki, manhaja da wutar da aikin ke buƙata.",
+  "home.approach.step3.title": "Gina da gwadawa",
+  "home.approach.step3.detail":
+    "A haɗa sassan, a gwada muhimman ayyukansu bisa amfani da aka tsara.",
+  "home.approach.step4.title": "Shirya masu amfani",
+  "home.approach.step4.detail":
+    "A bayyana sarrafawa da kula da tsarin, tare da horon aiki idan ya dace.",
+  "home.approach.contact": "Tattauna wani aiki",
+  "home.approach.services": "Duba ayyukan injiniyanci",
   "home.opportunities.eyebrow": "Yi aiki tare da SYLUTION",
   "home.opportunities.title": "Mu gina fasahar aiki tare.",
   "home.opportunities.subtitle":
@@ -274,6 +309,24 @@ const fr: Dict = {
   "hero.paths.training.title": "Formation pratique",
   "hero.paths.training.detail":
     "IA, IoT, électronique et agriculture intelligente. Demandez les dates.",
+  "home.approach.eyebrow": "NOTRE APPROCHE PRATIQUE",
+  "home.approach.title": "D’un besoin concret à un système utile.",
+  "home.approach.subtitle":
+    "Nous partons de la tâche et du terrain, définissons le périmètre, puis construisons et testons un système que l’équipe pourra utiliser.",
+  "home.approach.step1.title": "Comprendre le besoin",
+  "home.approach.step1.detail":
+    "Préciser la tâche, le terrain et les contraintes avant de choisir une technologie.",
+  "home.approach.step2.title": "Concevoir le système",
+  "home.approach.step2.detail":
+    "Choisir les capteurs, l’électronique, le logiciel et l’alimentation nécessaires.",
+  "home.approach.step3.title": "Construire et tester",
+  "home.approach.step3.detail":
+    "Intégrer les composants et tester les fonctions clés pour l’usage prévu.",
+  "home.approach.step4.title": "Préparer les utilisateurs",
+  "home.approach.step4.detail":
+    "Expliquer l’utilisation et l’entretien, avec une formation pratique si nécessaire.",
+  "home.approach.contact": "Parler d’un projet",
+  "home.approach.services": "Découvrir les services d’ingénierie",
   "home.opportunities.eyebrow": "Travailler avec SYLUTION",
   "home.opportunities.title": "Construisons ensemble une technologie utile.",
   "home.opportunities.subtitle":
@@ -370,6 +423,20 @@ const ar: Dict = {
   "hero.paths.training.title": "تدريب عملي",
   "hero.paths.training.detail":
     "الذكاء الاصطناعي وإنترنت الأشياء والإلكترونيات والزراعة الذكية. اسأل عن المواعيد.",
+  "home.approach.eyebrow": "نهج عملي",
+  "home.approach.title": "من احتياج حقيقي إلى نظام مفيد.",
+  "home.approach.subtitle":
+    "نبدأ بفهم المهمة وظروف الموقع، ونحدد النطاق، ثم نبني نظامًا عمليًا ونختبره ونهيئ الفريق لاستخدامه.",
+  "home.approach.step1.title": "فهم الاحتياج",
+  "home.approach.step1.detail": "تحديد المهمة وظروف الموقع والقيود قبل اختيار التقنية.",
+  "home.approach.step2.title": "تصميم النظام",
+  "home.approach.step2.detail": "اختيار الحساسات والإلكترونيات والبرمجيات والطاقة اللازمة للمهمة.",
+  "home.approach.step3.title": "البناء والاختبار",
+  "home.approach.step3.detail": "دمج المكونات واختبار الوظائف الأساسية للاستخدام المقصود.",
+  "home.approach.step4.title": "إعداد المستخدمين",
+  "home.approach.step4.detail": "شرح التشغيل والصيانة، مع تدريب عملي عند الحاجة.",
+  "home.approach.contact": "ناقش مشروعًا",
+  "home.approach.services": "استكشف الخدمات الهندسية",
   "home.opportunities.eyebrow": "تعاون مع SYLUTION",
   "home.opportunities.title": "لنبنِ معًا تقنيات عملية.",
   "home.opportunities.subtitle":

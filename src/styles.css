@@ -1986,3 +1986,18 @@ html[data-home-hero-visible] .assistant-launcher {
     display: none;
   }
 }
+
+/* Keep the homepage's editorial hero and process panel clear of floating chat actions. */
+html[data-home-quiet-zone-visible] .floating-whatsapp,
+html[data-home-quiet-zone-visible] .assistant-launcher,
+html[data-home-quiet-zone-visible] [aria-labelledby="sylution-assistant-title"] {
+  display: none !important;
+}
+
+.home-approach-steps {
+  scrollbar-width: none;
+}
+
+.home-approach-steps::-webkit-scrollbar {
+  display: none;
+}
