@@ -184,25 +184,32 @@ function Home() {
           title="Technology services for real-world systems"
           description="Explore the specialist services SYLUTION brings together—from intelligent software and connected devices to practical engineering for agriculture, industry and energy."
         />
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-3 gap-2.5 sm:mt-10 sm:gap-4 lg:gap-5">
           {PILLARS.map((p, i) => (
-            <Reveal key={p.slug} delay={i * 0.06}>
+            <Reveal key={p.slug} delay={i * 0.08}>
               <Link
                 to="/solutions/$slug"
                 params={{ slug: p.slug }}
-                className="group card-luxe flex h-full flex-col p-7"
+                className="group card-luxe flex h-full min-w-0 flex-col p-2.5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 sm:p-4 lg:p-5"
               >
-                <div className="flex items-center justify-between gap-4">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-primary/15 text-primary transition-transform duration-300 group-hover:scale-110">
-                    <p.icon className="h-6 w-6" />
+                <div className="flex items-center justify-between gap-1.5">
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 sm:h-10 sm:w-10 sm:rounded-2xl">
+                    <p.icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
                   </span>
-                  <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary" />
+                  <ArrowUpRight
+                    className="h-4 w-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary sm:h-5 sm:w-5"
+                    aria-hidden="true"
+                  />
                 </div>
-                <h3 className="mt-6 font-display text-xl font-bold">{p.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                <h3 className="mt-3 min-w-0 break-words font-display text-[0.68rem] font-bold leading-tight sm:mt-4 sm:text-base lg:text-lg">
+                  {p.title}
+                </h3>
+                <p className="mt-2 flex-1 text-[0.61rem] leading-snug text-muted-foreground sm:mt-2.5 sm:text-xs lg:text-sm lg:leading-relaxed">
                   {p.detail}
                 </p>
-                <span className="mt-6 text-sm font-semibold text-primary">Learn more</span>
+                <span className="mt-3 text-[0.58rem] font-semibold text-primary sm:mt-4 sm:text-xs">
+                  Learn more
+                </span>
               </Link>
             </Reveal>
           ))}
