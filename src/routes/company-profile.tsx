@@ -10,17 +10,17 @@ const PDF_PATH = "/sylution-company-profile.pdf";
 export const Route = createFileRoute("/company-profile")({
   head: () => ({
     meta: [
-      { title: "SYLUTION Company Profile PDF | IoT, AI and Electronics" },
+      { title: "SYLUTION Company Profile 2026 PDF | IoT, AI and Electronics" },
       {
         name: "description",
         content:
-          "Download the SYLUTION company profile PDF: IoT first engineering, artificial intelligence, electronics, capabilities, industries served and contact details in Kano, Nigeria.",
+          "Download the 2026 SYLUTION company profile PDF: engineering capabilities, Sysmart Agro, partnerships, current stage and contact details in Kano, Nigeria.",
       },
       { property: "og:title", content: "Download the SYLUTION company profile" },
       {
         property: "og:description",
         content:
-          "An eight-page profile of SYLUTION, an IoT, AI and electronics engineering company operating from the Technology Incubation Centre, Kano.",
+          "The 2026 nine-page profile of SYLUTION, an IoT, AI and electronics engineering company operating from the Technology Incubation Centre, Kano.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/company-profile")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "DigitalDocument",
-          name: "SYLUTION Company Profile",
+          name: "SYLUTION Company Profile 2026",
           description:
             "Company profile of SYLUTION, an Internet of Things, artificial intelligence and electronics engineering company based in Kano, Nigeria.",
           fileFormat: "application/pdf",
@@ -46,11 +46,11 @@ export const Route = createFileRoute("/company-profile")({
 });
 
 const CONTENTS = [
-  "Who we are, vision, mission and key figures",
-  "Internet of Things at the core, the six layer stack",
-  "Engineering capabilities across hardware and software",
-  "Industries served, from manufacturing to government",
-  "Research, products, academy and how an engagement starts",
+  "Company snapshot, operating model and current position",
+  "Six engineering capabilities and the connected systems approach",
+  "AgriTech applications and the Sysmart Agro flagship project",
+  "Engineering readiness, validation, partnerships and strategic fit",
+  "Contact details and important engagement notice",
 ];
 
 function CompanyProfilePage() {
@@ -59,14 +59,14 @@ function CompanyProfilePage() {
       <PageHero
         eyebrow="Company profile"
         title="Download the SYLUTION profile"
-        subtitle="An eight-page document covering who we are, our engineering approach, capabilities, current work and the industries we serve."
+        subtitle="A nine-page 2026 briefing covering SYLUTION’s capabilities, Sysmart Agro, engineering approach, partnerships and current position."
         image={BRAND_IMAGES.iotLab}
         compact
       >
         <div className="flex flex-wrap gap-3">
           <a
             href={PDF_PATH}
-            download="SYLUTION-Company-Profile.pdf"
+            download="SYLUTION_Company_Profile_Premium_2026.pdf"
             className="btn-base btn-primary"
           >
             Download PDF <Download className="h-4 w-4" />
@@ -107,8 +107,8 @@ function CompanyProfilePage() {
                 <FileText className="h-6 w-6" />
               </span>
               <div>
-                <p className="font-display text-base font-bold">SYLUTION Company Profile</p>
-                <p className="text-xs text-muted-foreground">PDF, 8 pages, English</p>
+                <p className="font-display text-base font-bold">SYLUTION Company Profile 2026</p>
+                <p className="text-xs text-muted-foreground">PDF, 9 pages, English</p>
               </div>
             </div>
             <div className="mt-6 overflow-hidden rounded-2xl border border-border">
@@ -124,7 +124,7 @@ function CompanyProfilePage() {
             </div>
             <a
               href={PDF_PATH}
-              download="SYLUTION-Company-Profile.pdf"
+              download="SYLUTION_Company_Profile_Premium_2026.pdf"
               className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.02]"
             >
               Download the profile <Download className="h-4 w-4" />

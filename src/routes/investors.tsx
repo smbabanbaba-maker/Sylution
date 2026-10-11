@@ -28,12 +28,38 @@ export const Route = createFileRoute("/investors")({
 });
 
 const WHY = [
-  { icon: Cpu, title: "In house engineering", detail: "Hardware, firmware, connectivity, cloud and interfaces are built by one team, not outsourced." },
-  { icon: Globe2, title: "Underserved market", detail: "Industrial and agricultural operations across West Africa still run without instrumentation." },
-  { icon: LineChart, title: "Product pathway", detail: "A flagship platform, Sysmart Agro, in active development and field deployment." },
-  { icon: Users, title: "Talent pipeline", detail: "Our academy trains the engineers we and our partners will need." },
-  { icon: ShieldCheck, title: "Honest reporting", detail: "We publish real project stages. No inflated deployment or revenue figures." },
-  { icon: Download, title: "Documentation", detail: "A company profile is available now, with further material shared on request." },
+  {
+    icon: Cpu,
+    title: "In house engineering",
+    detail:
+      "Hardware, firmware, connectivity, cloud and interfaces are built by one team, not outsourced.",
+  },
+  {
+    icon: Globe2,
+    title: "Underserved market",
+    detail:
+      "Industrial and agricultural operations across West Africa still run without instrumentation.",
+  },
+  {
+    icon: LineChart,
+    title: "Product pathway",
+    detail: "A flagship platform, Sysmart Agro, in active development and field deployment.",
+  },
+  {
+    icon: Users,
+    title: "Talent pipeline",
+    detail: "Our academy trains the engineers we and our partners will need.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Honest reporting",
+    detail: "We publish real project stages. No inflated deployment or revenue figures.",
+  },
+  {
+    icon: Download,
+    title: "Documentation",
+    detail: "A company profile is available now, with further material shared on request.",
+  },
 ];
 
 const STAGE = [
@@ -56,7 +82,7 @@ function InvestorsPage() {
         <div className="flex flex-wrap gap-3">
           <a
             href="/sylution-company-profile.pdf"
-            download="SYLUTION-Investor-Government-Company-Profile.pdf"
+            download="SYLUTION_Company_Profile_Premium_2026.pdf"
             className="btn-base btn-primary"
           >
             Download the company profile <Download className="h-4 w-4" />
