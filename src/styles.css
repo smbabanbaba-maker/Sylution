@@ -1987,7 +1987,7 @@ html[data-home-hero-visible] .assistant-launcher {
   }
 }
 
-/* Keep the homepage's editorial hero and process panel clear of floating chat actions. */
+/* Keep key hero, process and controller sections clear of floating chat actions. */
 html[data-home-quiet-zone-visible] .floating-whatsapp,
 html[data-home-quiet-zone-visible] .assistant-launcher,
 html[data-home-quiet-zone-visible] [aria-labelledby="sylution-assistant-title"] {

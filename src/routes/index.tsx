@@ -132,6 +132,12 @@ const SYSMART_TICKER_ITEMS = [
     icon: SYSMART_ICONS[index] ?? Sprout,
   })),
   {
+    title: "Field controller",
+    detail:
+      "A dedicated hardware concept brings farm sensing and irrigation-control electronics together; validation continues in the field.",
+    icon: CircuitBoard,
+  },
+  {
     title: "Mobile app · roadmap",
     detail:
       "Mobile access, offline readings and multi-zone scheduling are planned, not available to download yet.",

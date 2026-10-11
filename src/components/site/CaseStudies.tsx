@@ -33,7 +33,11 @@ export function CaseStudies({ compact = false }: { compact?: boolean }) {
                   src={study.image}
                   alt={study.title}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className={
+                    study.slug === "smart-irrigation-controller-case-study"
+                      ? "h-full w-full bg-white object-contain p-1"
+                      : "h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  }
                 />
                 <span className="absolute left-4 top-4">
                   <StatusBadge status={study.stage} />

@@ -172,7 +172,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
         <ScrollTop />
-        <HomeFloatingActionsVisibility />
+        <FloatingActionsVisibility />
         <RouteProgress />
         <a
           href="#main"
@@ -237,11 +237,11 @@ function ScrollTop() {
   return null;
 }
 
-function HomeFloatingActionsVisibility() {
+function FloatingActionsVisibility() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
 
   useEffect(() => {
-    if (pathname !== "/") {
+    if (pathname !== "/" && pathname !== "/sysmart-agro") {
       document.documentElement.removeAttribute("data-home-quiet-zone-visible");
       return;
     }
@@ -254,9 +254,15 @@ function HomeFloatingActionsVisibility() {
       const approachVisible = Boolean(
         approachRect && approachRect.bottom > 0 && approachRect.top < window.innerHeight,
       );
+      const sysmartSectionVisible =
+        pathname === "/sysmart-agro" &&
+        Array.from(document.querySelectorAll(".sysmart-quiet-section")).some((section) => {
+          const rect = section.getBoundingClientRect();
+          return rect.bottom > 0 && rect.top < window.innerHeight;
+        });
       document.documentElement.toggleAttribute(
         "data-home-quiet-zone-visible",
-        heroVisible || approachVisible,
+        heroVisible || approachVisible || sysmartSectionVisible,
       );
     };
 

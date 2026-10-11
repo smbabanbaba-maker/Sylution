@@ -18,6 +18,7 @@ export const BRAND_IMAGES = {
   device: "/brand/tech-iot-node.jpg",
   city: "/brand/tech-city.jpg",
   sysmart: "/brand/showcase-sysmart.webp",
+  sysmartController: "/brand/sysmart-field-controller.png",
   exhibition1: "/brand/exhibition-1.jpg",
   exhibition2: "/brand/exhibition-2.jpg",
   exhibition3: "/brand/exhibition-3.jpg",
@@ -1030,16 +1031,16 @@ export const PROJECTS: {
     status: "Active Project",
     image: BRAND_IMAGES.sysmart,
     summary:
-      "An IoT powered smart agriculture platform combining a field controller, soil and climate sensing and remote irrigation control.",
+      "An IoT smart-agriculture project connecting a field-controller prototype, crop sensing and irrigation hardware. Development and field validation are ongoing.",
   },
   {
     slug: "smart-irrigation-controller",
-    name: "Smart irrigation controller",
-    category: "Hardware",
+    name: "Sysmart Agro field controller",
+    category: "Hardware · Sysmart Agro",
     status: "Testing",
-    image: BRAND_IMAGES.irrigation,
+    image: BRAND_IMAGES.sysmartController,
     summary:
-      "Solar powered controller that automates pumps and valves from soil moisture thresholds.",
+      "A field-control unit designed to bring sensor inputs, fertigation monitoring and irrigation hardware together. Pump and valve operation remain under field testing; the project is not available to order.",
   },
   {
     slug: "environmental-monitoring-node",
@@ -1084,23 +1085,23 @@ export const CASE_STUDIES = [
     stage: "Active Project",
     image: BRAND_IMAGES.sysmart,
     summary:
-      "An IoT powered smart agriculture platform combining a field controller, soil and climate sensing, remote irrigation control and monitoring.",
+      "Sysmart Agro is being built to connect sensor readings, an IoT field-controller prototype and irrigation hardware with dashboard work. Development and field testing are ongoing; its public mobile app is not released.",
     evidence:
-      "Sensors, a solar capable controller, wireless connectivity, queued readings and a dashboard form one connected development loop.",
+      "Field sensing, controller hardware, wireless links and dashboard workflows are being integrated and validated in stages.",
     nextStep: "Continue supervised field testing and refine the monitoring and control workflow.",
   },
   {
     slug: "smart-irrigation-controller-case-study",
-    category: "Hardware · Testing",
-    title: "Smart irrigation controller: control built around thresholds",
+    category: "Hardware · Sysmart Agro",
+    title: "Sysmart Agro field controller: sensing and irrigation hardware",
     stage: "Testing",
-    image: BRAND_IMAGES.irrigation,
+    image: BRAND_IMAGES.sysmartController,
     summary:
-      "A solar capable controller concept for automating pumps and valves from soil moisture thresholds.",
+      "A multi-view enclosure concept for the Sysmart Agro control unit, designed to house farm-sensing, fertigation-monitoring and irrigation-control electronics. Not available to purchase.",
     evidence:
-      "The engineering focus is the link between sensor readings, local control logic and reliable pump or valve switching.",
+      "The design sheet illustrates enclosure views and reference dimensions; sensor integration, connectivity and pump/valve operation remain under field validation.",
     nextStep:
-      "Continue testing sensor thresholds, pump control and operation under variable power conditions.",
+      "Continue enclosure, sensor, connectivity and supervised pump/valve tests before defining production specifications.",
   },
   {
     slug: "computer-vision-crop-inspection-case-study",
@@ -1142,7 +1143,7 @@ export const SYSMART_OVERVIEW = [
   {
     title: "Field sensing",
     detail:
-      "Soil moisture, temperature, humidity and water-level readings are part of the field-testing scope.",
+      "Soil and substrate moisture, temperature, humidity, water level and fertigation-water pH/EC are in the design scope; readings and sensor calibration remain under field testing.",
   },
   {
     title: "Controller and irrigation",
@@ -1156,7 +1157,7 @@ export const SYSMART_OVERVIEW = [
   {
     title: "Dashboard scope",
     detail:
-      "Dashboard work covers readings, thresholds and pump status. A public mobile app and offline access remain on the roadmap.",
+      "Dashboard work covers readings, thresholds and pump status. Alerts and historical records are planned capabilities; a public mobile app and offline access remain on the roadmap.",
   },
 ];
 
@@ -1164,7 +1165,7 @@ export const SYSMART_FLOW = [
   {
     step: "Sensors",
     detail:
-      "Soil moisture, temperature, humidity and water-level readings are part of field testing.",
+      "Soil and substrate moisture, temperature, humidity and water-level readings are in field testing; pH/EC are in the fertigation-monitoring design scope.",
   },
   {
     step: "IoT controller",

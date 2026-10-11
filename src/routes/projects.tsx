@@ -59,8 +59,9 @@ function ProjectsPage() {
               <p className="eyebrow">Flagship project</p>
               <h2 className="mt-4 font-display text-3xl font-bold">Sysmart Agro</h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                An intelligent IoT powered smart agriculture platform combining a field controller,
-                soil and climate sensing, remote irrigation control and a monitoring dashboard.
+                A smart-agriculture development project connecting a field-controller prototype,
+                farm sensing and irrigation hardware with dashboard work. Automation and remote
+                monitoring continue through development and field validation.
               </p>
               <span className="mt-6 inline-flex">
                 <StatusBadge status="Active Project" />
@@ -82,7 +83,7 @@ function ProjectsPage() {
         return (
           <section key={group} className="container-x pb-20">
             <SectionHeading eyebrow={group} title={`Projects: ${group.toLowerCase()}`} />
-            <div className="mt-10 grid grid-cols-2 gap-5 lg:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {items.map((p, i) => (
                 <Reveal key={p.slug} delay={(i % 3) * 0.07}>
                   <article className="card-luxe h-full overflow-hidden">
@@ -90,7 +91,11 @@ function ProjectsPage() {
                       src={p.image}
                       alt={p.name}
                       loading="lazy"
-                      className="h-44 w-full object-cover"
+                      className={
+                        p.slug === "smart-irrigation-controller"
+                          ? "aspect-[3/2] w-full bg-white object-contain"
+                          : "h-44 w-full object-cover"
+                      }
                     />
                     <div className="p-6">
                       <p className="eyebrow">{p.category}</p>
@@ -98,6 +103,16 @@ function ProjectsPage() {
                       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                         {p.summary}
                       </p>
+                      {p.slug === "smart-irrigation-controller" && (
+                        <Link
+                          to="/sysmart-agro"
+                          hash="field-controller"
+                          className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                        >
+                          View controller design
+                          <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      )}
                       <span className="mt-5 inline-flex rounded-full border border-border px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-muted-foreground">
                         <StatusBadge status={p.status} />
                       </span>
