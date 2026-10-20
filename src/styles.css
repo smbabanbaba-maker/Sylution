@@ -1678,6 +1678,40 @@ html[data-home-hero-visible] .assistant-launcher {
   letter-spacing: 0.08em;
 }
 
+.language-switcher__menu {
+  width: min(15.5rem, calc(100vw - 1.5rem));
+  max-height: min(70dvh, 34rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+.language-switcher__section {
+  margin-top: 0.35rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--border);
+}
+
+.language-switcher__section-label {
+  padding: 0.45rem 0.6rem 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--secondary-text);
+}
+
+.language-switcher__info,
+.language-switcher__error {
+  padding: 0.45rem 0.6rem;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: var(--secondary-text);
+}
+
+.language-switcher__error {
+  color: var(--brand-red);
+}
+
 .nav-contact,
 .nav-contact:hover {
   color: var(--white);
