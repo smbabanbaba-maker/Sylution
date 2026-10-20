@@ -37,6 +37,34 @@ const PRIMARY: string[] = [
 ];
 const HIDDEN_FROM_MORE: string[] = ["/", "/about"];
 
+// These languages are a voluntary machine-translation preview. Existing,
+// professionally reviewed EN/HA/FR/AR translations stay on the native system.
+const EXTRA_LANGS = [
+  { code: "spanish", label: "Español", short: "ES" },
+  { code: "deutsch", label: "Deutsch", short: "DE" },
+  { code: "chinese_simplified", label: "简体中文", short: "ZH" },
+  { code: "japanese", label: "日本語", short: "JA" },
+  { code: "portuguese", label: "Português", short: "PT" },
+  { code: "russian", label: "Русский", short: "RU" },
+  { code: "korean", label: "한국어", short: "KO" },
+  { code: "italian", label: "Italiano", short: "IT" },
+] as const;
+
+type TranslateJsEngine = {
+  language: { setLocal: (language: string) => void };
+  service: { use: (service: string) => void };
+  selectLanguageTag: { show: boolean };
+  setDocuments: (documents: HTMLElement[]) => void;
+  listener: { start: () => void };
+  execute: () => void;
+  changeLanguage: (language: string) => void;
+};
+
+// Pin the library to the reviewed upstream commit, rather than live "latest".
+// The library is loaded only after the visitor chooses an experimental language.
+const TRANSLATE_SCRIPT =
+  "https://cdn.jsdelivr.net/gh/xnx3/translate@df9d77c85399470d10e2cb610f17e294ac107740/translate.js/translate.js";
+
 export function Nav() {
   const { t, lang, setLang } = useLang();
   const pathname = useRouterState({ select: (state) => state.location.pathname });
@@ -45,6 +73,9 @@ export function Nav() {
   const [solOpen, setSolOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
+  const [extendedLanguage, setExtendedLanguage] = useState<(typeof EXTRA_LANGS)[number] | null>(null);
+  const [extendedError, setExtendedError] = useState<string | null>(null);
+  const translateInitialized = useRef(false);
   const languageRootRef = useRef<HTMLDivElement>(null);
   const languageButtonRef = useRef<HTMLButtonElement>(null);
   const currentLanguage = LANGS.find((item) => item.code === lang) ?? LANGS[0];
@@ -82,6 +113,67 @@ export function Nav() {
       document.removeEventListener("keydown", onKeyDown);
     };
   }, [languageOpen]);
+
+  useEffect(() => {
+    // Preserve the reviewed translations. Only translate the public main
+    // content, not forms, the navigation, chat, or the enquiry modal.
+    if (!extendedLanguage || lang !== "en") return;
+
+    let cancelled = false;
+    const getEngine = () =>
+      (window as Window & { translate?: TranslateJsEngine }).translate;
+    const fail = () => {
+      if (!cancelled) {
+        setExtendedError("Automatic translation is unavailable. Please choose a built-in language.");
+      }
+    };
+    const run = () => {
+      if (cancelled) return;
+      const engine = getEngine();
+      if (!engine) {
+        fail();
+        return;
+      }
+      try {
+        if (!translateInitialized.current) {
+          engine.language.setLocal("english");
+          engine.service.use("client.edge");
+          engine.selectLanguageTag.show = false;
+          const content = document.getElementById("main");
+          if (content) engine.setDocuments([content]);
+          engine.listener.start();
+          engine.execute();
+          translateInitialized.current = true;
+        }
+        engine.changeLanguage(extendedLanguage.code);
+        setExtendedError(null);
+      } catch {
+        fail();
+      }
+    };
+
+    if (getEngine()) {
+      run();
+      return;
+    }
+
+    let script = document.getElementById("sylution-translate-js") as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement("script");
+      script.id = "sylution-translate-js";
+      script.src = TRANSLATE_SCRIPT;
+      script.async = true;
+      script.referrerPolicy = "no-referrer";
+    }
+    script.addEventListener("load", run);
+    script.addEventListener("error", fail);
+    if (!script.isConnected) document.head.appendChild(script);
+    return () => {
+      cancelled = true;
+      script?.removeEventListener("load", run);
+      script?.removeEventListener("error", fail);
+    };
+  }, [extendedLanguage, lang]);
 
   return (
     <header
@@ -214,12 +306,18 @@ export function Nav() {
               type="button"
               className="language-switcher__trigger"
               onClick={() => setLanguageOpen((value) => !value)}
-              aria-label={`Language: ${currentLanguage.label}`}
+              aria-label={`Language: ${extendedLanguage?.label ?? currentLanguage.label}`}
               aria-expanded={languageOpen}
               aria-controls="language-switcher-options"
             >
-              <LanguageMark language={currentLanguage} />
-              <span className="language-switcher__current">{currentLanguage.short}</span>
+              {extendedLanguage ? (
+                <span className="language-switcher__arabic" aria-hidden="true">🌐</span>
+              ) : (
+                <LanguageMark language={currentLanguage} />
+              )}
+              <span className="language-switcher__current">
+                {extendedLanguage?.short ?? currentLanguage.short}
+              </span>
               <ChevronDown
                 aria-hidden="true"
                 className={cn("language-switcher__chevron", languageOpen && "is-open")}
@@ -237,19 +335,59 @@ export function Nav() {
                     key={item.code}
                     type="button"
                     className="language-switcher__option"
-                    aria-pressed={lang === item.code}
+                    aria-pressed={!extendedLanguage && lang === item.code}
                     onClick={() => {
-                      setLang(item.code);
                       setLanguageOpen(false);
+                      if (extendedLanguage) {
+                        // A clean reload removes DOM mutations from translate.js
+                        // before switching back to the native translation system.
+                        window.localStorage.setItem("sylution-lang", item.code);
+                        window.location.reload();
+                        return;
+                      }
+                      setLang(item.code);
                       languageButtonRef.current?.focus();
                     }}
                   >
                     <LanguageMark language={item} />
                     <span className="language-switcher__name">{item.label}</span>
                     <span className="language-switcher__code">{item.short}</span>
-                    {lang === item.code && <Check aria-hidden="true" className="h-4 w-4" />}
+                    {!extendedLanguage && lang === item.code && <Check aria-hidden="true" className="h-4 w-4" />}
                   </button>
                 ))}
+                <div className="language-switcher__section">
+                  <p className="language-switcher__section-label">More languages · Beta</p>
+                  {EXTRA_LANGS.map((item) => (
+                    <button
+                      key={item.code}
+                      type="button"
+                      className="language-switcher__option"
+                      aria-pressed={extendedLanguage?.code === item.code}
+                      onClick={() => {
+                        setExtendedError(null);
+                        setLang("en");
+                        setExtendedLanguage(item);
+                        setLanguageOpen(false);
+                        languageButtonRef.current?.focus();
+                      }}
+                    >
+                      <span className="language-switcher__arabic" aria-hidden="true">🌐</span>
+                      <span className="language-switcher__name">{item.label}</span>
+                      <span className="language-switcher__code">{item.short}</span>
+                      {extendedLanguage?.code === item.code && (
+                        <Check aria-hidden="true" className="h-4 w-4" />
+                      )}
+                    </button>
+                  ))}
+                  <p className="language-switcher__info">
+                    Experimental machine translation for public page content.
+                  </p>
+                  {extendedError && (
+                    <p role="alert" className="language-switcher__error">
+                      {extendedError}
+                    </p>
+                  )}
+                </div>
               </div>
             )}
           </div>
