@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Check, ChevronDown, LoaderCircle, Search } from "lucide-react";
+import { detectBrowserLanguage } from "@/lib/browser-language";
 import {
   SUPPORTED_TRANSLATION_LANGUAGES,
   type VendorLanguage,
@@ -59,10 +60,31 @@ export function SiteLanguageSwitch() {
   }, [query]);
 
   useEffect(() => {
-    // Ignore the retired native-language preference.
-    window.localStorage.removeItem("sylution-lang");
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (saved && isAvailable(saved)) setSelectedId(saved);
+    // Browsers advertise an ordered list of preferred languages. Use it for a
+    // first-time visitor, never IP geolocation or nationality.
+    const preferences = [
+      ...(navigator.languages ?? []),
+      navigator.language,
+    ].filter((value): value is string => typeof value === "string" && value.length > 0);
+
+    const detected = detectBrowserLanguage(preferences);
+    let preferred = detected;
+
+    try {
+      // Only explicit choices in this new selector are stored; an automatically
+      // detected language does not override later browser-setting changes.
+      window.localStorage.removeItem("sylution-lang");
+      const manualSelection = window.localStorage.getItem(STORAGE_KEY);
+      if (manualSelection && isAvailable(manualSelection)) {
+        preferred = manualSelection;
+      } else if (manualSelection) {
+        window.localStorage.removeItem(STORAGE_KEY);
+      }
+    } catch {
+      // Storage can be disabled; automatic browser-language detection still works.
+    }
+
+    setSelectedId(preferred);
     setHydrated(true);
   }, []);
 
@@ -165,7 +187,11 @@ export function SiteLanguageSwitch() {
     triggerRef.current?.focus();
     if (selectedId === language.id && !error) return;
     setError(null);
-    window.localStorage.setItem(STORAGE_KEY, language.id);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, language.id);
+    } catch {
+      // The choice still works for this visit if browser storage is disabled.
+    }
 
     if (language.id === "english") {
       // Reload restores unmodified English source nodes after DOM translation.
