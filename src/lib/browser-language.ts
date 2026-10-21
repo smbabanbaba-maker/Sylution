@@ -159,10 +159,12 @@ export function detectBrowserLanguage(preferences: readonly string[]): string {
     // Language is NOT inferred from the visitor's country.
     // Chinese language/script variants do require script/region handling.
     if (primary === "zh") {
-      const traditional =
-        parts.includes("hant") ||
-        parts.some((part) => ["tw", "hk", "mo"].includes(part));
-      return traditional ? "chinese_traditional" : "chinese_simplified";
+      // An explicit script wins over a default region convention.
+      if (parts.includes("hant")) return "chinese_traditional";
+      if (parts.includes("hans")) return "chinese_simplified";
+      return parts.some((part) => ["tw", "hk", "mo"].includes(part))
+        ? "chinese_traditional"
+        : "chinese_simplified";
     }
 
     const id = VENDOR_LANGUAGE_BY_BROWSER_CODE[primary];
