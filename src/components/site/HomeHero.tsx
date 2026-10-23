@@ -1,38 +1,75 @@
+import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowUpRight, Brain, CircuitBoard, GraduationCap } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Code2, Sprout } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useLang } from "@/lib/i18n";
 
+type CategoryId = "software" | "agriculture" | "education";
+
 const PATHWAYS = [
   {
-    id: "products",
-    href: "/sysmart-agro" as const,
-    icon: CircuitBoard,
-    label: "hero.paths.products.label",
-    title: "hero.paths.products.title",
-    detail: "hero.paths.products.detail",
+    id: "software",
+    number: "01",
+    icon: Code2,
+    title: "Software & Digital Technology",
+    kicker: "Digital solutions",
+    summary: "Apps, websites, AI and software systems built around real needs.",
+    introduction:
+      "We design and develop practical digital products for businesses, organisations and emerging technology projects.",
+    services: [
+      { name: "Websites & web applications", detail: "Modern business websites, portals, dashboards and customer-facing web platforms." },
+      { name: "Mobile app development", detail: "Android and iOS application experiences, from concept and interface to implementation." },
+      { name: "Custom software systems", detail: "Business process tools, management systems and tailored digital workflows." },
+      { name: "Artificial intelligence", detail: "AI-powered assistants, automation and intelligent features integrated into useful products." },
+      { name: "Connected digital systems", detail: "IoT dashboards, data monitoring and integrations between software and devices." },
+    ],
+    href: "/solutions",
+    action: "Explore digital services",
   },
   {
-    id: "services",
-    href: "/solutions" as const,
-    icon: Brain,
-    label: "hero.paths.services.label",
-    title: "hero.paths.services.title",
-    detail: "hero.paths.services.detail",
+    id: "agriculture",
+    number: "02",
+    icon: Sprout,
+    title: "Agriculture & Engineering",
+    kicker: "Smart agriculture",
+    summary: "Greenhouse systems, smart irrigation, electronics and IoT.",
+    introduction:
+      "We apply engineering and connected technologies to farming and real-world operating conditions, including Sysmart Agro initiatives.",
+    services: [
+      { name: "Greenhouse technology", detail: "Greenhouse planning, crop-environment monitoring and automation concepts." },
+      { name: "Smart and solar irrigation", detail: "Water-management controls, drip irrigation and solar-powered system integration." },
+      { name: "Precision agriculture & IoT", detail: "Sensors, farm data dashboards, alerts and field monitoring systems." },
+      { name: "Electronics & robotics", detail: "Embedded controllers, prototypes, automation hardware and engineering integration." },
+      { name: "Drones & climate-smart solutions", detail: "Agricultural observation, technology exploration and resource-efficient approaches." },
+    ],
+    href: "/sysmart-agro",
+    action: "Explore Sysmart Agro",
   },
   {
-    id: "academy",
-    href: "/training" as const,
-    icon: GraduationCap,
-    label: "hero.paths.training.label",
-    title: "hero.paths.training.title",
-    detail: "hero.paths.training.detail",
+    id: "education",
+    number: "03",
+    icon: BookOpen,
+    title: "Education & Business Development",
+    kicker: "Skills and enterprise",
+    summary: "Hands-on technology learning, startup support and digital skills.",
+    introduction:
+      "We help people and organisations understand, apply and build with technology through practical learning and entrepreneurship support.",
+    services: [
+      { name: "STEM & technical education", detail: "Practical electronics, robotics, coding, IoT and engineering sessions." },
+      { name: "Digital skills training", detail: "Website creation, software tools, AI literacy and applied digital workflows." },
+      { name: "AgriTech training", detail: "Introduction to smart irrigation, sensors and technology-supported agriculture." },
+      { name: "Startup & business development", detail: "Technology-focused entrepreneurship, prototyping and digital business support." },
+      { name: "Youth & women empowerment", detail: "Accessible practical training and capacity-building programmes." },
+    ],
+    href: "/training",
+    action: "Explore training programmes",
   },
 ] as const;
-
 export function HomeHero() {
   const { t } = useLang();
   const reduceMotion = useReducedMotion();
+  const [activeCategory, setActiveCategory] = useState<CategoryId | null>(null);
+  const selectedCategory = PATHWAYS.find((item) => item.id === activeCategory);
 
   return (
     <section className="home-hero" aria-labelledby="home-hero-title">
@@ -94,29 +131,68 @@ export function HomeHero() {
             <span className="home-hero__paths-location">{t("hero.paths.location")}</span>
           </div>
 
-          <div className="home-hero__paths-list">
-            {PATHWAYS.map((pathway, index) => (
-              <Link
+          <div className="home-hero__paths-list home-hero__path-categories" aria-label="Explore SYLUTION's core areas">
+            {PATHWAYS.map((pathway) => (
+              <button
                 key={pathway.id}
-                to={pathway.href}
-                className="home-hero__path"
-                data-featured={index === 0 ? "true" : undefined}
-                aria-label={`${t(pathway.label)}: ${t(pathway.title)}`}
+                type="button"
+                className="home-hero__path home-hero__category"
+                data-active={activeCategory === pathway.id ? "true" : undefined}
+                aria-expanded={activeCategory === pathway.id}
+                aria-controls="home-hero-category-details"
+                onClick={() => setActiveCategory((current) => current === pathway.id ? null : pathway.id)}
               >
-                <span className="home-hero__path-number" aria-hidden="true">
-                  0{index + 1}
-                </span>
-                <span className="home-hero__path-icon" aria-hidden="true">
+                <span className="home-hero__category-icon" aria-hidden="true">
                   <pathway.icon />
                 </span>
-                <span className="home-hero__path-copy">
-                  <span className="home-hero__path-label">{t(pathway.label)}</span>
-                  <strong>{t(pathway.title)}</strong>
-                  <span className="home-hero__path-detail">{t(pathway.detail)}</span>
+                <span className="home-hero__category-title">{pathway.title}</span>
+                <span className="home-hero__category-open" aria-hidden="true">
+                  <ArrowUpRight />
                 </span>
-                <ArrowUpRight className="home-hero__path-arrow" aria-hidden="true" />
-              </Link>
+              </button>
             ))}
+          </div>
+
+          <div
+            id="home-hero-category-details"
+            className="home-hero__category-details"
+            hidden={!selectedCategory}
+            aria-live="polite"
+          >
+            {selectedCategory && (
+              <div className="home-hero__category-details-inner" key={selectedCategory.id}>
+                <div className="home-hero__category-details-top">
+                  <span className="home-hero__category-kicker">{selectedCategory.kicker}</span>
+                  <button
+                    type="button"
+                    className="home-hero__category-close"
+                    aria-label="Close service details"
+                    onClick={() => setActiveCategory(null)}
+                  >
+                    Close <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <h3 className="home-hero__category-details-title">{selectedCategory.title}</h3>
+                <p className="home-hero__category-intro">{selectedCategory.introduction}</p>
+                <ul className="home-hero__category-service-list">
+                  {selectedCategory.services.map((service) => (
+                    <li key={service.name}>
+                      <strong>{service.name}</strong>
+                      <span>{service.detail}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="home-hero__category-actions">
+                  <Link to={selectedCategory.href} className="home-hero__category-cta">
+                    {selectedCategory.action} <ArrowRight aria-hidden="true" />
+                  </Link>
+                  <Link to="/contact" className="home-hero__category-contact">
+                    Discuss your project <ArrowUpRight aria-hidden="true" />
+                  </Link>
+                </div>
+                <p className="home-hero__category-note">Solutions and training are scoped to each enquiry; availability and project stage are confirmed before engagement.</p>
+              </div>
+            )}
           </div>
         </motion.div>
       </div>
