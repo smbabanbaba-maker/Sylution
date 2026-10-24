@@ -14,6 +14,8 @@ import {
   Smartphone,
   Handshake,
   Landmark,
+  Code2,
+  Globe2,
 } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { HomeHero } from "@/components/site/HomeHero";
@@ -26,20 +28,20 @@ import { BRAND_IMAGES, CONTACT, SYSMART_OVERVIEW } from "@/lib/site-data";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SYLUTION LTD | Engineering Services, Products & Practical Training" },
+      { title: "SYLUTION LTD | Software Development, Websites, Mobile Apps & Engineering" },
       {
         name: "description",
         content:
-          "SYLUTION is a Kano-based engineering and training company. We build custom AI, IoT, electronics, robotics and software systems; develop smart-agriculture projects; and teach practical technology skills.",
+          "SYLUTION LTD develops business websites, web applications, mobile apps and custom software, including AI-powered solutions. We also offer engineering, AgriTech, IoT and practical technology training in Kano, Nigeria.",
       },
       {
         property: "og:title",
-        content: "SYLUTION LTD | Engineering Services, Products & Practical Training",
+        content: "SYLUTION LTD | Software Development, Web & Mobile Apps",
       },
       {
         property: "og:description",
         content:
-          "Custom AI, IoT and engineering services; smart-agriculture projects with clear development stages; and practical technology training in Kano, Nigeria.",
+          "Custom software development, business websites, mobile applications and AI-powered systems, alongside practical engineering, AgriTech and technical training in Kano, Nigeria.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -89,6 +91,30 @@ export const Route = createFileRoute("/")({
   }),
   component: Home,
 });
+
+const SOFTWARE_SERVICES = [
+  {
+    icon: Globe2,
+    number: "01",
+    title: "Websites & Web Applications",
+    description:
+      "Responsive business websites, online platforms, client portals and interactive web applications built for the way your organisation works.",
+  },
+  {
+    icon: Smartphone,
+    number: "02",
+    title: "Mobile App Development",
+    description:
+      "Purpose-built mobile app experiences for businesses, services and new digital products, from planning and interface design to development.",
+  },
+  {
+    icon: Code2,
+    number: "03",
+    title: "Custom Software & AI",
+    description:
+      "Business management tools, workflow automation, data dashboards and AI-powered features tailored to real operational needs.",
+  },
+] as const;
 
 const PILLARS = [
   {
@@ -176,13 +202,14 @@ function Home() {
   return (
     <>
       <HomeHero />
+      <SoftwareDevelopmentShowcase />
 
       {/* SERVICES */}
       <section className="container-x section-y">
         <SectionHeading
           eyebrow="Our services"
-          title="Technology services for real-world systems"
-          description="Explore the specialist services SYLUTION brings together—from intelligent software and connected devices to practical engineering for agriculture, industry and energy."
+          title="Digital products, intelligent systems & engineering"
+          description="Alongside website, app and software development, SYLUTION delivers AI, connected devices and practical engineering for agriculture, industry and energy."
         />
         <div className="mt-8 grid grid-cols-3 gap-2.5 sm:mt-10 sm:gap-4 lg:gap-5">
           {PILLARS.map((p, i) => (
@@ -255,6 +282,94 @@ function Home() {
 
       <HomeOpportunitySection />
     </>
+  );
+}
+
+function SoftwareDevelopmentShowcase() {
+  return (
+    <section
+      id="software-development"
+      aria-labelledby="software-development-title"
+      className="container-x scroll-mt-24 pt-8 pb-2 sm:pt-14 sm:pb-5"
+    >
+      <Reveal>
+        <div className="relative isolate overflow-hidden rounded-[1.75rem] border border-primary/20 bg-foreground p-5 text-white shadow-luxe sm:rounded-[2.25rem] sm:p-9 lg:p-12">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 -top-28 -z-10 h-80 w-80 rounded-full bg-primary/25 blur-[100px]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-red-400/80 to-transparent"
+          />
+          <div className="relative flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
+            <div className="max-w-3xl">
+              <p className="inline-flex items-center gap-2 text-[0.68rem] font-extrabold uppercase tracking-[0.18em] text-red-300 sm:text-xs">
+                <span aria-hidden="true" className="h-2 w-2 rounded-full bg-primary" />
+                Software & Digital Technology
+              </p>
+              <h2
+                id="software-development-title"
+                className="mt-4 font-display text-[1.85rem] font-extrabold leading-[1.16] tracking-[-0.055em] text-white sm:text-4xl lg:text-[2.65rem]"
+              >
+                Your idea. Our software expertise.
+                <span className="mt-1 block text-red-300">Websites, apps & systems that work.</span>
+              </h2>
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-white/75 sm:text-base">
+                Software development is a core part of what we do at SYLUTION.
+                We create digital solutions for businesses, entrepreneurs and organisations—from
+                professional websites to mobile applications, tailored business platforms and AI integrations.
+              </p>
+            </div>
+            <div className="flex shrink-0 flex-wrap items-center gap-3">
+              <Link
+                to="/contact"
+                className="btn-base btn-primary group"
+              >
+                Start a software project
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </Link>
+              <Link
+                to="/solutions"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/25 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/10"
+              >
+                All our services <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="relative mt-9 grid gap-3 sm:grid-cols-3 sm:gap-4 lg:mt-11">
+            {SOFTWARE_SERVICES.map((service, index) => (
+              <Reveal key={service.number} delay={index * 0.07}>
+                <article className="group flex h-full flex-col rounded-2xl border border-white/15 bg-white/[0.065] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:bg-white/[0.095] sm:p-6">
+                  <div className="flex items-start justify-between gap-3">
+                    <span className="grid h-12 w-12 place-items-center rounded-2xl border border-primary/30 bg-primary/15 text-red-200">
+                      <service.icon className="h-6 w-6" aria-hidden="true" />
+                    </span>
+                    <span className="font-display text-xs font-bold tracking-widest text-white/35">
+                      {service.number}
+                    </span>
+                  </div>
+                  <h3 className="mt-6 font-display text-lg font-bold leading-snug text-white sm:text-lg lg:text-xl">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-white/65">
+                    {service.description}
+                  </p>
+                  <Link to="/contact" className="mt-6 inline-flex w-fit items-center gap-2 text-xs font-bold text-red-200 transition-colors group-hover:text-white">
+                    Discuss this service
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+          <p className="relative mt-6 text-xs leading-relaxed text-white/55">
+            Every project starts with understanding your requirements, confirming scope and agreeing a practical development plan.
+          </p>
+        </div>
+      </Reveal>
+    </section>
   );
 }
 
