@@ -29,12 +29,12 @@ const en: Record<string, string> = {
   "nav.careers": "Careers",
   "nav.contact": "Contact",
   "language.choose": "Choose a language",
-  "hero.eyebrow": "Engineering & hands-on training · Kano, Nigeria",
+  "hero.eyebrow": "Software development · Web & mobile apps · Kano, Nigeria",
   "hero.paths.location": "Kano · Nigeria",
-  "hero.titleLead": "We build practical technology.",
-  "hero.titleAccent": "We teach people to use it.",
+  "hero.titleLead": "We build software.",
+  "hero.titleAccent": "Websites, apps & AI.",
   "hero.sub":
-    "We build custom AI, IoT, electronics, robotics and software systems, and teach these skills hands-on in Kano.",
+    "From modern websites and mobile apps to custom business software and AI-powered systems, SYLUTION builds digital solutions for real needs. We also develop AgriTech and teach practical technology skills."
   "hero.showcase.label": "SYLUTION work in action",
   "hero.showcase.carousel": "carousel",
   "hero.showcase.choose": "Choose an area to explore",
