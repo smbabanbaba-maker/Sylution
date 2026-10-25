@@ -72,6 +72,7 @@ export function Footer() {
             title={t("footer.quick")}
             links={[
               { label: "Home", to: "/" },
+              { label: "Official SYLearn Bot", to: "/sylearn" },
               { label: "About", to: "/about" },
               { label: "Products & Platforms", to: "/platforms" },
               { label: "Sysmart Agro", to: "/sysmart-agro" },
