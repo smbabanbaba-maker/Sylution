@@ -274,30 +274,6 @@ function Home() {
             <Link to="/training" className="btn-base btn-ghost mt-8">
               See training programmes <ArrowRight className="h-4 w-4" />
             </Link>
-            <div className="mt-5 rounded-2xl border border-primary/20 bg-primary/5 p-4 sm:p-5">
-              <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-primary">
-                SYLearn · Our digital learning platform
-              </p>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                SYLearn Digital Skills Academy is a learning initiative from SYLUTION.
-                The official Telegram bot is{" "}
-                <a
-                  href="https://t.me/SYLearn_Bot"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-bold text-foreground underline decoration-primary underline-offset-4 hover:text-primary"
-                >
-                  @SYLearn_Bot
-                </a>.
-              </p>
-              <Link
-                to="/sylearn"
-                className="mt-3 inline-flex items-center gap-2 text-xs font-bold text-primary hover:underline"
-              >
-                See SYLearn official information
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </div>
           </Reveal>
         </div>
       </section>
