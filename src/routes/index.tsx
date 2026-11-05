@@ -356,7 +356,7 @@ function SoftwareDevelopmentShowcase() {
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-white/65">
                     {service.description}
                   </p>
-                  <Link to="/contact" className="mt-6 inline-flex w-fit items-center gap-2 text-xs font-bold text-red-200 transition-colors group-hover:text-white">
+                  <Link to="/contact" className="mt-6 inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap text-[0.58rem] font-semibold text-primary transition-colors group-hover:text-white sm:text-xs">
                     Discuss this service
                     <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
