@@ -304,7 +304,7 @@ function SoftwareDevelopmentShowcase() {
           />
           <div className="relative flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
             <div className="max-w-3xl">
-              <p className="inline-flex items-center gap-2 text-[0.68rem] font-extrabold uppercase tracking-[0.18em] text-red-300 sm:text-xs">
+              <p className="software-showcase__eyebrow inline-flex items-center gap-2">
                 <span aria-hidden="true" className="h-2 w-2 rounded-full bg-primary" />
                 Software & Digital Technology
               </p>
