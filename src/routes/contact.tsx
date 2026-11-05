@@ -183,7 +183,6 @@ function Contact() {
                   "Investor or strategic investment enquiry",
                   "Marketplace feedback (not an order)",
                   "Farm-finance partnership concept (not an application)",
-                  "Careers",
                   "Other",
                 ].map((o) => (
                   <option key={o}>{o}</option>
