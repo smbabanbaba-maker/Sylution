@@ -2288,3 +2288,36 @@ main#main .bg-foreground {
     transition: none;
   }
 }
+
+
+/* Refined, understated one-line label for the software showcase. */
+.software-showcase__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  max-width: 100%;
+  margin: 0;
+  color: color-mix(in srgb, var(--white) 72%, var(--tech-cyan));
+  font-family: var(--font-sans);
+  font-size: clamp(0.56rem, 0.72vw, 0.66rem);
+  font-weight: 400;
+  letter-spacing: 0.13em;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.software-showcase__eyebrow > span {
+  width: 0.38rem;
+  height: 0.38rem;
+  flex: 0 0 0.38rem;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--tech-cyan) 60%, transparent);
+}
+
+@media (max-width: 420px) {
+  .software-showcase__eyebrow {
+    font-size: 0.52rem;
+    letter-spacing: 0.09em;
+    gap: 0.4rem;
+  }
+}
