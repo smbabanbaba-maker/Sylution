@@ -80,7 +80,6 @@ export function Footer() {
               { label: "Investors", to: "/investors" },
               { label: "Gallery", to: "/gallery" },
               { label: "News", to: "/news" },
-              { label: "Careers", to: "/careers" },
               { label: "Contact", to: "/contact" },
               { label: "FAQ", to: "/faq" },
               { label: "All pages", to: "/explore" },
