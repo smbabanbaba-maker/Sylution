@@ -3,7 +3,6 @@
     { "path": "/", "title": "Home" },
     { "path": "/about", "title": "About" },
     { "path": "/ai", "title": "AI" },
-    { "path": "/careers", "title": "Careers" },
     { "path": "/company-profile", "title": "Company profile" },
     { "path": "/contact", "title": "Contact" },
     { "path": "/electronics", "title": "Electronics" },
