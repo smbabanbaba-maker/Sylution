@@ -26,7 +26,6 @@ const en: Record<string, string> = {
   "nav.news": "News",
   "nav.marketplace": "Marketplace",
   "nav.loans": "Farm finance concept",
-  "nav.careers": "Careers",
   "nav.contact": "Contact",
   "language.choose": "Choose a language",
   "hero.eyebrow": "Software development · Web & mobile apps · Kano, Nigeria",
