@@ -11,6 +11,7 @@ import {
   Radio,
   Sprout,
   Sun,
+  Smartphone,
   Handshake,
   Landmark,
 } from "lucide-react";
