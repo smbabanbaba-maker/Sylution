@@ -977,37 +977,6 @@ export const FAQS = [
   },
 ];
 
-export const CAREERS = [
-  {
-    role: "Embedded Systems Engineer",
-    type: "Full-time",
-    location: "Kano, Nigeria",
-    team: "Electronics",
-  },
-  { role: "IoT Solutions Engineer", type: "Full-time", location: "Kano, Nigeria", team: "IoT" },
-  {
-    role: "Machine Learning Engineer",
-    type: "Hybrid",
-    location: "Abuja / Remote",
-    team: "AI Research",
-  },
-  { role: "PCB Design Engineer", type: "Full-time", location: "Kano, Nigeria", team: "Hardware" },
-  {
-    role: "Automation and Controls Engineer",
-    type: "Full-time",
-    location: "Field-based",
-    team: "Industrial",
-  },
-  { role: "Full Stack Software Engineer", type: "Hybrid", location: "Remote", team: "Platform" },
-  {
-    role: "Drone Pilot and Instructor",
-    type: "Full-time",
-    location: "Kano, Nigeria",
-    team: "Academy",
-  },
-  { role: "Partnerships Manager", type: "Full-time", location: "Kano, Nigeria", team: "Growth" },
-];
-
 export type ProjectStatus =
   | "Active Project"
   | "Under development"
