@@ -148,16 +148,6 @@ const STATIC_PAGES: SitePage[] = [
     priority: "0.7",
   },
   {
-    path: "/careers",
-    title: "Careers and opportunities",
-    summary: "Find career and participation information for people interested in SYLUTION.",
-    category: "Company",
-    keywords:
-      "careers jobs vacancies employment aikin yi work opportunities emploi postes offres وظائف",
-    changefreq: "weekly",
-    priority: "0.6",
-  },
-  {
     path: "/iot",
     title: "Internet of Things (IoT)",
     summary: "Explore sensors, connected devices, controllers, monitoring and IoT systems.",
