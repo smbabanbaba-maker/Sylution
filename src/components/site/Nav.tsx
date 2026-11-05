@@ -25,7 +25,6 @@ const MAIN = [
   { to: "/news", key: "nav.news" },
   { to: "/partners", key: "nav.partners" },
   { to: "/investors", key: "nav.investors" },
-  { to: "/careers", key: "nav.careers" },
 ] as const;
 
 const PRIMARY: string[] = [
