@@ -2900,3 +2900,115 @@ footer h1, footer h2, footer h3, footer a {
 }
 ::placeholder { color:#91a5bc !important; opacity:1 !important; }
 :focus-visible { outline-color:#39c8ff !important; }
+
+
+/* Route-wide page masthead + navigation contrast correction. */
+header.nav-shell, header.nav-transparent {
+  background:rgba(3,8,18,.96) !important;
+  color:#f4f8ff !important;
+  border-bottom:1px solid rgba(47,190,245,.28) !important;
+}
+header.nav-shell *, header.nav-transparent * {
+  color:#edf5ff !important;
+}
+header.nav-shell a:hover, header.nav-transparent a:hover,
+header.nav-shell button:hover, header.nav-transparent button:hover {
+  color:#5bd2ff !important;
+}
+header.nav-shell [data-active="true"],
+header.nav-transparent [data-active="true"] {
+  color:#ff6682 !important;
+}
+header.nav-shell .nav-contact, header.nav-transparent .nav-contact {
+  color:#fff !important;
+}
+header.nav-shell .brand-mark-shell, header.nav-transparent .brand-mark-shell {
+  background:#0b1b2d !important;
+}
+header .nav-header__brand span:last-child {
+  color:#fff !important;
+  text-shadow:0 0 18px rgba(42,190,255,.22);
+}
+header [class*="bg-popover"], header [class*="bg-card"] {
+  background-color:#0b1728 !important;
+  color:#f4f8ff !important;
+  border-color:#28445f !important;
+}
+header [class*="text-muted-foreground"],
+header [class*="text-foreground"] {
+  color:#dce9f8 !important;
+}
+
+/* Inner-page hero/masthead blocks use a consistent dark technology surface. */
+main#main section[class*="hero"],
+main#main section[class*="Hero"],
+main#main div[class*="page-hero"],
+main#main div[class*="PageHero"],
+main#main div[class*="page-header"],
+main#main div[class*="PageHeader"],
+main#main [data-page-hero="true"] {
+  color:#f4f8ff !important;
+  background-color:#071426 !important;
+  border-color:rgba(47,190,245,.25) !important;
+}
+main#main section[class*="hero"] *,
+main#main section[class*="Hero"] *,
+main#main div[class*="page-hero"] *,
+main#main div[class*="PageHero"] *,
+main#main div[class*="page-header"] *,
+main#main div[class*="PageHeader"] *,
+main#main [data-page-hero="true"] * {
+  color:inherit;
+}
+main#main section[class*="hero"] h1,
+main#main section[class*="hero"] h2,
+main#main section[class*="Hero"] h1,
+main#main section[class*="Hero"] h2,
+main#main div[class*="page-hero"] h1,
+main#main div[class*="PageHero"] h1,
+main#main div[class*="page-header"] h1,
+main#main div[class*="PageHeader"] h1 {
+  color:#f8fbff !important;
+}
+main#main section[class*="hero"] p,
+main#main section[class*="Hero"] p,
+main#main div[class*="page-hero"] p,
+main#main div[class*="PageHero"] p,
+main#main div[class*="page-header"] p,
+main#main div[class*="PageHeader"] p {
+  color:#c1d0e2 !important;
+}
+main#main [class*="bg-white"] {
+  background-color:#0b1728 !important;
+  color:#f4f8ff !important;
+  border-color:rgba(47,190,245,.22) !important;
+}
+main#main [class*="bg-white"] h1,
+main#main [class*="bg-white"] h2,
+main#main [class*="bg-white"] h3,
+main#main [class*="bg-white"] strong {
+  color:#f4f8ff !important;
+}
+main#main [class*="bg-white"] p,
+main#main [class*="bg-white"] span,
+main#main [class*="bg-white"] label {
+  color:#c1d0e2 !important;
+}
+
+/* Assistant and campaign overlays should match the site's dark theme. */
+#sylution-assistant-title,
+[class*="assistant"] [class*="bg-white"] {
+  background:#0b1728 !important;
+  color:#f4f8ff !important;
+}
+[role="dialog"] {
+  background:#0b1728;
+  color:#f4f8ff;
+  border-color:#29445f;
+}
+[role="dialog"] h1,[role="dialog"] h2,[role="dialog"] h3 {
+  color:#f4f8ff !important;
+}
+[role="dialog"] p,[role="dialog"] label {
+  color:#c1d0e2 !important;
+}
