@@ -26,20 +26,20 @@ import { BRAND_IMAGES, CONTACT, SYSMART_OVERVIEW } from "@/lib/site-data";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SYLUTION LTD | Software Development, Websites, Mobile Apps & Engineering" },
+      { title: "SYLUTION LTD | AI, Robotics, IoT & Engineering Innovation" },
       {
         name: "description",
         content:
-          "SYLUTION LTD develops business websites, web applications, mobile apps and custom software, including AI-powered solutions. We also offer engineering, AgriTech, IoT and practical technology training in Kano, Nigeria.",
+          "SYLUTION LTD develops intelligent technology across AI, robotics, IoT, embedded systems, smart agriculture, drones, renewable energy and digital platforms in Nigeria.",
       },
       {
         property: "og:title",
-        content: "SYLUTION LTD | Software Development, Web & Mobile Apps",
+        content: "SYLUTION LTD | Intelligent Technology & Engineering",
       },
       {
         property: "og:description",
         content:
-          "Custom software development, business websites, mobile applications and AI-powered systems, alongside practical engineering, AgriTech and technical training in Kano, Nigeria.",
+          "AI, robotics, IoT, embedded electronics, smart agriculture, drones, renewable energy and digital platforms engineered for real-world challenges.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
