@@ -2807,3 +2807,96 @@ main#main > section:not(.home-hero)::before {
   .home-hero::before,.home-hero::after,.tech-orb,.tech-orb *,
   .home-hero__paths::after { animation:none !important; }
 }
+
+
+/* GLOBAL READABILITY & CONTRAST PASS — no pale text on pale surfaces. */
+:root {
+  color-scheme:dark;
+  --foreground:#f4f8ff;
+  --muted-foreground:#b8c7da;
+  --card-foreground:#f4f8ff;
+  --popover-foreground:#f4f8ff;
+  --secondary-foreground:#f4f8ff;
+}
+html,body,#root,[data-theme] {
+  background-color:#050a14;
+  color:#f4f8ff;
+}
+body, main, header, footer, nav, section, article, aside {
+  color:#eaf2fc;
+}
+main#main p, main#main li, main#main label, main#main small,
+main#main dt, main#main dd, main#main blockquote,
+main#main .text-muted-foreground, main#main [data-muted="true"] {
+  color:#b9c8db !important;
+}
+main#main h1, main#main h2, main#main h3, main#main h4,
+main#main h5, main#main h6,
+main#main strong, main#main b,
+header a, footer a, nav a {
+  color:#f4f8ff !important;
+}
+main#main a:not(.btn-primary):not(.button-primary) {
+  color:#54cfff;
+}
+main#main a:not(.btn-primary):not(.button-primary):hover {
+  color:#ff6682;
+}
+main#main .text-white, main#main .text-slate-50,
+main#main .text-slate-100, main#main .text-gray-50,
+main#main .text-gray-100, main#main .text-zinc-50,
+main#main .text-neutral-50 {
+  color:#f4f8ff !important;
+}
+main#main .text-slate-200, main#main .text-gray-200,
+main#main .text-zinc-200, main#main .text-neutral-200 {
+  color:#dce7f4 !important;
+}
+main#main .text-slate-300, main#main .text-gray-300,
+main#main .text-zinc-300, main#main .text-neutral-300,
+main#main .text-muted-foreground {
+  color:#b9c8db !important;
+}
+main#main .text-black, main#main .text-gray-900,
+main#main .text-slate-900, main#main .text-zinc-900,
+main#main .text-neutral-900 {
+  color:#f4f8ff !important;
+}
+main#main [class*="bg-white"], main#main [class*="bg-gray-"],
+main#main [class*="bg-slate-50"], main#main [class*="bg-zinc-50"],
+main#main [class*="bg-neutral-50"] {
+  background-color:#0b1728 !important;
+  border-color:rgba(74,174,220,.24) !important;
+}
+main#main input, main#main textarea, main#main select,
+main#main option {
+  color:#f4f8ff !important;
+  background-color:#0a1728 !important;
+  border-color:#35516d !important;
+}
+main#main input::placeholder, main#main textarea::placeholder {
+  color:#91a5bc !important;
+  opacity:1 !important;
+}
+main#main button:not(.btn-primary):not(.button-primary) {
+  color:#f4f8ff;
+}
+main#main .bg-white *, main#main .bg-gray-50 *,
+main#main .bg-slate-50 *, main#main .bg-zinc-50 * {
+  color:inherit;
+}
+main#main .text-transparent,
+main#main .home-hero__title-accent {
+  -webkit-text-fill-color:transparent !important;
+}
+footer, .footer-shell {
+  color:#dbe7f5 !important;
+}
+footer p, footer li, footer small {
+  color:#afc0d4 !important;
+}
+footer h1, footer h2, footer h3, footer a {
+  color:#f4f8ff !important;
+}
+::placeholder { color:#91a5bc !important; opacity:1 !important; }
+:focus-visible { outline-color:#39c8ff !important; }
