@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowUpRight, Brain, CircuitBoard, GraduationCap } from "lucide-react";
+import { ArrowUpRight, Brain, CircuitBoard, GraduationCap, Cpu, Radio, Bot, Sun, Plane, Network } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useLang } from "@/lib/i18n";
 
@@ -47,6 +47,18 @@ export function HomeHero() {
       </picture>
       <div aria-hidden="true" className="home-hero__overlay" />
       <div aria-hidden="true" className="home-hero__glow" />
+      <div className="tech-orb" aria-hidden="true">
+        <div className="tech-orb__orbit tech-orb__orbit--one" />
+        <div className="tech-orb__orbit tech-orb__orbit--two" />
+        <div className="tech-orb__orbit tech-orb__orbit--three" />
+        <div className="tech-orb__core"><Network /></div>
+        <span className="tech-orb__node tech-orb__node--one"><Cpu /></span>
+        <span className="tech-orb__node tech-orb__node--two"><Radio /></span>
+        <span className="tech-orb__node tech-orb__node--three"><Bot /></span>
+        <span className="tech-orb__node tech-orb__node--four"><Sun /></span>
+        <span className="tech-orb__node tech-orb__node--five"><Plane /></span>
+        <span className="tech-orb__caption">ENGINEERING THE FUTURE</span>
+      </div>
       <div className="container-x home-hero__layout">
         <div className="home-hero__copy">
           <motion.p
@@ -83,14 +95,14 @@ export function HomeHero() {
             transition={{ duration: 0.55, delay: 0.2 }}
           >
             <Link to="/contact" className="btn-base btn-primary group">
-              Discuss a software project
+              Explore our technology
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
             </Link>
             <a
-              href="#software-development"
+              href="#home-sysmart-agro"
               className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/35 bg-black/25 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              Explore what we build
+              Discover our solutions
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </a>
           </motion.div>
