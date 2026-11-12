@@ -2321,3 +2321,107 @@ main#main .bg-foreground {
     gap: 0.4rem;
   }
 }
+
+
+/* SYLUTION global dark-tech visual system — inspired by the supplied reference. */
+:root {
+  color-scheme: dark;
+  --navy: #030711;
+  --brand-red: #ff3157;
+  --red-deep: #b5163b;
+  --red-accent: #ff5474;
+  --soft-white: #050914;
+  --white: #f5f8ff;
+  --primary-text: #eef4ff;
+  --secondary-text: #a0aec4;
+  --ink: #eef4ff;
+  --background: #050914;
+  --foreground: #eef4ff;
+  --surface: #0a1221;
+  --surface-2: #101d31;
+  --card: #0b1424;
+  --card-foreground: #eef4ff;
+  --popover: #0b1424;
+  --popover-foreground: #eef4ff;
+  --brand: #ff3157;
+  --brand-soft: #ff5474;
+  --primary: #20bfff;
+  --primary-foreground: #03101d;
+  --secondary: #101d31;
+  --secondary-foreground: #eaf4ff;
+  --muted: #101a2b;
+  --muted-foreground: #a0aec4;
+  --accent: #12253a;
+  --accent-foreground: #eaf4ff;
+  --destructive: #ff526d;
+  --destructive-foreground: #fff;
+  --border: #1b3049;
+  --input: #29415d;
+  --ring: rgba(32, 191, 255, .42);
+  --gradient-brand: linear-gradient(135deg, #ff3157, #20bfff);
+  --gradient-veil: linear-gradient(180deg, rgba(5,9,20,.55), rgba(5,9,20,.92) 72%, #050914);
+  --shadow-luxe: 0 34px 90px -42px rgba(0,0,0,.9);
+  --shadow-glow: 0 0 0 1px rgba(32,191,255,.12), 0 24px 64px -32px rgba(32,191,255,.3);
+}
+
+html, body { background: #050914 !important; color: #eef4ff; }
+body::before {
+  opacity: .34 !important;
+  background-image:
+    radial-gradient(circle at 16% 20%, rgba(255,49,87,.18), transparent 26rem),
+    radial-gradient(circle at 82% 16%, rgba(32,191,255,.16), transparent 30rem),
+    linear-gradient(rgba(32,191,255,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(32,191,255,.055) 1px, transparent 1px) !important;
+  background-size: auto, auto, 48px 48px, 48px 48px !important;
+  mask-image: linear-gradient(180deg, #000 0%, #000 72%, transparent 100%) !important;
+}
+body::after {
+  opacity: .2 !important;
+  background-image: radial-gradient(circle, rgba(77,196,255,.75) 0 1px, transparent 1.5px) !important;
+  background-size: 42px 42px !important;
+  mask-image: linear-gradient(180deg, #000 0%, transparent 82%) !important;
+}
+
+/* Keep every route on the same cinematic, high-contrast canvas. */
+.nav-shell, .nav-transparent {
+  background: rgba(4,9,20,.88) !important;
+  color: #f5f8ff !important;
+  border-bottom: 1px solid rgba(32,191,255,.22) !important;
+  box-shadow: 0 14px 44px rgba(0,0,0,.32) !important;
+  backdrop-filter: blur(20px) saturate(145%) !important;
+}
+.nav-shell .nav-link, .nav-transparent .nav-link,
+.nav-shell > div > div > a, .nav-transparent > div > div > a,
+.nav-shell > div > div > button, .nav-transparent > div > div > button {
+  color: rgba(235,245,255,.78) !important;
+}
+.nav-shell .nav-link:hover, .nav-transparent .nav-link:hover,
+.nav-shell > div > div > a:hover, .nav-transparent > div > div > a:hover,
+.nav-shell > div > div > button:hover, .nav-transparent > div > div > button:hover {
+  color: #fff !important;
+  background: rgba(32,191,255,.1) !important;
+}
+.mobile-menu-surface { background: #07101e !important; color: #eef4ff !important; }
+.card-luxe, .media-frame {
+  background: linear-gradient(145deg, rgba(15,29,49,.94), rgba(7,14,27,.96)) !important;
+  border-color: rgba(57,174,231,.2) !important;
+  box-shadow: 0 22px 64px -38px rgba(0,0,0,.95), 0 0 0 1px rgba(32,191,255,.035) !important;
+}
+.card-luxe:hover { border-color: rgba(32,191,255,.55) !important; box-shadow: 0 24px 70px -36px rgba(32,191,255,.2) !important; }
+.btn-ghost { color: #eaf4ff !important; border-color: rgba(110,190,235,.32) !important; background: rgba(10,23,40,.72) !important; }
+.btn-ghost:hover { border-color: #20bfff !important; background: rgba(32,191,255,.12) !important; }
+.text-muted-foreground { color: #a7b6cb !important; }
+.eyebrow { color: #42caff !important; }
+.brand-mark-shell { background: #091426 !important; border-color: rgba(32,191,255,.32) !important; }
+.footer-shell { background: radial-gradient(ellipse at 80% 0%, rgba(255,49,87,.2), transparent 32rem), linear-gradient(135deg,#07101e,#030711 72%) !important; }
+
+/* Futuristic signal lines and glow on hero/feature panels without obscuring content. */
+section[class*="container-x"] { position: relative; }
+.home-approach-section > div > div,
+#home-sysmart-agro {
+  border-color: rgba(32,191,255,.22) !important;
+  box-shadow: 0 24px 90px -48px rgba(32,191,255,.25), 0 0 48px rgba(255,49,87,.06) !important;
+}
+::selection { background: #20bfff !important; color: #03101d !important; }
+::-webkit-scrollbar-track { background: #07101e !important; }
+::-webkit-scrollbar-thumb { background: #29415d !important; border-color: #07101e !important; }
