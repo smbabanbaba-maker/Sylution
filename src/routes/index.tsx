@@ -184,7 +184,7 @@ function Home() {
           title="Digital products, intelligent systems & engineering"
           description="Alongside website, app and software development, SYLUTION delivers AI, connected devices and practical engineering for agriculture, industry and energy."
         />
-        <div className="mt-8 grid grid-cols-3 gap-2.5 sm:mt-10 sm:gap-4 lg:gap-5">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-10 sm:grid-cols-3 sm:gap-4 lg:gap-5">
           {PILLARS.map((p, i) => (
             <Reveal key={p.slug} delay={i * 0.08}>
               <Link
@@ -201,13 +201,13 @@ function Home() {
                     aria-hidden="true"
                   />
                 </div>
-                <h3 className="mt-3 min-w-0 break-words font-display text-[0.68rem] font-bold leading-tight sm:mt-4 sm:text-base lg:text-lg">
+                <h3 className="mt-3 min-w-0 break-words font-display text-sm font-bold leading-snug text-white sm:mt-4 sm:text-base lg:text-lg">
                   {p.title}
                 </h3>
-                <p className="mt-2 flex-1 text-[0.61rem] leading-snug text-muted-foreground sm:mt-2.5 sm:text-xs lg:text-sm lg:leading-relaxed">
+                <p className="mt-2 flex-1 text-xs leading-relaxed text-slate-300 sm:mt-2.5 sm:text-sm lg:text-sm lg:leading-relaxed">
                   {p.detail}
                 </p>
-                <span className="mt-3 text-[0.58rem] font-semibold text-primary sm:mt-4 sm:text-xs">
+                <span className="mt-4 text-xs font-bold text-primary sm:mt-4 sm:text-sm">
                   Learn more
                 </span>
               </Link>
