@@ -173,9 +173,19 @@ export function SiteLanguageSwitch() {
     }
     script.addEventListener("load", activate);
     script.addEventListener("error", onFailure);
-    if (!script.isConnected) document.head.appendChild(script);
+
+    // TanStack Start hydrates nested React routes progressively. If the vendor
+    // mutates those text nodes before hydration completes, React raises #418
+    // (hydration mismatch). Defer the FIRST translation for 1.8 seconds after
+    // the site language selector is mounted; manual and subsequent switches
+    // still execute instantly after the plugin has loaded.
+    const loadTimer = window.setTimeout(() => {
+      if (!disposed && script && !script.isConnected) document.head.appendChild(script);
+    }, 1800);
+
     return () => {
       disposed = true;
+      window.clearTimeout(loadTimer);
       script?.removeEventListener("load", activate);
       script?.removeEventListener("error", onFailure);
     };
